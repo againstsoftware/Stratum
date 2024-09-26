@@ -1,2 +1,2 @@
 # ecosistemacartas
-Repositorio para el desarrollo del ´rpyecto "Ecosistema Cartas".
+Repositorio para el desarrollo del proyecto "Ecosistema Cartas".
