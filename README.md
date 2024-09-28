@@ -3,7 +3,7 @@
 # 1. Reglamento
 En esta sección se detallará el reglamento del juego, con la estructura que suelen tener los manuales de los juegos de cartas de mesa.
 
-## 1.1 Descripción del juego
+## 1.1. Descripción del juego
 Ecosistema Cartas es un juego de cartas para 4 jugadores, en el que hay un ecosistema al que contribuyen todos los jugadores jugando **cartas de población**: plantas, herbívoros y carnívoros. Este ecosistema está vivo y va cambiando si está desequilibrado, para balancearse de forma natural. Cada jugador juega el papel de un personaje. Los 4 personajes están divididos en 3 facciones, cada una de las cuales busca imponer sus intereses sobre las demás, usando las leyes de la naturaleza a su favor para equilibrar o desequilibrar el ecosistema. Además, cada jugador tiene en su mazo **cartas de influencia**, únicas para cada personaje, las cuales puede usar para influir en el ecosistema de manera artificial.
 
 ## 1.2. Facciones
@@ -23,11 +23,11 @@ Compuesta por el personaje [**seton**](https://tenor.com/es-419/view/joker-sigma
 ## 1.3. Inicio de la partida
 Los jugadores se disponen, uno a cada lado de una mesa cuadrada, siguiendo este orden, en el sentido inverso a las agujas del reloj: animalero, seton, plantero, humano.
 
-Cada jugador, en frente suyo, tiene su **territorio**. Este se compone de 5 espacios de territorio. En estos espacios son donde puede jugar sus cartas de población, en su turno.
+Cada jugador tiene delante su **territorio**. Este está compuesto por 5 espacios de territorio. Cuando sea su turno, el jugador podrá jugar cartas de criatura en estos espacios.
 
 Cada jugador empieza con 5 cartas.
 
-El ecosistema (la mesa) empieza con 4 cartas de población: 2 plantas, 1 herbívoro y 1 carnívoro. Estas se disponen de manera aleatoria, cada una en el espacio de territorio de más a la izquierda de cada jugador.
+El ecosistema (la mesa) empieza con 4 cartas de población: 2 plantas, 1 herbívoro y 1 carnívoro. Estas se disponen de manera aleatoria, cada una en el espacio de territorio situado más a la izquierda de cada jugador.
 
 Comienza jugando el animalero, y el orden de turnos sigue el sentido inverso a las agujas del reloj.
 
@@ -36,7 +36,7 @@ Una ronda consiste en los turnos de los 4 jugadores, y el turno del ecosistema.
 
 Cada jugador en su turno tiene 2 acciones: una para jugar una **carta de población** y otra para jugar una **carta de influencia**. Puede elegir jugarlas en cualquier orden. 
 
-Sólo se puede jugar una carta de población sobre un espacio de territorio vacío, del territorio del jugador que la juegue, excepto si la carta tiene **habilidad**, y esta dice lo contrario. 
+Las cartas de población se pueden jugar sobre un espacio de territorio vacío. Cada jugador tiene que jugarlas en su territorio a menos que la carta cuente con una **habilidad** que diga lo contrario.
 
 Cada carta de influencia explica cómo se debe jugar. Algunas se juegan poniéndolas sobre la mesa para aplicar su efecto y luego descartándolas, otras se ponen sobre cartas de población para concederles un efecto, ya sea inmediato o en el futuro, cuando se cumpla una condición.
 
@@ -54,7 +54,7 @@ En su turno, el ecosistema cambia según las cartas de población que haya sobre
 
 - Una o más cartas de población **crecen**: en el mismo espacio de territorio, encima de la carta de población que crece, se añade una carta igual.
 
-La última carta de población de cada tipo en haberse jugado se marca con una ficha, y es la que moriría o crecería si ese tipo de cartas de población (planta, herbívoro o carnívoro) crecen o mueren. 
+La última carta de población de cada tipo (planta, herbívoro o carnívoro) en haberse jugado, se marca con ficha. Estas cartas son las que, en el turno del ecosistema, podrían crecer o morir si se cumplen las condiciones.
 
 ### Reglas del ecosistema
 Estas son las directrices que se usan para determinar si hay cartas de población que crecen o mueren.
