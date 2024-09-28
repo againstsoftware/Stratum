@@ -25,6 +25,8 @@ Los jugadores se disponen, uno a cada lado de una mesa cuadrada, siguiendo este 
 
 Cada jugador tiene delante su **territorio**. Este está compuesto por 5 espacios de territorio. Cuando sea su turno, el jugador podrá jugar cartas de criatura en estos espacios.
 
+![Territorios](/Readme%20Files/tablero.png)
+
 Cada jugador empieza con 5 cartas.
 
 El ecosistema (la mesa) empieza con 4 cartas de población: 2 plantas, 1 herbívoro y 1 carnívoro. Estas se disponen de manera aleatoria, cada una en el espacio de territorio situado más a la izquierda de cada jugador.
@@ -135,4 +137,32 @@ Es una acción exclusiva del seton. En su turno, puede elegir gastar una acción
 
 El macrohongo no puede ser destruido por cartas de población con habilidad, ni tampoco por cartas de influencia, a menos de que en la descripción de esta lo indique explícitamente.
 
+## 1.8. Cartas
+### Cartas de población
+...
 
+### Cartas de influencia
+#### Plantero
+- **Incendio Forestal:** Elige un territorio. Todas las cartas de población, hongo y macrohongo en ese territorio mueren. Si hay una construcción, también se destruye.
+- **Fruta con semillas:** Coloca esta carta sobre una carta de planta. Si una carta de herbívoro o carnívoro de ese territorio crece, otra planta crecerá sobre la que tiene la carta.
+- **Mala hierba nunca muere:** Coloca esta carta sobre una carta de planta. Si muere, crece otra carta de planta igual y esta carta se descarta.
+- **Fragancia de feromonas:** Elige una carta de herbívoro o carnívoro de otro territorio y muévela a un espacio vacío en tu territorio.
+
+#### Animalero
+- **Hibernación:** Elige una carta de herbívoro o carnívoro. Esta carta no podrá morir ni crecer por las reglas del ecosistema.
+- **Rabia:** Coloca esta carta sobre una carta de herbívoro. A partir de ahora, el humano no podrá construir en el territorio donde esté.
+- **Migración:** Elige una carta de carnívoro o herbívoro de tu territorio y muévela a un espacio vacío en otro territorio.
+- **Omnívoro:** Coloca esta carta sobre una carta de carnívoro. A partir de ahora, esta carta contará tanto como carnívoro como herbívoro para las reglas del ecosistema.
+
+
+#### Humano
+- **Incendio provocado:** Elige un territorio. Todas las cartas de población, hongo y macrohongo en ese territorio mueren. Si hay una construcción, también se destruye.
+- **Pesticida:** Muere una carta de planta de tu elección.
+- **Cazador:** Muere una carta de herbívoro o carnívoro de tu elección.
+- **Fuegos artificiales:** Elige una carta de herbívoro o carnívoro y muévela a un espacio vacío en el territorio opuesto al que se encuentra.
+
+#### Seton
+- **Esporas explosivas:** Elige un territorio donde haya al menos una carta de hongo o macrohongo. Todas las cartas de población en ese territorio mueren. Si hay una construcción también se destruye. Las cartas de hongo y macrohongo no mueren.
+- **Putrefacción:** Muere una carta de planta de tu elección. Crece un hongo en su espacio de territorio.
+- **Parásito:** Coloca esta carta sobre una carta de herbívoro o carnívoro. Si la carta crece, aparece un hongo en su espacio de territorio y esta carta se descarta.
+- **Seta apetitosa:** Elige una carta de herbívoro o carnívoro y muévela a un espacio vacío en un territorio donde haya al menos una carta de hongo o macrohongo.
