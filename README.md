@@ -38,7 +38,7 @@ Una ronda consiste en los turnos de los 4 jugadores, y el turno del ecosistema.
 
 Cada jugador en su turno tiene 2 acciones: una para jugar una **carta de población** y otra para jugar una **carta de influencia**. Puede elegir jugarlas en cualquier orden. 
 
-Las cartas de población se pueden jugar sobre un espacio de territorio vacío. Cada jugador tiene que jugarlas en su territorio a menos que la carta cuente con una **habilidad** que diga lo contrario.
+Las cartas de población se pueden jugar sobre un espacio de territorio vacío. Cada jugador tiene que jugarlas en su territorio.
 
 Cada carta de influencia explica cómo se debe jugar. Algunas se juegan poniéndolas sobre la mesa para aplicar su efecto y luego descartándolas, otras se ponen sobre cartas de población para concederles un efecto, ya sea inmediato o en el futuro, cuando se cumpla una condición.
 
@@ -94,13 +94,8 @@ Las condiciones, en orden de comprobación, son:
 - Tiene que haber al menos una carta de carnívoro.
 - Debe haber al menos 2 cartas más de herbívoros que de carnívoros.
 
-## 1.6. Cartas de población con habilidad
-Algunas cartas de población tienen una habilidad. Estas se juegan igual que las cartas de población sin habilidad, pero tienen una descripción de su habilidad, cuyos efectos varían: algunos se aplican en el momento en el que se juega la carta, otros se activan cuando hay al menos 2 cartas con la misma habilidad en un mismo territorio, otros cuando vaya a morir la carta, etc.
-
-Algunas cartas de población con habilidad sólo están disponibles en los mazos de algunos jugadores. Por ejemplo, el humano no tiene ninguna Hiedra Verde, cuya habilidad es destruir construcciones, porque le sería perjudicial jugarla.
-
-## 1.7. Personajes
-Cada personaje tiene un objetivo único para ganar el juego, excepto los dos de la facción Naturaleza, que comparten el mismo objetivo. Los personajes de las facciones Industria y Fungi cuentan con mecánicas exclusivas para alcanzar sus objetivos y ganar la partida. Además, todos los personajes disponen de cartas de influencia propias, y algunos también tienen cartas de población con habilidad que los demás jugadores no poseen.
+## 1.6. Personajes
+Cada personaje tiene un objetivo único para ganar el juego, excepto los dos de la facción Naturaleza, que comparten el mismo objetivo. Los personajes de las facciones Industria y Fungi cuentan con mecánicas exclusivas para alcanzar sus objetivos y ganar la partida. Además, todos los personajes disponen de cartas de influencia propias.
 
 ### Plantero
 Es el ente protector de los árboles y plantas. Sus cartas de influencia están orientadas a las plantas.
@@ -123,9 +118,14 @@ Para ganar debe conseguir que al final de una ronda, después del turno del ecos
 Es una acción exclusiva del humano. En su turno, puede elegir gastar una acción para construir sobre uno de los 4 territorios. Para poder construir sobre un territorio se deben cumplir las siguientes condiciones:
 - El territorio no tiene una construcción.
 - El territorio no tiene ninguna carta de población de carnívoros.
-- El territorio no tiene ninguna carta de población con una habilidad o carta de influencia puesta que impida construir.
+- El territorio no tiene ninguna carta de población con una  carta de influencia puesta que impida construir.
+- El territorio tiene al menos 2 cartas de población de plantas.
 
-Al construir, se pone una ficha en frente del territorio para indicar que tiene construcción. Después, se puede jugar con normalidad cartas de criatura sobre el territorio construido, y se puede destruir usando cartas de influencia o cartas de criatura con habilidad que lo permitan. Se puede construir nuevamente sobre un territorio que tuvo un terreno y fue destruido, si se cumplen las condiciones descritas.
+Al construir, se pone una ficha en frente del territorio para indicar que tiene construcción. Mueren las 2 cartas de planta más recientes del territorio.
+
+Después, se puede jugar con normalidad cartas de criatura sobre el territorio construido, y la construcción se puede destruir usando cartas de influencia que lo permitan.
+
+Se puede construir nuevamente sobre un territorio que tuvo un terreno y fue destruido, si se cumplen las condiciones descritas.
 
 ### Seton
 Es una deidad ancestral de los hongos, cuya voluntad es que los hongos se impongan sobre todas las otras formas de vida.
@@ -135,11 +135,13 @@ Para ganar debe conseguir que al final de una ronda, después del turno del ecos
 #### Macrohongo
 Es una acción exclusiva del seton. En su turno, puede elegir gastar una acción para crear un macrohongo. Para poder crearlo, debe haber al menos 3 cartas de hongo en la mesa. La acción consiste en descartar 3 cartas de hongo, y poner una carta de macrohongo en uno de esos 3 espacios de territorio, a elección del jugador.
 
-El macrohongo no puede ser destruido por cartas de población con habilidad, ni tampoco por cartas de influencia, a menos de que en la descripción de esta lo indique explícitamente.
+El macrohongo no puede ser destruido por cartas de influencia, a menos que la descripción de la carta lo indique explícitamente.
 
-## 1.8. Cartas
+## 1.7. Cartas
 ### Cartas de población
-...
+- **Planta**
+- **Herbívoro**
+- **Carnívoro**
 
 ### Cartas de influencia
 #### Plantero
@@ -147,12 +149,15 @@ El macrohongo no puede ser destruido por cartas de población con habilidad, ni 
 - **Fruta con semillas:** Coloca esta carta sobre una carta de planta. Si una carta de herbívoro o carnívoro de ese territorio crece, otra planta crecerá sobre la que tiene la carta.
 - **Mala hierba nunca muere:** Coloca esta carta sobre una carta de planta. Si muere, crece otra carta de planta igual y esta carta se descarta.
 - **Fragancia de feromonas:** Elige una carta de herbívoro o carnívoro de otro territorio y muévela a un espacio vacío en tu territorio.
+- **Hiedra Verde:** Coloca esta carta sobre una carta de planta. Si la carta de planta permanece una ronda completa en un territorio con construcción, la construcción se destruye y esta carta se descarta.
 
 #### Animalero
-- **Hibernación:** Elige una carta de herbívoro o carnívoro. Esta carta no podrá morir ni crecer por las reglas del ecosistema.
-- **Rabia:** Coloca esta carta sobre una carta de herbívoro. A partir de ahora, el humano no podrá construir en el territorio donde esté.
+- **Hibernación:** Coloca esta carta sobre una carta de herbívoro. Esta carta no podrá morir ni crecer por las reglas del ecosistema.
+- **Rabia:** Coloca esta carta sobre una carta de herbívoro. Mientras no muera, el humano no podrá construir en el territorio donde esté.
 - **Migración:** Elige una carta de carnívoro o herbívoro de tu territorio y muévela a un espacio vacío en otro territorio.
-- **Omnívoro:** Coloca esta carta sobre una carta de carnívoro. A partir de ahora, esta carta contará tanto como carnívoro como herbívoro para las reglas del ecosistema.
+- **Omnívoro:** Coloca esta carta sobre una carta de carnívoro. A partir de ahora, esta carta contará tanto como carnívoro como herbívoro.
+- **Depredador de setas:** Coloca esta carta sobre una carta de herbívoro. Mientras no muera, al final de la ronda morirá la carta de hongo más reciente que haya en su territorio.
+
 
 
 #### Humano
@@ -160,9 +165,11 @@ El macrohongo no puede ser destruido por cartas de población con habilidad, ni 
 - **Pesticida:** Muere una carta de planta de tu elección.
 - **Cazador:** Muere una carta de herbívoro o carnívoro de tu elección.
 - **Fuegos artificiales:** Elige una carta de herbívoro o carnívoro y muévela a un espacio vacío en el territorio opuesto al que se encuentra.
+- **Compost:** Elige un espacio vacío de un territorio. Coloca una carta de hongo y una carta de planta encima.
 
 #### Seton
 - **Esporas explosivas:** Elige un territorio donde haya al menos una carta de hongo o macrohongo. Todas las cartas de población en ese territorio mueren. Si hay una construcción también se destruye. Las cartas de hongo y macrohongo no mueren.
 - **Putrefacción:** Muere una carta de planta de tu elección. Crece un hongo en su espacio de territorio.
 - **Parásito:** Coloca esta carta sobre una carta de herbívoro o carnívoro. Si la carta crece, aparece un hongo en su espacio de territorio y esta carta se descarta.
 - **Seta apetitosa:** Elige una carta de herbívoro o carnívoro y muévela a un espacio vacío en un territorio donde haya al menos una carta de hongo o macrohongo.
+- **Moho:** Coloca una carta de hongo sobre un espacio vacío de un territorio con construcción.
