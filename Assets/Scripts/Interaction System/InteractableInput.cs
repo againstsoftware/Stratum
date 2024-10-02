@@ -7,9 +7,11 @@ using UnityEngine.InputSystem;
 public class InteractableInput : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerUpHandler, IPointerDownHandler
 {
     private IInteractable _interactable;
+    private PlayableItem _playable;
     private void Start()
     {
         _interactable = GetComponent<IInteractable>();
+        _playable = _interactable as PlayableItem;;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -24,12 +26,12 @@ public class InteractableInput : MonoBehaviour, IPointerEnterHandler, IPointerEx
     
     public void OnPointerDown(PointerEventData eventData)    
     {
-        InteractionManager.Instance.DragInteractable(_interactable);                 
+        if(_playable is not null) InteractionManager.Instance.DragPlayableItem(_playable);                 
     }                                                        
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        InteractionManager.Instance.DropInteractable(_interactable);
+        if(_playable is not null) InteractionManager.Instance.DropPlayableItem(_playable);       
     }
 
     

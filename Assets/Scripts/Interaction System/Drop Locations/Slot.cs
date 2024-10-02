@@ -1,13 +1,12 @@
 using System;
 using UnityEngine;
 
-public class DiscardPile : MonoBehaviour, IDropLocation
+public class Slot : MonoBehaviour, IDropLocation
 {
-    public PlayerCharacter Owner { get; }
-    public bool IsDropEnabled { get; } = true;
+    [field:SerializeField] public PlayerCharacter Owner { get; private set; }
+    public bool IsDropEnabled { get; private set; } = true;
     public IActionReceiver Receiver { get; }
-
-
+    
     private Material _material;
     private void Awake()
     {

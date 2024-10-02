@@ -12,12 +12,14 @@ public class InteractionManager : MonoBehaviour
     [SerializeField] private InputActionAsset _inputActions;
     [SerializeField] private LayerMask _dropLocationLayer;
 
-    private InputAction _pointerPosAction;
+    private InputAction _pointerPosAction, _scrollAction;
     private Camera _cam;
+    private CameraMovement _cameraMovement;
     private bool _isDragging;
     private Transform _dragItemTransform;
     private Vector3 _screenPointerPosition;
     private Vector3 _offset;
+    private bool _isCamDefault = true;
 
 
     #region Callbacks
@@ -30,29 +32,50 @@ public class InteractionManager : MonoBehaviour
     private void Start()
     {
         _cam = Camera.main;
+        _cameraMovement = _cam.GetComponent<CameraMovement>();
     }
 
     private void OnEnable()
     {
-        _pointerPosAction = _inputActions.FindAction("PointerPosition"); 
+        _pointerPosAction = _inputActions.FindAction("PointerPosition");
         _pointerPosAction.performed += OnPointerPositionChanged;
+        _scrollAction = _inputActions.FindAction("Scroll");
+        _scrollAction.performed += OnScroll;
     }
 
     private void OnDisable()
     {
         _pointerPosAction.performed -= OnPointerPositionChanged;
+        _scrollAction.performed -= OnScroll;
     }
 
     private void Update()
     {
         if (!_isDragging) return;
-        _dragItemTransform.position = GetPointerWorldPos() + _offset;
+        _dragItemTransform.position = GetPointerWorldPos();// + _offset;
+        _dragItemTransform.rotation = Quaternion.LookRotation(_cam.transform.forward, Vector3.up);
         CheckDropLocations();
     }
     
     private void OnPointerPositionChanged(InputAction.CallbackContext ctx)
     {
         _screenPointerPosition = ctx.ReadValue<Vector2>();
+    }
+
+    private void OnScroll(InputAction.CallbackContext ctx)
+    {
+        float scroll = ctx.ReadValue<Vector2>().y;
+        if (scroll == 0f || _isDragging) return;
+        if (scroll > 0f && _isCamDefault)
+        {
+            _cameraMovement.ChangeToOverview();
+            _isCamDefault = false;
+        }
+        else if (scroll < 0f && !_isCamDefault)
+        {
+            _cameraMovement.ChangeToDefault();
+            _isCamDefault = true;
+        }
     }
     
 
@@ -82,25 +105,27 @@ public class InteractionManager : MonoBehaviour
         SelectedInteractable = null;
     }
 
-    public void DragInteractable(IInteractable item)
+    public void DragPlayableItem(PlayableItem item)
     {
         if (!item.IsDraggable) return;
-        if (item != SelectedInteractable)
+        if (item != SelectedInteractable as PlayableItem)
         {
             Debug.LogError("drag called with non selected item!");
             return;
         }
         
-        _isDragging = true;
-        _dragItemTransform = SelectedInteractable.GameObject.transform;
-        _offset = _dragItemTransform.position - GetPointerWorldPos();
         item.OnDrag();
+        _isDragging = true;
+        _dragItemTransform = item.transform;
+        _offset = _dragItemTransform.position - GetPointerWorldPos();
+        
+        if(!item.OnlyVisibleOnOverview) _cameraMovement.ChangeToOverview();
     }
 
-    public void DropInteractable(IInteractable item)
+    public void DropPlayableItem(PlayableItem item)
     {
         if (!item.IsDraggable) return;
-        if (item != SelectedInteractable)
+        if (item != SelectedInteractable as PlayableItem)
         {
             Debug.LogError("drop called with non selected item!");
             return;
@@ -115,16 +140,20 @@ public class InteractionManager : MonoBehaviour
             SelectedDropLocation.OnDeselect();
             SelectedDropLocation = null;
         }
-        if (dropLocation is null || !GameManager.IsValidAction(item.Action, dropLocation.Receiver))
+        if (dropLocation is null || !GameManager.IsValidAction(item, dropLocation))
         {
             item.OnDragCancel();
+            if(!item.OnlyVisibleOnOverview) _cameraMovement.ChangeToDefault();
         }
+        
+        
         else //es una accion valida segun el cliente
         {
-            GameManager.TryPerformAction(item.Action, dropLocation.Receiver, 
+            GameManager.TryPerformAction(item, dropLocation, 
                 () => 
             {
                 item.OnDrop(SelectedDropLocation);
+                if(!item.OnlyVisibleOnOverview) _cameraMovement.ChangeToDefault();
                 //asi de momento, esto hay que meterselo a un patron command que ejecute todas los pasos de la accion secuencialmente
             });
         }
