@@ -1,4 +1,4 @@
-# Ecosistema Cartas : Game Design Document
+# Stratum : Game Design Document
 
 # 1. Reglamento
 En esta sección se detallará el reglamento del juego, con la estructura que suelen tener los manuales de los juegos de cartas de mesa.
@@ -9,19 +9,19 @@ Ecosistema Cartas es un juego de cartas para 4 jugadores, en el que hay un ecosi
 ## 1.2. Facciones
 
 ### Naturaleza
-Compuesta por los personajes **animalero** y **plantero**, esta facción gana la partida si, al final de una ronda, hay en la mesa al menos las siguientes cartas de población:
+Compuesta por los personajes **Sagitario** y **Ygdra**, esta facción gana la partida si, al final de una ronda, hay en la mesa al menos las siguientes cartas de población:
 - 4 plantas
 - 3 herbívoros
 - 3 carnívoros
 
 ### Industria
-Compuesta por el personaje **humano**, esta facción gana la partida si, al final de una ronda, tiene construcciones en los 4 territorios.
+Compuesta por el personaje **El magnate**, esta facción gana la partida si, al final de una ronda, tiene construcciones en los 4 territorios.
 
 ### Fungi
-Compuesta por el personaje [**seton**](https://tenor.com/es-419/view/joker-sigma-mushroom-gif-7415891857459568428), esta facción gana la partida si, al final de una ronda, tiene 2 macrohongos en la mesa.
+Compuesta por el personaje [**Fu'ngaloth**](https://tenor.com/es-419/view/joker-sigma-mushroom-gif-7415891857459568428), esta facción gana la partida si, al final de una ronda, tiene 2 macrohongos en la mesa.
 
 ## 1.3. Inicio de la partida
-Los jugadores se disponen, uno a cada lado de una mesa cuadrada, siguiendo este orden, en el sentido inverso a las agujas del reloj: animalero, seton, plantero, humano.
+Los jugadores se disponen, uno a cada lado de una mesa cuadrada, siguiendo este orden, en el sentido inverso a las agujas del reloj: Sagitario, Fu'ngaloth, Ygdra, El magnate.
 
 Cada jugador tiene delante su **territorio**. Este está compuesto por 5 espacios de territorio. Cuando sea su turno, el jugador podrá jugar cartas de criatura en estos espacios.
 
@@ -31,7 +31,7 @@ Cada jugador empieza con 5 cartas.
 
 El ecosistema (la mesa) empieza con 4 cartas de población: 2 plantas, 1 herbívoro y 1 carnívoro. Estas se disponen de manera aleatoria, cada una en el espacio de territorio situado más a la izquierda de cada jugador.
 
-Comienza jugando el animalero, y el orden de turnos sigue el sentido inverso a las agujas del reloj.
+Comienza jugando Sagitario, y el orden de turnos sigue el sentido inverso a las agujas del reloj.
 
 ## 1.4. Rondas y turnos
 Una ronda consiste en los turnos de los 4 jugadores, y el turno del ecosistema.
@@ -44,7 +44,7 @@ Cada carta de influencia explica cómo se debe jugar. Algunas se juegan poniénd
 
 El jugador puede usar una acción para descartar una carta, en vez de jugarla. También puede usar las 2 acciones y descartar 2 cartas. Si el jugador no puede jugar ninguna carta debe descartarse de 2 cartas, para siempre terminar su turno con 3 cartas en la mano.
 
-Cuando ha terminado su turno el último jugador (el seton), es el turno del ecosistema. En este, las cartas de población que hay sobre la mesa pueden crecer o morir, según las Reglas del Ecosistema.
+Cuando ha terminado su turno el último jugador (Fu'ngaloth), es el turno del ecosistema. En este, las cartas de población que hay sobre la mesa pueden crecer o morir, según las Reglas del Ecosistema.
 
 Cuando termina el turno del ecosistema, todos los jugadores roban 2 cartas, para volver a comenzar su turno con 5.
 
@@ -97,25 +97,25 @@ Las condiciones, en orden de comprobación, son:
 ## 1.6. Personajes
 Cada personaje tiene un objetivo único para ganar el juego, excepto los dos de la facción Naturaleza, que comparten el mismo objetivo. Los personajes de las facciones Industria y Fungi cuentan con mecánicas exclusivas para alcanzar sus objetivos y ganar la partida. Además, todos los personajes disponen de cartas de influencia propias.
 
-### Plantero
+### Ygdra
 Es el ente protector de los árboles y plantas. Sus cartas de influencia están orientadas a las plantas.
 
-Para ganar, debe, junto con el animalero, conseguir que al final de una ronda, después del turno del ecosistema, haya en la mesa al menos 4 plantas, 3 herbívoros y 3 carnívoros.
+Para ganar, debe, junto con Sagitario, conseguir que al final de una ronda, después del turno del ecosistema, haya en la mesa al menos 4 plantas, 3 herbívoros y 3 carnívoros.
 
 
-### Animalero
+### Sagitario
 Es el ente protector de los animales. Sus cartas de influencia están orientadas a los animales.
 
-Para ganar, debe, junto con el plantero, conseguir que al final de una ronda, después del turno del ecosistema, haya en la mesa al menos 4 plantas, 3 herbívoros y 3 carnívoros.
+Para ganar, debe, junto con Ygdra, conseguir que al final de una ronda, después del turno del ecosistema, haya en la mesa al menos 4 plantas, 3 herbívoros y 3 carnívoros.
 
 
-### Humano
+### El magnate
 Representa la voluntad indomable de la humanidad, el deseo de imponerse a la naturaleza.
 
 Para ganar debe conseguir que al final de una ronda, después del turno del ecosistema, haya construcciones en los 4 territorios.
 
 #### Construcción
-Es una acción exclusiva del humano. En su turno, puede elegir gastar una acción para construir sobre uno de los 4 territorios. Para poder construir sobre un territorio se deben cumplir las siguientes condiciones:
+Es una acción exclusiva de El magnate. En su turno, puede elegir gastar una acción para construir sobre uno de los 4 territorios. Para poder construir sobre un territorio se deben cumplir las siguientes condiciones:
 - El territorio no tiene una construcción.
 - El territorio no tiene ninguna carta de población de carnívoros.
 - El territorio no tiene ninguna carta de población con una  carta de influencia puesta que impida construir.
@@ -127,13 +127,13 @@ Después, se puede jugar con normalidad cartas de criatura sobre el territorio c
 
 Se puede construir nuevamente sobre un territorio que tuvo un terreno y fue destruido, si se cumplen las condiciones descritas.
 
-### Seton
+### Fu'ngaloth
 Es una deidad ancestral de los hongos, cuya voluntad es que los hongos se impongan sobre todas las otras formas de vida.
 
 Para ganar debe conseguir que al final de una ronda, después del turno del ecosistema, haya en la mesa al menos 2 macrohongos.
 
 #### Macrohongo
-Es una acción exclusiva del seton. En su turno, puede elegir gastar una acción para crear un macrohongo. Para poder crearlo, debe haber al menos 3 cartas de hongo en la mesa. La acción consiste en descartar 3 cartas de hongo, y poner una carta de macrohongo en uno de esos 3 espacios de territorio, a elección del jugador.
+Es una acción exclusiva de Fu'ngaloth. En su turno, puede elegir gastar una acción para crear un macrohongo. Para poder crearlo, debe haber al menos 3 cartas de hongo en la mesa. La acción consiste en descartar 3 cartas de hongo, y poner una carta de macrohongo en uno de esos 3 espacios de territorio, a elección del jugador.
 
 El macrohongo no puede ser destruido por cartas de influencia, a menos que la descripción de la carta lo indique explícitamente.
 
@@ -144,30 +144,30 @@ El macrohongo no puede ser destruido por cartas de influencia, a menos que la de
 - **Carnívoro**
 
 ### Cartas de influencia
-#### Plantero
+#### Ygdra
 - **Incendio Forestal:** Elige un territorio. Todas las cartas de población, hongo y macrohongo en ese territorio mueren. Si hay una construcción, también se destruye.
 - **Fruta con semillas:** Coloca esta carta sobre una carta de planta. Si una carta de herbívoro o carnívoro de ese territorio crece, otra planta crecerá sobre la que tiene la carta.
 - **Mala hierba nunca muere:** Coloca esta carta sobre una carta de planta. Si muere, crece otra carta de planta igual y esta carta se descarta.
 - **Fragancia de feromonas:** Elige una carta de herbívoro o carnívoro de otro territorio y muévela a un espacio vacío en tu territorio.
 - **Hiedra Verde:** Coloca esta carta sobre una carta de planta. Si la carta de planta permanece una ronda completa en un territorio con construcción, la construcción se destruye y esta carta se descarta.
 
-#### Animalero
+#### Sagitario
 - **Hibernación:** Coloca esta carta sobre una carta de herbívoro. Esta carta no podrá morir ni crecer por las reglas del ecosistema.
-- **Rabia:** Coloca esta carta sobre una carta de herbívoro. Mientras no muera, el humano no podrá construir en el territorio donde esté.
+- **Rabia:** Coloca esta carta sobre una carta de herbívoro. Mientras no muera, El magnate no podrá construir en el territorio donde esté.
 - **Migración:** Elige una carta de carnívoro o herbívoro de tu territorio y muévela a un espacio vacío en otro territorio.
 - **Omnívoro:** Coloca esta carta sobre una carta de carnívoro. A partir de ahora, esta carta contará tanto como carnívoro como herbívoro.
 - **Depredador de setas:** Coloca esta carta sobre una carta de herbívoro. Mientras no muera, al final de la ronda morirá la carta de hongo más reciente que haya en su territorio.
 
 
 
-#### Humano
+#### El magnate
 - **Incendio provocado:** Elige un territorio. Todas las cartas de población, hongo y macrohongo en ese territorio mueren. Si hay una construcción, también se destruye.
 - **Pesticida:** Muere una carta de planta de tu elección.
 - **Cazador:** Muere una carta de herbívoro o carnívoro de tu elección.
 - **Fuegos artificiales:** Elige una carta de herbívoro o carnívoro y muévela a un espacio vacío en el territorio opuesto al que se encuentra.
 - **Compost:** Elige un espacio vacío de un territorio. Coloca una carta de hongo y una carta de planta encima.
 
-#### Seton
+#### Fu'ngaloth
 - **Esporas explosivas:** Elige un territorio donde haya al menos una carta de hongo o macrohongo. Todas las cartas de población en ese territorio mueren. Si hay una construcción también se destruye. Las cartas de hongo y macrohongo no mueren.
 - **Putrefacción:** Muere una carta de planta de tu elección. Crece un hongo en su espacio de territorio.
 - **Parásito:** Coloca esta carta sobre una carta de herbívoro o carnívoro. Si la carta crece, aparece un hongo en su espacio de territorio y esta carta se descarta.
