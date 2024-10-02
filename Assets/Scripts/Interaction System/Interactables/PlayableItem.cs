@@ -22,9 +22,9 @@ public class PlayableItem : MonoBehaviour, IInteractable
     {
         _meshTransform = _meshInChild ? transform.GetChild(0) : transform;
         if (!_meshTransform.TryGetComponent<MeshRenderer>(out _))
-            Debug.LogError($"Playable Item without mesh child! ({gameObject.name})");
-        else
-            _defaultMeshScale = _meshTransform.localScale;
+            throw new Exception($"Playable Item without mesh child! ({gameObject.name})");
+        
+        _defaultMeshScale = _meshTransform.localScale;
         _defaultPosition = transform.position;
         _defaultRotation = transform.rotation;
     }

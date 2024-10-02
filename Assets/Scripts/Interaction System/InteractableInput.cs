@@ -8,34 +8,32 @@ public class InteractableInput : MonoBehaviour, IPointerEnterHandler, IPointerEx
 {
     private IInteractable _interactable;
     private PlayableItem _playable;
+    private IInteractionSystem _interactionSystem;
     private void Start()
     {
         _interactable = GetComponent<IInteractable>();
         _playable = _interactable as PlayableItem;;
+        _interactionSystem = ServiceLocator.Get<IInteractionSystem>();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        InteractionManager.Instance.SelectInteractable(_interactable);
+        _interactionSystem.SelectInteractable(_interactable);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        InteractionManager.Instance.DeselectInteractable(_interactable);
+        _interactionSystem.DeselectInteractable(_interactable);
     }
     
     public void OnPointerDown(PointerEventData eventData)    
     {
-        if(_playable is not null) InteractionManager.Instance.DragPlayableItem(_playable);                 
+        if(_playable is not null) _interactionSystem.DragPlayableItem(_playable);                 
     }                                                        
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if(_playable is not null) InteractionManager.Instance.DropPlayableItem(_playable);       
+        if(_playable is not null) _interactionSystem.DropPlayableItem(_playable);       
     }
 
-    
-    
-    
-    
 }

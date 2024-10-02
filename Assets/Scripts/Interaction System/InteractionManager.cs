@@ -3,9 +3,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InteractionManager : MonoBehaviour
+public class InteractionManager : MonoBehaviour, IInteractionSystem
 {
-    public static InteractionManager Instance { get; private set; }
     public IInteractable SelectedInteractable { get; private set; }
     public IDropLocation SelectedDropLocation { get; private set; }
 
@@ -23,10 +22,11 @@ public class InteractionManager : MonoBehaviour
 
 
     #region Callbacks
+
     private void Awake()
     {
-        if (Instance is null) Instance = this;
-        else Destroy(gameObject);
+        ServiceLocator.Register<IInteractionSystem>(this);
+        ServiceLocator.Register<IRulesSystem>(new DummyRulesManager()); //de pega
     }
 
     private void Start()
@@ -87,8 +87,7 @@ public class InteractionManager : MonoBehaviour
         if (_isDragging) return;
         if(item is null)
         {
-            Debug.LogError("select called with null item!");
-            return;
+            throw new Exception("select called with null item!");
         }
         
         var old = SelectedInteractable;
@@ -110,8 +109,7 @@ public class InteractionManager : MonoBehaviour
         if (!item.IsDraggable) return;
         if (item != SelectedInteractable as PlayableItem)
         {
-            Debug.LogError("drag called with non selected item!");
-            return;
+            throw new Exception("drag called with non selected item!");
         }
         
         item.OnDrag();
@@ -127,8 +125,7 @@ public class InteractionManager : MonoBehaviour
         if (!item.IsDraggable) return;
         if (item != SelectedInteractable as PlayableItem)
         {
-            Debug.LogError("drop called with non selected item!");
-            return;
+            throw new Exception("drop called with non selected item!");
         }
         _isDragging = false;
 
@@ -140,7 +137,7 @@ public class InteractionManager : MonoBehaviour
             SelectedDropLocation.OnDeselect();
             SelectedDropLocation = null;
         }
-        if (dropLocation is null || !GameManager.IsValidAction(item, dropLocation))
+        if (dropLocation is null || !ServiceLocator.Get<IRulesSystem>().IsValidAction(item, dropLocation))
         {
             item.OnDragCancel();
             if(!item.OnlyVisibleOnOverview) _cameraMovement.ChangeToDefault();
@@ -149,7 +146,7 @@ public class InteractionManager : MonoBehaviour
         
         else //es una accion valida segun el cliente
         {
-            GameManager.TryPerformAction(item, dropLocation, 
+            ServiceLocator.Get<IRulesSystem>().TryPerformAction(item, dropLocation, 
                 () => 
             {
                 item.OnDrop(SelectedDropLocation);
