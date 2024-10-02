@@ -15,13 +15,13 @@ Compuesta por los personajes **Sagitario** y **Ygdra**, esta facción gana la pa
 - 3 carnívoros
 
 ### Industria
-Compuesta por el personaje **El magnate**, esta facción gana la partida si, al final de una ronda, tiene construcciones en los 4 territorios.
+Compuesta por el personaje **El Magnate**, esta facción gana la partida si, al final de una ronda, tiene construcciones en los 4 territorios.
 
 ### Fungi
-Compuesta por el personaje [**Fu'ngaloth**](https://tenor.com/es-419/view/joker-sigma-mushroom-gif-7415891857459568428), esta facción gana la partida si, al final de una ronda, tiene 2 macrohongos en la mesa.
+Compuesta por el personaje **Fu'ngaloth**, esta facción gana la partida si, al final de una ronda, tiene 2 macrohongos en la mesa.
 
 ## 1.3. Inicio de la partida
-Los jugadores se disponen, uno a cada lado de una mesa cuadrada, siguiendo este orden, en el sentido inverso a las agujas del reloj: Sagitario, Fu'ngaloth, Ygdra, El magnate.
+Los jugadores se disponen, uno a cada lado de una mesa cuadrada, siguiendo este orden, en el sentido inverso a las agujas del reloj: Sagitario, Fu'ngaloth, Ygdra, El Magnate.
 
 Cada jugador tiene delante su **territorio**. Este está compuesto por 5 espacios de territorio. Cuando sea su turno, el jugador podrá jugar cartas de criatura en estos espacios.
 
@@ -109,13 +109,13 @@ Es el ente protector de los animales. Sus cartas de influencia están orientadas
 Para ganar, debe, junto con Ygdra, conseguir que al final de una ronda, después del turno del ecosistema, haya en la mesa al menos 4 plantas, 3 herbívoros y 3 carnívoros.
 
 
-### El magnate
+### El Magnate
 Representa la voluntad indomable de la humanidad, el deseo de imponerse a la naturaleza.
 
 Para ganar debe conseguir que al final de una ronda, después del turno del ecosistema, haya construcciones en los 4 territorios.
 
 #### Construcción
-Es una acción exclusiva de El magnate. En su turno, puede elegir gastar una acción para construir sobre uno de los 4 territorios. Para poder construir sobre un territorio se deben cumplir las siguientes condiciones:
+Es una acción exclusiva de El Magnate. En su turno, puede elegir gastar una acción para construir sobre uno de los 4 territorios. Para poder construir sobre un territorio se deben cumplir las siguientes condiciones:
 - El territorio no tiene una construcción.
 - El territorio no tiene ninguna carta de población de carnívoros.
 - El territorio no tiene ninguna carta de población con una  carta de influencia puesta que impida construir.
@@ -153,14 +153,14 @@ El macrohongo no puede ser destruido por cartas de influencia, a menos que la de
 
 #### Sagitario
 - **Hibernación:** Coloca esta carta sobre una carta de herbívoro. Esta carta no podrá morir ni crecer por las reglas del ecosistema.
-- **Rabia:** Coloca esta carta sobre una carta de herbívoro. Mientras no muera, El magnate no podrá construir en el territorio donde esté.
+- **Rabia:** Coloca esta carta sobre una carta de herbívoro. Mientras no muera, El Magnate no podrá construir en el territorio donde esté.
 - **Migración:** Elige una carta de carnívoro o herbívoro de tu territorio y muévela a un espacio vacío en otro territorio.
 - **Omnívoro:** Coloca esta carta sobre una carta de carnívoro. A partir de ahora, esta carta contará tanto como carnívoro como herbívoro.
 - **Depredador de setas:** Coloca esta carta sobre una carta de herbívoro. Mientras no muera, al final de la ronda morirá la carta de hongo más reciente que haya en su territorio.
 
 
 
-#### El magnate
+#### El Magnate
 - **Incendio provocado:** Elige un territorio. Todas las cartas de población, hongo y macrohongo en ese territorio mueren. Si hay una construcción, también se destruye.
 - **Pesticida:** Muere una carta de planta de tu elección.
 - **Cazador:** Muere una carta de herbívoro o carnívoro de tu elección.
