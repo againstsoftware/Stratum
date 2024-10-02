@@ -1,5 +1,5 @@
 
-public interface ICard
+public interface ICard : ITurnAction
 {
 
 }

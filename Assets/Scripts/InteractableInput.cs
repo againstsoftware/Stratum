@@ -14,22 +14,22 @@ public class InteractableInput : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        InputManager.Instance.Select(_interactable);
+        InteractionManager.Instance.SelectInteractable(_interactable);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        InputManager.Instance.Deselect(_interactable);
+        InteractionManager.Instance.DeselectInteractable(_interactable);
     }
     
     public void OnPointerDown(PointerEventData eventData)    
-    {                                                        
-        InputManager.Instance.Drag(_interactable);                 
+    {
+        InteractionManager.Instance.DragInteractable(_interactable);                 
     }                                                        
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        
+        InteractionManager.Instance.DropInteractable(_interactable);
     }
 
     

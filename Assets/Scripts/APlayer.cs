@@ -4,11 +4,7 @@ using UnityEngine;
 
 public abstract class APlayer : MonoBehaviour
 {
-    
-    public bool OnTurn { get; private set; }
-    
-    
-    // private List<Interactable>
+
 }
 
 public enum PlayerCharacter

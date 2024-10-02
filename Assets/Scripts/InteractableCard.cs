@@ -3,12 +3,14 @@ using UnityEngine;
 
 public class InteractableCard : MonoBehaviour, IInteractable
 {
+    public GameObject GameObject { get => gameObject; }
     [field:SerializeField] public PlayerCharacter Owner { get; private set; }
-    public bool IsAction { get; } = true;
-    public bool IsDraggable { get; } = true;
+    public bool IsDraggable { get; private set; } = true;
+    public ITurnAction Action { get; }
 
     private Transform _meshTransform;
-    private Vector3 _normalMeshScale;
+    private Vector3 _defaultMeshScale;
+    private Vector3 _defaultPosition;
 
     private void Awake()
     {
@@ -16,35 +18,35 @@ public class InteractableCard : MonoBehaviour, IInteractable
         if (!_meshTransform.TryGetComponent<MeshRenderer>(out _))
             Debug.LogError($"Card without mesh child! ({gameObject.name})");
         else
-            _normalMeshScale = _meshTransform.localScale;
+            _defaultMeshScale = _meshTransform.localScale;
+        _defaultPosition = transform.position;
     }
 
     public void OnSelect()
     {
-        _meshTransform.localScale = _normalMeshScale * 1.15f;
+        _meshTransform.localScale = _defaultMeshScale * 1.15f;
     }
 
     public void OnDeselect()
     {
-        _meshTransform.localScale = _normalMeshScale;
+        _meshTransform.localScale = _defaultMeshScale;
     }
 
-    public void OnDragStart()
+    public void OnDrag()
     {
-        
+        OnDeselect();
     }
 
     public void OnDragCancel()
     {
-        
+        //animacion para volver a su pos inicial
+        transform.position = _defaultPosition;
     }
 
-    public void OnDragItemHover(IInteractable draggingItem)
+    public void OnDrop(IDropLocation dropLocation)
     {
-    }
-
-    public void OnDragItemRelease(IInteractable draggingItem)
-    {
+        //se snappea a la drop location
+        Destroy(gameObject);
     }
 
 }
