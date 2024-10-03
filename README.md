@@ -1,7 +1,12 @@
 # Stratum : Game Design Document
 
+
+# 0. Introducción
+...
+
+
 # 1. Reglamento
-En esta sección se detallará el reglamento del juego, con la estructura que suelen tener los manuales de los juegos de cartas de mesa.
+En esta sección se explicarán todas las mecánicas del juego. Al ser un juego de cartas, se seguirá la estructura que suelen tener los manuales de  juegos de cartas de mesa.
 
 ## 1.1. Descripción del juego
 Ecosistema Cartas es un juego de cartas para 4 jugadores, en el que hay un ecosistema al que contribuyen todos los jugadores jugando **cartas de población**: plantas, herbívoros y carnívoros. Este ecosistema está vivo y va cambiando si está desequilibrado, para balancearse de forma natural. Cada jugador juega el papel de un personaje. Los 4 personajes están divididos en 3 facciones, cada una de las cuales busca imponer sus intereses sobre las demás, usando las leyes de la naturaleza a su favor para equilibrar o desequilibrar el ecosistema. Además, cada jugador tiene en su mazo **cartas de influencia**, únicas para cada personaje, las cuales puede usar para influir en el ecosistema de manera artificial.
@@ -173,3 +178,18 @@ El macrohongo no puede ser destruido por cartas de influencia, a menos que la de
 - **Parásito:** Coloca esta carta sobre una carta de herbívoro o carnívoro. Si la carta crece, aparece un hongo en su espacio de territorio y esta carta se descarta.
 - **Seta apetitosa:** Elige una carta de herbívoro o carnívoro y muévela a un espacio vacío en un territorio donde haya al menos una carta de hongo o macrohongo.
 - **Moho:** Coloca una carta de hongo sobre un espacio vacío de un territorio con construcción.
+
+
+# 2. Controles
+...
+
+
+# 3. Arte y apartado visual
+...
+
+
+# 4. Sonido y Música
+...
+
+
+# 5. Modelo de negocio y monetización
