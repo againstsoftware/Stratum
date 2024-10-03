@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7176350047098553346}
   - component: {fileID: 76898627352878963}
   - component: {fileID: 8481148044052289525}
+  - component: {fileID: 5331620465754334921}
   m_Layer: 8
   m_Name: Card
   m_TagString: Untagged
@@ -59,9 +60,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Owner>k__BackingField: 0
+  <CanInteractWithoutOwnership>k__BackingField: 0
   <OnlyVisibleOnOverview>k__BackingField: 0
   _meshInChild: 1
-  _onDragOffset: 0.5
+  _onDragOffset: 0.45
+--- !u!114 &5331620465754334921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141958488974887041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e30fae5b9b2b4e3c95917afbcb56a07f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _card: {fileID: 11400000, guid: 73f4942f266a15a469148e02341ce42b, type: 2}
 --- !u!1 &6836350613875473651
 GameObject:
   m_ObjectHideFlags: 0

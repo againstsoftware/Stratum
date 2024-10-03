@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,6 +9,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     public IInteractable SelectedInteractable { get; private set; }
     public IDropLocation SelectedDropLocation { get; private set; }
 
+    [SerializeField] private PlayerCharacter _playerOnTurn;
     [SerializeField] private InputActionAsset _inputActions;
     [SerializeField] private LayerMask _dropLocationLayer;
 
@@ -19,6 +21,8 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     private Vector3 _screenPointerPosition;
     private Vector3 _offset;
     private bool _isCamDefault = true;
+    private Rulebook _rulebook;
+    private bool _isSelectedRulebookOpener;
 
 
     #region Callbacks
@@ -33,6 +37,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     {
         _cam = Camera.main;
         _cameraMovement = _cam.GetComponent<CameraMovement>();
+        _rulebook = FindAnyObjectByType<Rulebook>();
     }
 
     private void OnEnable()
@@ -89,11 +94,18 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
         {
             throw new Exception("select called with null item!");
         }
-        
+
+        if (!item.CanInteractWithoutOwnership && item.Owner != _playerOnTurn) return;
         var old = SelectedInteractable;
         if(old is not null) old.OnDeselect();
         SelectedInteractable = item;
         item.OnSelect();
+        if (item is Component itemC && itemC.TryGetComponent<IRulebookOpener>(out var rulebookOpener))
+        {
+            _isSelectedRulebookOpener = true;
+            var entry = rulebookOpener.RulebookEntry;
+            _rulebook.ShowRulebookEntry(entry);
+        }
     }
 
     public void DeselectInteractable(IInteractable item)
@@ -102,11 +114,17 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
         
         if(SelectedInteractable is not null) SelectedInteractable.OnDeselect();
         SelectedInteractable = null;
+        if (_isSelectedRulebookOpener)
+        {
+            _isSelectedRulebookOpener = false;
+            _rulebook.HideRulebook();
+        }
     }
 
     public void DragPlayableItem(PlayableItem item)
     {
         if (!item.IsDraggable) return;
+        if (!item.CanInteractWithoutOwnership && item.Owner != _playerOnTurn) return;
         if (item != SelectedInteractable as PlayableItem)
         {
             throw new Exception("drag called with non selected item!");
@@ -118,6 +136,12 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
         _offset = _dragItemTransform.position - GetPointerWorldPos();
         
         if(!item.OnlyVisibleOnOverview) _cameraMovement.ChangeToOverview();
+        
+        if(_isSelectedRulebookOpener)
+        {
+            _isSelectedRulebookOpener = false;
+            _rulebook.HideRulebook();
+        }
     }
 
     public void DropPlayableItem(PlayableItem item)
@@ -125,7 +149,8 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
         if (!item.IsDraggable) return;
         if (item != SelectedInteractable as PlayableItem)
         {
-            throw new Exception("drop called with non selected item!");
+            // throw new Exception("drop called with non selected item!");
+            return;
         }
         _isDragging = false;
 

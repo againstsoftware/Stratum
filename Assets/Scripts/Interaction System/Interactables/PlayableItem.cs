@@ -5,13 +5,13 @@ using UnityEngine.Serialization;
 public class PlayableItem : MonoBehaviour, IInteractable
 {
     [field:SerializeField] public PlayerCharacter Owner { get; private set; }
+    [field:SerializeField] public bool CanInteractWithoutOwnership { get; private set; }
     [field:SerializeField] public bool OnlyVisibleOnOverview { get; private set; }
-
     public bool IsDraggable { get; private set; } = true;
-    public ITurnAction Action { get; }
+
 
     [SerializeField] private bool _meshInChild;
-    [SerializeField] private float _onDragOffset = 0.5f;
+    [SerializeField] private float _onDragOffset;
     private Transform _meshTransform;
     private Vector3 _defaultMeshScale;
     private Vector3 _defaultPosition;
@@ -47,7 +47,7 @@ public class PlayableItem : MonoBehaviour, IInteractable
     public void OnDrag()
     {
         OnDeselect();
-        transform.Translate(_camTransform.forward * _onDragOffset);
+        transform.Translate(_camTransform.forward * _onDragOffset, Space.World);
     }
 
     public void OnDragCancel()
