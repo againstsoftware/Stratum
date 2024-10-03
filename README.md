@@ -184,12 +184,16 @@ El macrohongo no puede ser destruido por cartas de influencia, a menos que la de
 ...
 
 
-# 3. Arte y apartado visual
+# 3. Narrativa
 ...
 
 
-# 4. Sonido y Música
+# 4. Arte y apartado visual
 ...
 
 
-# 5. Modelo de negocio y monetización
+# 5. Sonido y Música
+...
+
+
+# 6. Modelo de negocio y monetización
