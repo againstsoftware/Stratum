@@ -184,8 +184,38 @@ El macrohongo no puede ser destruido por cartas de influencia, a menos que la de
 ...
 
 
-# 3. Narrativa
-...
+# 3. Narrativa [PROVISIONAL]
+Historia del Juego
+
+En el vasto mundo de Stratum, un equilibrio ancestral se mantiene precariamente entre fuerzas que compiten por su dominio. Este reino está conformado por territorios en constante transformación, habitado por tres facciones primordiales: Naturaleza, Industria, y Fungi, cada una con su propia visión del futuro.
+
+Naturaleza
+La facción de la Naturaleza es salvaguardada por dos guardianes primordiales: Sagitario, protector de los animales, y Ygdra, la guardiana de las plantas. En sus dominios, los verdes bosques se extienden como un manto ininterrumpido, los ríos cristalinos serpentean a través de valles fértiles, y la vida florece en perfecta armonía. El viento acaricia las hojas de los árboles, y los animales vagan libres, bajo la mirada atenta de sus guardianes.
+
+Desde tiempos inmemoriales, Sagitario y Ygdra han trabajado incansablemente para mantener el equilibrio natural, protegiendo el delicado ecosistema de Stratum. Pero su tarea no es fácil. Las raíces de los árboles luchan por sostenerse mientras las fuerzas del progreso y la corrupción intentan invadir su territorio. El mayor desafío proviene de las profundidades oscuras, donde una antigua amenaza ha permanecido latente por siglos: Fu'ngaloth, la deidad de los hongos. Con cada nuevo ciclo, esta entidad malévola busca suplantar el orden natural, creando un reino de descomposición donde la vida como se conoce deja de existir.
+
+Los guardianes de la Naturaleza están determinados a impedir que esta corrupción micelial se propague, pero las crecientes amenazas de la Industria y los Fungi los obligan a luchar en todos los frentes. Cada árbol talado, cada animal desplazado, representa una batalla perdida, pero aún no han cedido, creyendo que mientras haya vida, hay esperanza para restaurar el equilibrio.
+
+Industria
+La facción de la Industria ha surgido con el implacable avance humano, liderada por el imponente Magnate. Su visión es clara: transformar la naturaleza para servir a los deseos y necesidades del hombre. Bajo su mando, los paisajes naturales de Stratum se ven invadidos por el gris cemento y el frío metal, reemplazando los frondosos bosques y los tranquilos ríos con vastos edificios y maquinarias humeantes. Lo que una vez fue verde y vibrante, ahora se cubre de sombras y humo, con las raíces de los árboles siendo arrancadas para dar paso a chimeneas que escupen hollín al cielo. El avance de la Industria no conoce piedad ni límites; su único objetivo es moldear el mundo a imagen del hombre, sin consideración por el daño irreparable que inflige al equilibrio natural.
+
+Esta expansión desmedida ha alterado profundamente el equilibrio del ecosistema, forzando a la Naturaleza a luchar en un segundo frente. Con cada fábrica que se levanta y cada bosque que desaparece, el Magnate se acerca un paso más a su meta: controlar todo Stratum y someterlo a la voluntad humana.
+
+Fungi
+En lo más profundo de la tierra, oculto bajo capas de raíces y roca, yace Fu'ngaloth, la antigua deidad de los hongos, cuyos oscuros dominios se extienden invisibles bajo la superficie de Stratum. La facción de los Fungi, liderada por esta entidad primordial, no busca la coexistencia ni el equilibrio, sino la asimilación total. Fu'ngaloth propaga sus macrohongos, vastas estructuras fúngicas que corrompen el suelo y lo preparan para convertirse en su reino micelial. Bajo su influencia, lo que alguna vez fue verde y vibrante, se marchita y decae, reemplazado por un manto de esporas que consume todo a su paso.
+
+Los Fungi no son una fuerza de avance agresivo como la Industria, sino un poder paciente, insidioso y silencioso. A diferencia de las máquinas humeantes, los hongos de Fu'ngaloth crecen en las sombras, enraizando en lugares ocultos hasta que, finalmente, todo lo que han tocado se ha convertido en parte de su reino. El avance fúngico es inexorable, y donde crece un hongo, pronto vendrán miles más.
+
+Fu'ngaloth no busca destruir simplemente; su objetivo es absorber toda vida en su vasta red micelial. Aquellos que caen bajo su influencia no mueren, sino que se convierten en parte de un todo mayor, una red interconectada de conciencia fúngica. Es una existencia que no conoce la individualidad, solo la expansión del hongo.
+
+Conflicto
+El conflicto en Stratum nace de la colisión de estas tres poderosas facciones, cada una con su propia visión sobre el destino del mundo. Mientras que la Naturaleza se esfuerza por mantener el equilibrio y la armonía del ecosistema, tanto la Industria como los Fungi buscan alterar este orden para imponer su control.
+
+Aunque las facciones de Industria y Fungi puedan parecer enemigas debido a sus diferencias, comparten un objetivo común: desestabilizar la Naturaleza. El Magnate avanza con su tecnología para remodelar el mundo, mientras Fu'ngaloth extiende su reino de hongos con la intención de absorber toda vida en una red fúngica. Esta similitud en sus fines puede llevar a alianzas estratégicas entre ambas fuerzas, creando un peligro aún mayor para la Naturaleza.
+
+Sin embargo, esta alianza es tan frágil como peligrosa. Tanto Industria como Fungi aspiran a controlar Stratum por completo, y en última instancia, no hay espacio para compartir el poder. El Magnate quiere un mundo sometido a su maquinaria, y Fu'ngaloth busca la dominación total del reino fúngico. Eventualmente, sus intereses colisionarán, y lo que alguna vez fue una alianza de conveniencia puede convertirse rápidamente en una traición brutal. La pregunta no es si se traicionarán, sino cuándo.
+
+Como jugador, debes navegar esta compleja red de rivalidades, alianzas temporales y traiciones inminentes. En Stratum, el destino del mundo se decide en un juego de cartas ancestral que ha gobernado el equilibrio desde los inicios del tiempo. Ahora, es tu turno de participar en este conflicto eterno y decidir el futuro del reino. ¿Aliarás fuerzas con otros para lograr tus objetivos, o serás víctima de la traición en la batalla por el control de Stratum?
 
 
 # 4. Arte y apartado visual
