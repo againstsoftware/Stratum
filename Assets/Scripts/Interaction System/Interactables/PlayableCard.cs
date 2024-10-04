@@ -1,16 +1,16 @@
 
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayableCard : APlayableItem, IActionReceiver
 {
     public override bool OnlyVisibleOnOverview => false;
     public override bool CanInteractWithoutOwnership => _canInteractWithoutOwnership;
 
-    public override IActionItem ActionItem => _card;
-    public bool IsPlayed { get; private set; }
+    public override IActionItem ActionItem => Card;
     public bool IsDropEnabled { get; private set; } = false;
 
-    [SerializeField] private ACard _card;
+    [field:SerializeField] public ACard Card { get; private set; }
     private bool _canInteractWithoutOwnership = false;
 
     public void PlayCard(IActionReceiver playLocation)
@@ -24,11 +24,21 @@ public class PlayableCard : APlayableItem, IActionReceiver
 
     public void OnDraggingSelect()
     {
-        throw new System.NotImplementedException();
+        OnSelect();
     }
 
     public void OnDraggingDeselect()
     {
-        throw new System.NotImplementedException();
+        OnDeselect();
+    }
+
+    public void OnChoosingSelect()
+    {
+        OnSelect();
+    }
+
+    public void OnChoosingDeselect()
+    {
+        OnDeselect();
     }
 }

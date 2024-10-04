@@ -6,8 +6,11 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
 {
     [field:SerializeField] public PlayerCharacter Owner { get; protected set; } //!
     public bool IsDraggable { get; protected set; } = true;
+    public bool IsPlayed { get; protected set; }
+
     public abstract bool OnlyVisibleOnOverview { get; }
     public abstract bool CanInteractWithoutOwnership { get; }
+
     public abstract IActionItem ActionItem { get; }
 
     

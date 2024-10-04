@@ -9,5 +9,7 @@ public interface IActionReceiver
     
     public void OnDraggingSelect();
     public void OnDraggingDeselect();
-    
+    public void OnChoosingSelect();
+    public void OnChoosingDeselect();
+
 }

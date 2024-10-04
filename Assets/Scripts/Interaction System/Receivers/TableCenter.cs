@@ -1,12 +1,13 @@
-using System;
+
 using UnityEngine;
 
-public class Slot : MonoBehaviour, IActionReceiver
+public class TableCenter : MonoBehaviour, IActionReceiver
 {
-    [field:SerializeField] public PlayerCharacter Owner { get; private set; }
-    [field:SerializeField] public Territory Territory { get; private set; }
-    public bool IsDropEnabled { get; private set; } = true;
+    public PlayerCharacter Owner => PlayerCharacter.None;
+    public bool IsDropEnabled => true;
     public bool CanInteractWithoutOwnership => true;
+
+    
     
     private Material _material;
     private void Awake()
@@ -22,5 +23,16 @@ public class Slot : MonoBehaviour, IActionReceiver
     public void OnDraggingDeselect()
     {
         GetComponent<MeshRenderer>().material = _material;
+    }
+    
+    
+    public void OnChoosingSelect()
+    {
+        OnDraggingSelect();
+    }
+
+    public void OnChoosingDeselect()
+    {
+        OnDraggingDeselect();
     }
 }

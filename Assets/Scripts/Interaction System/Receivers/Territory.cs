@@ -12,16 +12,27 @@ public class Territory : MonoBehaviour, IActionReceiver
     private Material _material;
     private void Awake()
     {
-        _material = GetComponent<MeshRenderer>().material;
+        _material = transform.Find("Mesh").GetComponent<MeshRenderer>().material;
     }
 
     public void OnDraggingSelect()
     {
-        GetComponent<MeshRenderer>().material = null;
+        transform.Find("Mesh").GetComponent<MeshRenderer>().material = null;
     }
 
     public void OnDraggingDeselect()
     {
-        GetComponent<MeshRenderer>().material = _material;
+        transform.Find("Mesh").GetComponent<MeshRenderer>().material = _material;
+    }
+    
+    
+    public void OnChoosingSelect()
+    {
+        OnDraggingSelect();
+    }
+
+    public void OnChoosingDeselect()
+    {
+        OnDraggingDeselect();
     }
 }

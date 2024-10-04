@@ -51,7 +51,7 @@ public class CameraMovement : MonoBehaviour
     private void OnScroll(InputAction.CallbackContext ctx)
     {
         float scroll = ctx.ReadValue<Vector2>().y;
-        if (scroll == 0f || _interactionSystem.IsDragging) return;
+        if (scroll == 0f || _interactionSystem.CurrentState is IInteractionSystem.State.Dragging) return;
         if (scroll > 0f && _isInDefault)
         {
             ChangeToOverview();

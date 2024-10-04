@@ -1,13 +1,13 @@
 using System;
 using UnityEngine;
 
-public class DiscardPile : MonoBehaviour, IActionReceiver
+public class Slot : MonoBehaviour, IActionReceiver
 {
     [field:SerializeField] public PlayerCharacter Owner { get; private set; }
+    [field:SerializeField] public Territory Territory { get; private set; }
     public bool IsDropEnabled { get; private set; } = true;
-    public bool CanInteractWithoutOwnership => false;
-
-
+    public bool CanInteractWithoutOwnership => true;
+    
     private Material _material;
     private void Awake()
     {
@@ -22,5 +22,16 @@ public class DiscardPile : MonoBehaviour, IActionReceiver
     public void OnDraggingDeselect()
     {
         GetComponent<MeshRenderer>().material = _material;
+    }
+    
+    
+    public void OnChoosingSelect()
+    {
+        OnDraggingSelect();
+    }
+
+    public void OnChoosingDeselect()
+    {
+        OnDraggingDeselect();
     }
 }
