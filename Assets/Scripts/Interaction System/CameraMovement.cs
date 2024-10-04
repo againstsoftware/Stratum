@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraMovement : MonoBehaviour
 {
@@ -13,11 +14,23 @@ public class CameraMovement : MonoBehaviour
     private bool _isInDefault = true;
     private bool _isChangingPerspective;
     private float t = 0f;
+    private IInteractionSystem _interactionSystem;
     
     private void Awake()
     {
         _defaultPerspective = (_defaultTransform.position, _defaultTransform.rotation);
         _overviewPerspective = (_overviewTransform.position, _overviewTransform.rotation);
+    }
+
+    private void Start()
+    {
+        _interactionSystem = ServiceLocator.Get<IInteractionSystem>();
+        _interactionSystem.InputActions.FindAction("Scroll").performed += OnScroll;
+    }
+
+    private void OnDisable()
+    {
+        _interactionSystem.InputActions.FindAction("Scroll").performed -= OnScroll;
     }
 
     private void Update()
@@ -31,7 +44,23 @@ public class CameraMovement : MonoBehaviour
         if (t >= 1f)
         {
             _isChangingPerspective = false;
-            _isInDefault = !_isInDefault;
+            // _isInDefault = !_isInDefault;
+        }
+    }
+    
+    private void OnScroll(InputAction.CallbackContext ctx)
+    {
+        float scroll = ctx.ReadValue<Vector2>().y;
+        if (scroll == 0f || _interactionSystem.CurrentState is IInteractionSystem.State.Dragging) return;
+        if (scroll > 0f && _isInDefault)
+        {
+            ChangeToOverview();
+            _isInDefault = false;
+        }
+        else if (scroll < 0f && !_isInDefault)
+        {
+            ChangeToDefault();
+            _isInDefault = true;
         }
     }
 

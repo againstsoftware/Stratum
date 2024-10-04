@@ -4,6 +4,6 @@ using System;
 public class DummyRulesManager : IRulesSystem
 {
     
-    public bool IsValidAction(PlayableItem playableItem, IDropLocation dropLocation) => true;
-    public void TryPerformAction(PlayableItem item, IDropLocation dropLocation, Action onApproved) => onApproved();
+    public bool IsValidAction(APlayableItem playableItem, IActionReceiver[] receivers) => true;
+    public void PerformAction(APlayableItem item, IActionReceiver[] receivers, Action onApproved) => onApproved();
 }
