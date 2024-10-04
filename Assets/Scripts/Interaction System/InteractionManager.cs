@@ -205,6 +205,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
             case ActionAssembler.AssemblyState.Completed:
                 CurrentState = IInteractionSystem.State.Waiting;
                 Debug.Log("accion ensamblada!!!");
+                item.OnDrop(dropLocation);
                 break;
         }
     }

@@ -5,6 +5,8 @@ public class Slot : MonoBehaviour, IActionReceiver
 {
     [field:SerializeField] public PlayerCharacter Owner { get; private set; }
     [field:SerializeField] public Territory Territory { get; private set; }
+    [field:SerializeField] public Transform SnapTransform { get; private set; }
+
     public bool IsDropEnabled { get; private set; } = true;
     public bool CanInteractWithoutOwnership => true;
     

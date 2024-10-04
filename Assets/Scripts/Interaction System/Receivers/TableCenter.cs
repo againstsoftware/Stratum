@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class TableCenter : MonoBehaviour, IActionReceiver
 {
+    [field:SerializeField] public Transform SnapTransform { get; private set; }
+
     public PlayerCharacter Owner => PlayerCharacter.None;
     public bool IsDropEnabled => true;
     public bool CanInteractWithoutOwnership => true;

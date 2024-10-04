@@ -11,6 +11,9 @@ public class PlayableCard : APlayableItem, IActionReceiver
     public bool IsDropEnabled { get; private set; } = false;
 
     [field:SerializeField] public ACard Card { get; private set; }
+    [field:SerializeField] public Transform SnapTransform { get; private set; }
+
+    
     private bool _canInteractWithoutOwnership = false;
 
     public void PlayCard(IActionReceiver playLocation)
@@ -40,5 +43,11 @@ public class PlayableCard : APlayableItem, IActionReceiver
     public void OnChoosingDeselect()
     {
         OnDeselect();
+    }
+    
+    public override void OnDrop(IActionReceiver dropLocation)
+    {
+        base.OnDrop(dropLocation);
+        transform.rotation = dropLocation.SnapTransform.rotation;
     }
 }

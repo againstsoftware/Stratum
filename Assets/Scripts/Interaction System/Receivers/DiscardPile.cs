@@ -4,6 +4,8 @@ using UnityEngine;
 public class DiscardPile : MonoBehaviour, IActionReceiver
 {
     [field:SerializeField] public PlayerCharacter Owner { get; private set; }
+    [field:SerializeField] public Transform SnapTransform { get; private set; }
+
     public bool IsDropEnabled { get; private set; } = true;
     public bool CanInteractWithoutOwnership => false;
 
