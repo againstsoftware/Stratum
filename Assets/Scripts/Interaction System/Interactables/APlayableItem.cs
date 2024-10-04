@@ -16,12 +16,17 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
     
 
     [SerializeField] private bool _meshInChild;
+    [SerializeField] private float _returnDuration;
     private Transform _meshTransform;
     private Vector3 _defaultMeshScale;
     private Vector3 _defaultPosition;
     private Quaternion _defaultRotation;
     private Transform _camTransform;
     private Collider _collider;
+    private bool _isReturning;
+    private float t;
+    private Vector3 _returnStartPosition;
+    private Quaternion _returnStartRotation;
 
     private void Awake()
     {
@@ -39,6 +44,22 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
     {
         _camTransform = Camera.main.transform;
     }
+
+    private void Update()
+    {
+        if (!_isReturning) return;
+
+        transform.position = Vector3.Lerp(_returnStartPosition, _defaultPosition,  t);
+        transform.rotation = Quaternion.Lerp( _returnStartRotation, _defaultRotation, t);
+        t += Time.deltaTime / _returnDuration;
+        if (t >= 1f)
+        {
+            _isReturning = false;
+            _collider.enabled = true;
+            transform.SetPositionAndRotation(_defaultPosition, _defaultRotation);
+        }
+    }
+
 
     public void OnSelect()
     {
@@ -58,7 +79,12 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
     public void OnDragCancel()
     {
         //animacion para volver a su pos inicial
-        transform.SetPositionAndRotation(_defaultPosition, _defaultRotation);
+        // transform.SetPositionAndRotation(_defaultPosition, _defaultRotation);
+        _isReturning = true;
+        t = 0f;
+        _collider.enabled = false;
+        _returnStartPosition = transform.position;
+        _returnStartRotation = transform.rotation;
     }
 
     public void OnDrop(IActionReceiver dropLocation)

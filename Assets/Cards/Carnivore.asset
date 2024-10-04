@@ -30,7 +30,14 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  <PopulationType>k__BackingField: 2
+  <ValidActions>k__BackingField:
+  - <DropLocation>k__BackingField: 6
+    <Receivers>k__BackingField: 
+  - <DropLocation>k__BackingField: 0
+    <Receivers>k__BackingField: 
+  - <DropLocation>k__BackingField: 5
+    <Receivers>k__BackingField: 00000000
+  _populationType: 2
   references:
     version: 2
     RefIds: []

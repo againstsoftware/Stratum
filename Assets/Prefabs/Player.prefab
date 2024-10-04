@@ -1151,7 +1151,7 @@ PrefabInstance:
         type: 3}
       propertyPath: <Card>k__BackingField
       value: 
-      objectReference: {fileID: 11400000, guid: 7c58e8050beb84840a3f39eac529e88f,
+      objectReference: {fileID: 11400000, guid: 925fd89a28ebfd44cabbdd3e279d2a5e,
         type: 2}
     - target: {fileID: 7243185845805658137, guid: 9a7220bdfd419da458924201ca6a845b,
         type: 3}
@@ -1472,7 +1472,7 @@ PrefabInstance:
         type: 3}
       propertyPath: <Card>k__BackingField
       value: 
-      objectReference: {fileID: 11400000, guid: b80a815455fd4a44d91ef103cf561de0,
+      objectReference: {fileID: 11400000, guid: d02a1b287d0f44046a658bdc3266c2e7,
         type: 2}
     - target: {fileID: 7243185845805658137, guid: 9a7220bdfd419da458924201ca6a845b,
         type: 3}

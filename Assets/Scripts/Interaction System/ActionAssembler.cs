@@ -33,6 +33,7 @@ public static class ActionAssembler
             ValidDropLocation.OwnerCard => dropLocation is PlayableCard pc && !pc.IsPlayed && playableItem.Owner == dropLocation.Owner,
             ValidDropLocation.AnyCard => dropLocation is PlayableCard pc && !pc.IsPlayed,
             ValidDropLocation.TableCenter => dropLocation is TableCenter,
+            ValidDropLocation.DiscardPile => dropLocation is DiscardPile && playableItem is PlayableCard,
             _ => throw new ArgumentOutOfRangeException()
         };
 

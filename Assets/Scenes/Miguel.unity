@@ -394,7 +394,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Owner>k__BackingField: 2
   _meshInChild: 0
-  <ValidActions>k__BackingField: []
+  _returnDuration: 0.15
+  <ValidActions>k__BackingField:
+  - <DropLocation>k__BackingField: 5
+    <Receivers>k__BackingField: 010000000100000001000000
 --- !u!1 &139147673
 GameObject:
   m_ObjectHideFlags: 0
@@ -1901,9 +1904,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c968b06dd4c049f3950f3e4f1a7efb04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Owner>k__BackingField: 3
+  <Owner>k__BackingField: 1
   _meshInChild: 0
-  <ValidActions>k__BackingField: []
+  _returnDuration: 0.15
+  <ValidActions>k__BackingField:
+  - <DropLocation>k__BackingField: 5
+    <Receivers>k__BackingField: 02000000
+  - <DropLocation>k__BackingField: 2
+    <Receivers>k__BackingField: 
 --- !u!1001 &6033590919287536350
 PrefabInstance:
   m_ObjectHideFlags: 0

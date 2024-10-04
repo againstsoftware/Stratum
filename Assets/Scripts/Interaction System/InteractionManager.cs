@@ -24,7 +24,9 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     private Camera _cam;
     private CameraMovement _cameraMovement;
     private Transform _dragItemTransform;
+
     private Vector3 _screenPointerPosition;
+
     // private Vector3 _screenOffsetOnDrag;
     private Rulebook _rulebook;
     private bool _isSelectedRulebookOpener;
@@ -68,10 +70,10 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
         {
             case IInteractionSystem.State.Waiting:
                 break;
-            
+
             case IInteractionSystem.State.Idle:
                 break;
-            
+
             case IInteractionSystem.State.Dragging:
                 var newPos = _cam.ScreenToWorldPoint(
                     new Vector3(_screenPointerPosition.x, _screenPointerPosition.y, _itemCamOffsetOnDrag));
@@ -82,10 +84,10 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
                 _dropLocationCheckTimer = 0f;
                 CheckDropLocations();
                 break;
-            
+
             case IInteractionSystem.State.Choosing:
                 break;
-            
+
             default:
                 throw new ArgumentOutOfRangeException();
         }
@@ -149,8 +151,9 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
         _dragItemTransform = item.transform;
         // _screenOffsetOnDrag = _cam.WorldToScreenPoint(_dragItemTransform.position) - _screenPointerPosition;
         // _screenOffsetOnDrag.z = _itemCamOffsetOnDrag;
-        _dragItemTransform.rotation = Quaternion.LookRotation(Vector3.down, _dragItemTransform.forward);
-        
+        if (item is PlayableCard)
+            _dragItemTransform.rotation = Quaternion.LookRotation(Vector3.down, _dragItemTransform.forward);
+
         if (!item.OnlyVisibleOnOverview) _cameraMovement.ChangeToOverview();
 
         if (_isSelectedRulebookOpener)
@@ -169,7 +172,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
             // throw new Exception("drop called with non selected item!");
             return;
         }
-        
+
         var dropLocation = SelectedDropLocation;
         DeselectInteractable(SelectedInteractable);
 
@@ -184,21 +187,21 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
         SelectedDropLocation.OnDraggingDeselect();
         SelectedDropLocation = null;
 
-        switch(ActionAssembler.TryAssembleAction(item, dropLocation))
+        switch (ActionAssembler.TryAssembleAction(item, dropLocation))
         {
             case ActionAssembler.AssemblyState.Failed:
                 CurrentState = IInteractionSystem.State.Idle;
                 item.OnDragCancel();
                 if (!item.OnlyVisibleOnOverview) _cameraMovement.ChangeToDefault();
                 break;
-            
+
             case ActionAssembler.AssemblyState.Ongoing:
                 CurrentState = IInteractionSystem.State.Choosing;
                 _selectedReceivers.Clear();
                 _selectedReceivers.Add(dropLocation);
                 item.OnDrop(dropLocation);
                 break;
-            
+
             case ActionAssembler.AssemblyState.Completed:
                 CurrentState = IInteractionSystem.State.Waiting;
                 Debug.Log("accion ensamblada!!!");
@@ -212,20 +215,20 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
         if (CurrentState is not IInteractionSystem.State.Choosing) return;
         if (!receiver.CanInteractWithoutOwnership) return;
         if (_selectedReceivers.Contains(receiver)) return;
-        
+
         switch (ActionAssembler.AddReceiver(receiver))
         {
             case ActionAssembler.AssemblyState.Failed:
                 CurrentState = IInteractionSystem.State.Idle;
                 _draggingItem.OnDragCancel();
                 if (!_draggingItem.OnlyVisibleOnOverview) _cameraMovement.ChangeToDefault();
-                if(_selectedReceiver is not null) _selectedReceiver.OnChoosingDeselect();
+                if (_selectedReceiver is not null) _selectedReceiver.OnChoosingDeselect();
                 break;
-            
+
             case ActionAssembler.AssemblyState.Ongoing:
                 _selectedReceivers.Add(receiver);
                 break;
-            
+
             case ActionAssembler.AssemblyState.Completed:
                 CurrentState = IInteractionSystem.State.Waiting;
                 Debug.Log("accion ensamblada!!!");
@@ -238,7 +241,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
         if (CurrentState is not IInteractionSystem.State.Choosing) return;
         if (!receiver.CanInteractWithoutOwnership) return;
         if (_selectedReceivers.Contains(receiver)) return;
-        if(_selectedReceiver is not null) _selectedReceiver.OnChoosingDeselect();
+        if (_selectedReceiver is not null) _selectedReceiver.OnChoosingDeselect();
         _selectedReceiver = receiver;
         receiver.OnChoosingSelect();
     }
@@ -252,8 +255,6 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
         _selectedReceiver = null;
     }
 
-    
-    
 
     private void CheckDropLocations()
     {

@@ -6,6 +6,12 @@ public class ValidAction
 {
     [field: SerializeField] public ValidDropLocation DropLocation { get; private set; }
     [field: SerializeField] public ValidActionReceiver[] Receivers { get; private set; }
+
+    public ValidAction(ValidDropLocation dropLocation, ValidActionReceiver[] receivers = null)
+    {
+        DropLocation = dropLocation;
+        Receivers = receivers;
+    }
 }
 
 public enum ValidDropLocation
@@ -15,7 +21,8 @@ public enum ValidDropLocation
     AnyTerritory,
     OwnerCard,
     AnyCard,
-    TableCenter
+    TableCenter,
+    DiscardPile
 }
 
 public enum ValidActionReceiver
@@ -24,7 +31,7 @@ public enum ValidActionReceiver
     AnySlot,
     AnyTerritory,
     OwnerCard,
-    AnyCard
+    AnyCard,
 }
 
 
