@@ -723,7 +723,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Owner>k__BackingField: 0
   <Territory>k__BackingField: {fileID: 5982451065699023978}
-  <SnapTransform>k__BackingField: {fileID: 0}
+  <SnapTransform>k__BackingField: {fileID: 8846837162001046240}
 --- !u!114 &7172432985881445454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -925,7 +925,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Owner>k__BackingField: 0
   <Territory>k__BackingField: {fileID: 5982451065699023978}
-  <SnapTransform>k__BackingField: {fileID: 8846837162001046240}
+  <SnapTransform>k__BackingField: {fileID: 7943110058973465326}
 --- !u!114 &4659276568107627807
 MonoBehaviour:
   m_ObjectHideFlags: 0
