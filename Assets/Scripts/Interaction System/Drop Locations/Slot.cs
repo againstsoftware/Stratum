@@ -1,11 +1,12 @@
 using System;
 using UnityEngine;
 
-public class Slot : MonoBehaviour, IDropLocation
+public class Slot : MonoBehaviour, IActionReceiver
 {
     [field:SerializeField] public PlayerCharacter Owner { get; private set; }
+    [field:SerializeField] public Territory Territory { get; private set; }
     public bool IsDropEnabled { get; private set; } = true;
-    public IActionReceiver Receiver { get; }
+    public bool CanInteractWithoutOwnership => true;
     
     private Material _material;
     private void Awake()
@@ -13,12 +14,12 @@ public class Slot : MonoBehaviour, IDropLocation
         _material = GetComponent<MeshRenderer>().material;
     }
 
-    public void OnSelect()
+    public void OnDraggingSelect()
     {
         GetComponent<MeshRenderer>().material = null;
     }
 
-    public void OnDeselect()
+    public void OnDraggingDeselect()
     {
         GetComponent<MeshRenderer>().material = _material;
     }

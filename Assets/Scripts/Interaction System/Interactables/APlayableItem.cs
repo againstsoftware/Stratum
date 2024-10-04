@@ -2,28 +2,31 @@ using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class PlayableItem : MonoBehaviour, IInteractable
+public abstract class APlayableItem : MonoBehaviour, IInteractable
 {
-    [field:SerializeField] public PlayerCharacter Owner { get; private set; }
-    [field:SerializeField] public bool CanInteractWithoutOwnership { get; private set; }
-    [field:SerializeField] public bool OnlyVisibleOnOverview { get; private set; }
-    public bool IsDraggable { get; private set; } = true;
+    [field:SerializeField] public PlayerCharacter Owner { get; protected set; } //!
+    public bool IsDraggable { get; protected set; } = true;
+    public abstract bool OnlyVisibleOnOverview { get; }
+    public abstract bool CanInteractWithoutOwnership { get; }
+    public abstract IActionItem ActionItem { get; }
 
+    
 
     [SerializeField] private bool _meshInChild;
-    [SerializeField] private float _onDragOffset;
     private Transform _meshTransform;
     private Vector3 _defaultMeshScale;
     private Vector3 _defaultPosition;
     private Quaternion _defaultRotation;
     private Transform _camTransform;
+    private Collider _collider;
 
     private void Awake()
     {
         _meshTransform = _meshInChild ? transform.GetChild(0) : transform;
         if (!_meshTransform.TryGetComponent<MeshRenderer>(out _))
             throw new Exception($"Playable Item without mesh child! ({gameObject.name})");
-        
+
+        _collider = _meshTransform.GetComponent<Collider>();
         _defaultMeshScale = _meshTransform.localScale;
         _defaultPosition = transform.position;
         _defaultRotation = transform.rotation;
@@ -47,20 +50,21 @@ public class PlayableItem : MonoBehaviour, IInteractable
     public void OnDrag()
     {
         OnDeselect();
-        transform.Translate(_camTransform.forward * _onDragOffset, Space.World);
     }
 
     public void OnDragCancel()
     {
         //animacion para volver a su pos inicial
-        transform.position = _defaultPosition;
-        transform.rotation = _defaultRotation;
+        transform.SetPositionAndRotation(_defaultPosition, _defaultRotation);
     }
 
-    public void OnDrop(IDropLocation dropLocation)
+    public void OnDrop(IActionReceiver dropLocation)
     {
         //se snappea a la drop location
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
+
+    public void SetColliderActive(bool active) => _collider.enabled = active;
+
 
 }

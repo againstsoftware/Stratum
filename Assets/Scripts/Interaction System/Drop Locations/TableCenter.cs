@@ -1,13 +1,14 @@
-using System;
+
 using UnityEngine;
 
-public class DiscardPile : MonoBehaviour, IActionReceiver
+public class TableCenter : MonoBehaviour, IActionReceiver
 {
-    [field:SerializeField] public PlayerCharacter Owner { get; private set; }
-    public bool IsDropEnabled { get; private set; } = true;
-    public bool CanInteractWithoutOwnership => false;
+    public PlayerCharacter Owner => PlayerCharacter.None;
+    public bool IsDropEnabled => true;
+    public bool CanInteractWithoutOwnership => true;
 
-
+    
+    
     private Material _material;
     private void Awake()
     {

@@ -1,5 +1,5 @@
 
 public enum PlayerCharacter
 {
-    Ygdra, Sagitario, Fungaloth, Overlord
+    Ygdra, Sagitario, Fungaloth, Overlord, None
 }

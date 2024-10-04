@@ -7,12 +7,12 @@ using UnityEngine.InputSystem;
 public class InteractableInput : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerUpHandler, IPointerDownHandler
 {
     private IInteractable _interactable;
-    private PlayableItem _playable;
+    private APlayableItem _playable;
     private IInteractionSystem _interactionSystem;
     private void Start()
     {
         _interactable = GetComponent<IInteractable>();
-        _playable = _interactable as PlayableItem;;
+        _playable = _interactable as APlayableItem;;
         _interactionSystem = ServiceLocator.Get<IInteractionSystem>();
     }
 
