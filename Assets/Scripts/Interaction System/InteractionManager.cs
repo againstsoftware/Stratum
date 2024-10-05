@@ -10,8 +10,8 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
 {
     public IInteractable SelectedInteractable { get; private set; }
     public IActionReceiver SelectedDropLocation { get; private set; }
-    public InputActionAsset InputActions => _inputActions;
     public IInteractionSystem.State CurrentState { get; private set; } = IInteractionSystem.State.Idle;
+    public InputHandler Input { get; private set; }
 
 
     [SerializeField] private PlayerCharacter _playerOnTurn;
@@ -44,7 +44,11 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
         ServiceLocator.Register<IRulesSystem>(new DummyRulesManager()); //de pega
 
         _dropLocationCheckPeriod = 1f / _dropLocationCheckFrequency;
+
+        Input = new(_inputActions);
+        Input.PointerPosition += OnPointerPositionChanged;
     }
+    
 
     private void Start()
     {
@@ -52,17 +56,13 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
         _cameraMovement = _cam.GetComponent<CameraMovement>();
         _rulebook = FindAnyObjectByType<Rulebook>();
     }
-
-    private void OnEnable()
-    {
-        _pointerPosAction = _inputActions.FindAction("PointerPosition");
-        _pointerPosAction.performed += OnPointerPositionChanged;
-    }
-
+    
+    
     private void OnDisable()
     {
-        _pointerPosAction.performed -= OnPointerPositionChanged;
+        Input.PointerPosition -= OnPointerPositionChanged;
     }
+
 
     private void Update()
     {
@@ -93,9 +93,9 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
         }
     }
 
-    private void OnPointerPositionChanged(InputAction.CallbackContext ctx)
+    private void OnPointerPositionChanged(Vector2 pointerPos)
     {
-        _screenPointerPosition = ctx.ReadValue<Vector2>();
+        _screenPointerPosition = pointerPos;
     }
 
     #endregion
@@ -114,10 +114,9 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
         if (old is not null) old.OnDeselect();
         SelectedInteractable = item;
         item.OnSelect();
-        if (item is Component itemC && itemC.TryGetComponent<IRulebookOpener>(out var rulebookOpener))
+        if (item is IRulebookEntry entry)
         {
             _isSelectedRulebookOpener = true;
-            var entry = rulebookOpener.RulebookEntry;
             _rulebook.ShowRulebookEntry(entry);
         }
     }

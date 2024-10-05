@@ -395,9 +395,7 @@ MonoBehaviour:
   <Owner>k__BackingField: 1
   _meshInChild: 0
   _returnDuration: 0.15
-  <ValidActions>k__BackingField:
-  - <DropLocation>k__BackingField: 5
-    <Receivers>k__BackingField: 010000000100000001000000
+  _token: {fileID: 0}
 --- !u!1 &139147673
 GameObject:
   m_ObjectHideFlags: 0
@@ -1460,6 +1458,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140079260}
   m_CullTransparentMesh: 1
+--- !u!1 &1321069423
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1321069425}
+  - component: {fileID: 1321069424}
+  m_Layer: 0
+  m_Name: Game Initializer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1321069424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321069423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4280f28bf45c48879eabe89cb0e36746, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _starter: 1
+  _decks:
+  - {fileID: 11400000, guid: 1bd4ec571d6cdab4a865d944a4e1ef0a, type: 2}
+  - {fileID: 11400000, guid: 72b91bd479dc79b49b3d3e93a30fb80e, type: 2}
+  - {fileID: 11400000, guid: cd784363fe6d92b4f9bc06368d01fda5, type: 2}
+  - {fileID: 11400000, guid: 928e65c653ac4204b9cf4e9e09fc2013, type: 2}
+--- !u!4 &1321069425
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321069423}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1375207023
 GameObject:
   m_ObjectHideFlags: 0
@@ -1940,11 +1988,7 @@ MonoBehaviour:
   <Owner>k__BackingField: 3
   _meshInChild: 0
   _returnDuration: 0.15
-  <ValidActions>k__BackingField:
-  - <DropLocation>k__BackingField: 5
-    <Receivers>k__BackingField: 02000000
-  - <DropLocation>k__BackingField: 2
-    <Receivers>k__BackingField: 
+  _token: {fileID: 0}
 --- !u!1001 &6033590919287536350
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2082,3 +2126,4 @@ SceneRoots:
   - {fileID: 941731999}
   - {fileID: 1800923610}
   - {fileID: 330585546}
+  - {fileID: 1321069425}
