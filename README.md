@@ -197,3 +197,11 @@ El macrohongo no puede ser destruido por cartas de influencia, a menos que la de
 
 
 # 6. Modelo de negocio y monetización
+## 6.1. Información sobre el usuario
+
+## 6.2. Mapa de empatía
+
+## 6.3. Caja de herramientas
+
+## 6.4. Modelo de canvas
+
