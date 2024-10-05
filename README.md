@@ -184,7 +184,7 @@ El macrohongo no puede ser destruido por cartas de influencia, a menos que la de
 ...
 
 
-# 3. Narrativa [PROVISIONAL]
+# 3. Narrativa
 
 ### **Historia del Juego**
 
