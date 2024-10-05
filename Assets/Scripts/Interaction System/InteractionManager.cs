@@ -41,7 +41,8 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     private void Awake()
     {
         ServiceLocator.Register<IInteractionSystem>(this);
-        ServiceLocator.Register<IRulesSystem>(new DummyRulesManager()); //de pega
+        //ServiceLocator.Register<IRulesSystem>(new DummyRulesManager()); //de pega
+        ServiceLocator.Register<IRulesSystem>(new RulesManager());
 
         _dropLocationCheckPeriod = 1f / _dropLocationCheckFrequency;
 
