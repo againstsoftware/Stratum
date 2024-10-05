@@ -42,6 +42,26 @@ MonoBehaviour:
     m_Localized: Play it on an empty territory space to make a plant appear.
     m_Metadata:
       m_Items: []
+  - m_Id: 764140887732224
+    m_Localized: Construction Token
+    m_Metadata:
+      m_Items: []
+  - m_Id: 764479498088448
+    m_Localized: Lorem Ipsum is simply dummy text of printing presses and text files.
+      Lorem Ipsum has been the industries' standard dummy text since the 1500s, when
+      a
+    m_Metadata:
+      m_Items: []
+  - m_Id: 764683429343232
+    m_Localized: Macrofungi Token
+    m_Metadata:
+      m_Items: []
+  - m_Id: 764783111172096
+    m_Localized: Lorem Ipsum is simply dummy text of printing presses and text files.
+      Lorem Ipsum has been the industries' standard dummy text since the 1500s, when
+      a
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

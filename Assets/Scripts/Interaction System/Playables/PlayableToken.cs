@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayableToken : APlayableItem
+public class PlayableToken : APlayableItem, IRulebookEntry
 {
     public override bool OnlyVisibleOnOverview => true;
     public override bool CanInteractWithoutOwnership => true;
@@ -9,4 +9,7 @@ public class PlayableToken : APlayableItem
     public override IActionItem ActionItem => _token;
 
 
+    public string GetName() => _token.Name;
+
+    public string GetDescription() => _token.Description;
 }

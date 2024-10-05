@@ -13,19 +13,24 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     [field:SerializeField] public ACard Card { get; private set; }
     [field:SerializeField] public Transform SnapTransform { get; private set; }
 
-    [SerializeField] private float _closestCardZ;
-    private bool _canInteractWithoutOwnership = false;
-
-
     public string GetName() => Card.Name;
-
     public string GetDescription() => Card.Description;
-
-
     public int IndexOnSlot { get; set; } = -1;
 
     public SlotReceiver SlotWherePlaced { get; private set; }
     public PlayableCard CardWherePlaced { get; private set; }
+    
+    
+    [SerializeField] private float _closestCardZ;
+    private float _startZ;
+    private bool _canInteractWithoutOwnership = false;
+
+    private Transform _hand;
+
+    protected override void Start()
+    {
+        _hand = transform.parent;
+    }
     
     
     public void PlayCard(IActionReceiver playLocation)
@@ -46,6 +51,7 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
 
     public override void OnSelect()
     {
+        _startZ = transform.localPosition.z;
         transform.localPosition = new(transform.localPosition.x, transform.localPosition.y, _closestCardZ);
         base.OnSelect();
     }
@@ -53,7 +59,7 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     public override void OnDeselect()
     {
         base.OnDeselect();
-        transform.position = _defaultPosition;
+        transform.localPosition = new(transform.localPosition.x, transform.localPosition.y, _startZ);
     }
 
     public void OnDraggingSelect()
@@ -80,7 +86,14 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     public override void OnDrop(IActionReceiver dropLocation)
     {
         base.OnDrop(dropLocation);
+        transform.parent = null;
         transform.rotation = dropLocation.SnapTransform.rotation;
+    }
+
+    public override void OnDragCancel()
+    {
+        transform.parent = _hand;
+        base.OnDragCancel();
     }
     
     

@@ -45,6 +45,26 @@ MonoBehaviour:
       una planta."
     m_Metadata:
       m_Items: []
+  - m_Id: 764140887732224
+    m_Localized: "Ficha de Construcci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 764479498088448
+    m_Localized: "Lorem Ipsum es simplemente el texto de relleno de las imprentas
+      y archivos de texto. Lorem Ipsum ha sido el texto de relleno est\xE1ndar de
+      las industrias desde el a\xF1o 1500, cuando un."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 764683429343232
+    m_Localized: Ficha de Macrohongo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 764783111172096
+    m_Localized: "Lorem Ipsum es simplemente el texto de relleno de las imprentas
+      y archivos de texto. Lorem Ipsum ha sido el texto de relleno est\xE1ndar de
+      las industrias desde el a\xF1o 1500, cuando un"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -39,6 +39,22 @@ MonoBehaviour:
     m_Key: plant_desc
     m_Metadata:
       m_Items: []
+  - m_Id: 764140887732224
+    m_Key: c_token_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 764479498088448
+    m_Key: c_token_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 764683429343232
+    m_Key: mf_token_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 764783111172096
+    m_Key: mf_token_desc
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

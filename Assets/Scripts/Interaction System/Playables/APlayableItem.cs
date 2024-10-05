@@ -41,7 +41,7 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
         _defaultRotation = transform.rotation;
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         _camTransform = Camera.main.transform;
     }
