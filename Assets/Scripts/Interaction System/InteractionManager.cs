@@ -13,15 +13,18 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     public IInteractionSystem.State CurrentState { get; private set; } = IInteractionSystem.State.Idle;
     public InputHandler Input { get; private set; }
 
+    public Camera Camera { get; private set; }
+    [field:SerializeField] public LayerMask InteractablesLayer { get; private set; }
+    
 
     [SerializeField] private PlayerCharacter _playerOnTurn;
     [SerializeField] private InputActionAsset _inputActions;
-    [SerializeField] private LayerMask _dropLocationLayer;
+
     [SerializeField] private float _itemCamOffsetOnDrag;
     [SerializeField] private float _dropLocationCheckFrequency;
 
     private InputAction _pointerPosAction;
-    private Camera _cam;
+    
     private CameraMovement _cameraMovement;
     private Transform _dragItemTransform;
 
@@ -52,8 +55,8 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
 
     private void Start()
     {
-        _cam = Camera.main;
-        _cameraMovement = _cam.GetComponent<CameraMovement>();
+        Camera = Camera.main;
+        _cameraMovement = Camera.GetComponent<CameraMovement>();
         _rulebook = FindAnyObjectByType<Rulebook>();
     }
     
@@ -75,7 +78,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
                 break;
 
             case IInteractionSystem.State.Dragging:
-                var newPos = _cam.ScreenToWorldPoint(
+                var newPos = Camera.ScreenToWorldPoint(
                     new Vector3(_screenPointerPosition.x, _screenPointerPosition.y, _itemCamOffsetOnDrag));
                 newPos.y = Mathf.Max(.2f, newPos.y);
                 _dragItemTransform.position = newPos;
@@ -259,8 +262,8 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     private void CheckDropLocations()
     {
         _draggingItem.SetColliderActive(false);
-        Ray ray = _cam.ScreenPointToRay(_screenPointerPosition);
-        var hit = Physics.Raycast(ray, out var hitInfo, float.MaxValue, _dropLocationLayer);
+        Ray ray = Camera.ScreenPointToRay(_screenPointerPosition);
+        var hit = Physics.Raycast(ray, out var hitInfo, float.MaxValue, InteractablesLayer);
         _draggingItem.SetColliderActive(true);
         if (!hit || hitInfo.collider is null)
         {

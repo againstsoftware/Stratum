@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public interface IInteractionSystem : IService
@@ -7,6 +8,9 @@ public interface IInteractionSystem : IService
     public enum State { Waiting, Idle, Dragging, Choosing }
     public State CurrentState { get; }
     public InputHandler Input { get; }
+    public Camera Camera { get;}
+    public LayerMask InteractablesLayer { get; }
+
 
     public void SelectInteractable(IInteractable item);
     public void DeselectInteractable(IInteractable item);
