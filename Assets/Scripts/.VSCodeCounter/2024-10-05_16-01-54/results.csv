@@ -1,0 +1,19 @@
+"filename", "language", "C#", "comment", "blank", "total"
+"c:\Users\migue\Documents\GitHub\Stratum\Assets\Scripts\Interaction System\ActionAssembler.cs", "C#", 69, 17, 15, 101
+"c:\Users\migue\Documents\GitHub\Stratum\Assets\Scripts\Interaction System\CameraMovement.cs", "C#", 82, 3, 15, 100
+"c:\Users\migue\Documents\GitHub\Stratum\Assets\Scripts\Interaction System\IInteractionSystem.cs", "C#", 16, 0, 3, 19
+"c:\Users\migue\Documents\GitHub\Stratum\Assets\Scripts\Interaction System\Input\InputHandler.cs", "C#", 27, 0, 9, 36
+"c:\Users\migue\Documents\GitHub\Stratum\Assets\Scripts\Interaction System\Input\InteractableInput.cs", "C#", 37, 0, 7, 44
+"c:\Users\migue\Documents\GitHub\Stratum\Assets\Scripts\Interaction System\Interactables\IInteractable.cs", "C#", 8, 0, 4, 12
+"c:\Users\migue\Documents\GitHub\Stratum\Assets\Scripts\Interaction System\Interactables\IRulebookEntry.cs", "C#", 5, 0, 3, 8
+"c:\Users\migue\Documents\GitHub\Stratum\Assets\Scripts\Interaction System\InteractionManager.cs", "C#", 233, 4, 55, 292
+"c:\Users\migue\Documents\GitHub\Stratum\Assets\Scripts\Interaction System\Playables\APlayableItem.cs", "C#", 76, 3, 22, 101
+"c:\Users\migue\Documents\GitHub\Stratum\Assets\Scripts\Interaction System\Playables\PlayableCard.cs", "C#", 53, 1, 18, 72
+"c:\Users\migue\Documents\GitHub\Stratum\Assets\Scripts\Interaction System\Playables\PlayableToken.cs", "C#", 8, 0, 5, 13
+"c:\Users\migue\Documents\GitHub\Stratum\Assets\Scripts\Interaction System\Receivers\DiscardPileReceiver.cs", "C#", 30, 0, 9, 39
+"c:\Users\migue\Documents\GitHub\Stratum\Assets\Scripts\Interaction System\Receivers\IActionReceiver.cs", "C#", 12, 0, 7, 19
+"c:\Users\migue\Documents\GitHub\Stratum\Assets\Scripts\Interaction System\Receivers\SlotReceiver.cs", "C#", 31, 0, 8, 39
+"c:\Users\migue\Documents\GitHub\Stratum\Assets\Scripts\Interaction System\Receivers\TableCenter.cs", "C#", 29, 0, 12, 41
+"c:\Users\migue\Documents\GitHub\Stratum\Assets\Scripts\Interaction System\Receivers\TerritoryReceiver.cs", "C#", 30, 0, 11, 41
+"c:\Users\migue\Documents\GitHub\Stratum\Assets\Scripts\Interaction System\Rulebook.cs", "C#", 40, 0, 11, 51
+"Total", "-", 786, 28, 214, 1028

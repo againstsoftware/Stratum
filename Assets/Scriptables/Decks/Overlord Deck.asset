@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fabae263d134df6bef022523b292fb2, type: 3}
+  m_Name: Overlord Deck
+  m_EditorClassIdentifier: 
+  <Owner>k__BackingField: 3
+  Cards:
+  - Card: {fileID: 11400000, guid: 925fd89a28ebfd44cabbdd3e279d2a5e, type: 2}
+    Amount: 5
+  - Card: {fileID: 11400000, guid: d02a1b287d0f44046a658bdc3266c2e7, type: 2}
+    Amount: 5
+  - Card: {fileID: 11400000, guid: 73f4942f266a15a469148e02341ce42b, type: 2}
+    Amount: 5

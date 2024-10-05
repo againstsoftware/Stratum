@@ -27,13 +27,13 @@ public static class ActionAssembler
     private static bool CheckIfValid(APlayableItem playableItem, IActionReceiver dropLocation, ValidAction validAction) =>
         validAction.DropLocation switch
         {
-            ValidDropLocation.OwnerSlot => dropLocation is Slot && playableItem.Owner == dropLocation.Owner,
-            ValidDropLocation.AnySlot => dropLocation is Slot,
-            ValidDropLocation.AnyTerritory => dropLocation is Territory,
+            ValidDropLocation.OwnerSlot => dropLocation is SlotReceiver && playableItem.Owner == dropLocation.Owner,
+            ValidDropLocation.AnySlot => dropLocation is SlotReceiver,
+            ValidDropLocation.AnyTerritory => dropLocation is TerritoryReceiver,
             ValidDropLocation.OwnerCard => dropLocation is PlayableCard pc && !pc.IsPlayed && playableItem.Owner == dropLocation.Owner,
             ValidDropLocation.AnyCard => dropLocation is PlayableCard pc && !pc.IsPlayed,
             ValidDropLocation.TableCenter => dropLocation is TableCenter,
-            ValidDropLocation.DiscardPile => dropLocation is DiscardPile && playableItem is PlayableCard,
+            ValidDropLocation.DiscardPile => dropLocation is DiscardPileReceiver && playableItem is PlayableCard,
             _ => throw new ArgumentOutOfRangeException()
         };
 
@@ -58,9 +58,9 @@ public static class ActionAssembler
     {
         bool isValid = _receiversQueue.Dequeue() switch
         {
-            ValidActionReceiver.OwnerSlot => receiver is Slot && _playableItem.Owner == receiver.Owner,
-            ValidActionReceiver.AnySlot => receiver is Slot,
-            ValidActionReceiver.AnyTerritory => receiver is Territory,
+            ValidActionReceiver.OwnerSlot => receiver is SlotReceiver && _playableItem.Owner == receiver.Owner,
+            ValidActionReceiver.AnySlot => receiver is SlotReceiver,
+            ValidActionReceiver.AnyTerritory => receiver is TerritoryReceiver,
             ValidActionReceiver.OwnerCard => receiver is PlayableCard && _playableItem.Owner == receiver.Owner,
             ValidActionReceiver.AnyCard => receiver is PlayableCard,
             _ => throw new ArgumentOutOfRangeException()
@@ -84,18 +84,18 @@ public static class ActionAssembler
 
     private static bool SendCompletedAction()
     {
-        if (!ServiceLocator.Get<IRulesSystem>().IsValidAction(_playableItem, _receiversList.ToArray())) return false; 
-        
-        //desactivar el Interaction System, lo vuelve a activar el sistema de turnos
-        
-        ServiceLocator.Get<IRulesSystem>().PerformAction(_playableItem, _receiversList.ToArray(),
-            () =>
-            {
-                // item.OnDrop(SelectedDropLocation);
-                // if (!item.OnlyVisibleOnOverview) _cameraMovement.ChangeToDefault();
-                // //asi de momento, esto hay que meterselo a un patron command que ejecute todas los pasos de la accion secuencialmente
-                    
-            });
+        // if (!ServiceLocator.Get<IRulesSystem>().IsValidAction(_playableItem, _receiversList.ToArray())) return false; 
+        //
+        // //desactivar el Interaction System, lo vuelve a activar el sistema de turnos
+        //
+        // ServiceLocator.Get<IRulesSystem>().PerformAction(_playableItem, _receiversList.ToArray(),
+        //     () =>
+        //     {
+        //         // item.OnDrop(SelectedDropLocation);
+        //         // if (!item.OnlyVisibleOnOverview) _cameraMovement.ChangeToDefault();
+        //         // //asi de momento, esto hay que meterselo a un patron command que ejecute todas los pasos de la accion secuencialmente
+        //             
+        //     });
         return true;
     }
 }

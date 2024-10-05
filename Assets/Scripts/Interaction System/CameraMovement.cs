@@ -25,13 +25,15 @@ public class CameraMovement : MonoBehaviour
     private void Start()
     {
         _interactionSystem = ServiceLocator.Get<IInteractionSystem>();
-        _interactionSystem.InputActions.FindAction("Scroll").performed += OnScroll;
+        _interactionSystem.Input.Scroll += OnScroll;
     }
+
 
     private void OnDisable()
     {
-        _interactionSystem.InputActions.FindAction("Scroll").performed -= OnScroll;
+        _interactionSystem.Input.Scroll -= OnScroll;
     }
+
 
     private void Update()
     {
@@ -48,9 +50,8 @@ public class CameraMovement : MonoBehaviour
         }
     }
     
-    private void OnScroll(InputAction.CallbackContext ctx)
+    private void OnScroll(float scroll)
     {
-        float scroll = ctx.ReadValue<Vector2>().y;
         if (scroll == 0f || _interactionSystem.CurrentState is IInteractionSystem.State.Dragging) return;
         if (scroll > 0f && _isInDefault)
         {

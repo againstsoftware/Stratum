@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7176350047098553346}
   - component: {fileID: 76898627352878963}
-  - component: {fileID: 5331620465754334921}
   - component: {fileID: 7243185845805658137}
   m_Layer: 8
   m_Name: Playable Card
@@ -48,18 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2dbb119b8db469791f51328ba0c9fd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5331620465754334921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2141958488974887041}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e30fae5b9b2b4e3c95917afbcb56a07f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7243185845805658137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,6 +64,7 @@ MonoBehaviour:
   _returnDuration: 0.15
   <Card>k__BackingField: {fileID: 0}
   <SnapTransform>k__BackingField: {fileID: 5258903042657958836}
+  _closestCardZ: -0.025
 --- !u!1 &6836350613875473651
 GameObject:
   m_ObjectHideFlags: 0
