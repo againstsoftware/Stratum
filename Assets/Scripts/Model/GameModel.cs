@@ -7,9 +7,9 @@ public class GameModel : IModel
     public PlayerCharacter PlayerOnTurn { get; private set; }
     public bool IsOnEcosystemTurn { get; private set; }
 
+    public Ecosystem Ecosystem { get; private set; } = new();
 
     private readonly Dictionary<PlayerCharacter, Player> _players = new();
-    private Ecosystem _ecosystem = new();
 
 
     public GameModel(PlayerCharacter starter, Deck[] _decks)
@@ -29,7 +29,7 @@ public class GameModel : IModel
     {
         var ownerPlayer = _players[slotOwner];
         var tableCard = ownerPlayer.Territory.Slots[slotIndex].PlaceCard(card, atTheBottom);
-        if (card is PopulationCard) _ecosystem.OnPopulationCardPlace(tableCard);
+        if (card is PopulationCard) Ecosystem.OnPopulationCardPlace(tableCard);
     }
 
     public void PlaceInlfuenceCardOnCard(InfluenceCard influenceCard, ACard card, PlayerCharacter slotOwner,
@@ -72,7 +72,7 @@ public class GameModel : IModel
 
         slot.RemoveCard(tableCard);
 
-        if (card is PopulationCard) _ecosystem.OnPopulationCardDie(tableCard);
+        if (card is PopulationCard) Ecosystem.OnPopulationCardDie(tableCard);
     }
 
     public void RemoveInfluenceCardFromCard(InfluenceCard influenceCard, ACard card, PlayerCharacter slotOwner,
@@ -98,7 +98,7 @@ public class GameModel : IModel
         {
             if (filter is not null && filter(tableCard)) continue;
 
-            if (tableCard.Card is PopulationCard) _ecosystem.OnPopulationCardDie(tableCard);
+            if (tableCard.Card is PopulationCard) Ecosystem.OnPopulationCardDie(tableCard);
             slot.RemoveCard(tableCard);
         }
     }

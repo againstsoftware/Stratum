@@ -5,7 +5,8 @@ public interface IModel : IService
 {
     public PlayerCharacter PlayerOnTurn { get; }
     public bool IsOnEcosystemTurn { get; }
-
+    
+    public Ecosystem Ecosystem { get; }
     
     
     public Player GetPlayer(PlayerCharacter character);

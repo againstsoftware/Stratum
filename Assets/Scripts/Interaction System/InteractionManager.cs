@@ -16,6 +16,10 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     public Camera Camera { get; private set; }
     [field:SerializeField] public LayerMask InteractablesLayer { get; private set; }
     
+    public IReadOnlyList<IActionReceiver> CurrentActionReceivers => ActionAssembler.ActionReceivers;
+    public APlayableItem CurrentActionPlayableItem => ActionAssembler.PlayableItem;
+    
+    
 
     [SerializeField] private PlayerCharacter _playerOnTurn;
     [SerializeField] private InputActionAsset _inputActions;

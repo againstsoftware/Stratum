@@ -13,8 +13,5 @@ public abstract class ACard : ScriptableObject, IActionItem
 
     [field: SerializeField] public ValidAction[] ValidActions { get; private set; } = 
         { new ValidAction(ValidDropLocation.DiscardPile) };
-
-
-    
     
 }

@@ -14,6 +14,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3b24cc7fa9794ed8ab04312c53e6dedd172c00/2d/9843db20/CreateAssetMenuAttribute.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c91a25f185b743118a39aafa100dff0959c00/df/f9b7f98a/SerializedObjectBindingContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/fe7039efe678478d9c83e73bc6a6566d94b400/73/e78f97ca/SerializedObject.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Editor/EffectCommandEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interaction System/CameraMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Model/Game Elements/Scriptables/MushroomCard.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.8.12/Runtime/BurstString.cs" root0="SKIP_HIGHLIGHTING" />
@@ -117,7 +118,8 @@
       <workItem from="1728064684275" duration="6319000" />
       <workItem from="1728119500130" duration="15751000" />
       <workItem from="1728138081522" duration="622000" />
-      <workItem from="1728148064743" duration="2637000" />
+      <workItem from="1728148064743" duration="6102000" />
+      <workItem from="1728154887828" duration="2226000" />
     </task>
     <servers />
   </component>
