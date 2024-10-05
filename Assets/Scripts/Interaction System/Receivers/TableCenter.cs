@@ -1,4 +1,5 @@
 
+using System;
 using UnityEngine;
 
 public class TableCenter : MonoBehaviour, IActionReceiver
@@ -36,5 +37,10 @@ public class TableCenter : MonoBehaviour, IActionReceiver
     public void OnChoosingDeselect()
     {
         OnDraggingDeselect();
+    }
+
+    public Receiver GetReceiverStruct(ValidDropLocation actionDropLocation)
+    {
+        throw new Exception("El centro de la mesa no es un receiver valido!! solo sirve para ensamblar la jugada!");
     }
 }

@@ -12,6 +12,17 @@ public class ValidAction
         DropLocation = dropLocation;
         Receivers = receivers;
     }
+
+
+    public static ValidDropLocation ActionReceiverToDropLocation(ValidActionReceiver r) => r switch
+    {
+        ValidActionReceiver.OwnerSlot => ValidDropLocation.OwnerSlot,
+        ValidActionReceiver.AnySlot => ValidDropLocation.AnySlot,
+        ValidActionReceiver.AnyTerritory => ValidDropLocation.AnyTerritory,
+        ValidActionReceiver.OwnerCard => ValidDropLocation.OwnerCard,
+        ValidActionReceiver.AnyCard => ValidDropLocation.AnyCard,
+        _ => throw new ArgumentOutOfRangeException()
+    };
 }
 
 public enum ValidDropLocation
@@ -33,5 +44,7 @@ public enum ValidActionReceiver
     OwnerCard,
     AnyCard,
 }
+
+
 
 

@@ -15,6 +15,11 @@ public class TerritoryReceiver : MonoBehaviour, IActionReceiver
     private void Awake()
     {
         _material = transform.Find("Mesh").GetComponent<MeshRenderer>().material;
+
+        for (int i = 0; i < Slots.Length; i++)
+        {
+            Slots[i].IndexOnTerritory = i;
+        }
     }
 
     public void OnDraggingSelect()
@@ -37,4 +42,7 @@ public class TerritoryReceiver : MonoBehaviour, IActionReceiver
     {
         OnDraggingDeselect();
     }
+    
+    public Receiver GetReceiverStruct(ValidDropLocation actionDropLocation) => 
+        new (actionDropLocation, Owner, -1, -1);
 }

@@ -20,6 +20,13 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     public string GetName() => Card.Name;
 
     public string GetDescription() => Card.Description;
+
+
+    public int IndexOnSlot { get; set; } = -1;
+
+    public SlotReceiver SlotWherePlaced { get; private set; }
+    public PlayableCard CardWherePlaced { get; private set; }
+    
     
     public void PlayCard(IActionReceiver playLocation)
     {
@@ -27,7 +34,14 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
         IsDraggable = false;
         IsDropEnabled = true;
         _canInteractWithoutOwnership = true;
+
+        SlotWherePlaced = playLocation as SlotReceiver;
+        CardWherePlaced = playLocation as PlayableCard;
+
         //moverla a la playLocation
+        if (SlotWherePlaced is not null) SlotWherePlaced.AddCardOnTop(this);
+        
+        
     }
 
     public override void OnSelect()
@@ -61,12 +75,20 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     {
         OnDeselect();
     }
-    
+
+
     public override void OnDrop(IActionReceiver dropLocation)
     {
         base.OnDrop(dropLocation);
         transform.rotation = dropLocation.SnapTransform.rotation;
     }
+    
+    
+    public Receiver GetReceiverStruct(ValidDropLocation actionDropLocation) => 
+        new (actionDropLocation, Owner, 
+            CardWherePlaced is not null ? CardWherePlaced.SlotWherePlaced.IndexOnTerritory : SlotWherePlaced.IndexOnTerritory,
+            CardWherePlaced is not null ? CardWherePlaced.IndexOnSlot : IndexOnSlot);
+
     
     
 }

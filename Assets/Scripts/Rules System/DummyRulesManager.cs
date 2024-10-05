@@ -4,6 +4,10 @@ using System;
 public class DummyRulesManager : IRulesSystem
 {
     
-    public bool IsValidAction(TurnAction action) => true;
-    public void PerformAction(TurnAction action, Action onApproved) => onApproved();
+    public bool IsValidAction(PlayerCharacter actor, IActionItem actionItem, Receiver[] receivers) => true;
+    public void PerformAction(PlayerCharacter actor, IActionItem actionItem, Receiver[] receivers)
+    {
+        
+    }
+
 }

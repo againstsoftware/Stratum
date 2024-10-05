@@ -35,4 +35,8 @@ public class DiscardPileReceiver : MonoBehaviour, IActionReceiver
     {
         OnDraggingDeselect();
     }
+
+    public Receiver GetReceiverStruct(ValidDropLocation actionDropLocation) => 
+        new (actionDropLocation, Owner, -1, -1);
+    
 }

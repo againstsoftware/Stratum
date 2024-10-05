@@ -15,4 +15,6 @@ public interface IActionReceiver
     public void OnChoosingSelect();
     public void OnChoosingDeselect();
 
+    public Receiver GetReceiverStruct(ValidDropLocation actionDropLocation);
+
 }
