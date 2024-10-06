@@ -230,7 +230,42 @@ Como jugador, ahora es tu turno. **Stratum**, el juego ancestral que ha determin
 
 
 # 5. Sonido y Música
-...
+## 5.1. Visión General del Sonido
+- **Estilo y atmósfera:**  
+  El juego presenta una atmósfera relajante, centrada en la naturaleza. Se utilizan instrumentos y sonidos orgánicos para evocar tranquilidad El objetivo es crear una sensación de armonía y conexión con el entorno natural.
+
+- **Referencias:**  
+  - Hearthstone Soundtrack - Main Title  
+  - Inscryption - OST Preview - "The Trapper & The Trader" by Jonah Senzel  
+  - Faeria Main Theme
+
+## 5.2. Música
+- **Estilo de la banda sonora:**  
+  La banda sonora es **ambiental**, utilizando principalmente instrumentos naturales, como flautas, cuerdas suaves y percusión ligera. No se emplearán sonidos electrónicos.
+
+- **Temas principales:**  
+  - **Tema principal:** Se reproducirá durante la partida.  
+  - **Tema del menú principal:** Se escuchará en el menú principal y en las pantallas de búsqueda de partida.
+
+- **Looping y duración:**  
+  Todos los temas están diseñados para repetirse en bucle sin interrupciones perceptibles. Las pistas tienen una duración de entre 2 y 4 minutos antes de reiniciarse.
+
+## 5.3. Efectos de Sonido (SFX)
+- **Sonidos de interacción del jugador:**  
+  - Poner cartas de población sobre la mesa: Un sonido correspondiente al tipo  de carta sea este planta, herbívoro o carnívoro.
+  - Jugar una carta de influencia: Un sonido con un suave destello de energía y un toque de reverberación.
+  - Descartar una carta en la pila de descartes: Sonido similar a quemar un objeto en un fuego.
+  - Colocar una construcción (El Magnate): Sonido sólido de madera o piedra ligera.
+  - Finalización de turno: Suave campana o susurro de viento.
+ 
+  - **Sonidos ambientales:**  
+  Durante la partida, se escucharán efectos ambientales naturales:
+  - Cantos de aves lejanas.
+  - Viento meciendo árboles.
+  - Insectos y pequeños animales moviéndose en el fondo.
+  - Animales caminando.
+  
+ Estos sonidos ambientales variarán dinámicamente según el estado de la simulación del ecosistema y las cartas jugadas. 
 
 
 # 6. Modelo de negocio y monetización
