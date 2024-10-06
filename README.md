@@ -234,3 +234,146 @@ Como jugador, ahora es tu turno. **Stratum**, el juego ancestral que ha determin
 
 
 # 6. Modelo de negocio y monetización
+## 6.1. Información sobre el usuario
+
+...
+
+## 6.2. Mapa de empatía
+
+...
+
+## 6.3. Caja de herramientas
+En este documento, se presenta una "caja de herramientas" que examina seis bloques principales de stakeholders, detallando sus responsabilidades y cómo interactúan entre sí para fortalecer la escena competitiva. Cada grupo contribuye a su manera a la evolución del juego, desde la creación de contenido y la organización de eventos hasta la promoción y financiamiento.
+Todos ellos con un **objetivo común: mantener viva y activa la comunidad, asegurar un entorno competitivo atractivo y garantizar la viabilidad del negocio.**
+
+## Seis Bloques Principales (Stakeholders):
+### 1. Jugadores y comunidad de fans (Clientes y Usuarios Finales):
+Este bloque representa a los usuarios del juego, quienes no solo participan activamente en las partidas competitivas, sino que también son una comunidad que crea y consume contenido alrededor del juego (streams, vídeos, foros, etc.). Estos jugadores buscan mejorar sus habilidades, ganar torneos, obtener reconocimiento; y también contribuyen al crecimiento del juego al compartir sus experiencias, estrategias y generar discusiones.
+
+Su rol va más allá del juego en sí: son embajadores del mismo, promoviendo el juego competitivo en redes sociales, organizando partidas informales, y contribuyendo al ambiente competitivo y colaborativo que mantiene viva la comunidad. Además, pueden influir en las tendencias de las estrategias y en la evolución del juego a través de su participación activa y feedback.
+
+### 2. Organizadores de Torneos presenciales con el juego en físico (Facilitadores de Competencia):
+Los responsables de organizar y gestionar los torneos a diferentes niveles (locales, nacionales, internacionales). Garantizan que las reglas sean justas, el ambiente sea competitivo, y los premios atractivos.
+
+### 3. Desarrolladores y Diseñadores del Juego (Productores):
+Son quienes crean y mantienen el juego competitivo, ajustando las mecánicas, balanceando las cartas y lanzando expansiones para mantener el interés del juego. También diseñan cartas y personajes que introducen nuevas dinámicas de juego.
+
+### 4. Distribuidores y Tiendas (Canales de Distribución):
+Los encargados de la venta y distribución del juego de cartas y sus actualizaciones, ya sea de forma física en tiendas o en línea. También pueden ofrecer productos relacionados con los torneos (entradas, merchandising, las cartas en físico…).
+
+### 5. Sponsors e Inversores (Financiadores):
+Empresas o marcas que patrocinan torneos y eventos competitivos, ofreciendo recursos para premios y financiando la organización. Buscan visibilidad y retorno en la comunidad de jugadores.
+
+### 6. Marketing y Comunicación (Mediadores):
+Los encargados de hacer llegar el juego al público objetivo, a través de estrategias de branding, redes sociales, eventos de lanzamiento, campañas publicitarias y colaboración con influencers de juegos de mesa y rol.
+
+
+## Relaciones entre los bloques:
+### Jugadores y Comunidad - Torneos:
+Participan en los torneos organizados de forma presencial, aportan la cuota de inscripción y reciben premios a cambio.
+Proveen feedback y opiniones sobre la experiencia en torneos, que los organizadores pueden usar para ajustar sus eventos.
+
+### Jugadores y Comunidad - Empresa:
+Dan feedback sobre la mecánica del juego, sugiriendo mejoras o equilibrando cartas. También pueden probar nuevas expansiones.
+A cambio, la empresa (los desarrolladores y diseñadores del juego) les aporta el producto (videojuego) y las diferentes actualizaciones.
+
+Los desarrolladores crean contenido que atrae a la comunidad de jugadores competitivos (los que quieran partidas competitivas pagarán la suscripción mensual), y la comunidad, a su vez, genera contenido (streams, guías, videos) que incrementa la popularidad del juego y lo mantiene activo.
+
+### Jugadores y Comunidad - Marketing:
+Se crean campañas publicitarias dirigidas a atraer más jugadores y mantener activa la comunidad.
+Trabajan con influencers de la comunidad para amplificar el impacto de las campañas.
+
+### Torneos - Empresa:
+Colaboran para garantizar que las reglas y las cartas estén equilibradas para los torneos.
+Los torneos proveen feedback a los desarrolladores sobre cómo se comportan las mecánicas del juego en situaciones competitivas.
+La empresa a cambio proporciona adaptaciones del juego para que en competitivo varíen las cartas que más se juegan (cambios en el metajuego).
+
+### Torneos - Sponsors e inversores:
+Los organizadores buscan sponsors para financiar los torneos, obteniendo apoyo económico para premios, logística y marketing. Los sponsors buscan visibilidad y conexión con la audiencia clave a través de estos eventos.
+
+### Marketing - Torneos:
+Promocionan torneos y eventos organizados, asegurando que los jugadores se enteren y así aumentar el número de participantes.
+
+### Distribuidores y tiendas - Empresa:
+La empresa paga a estas tiendas para que realicen los productos que quieren y a cambio, esas tiendas producen esos productos y los distribuyen (merch).
+
+### Empresa - Sponsors e inversores:
+Los inversores pueden financiar el desarrollo y actualizaciones del juego, eventos y otras actividades relacionadas con el crecimiento del juego  a cambio de beneficios financieros.
+
+### Empresa - Marketing:
+La empresa trabaja con el equipo de marketing para lanzar campañas promocionales del juego, novedades y eventos en torno al juego.
+
+### Distribuidores y Tiendas - Torneos:
+Los organizadores y distribuidores colaboran en la promoción de los torneos. Las tiendas pueden vender entradas o productos promocionales relacionados con los eventos.
+
+### Distribuidores y Tiendas - Marketing:
+Colaboran en la creación de campañas para incrementar el número de ventas y dar mayor visibilidad al juego.
+
+### Sponsors e inversores - Marketing:
+Los sponsors también colaboran con el equipo de marketing para asegurarse de tener la visibilidad adecuada en todas las campañas de marketing.
+
+## Esquema
+![Caja de Herramientas](/Readme%20Files/Caja_de_Herramientas.png)
+
+## Leyenda
+
+![Leyenda Caja de Herramientas](/Readme%20Files/Leyenda_caja_herramientas.png)
+
+## Resumen
+**Este modelo de negocio captura la naturaleza competitiva de un juego de cartas con torneos, destacando la importancia de la comunidad de jugadores, los eventos y las interacciones entre los diferentes stakeholders.**
+
+
+## 6.4. Modelo de canvas
+
+...
+
+## 6.5. Monetización
+## Modelo de Monetización Principal
+
+El juego seguirá un modelo **Free-to-Play (F2P)** con una monetización basada en suscripción. El acceso a la versión gratuita ofrecerá un nivel limitado del juego, mientras que los jugadores que opten por la **suscripción mensual** tendrán acceso completo a las funciones competitivas del juego.
+
+## 1. Versión Gratuita (F2P)
+Los jugadores podrán descargar y jugar el juego sin costo, pero tendrán acceso solo a un conjunto limitado de características, lo cual incluye:
+
+### Partidas Amistosas (Solo con Amigos)
+- Los jugadores podrán crear partidas privadas en las que invitarán a sus amigos utilizando un código de sesión generado al crear una sala. 
+- No tendrán acceso al matchmaking automatizado ni a las modalidades competitivas.
+
+### Limitaciones:
+- **Sin acceso a Matchmaking Competitivo**: Solo podrán jugar en sesiones privadas con amigos.
+- **Sin recompensas competitivas**: No participarán en el sistema de recompensas de temporada o torneos.
+
+## 2. Suscripción Mensual (Modelo Competitivo)
+Los jugadores que opten por la **suscripción mensual** desbloquearán una serie de funciones orientadas a la **experiencia competitiva**, diseñada para los jugadores que buscan una mayor inmersión y el acceso al sistema de recompensas.
+
+### Acceso al Matchmaking Competitivo:
+- Los suscriptores podrán participar en partidas rankeadas a través del matchmaking competitivo, enfrentándose contra jugadores de su mismo nivel.
+- Este matchmaking estará basado en un **sistema de MMR** (Matchmaking Rating), que ajustará los oponentes según su nivel de habilidad.
+
+### Recompensas y Progresión:
+- **Sistema de Clasificación (Ranking)**: Los jugadores suscriptores podrán subir en el sistema de clasificación global, compitiendo por una mejor posición en las tablas de clasificación (leaderboards).
+- **Recompensas de Temporada**: Al final de cada temporada competitiva (3 meses de duración), se otorgarán recompensas físicas por rango.
+- **Acceso a Torneos Oficiales**: Los jugadores podrán participar en torneos presenciales, donde podrán obtener **recompensas** y ganar prestigio en la comunidad.
+- **Estadísticas del modo competitivo**: Tendrán acceso a un **panel de estadísticas** de sus partidas competitivas, que incluirán datos como el porcentaje de victorias por tipo de mazo, entre otras cosas.
+
+## 3. Desarrollo Continuo del Juego y Eventos Especiales
+El juego incluirá actualizaciones frecuentes tanto para jugadores F2P como suscriptores:
+
+### Actualización de contenido:
+- Se lanzarán regularmente **parches** que mantendrán fresco el entorno competitivo.
+- Estos cambios para balancear las cartas estarán disponibles para todos los jugadores.
+
+## 4. Ajustes Importantes y Éticos en la Monetización
+El modelo de monetización de este juego está diseñado para ser **justo** y **no invasivo**, evitando los sistemas de "pagar para ganar" (pay-to-win) y asegurando que todos los jugadores, independientemente de si pagan o no, tengan acceso a las mismas cartas y mecánicas del juego.
+
+### Sin Ventaja Competitiva Pagada:
+- Todas las cartas y mecánicas estarán disponibles tanto para jugadores gratuitos como para suscriptores, asegurando que **la habilidad sea lo único que determine el éxito** en el juego.
+- La suscripción solo ofrecerá acceso al entorno competitivo y a las características de progreso vinculadas a ese modo.
+
+### Transparencia en la Oferta:
+- El sistema de suscripción será transparente en cuanto a los beneficios ofrecidos, dejando claro a los jugadores qué funciones están pagando y garantizando una experiencia justa para los jugadores F2P.
+
+## Conclusión
+
+**Este modelo de monetización ofrece a los jugadores la posibilidad de disfrutar de todas las cartas y mecánicas del juego sin necesidad de gastar dinero, mientras que aquellos que busquen una experiencia más competitiva y progresiva pueden optar por una suscripción mensual. Esto no solo evita las controversias relacionadas con modelos "pay-to-win", sino que también asegura una experiencia equilibrada y justa para toda la base de jugadores.**
+
