@@ -236,11 +236,12 @@ Como jugador, ahora es tu turno. **Stratum**, el juego ancestral que ha determin
 # 6. Modelo de negocio y monetización
 ## 6.1. Información sobre el usuario
 
-...
+El juego está dirigido a jugadores de +13 años, que pueden ser tanto casuales como veteranos aficionados a los juegos competitivos de mesa y cartas. Es accesible incluso para aquellos usuarios que no cuenten con equipos potentes, ya que el juego está disponible incluso para dispositivos móviles. El juego sigue un modelo freemium: la versión completa es gratuita, pero sin acceso a matchmaking. Los jugadores podrán disfrutar de partidas privadas con amigos. Para acceder al Matchmaking Competitivo, obtener recompensas y participar en clasificaciones, deberán pagar una suscripción mensual.
+
 
 ## 6.2. Mapa de empatía
 
-...
+![Mapa de empatía](/Readme%20Files/Empathy_Map_Canvas.png)
 
 ## 6.3. Caja de herramientas
 En este documento, se presenta una "caja de herramientas" que examina seis bloques principales de stakeholders, detallando sus responsabilidades y cómo interactúan entre sí para fortalecer la escena competitiva. Cada grupo contribuye a su manera a la evolución del juego, desde la creación de contenido y la organización de eventos hasta la promoción y financiamiento.
@@ -325,7 +326,7 @@ Los sponsors también colaboran con el equipo de marketing para asegurarse de te
 
 ## 6.4. Modelo de canvas
 
-...
+![Modelo de canvas](/Readme%20Files/Business_Model_Canvas.png)
 
 ## 6.5. Monetización
 ## Modelo de Monetización Principal
