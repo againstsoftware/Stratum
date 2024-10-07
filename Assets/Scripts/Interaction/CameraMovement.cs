@@ -56,17 +56,17 @@ public class CameraMovement : MonoBehaviour
         if (scroll > 0f && _isInDefault)
         {
             ChangeToOverview();
-            _isInDefault = false;
         }
         else if (scroll < 0f && !_isInDefault)
         {
             ChangeToDefault();
-            _isInDefault = true;
         }
     }
 
     public void ChangeToOverview()
     {
+        _isInDefault = false;
+
         //if (!_isInDefault && !_isChangingPerspective) return;
         _targetPerspective = _overviewPerspective;
         _startPerspective = _defaultPerspective;
@@ -83,6 +83,8 @@ public class CameraMovement : MonoBehaviour
 
     public void ChangeToDefault()
     {
+        _isInDefault = true;
+
        // if (_isInDefault && !_isChangingPerspective) return;
         _targetPerspective = _defaultPerspective;
         _startPerspective = _overviewPerspective;

@@ -127,7 +127,7 @@
       <workItem from="1728303367767" duration="5000" />
       <workItem from="1728303403079" duration="4083000" />
       <workItem from="1728308577829" duration="2648000" />
-      <workItem from="1728318635299" duration="10369000" />
+      <workItem from="1728318635299" duration="15802000" />
     </task>
     <servers />
   </component>
@@ -143,17 +143,17 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Visual Interactables/Playables/PlayableCard.cs</url>
-          <line>122</line>
-          <properties documentPath="C:\Users\migue\Documents\GitHub\Stratum\Assets\Scripts\Visual Interactables\Playables\PlayableCard.cs" initialLine="119" containingFunctionPresentation="Method 'OnDragCancel'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Interaction/CameraMovement.cs</url>
+          <line>59</line>
+          <properties documentPath="C:\Users\migue\Documents\GitHub\Stratum\Assets\Scripts\Interaction\CameraMovement.cs" initialLine="60" containingFunctionPresentation="Method 'OnScroll'">
             <startOffsets>
-              <option value="3313" />
+              <option value="1788" />
             </startOffsets>
             <endOffsets>
-              <option value="3338" />
+              <option value="1821" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="16" />
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
