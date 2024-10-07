@@ -31,7 +31,25 @@
 
 [5. Sonido y Música](#5-sonido-y-música)
 
+* [5.1. Visión General del Sonido](#51-visión-general-del-sonido)
+
+* [5.2. Música](#52-música)
+
+* [5.3. Efectos de Sonido (SFX)](#53-efectos-de-sonido-sfx)
+
 [6. Modelo de negocio y monetización](#6-modelo-de-negocio-y-monetización)
+
+* [6.1. Información sobre el usuario](#61-información-sobre-el-usuario)
+
+* [6.2. Mapa de empatía](#62-mapa-de-empatía)
+
+* [6.3. Caja de herramientas](#63-caja-de-herramientas)
+
+* [6.4. Modelo de canvas](#64-modelo-de-canvas)
+
+* [6.5. Monetización](#65-monetización)
+
+
 
 
 # 0. Introducción
@@ -219,7 +237,7 @@ El macrohongo no puede ser destruido por cartas de influencia, a menos que la de
 
 # 3. Narrativa
 
-## 3.1. **Historia del Juego**
+## 3.1. Historia del Juego
 
 En un rincón olvidado del mundo, oculto del alcance de la humanidad, yace el legendario bosque de **Sylveria**, un lugar antiguo y sagrado donde la vida fluye en armonía. Este bosque es el centro de un conflicto ancestral entre tres facciones primordiales: **Naturaleza**, **Fungi**, y la reciente aparición de la **Industria**. Cada una busca imponer su visión sobre el destino de **Sylveria**, pues controlar este bosque es controlar la fuente de toda su vitalidad.
 
@@ -263,7 +281,11 @@ Como jugador, ahora es tu turno. **Stratum**, el juego ancestral que ha determin
 
 
 # 5. Sonido y Música
+
+
 ## 5.1. Visión General del Sonido
+
+
 **Estilo y atmósfera:**  
   El juego presenta una atmósfera relajante, centrada en la naturaleza. Se utilizan instrumentos y sonidos orgánicos para evocar tranquilidad. El objetivo es crear una sensación de armonía y conexión con el entorno natural.
 
