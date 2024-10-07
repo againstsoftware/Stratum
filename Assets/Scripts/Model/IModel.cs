@@ -13,17 +13,17 @@ public interface IModel : IService
     
     
     
-    public void PlaceCardOnSlot(ACard card, PlayerCharacter slotOwner, int slotIndex, bool atTheBottom = false);
+    public void PlaceCardOnSlot(ICard card, PlayerCharacter slotOwner, int slotIndex, bool atTheBottom = false);
 
-    public void PlaceInlfuenceCardOnCard(InfluenceCard influenceCard, ACard card, PlayerCharacter slotOwner,
+    public void PlaceInlfuenceCardOnCard(ICard influenceCard, ICard card, PlayerCharacter slotOwner,
         int slotIndex, int cardIndex);
 
-    public void MoveCardBetweenSlots(ACard card, PlayerCharacter slotOwner, int slotIndex, int cardIndex,
+    public void MoveCardBetweenSlots(ICard card, PlayerCharacter slotOwner, int slotIndex, int cardIndex,
         PlayerCharacter targetSlotOwner, int targetSlotIndex);
 
-    public void RemoveCardFromSlot(ACard card, PlayerCharacter slotOwner, int slotIndex, int cardIndex);
+    public void RemoveCardFromSlot(ICard card, PlayerCharacter slotOwner, int slotIndex, int cardIndex);
 
-    public void RemoveInfluenceCardFromCard(InfluenceCard influenceCard, ACard card, PlayerCharacter slotOwner,
+    public void RemoveInfluenceCardFromCard(ICard influenceCard, ICard card, PlayerCharacter slotOwner,
         int slotIndex, int cardIndex);
 
     //el filtro debe dar true para las cartas que se quieran salvar de eliminar

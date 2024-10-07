@@ -47,12 +47,9 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
 
     private void Awake()
     {
-        ServiceLocator.Register<IInteractionSystem>(this);
-        ServiceLocator.Register<IRulesSystem>(new DummyRulesManager()); //de pega
-
         _dropLocationCheckPeriod = 1f / _dropLocationCheckFrequency;
-
-        Input = new(_inputActions);
+        
+        Input = new(this, _inputActions);
         Input.PointerPosition += OnPointerPositionChanged;
     }
     
@@ -144,7 +141,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     public void DragPlayableItem(APlayableItem item)
     {
         if (CurrentState is not IInteractionSystem.State.Idle) return;
-        if (!item.IsDraggable) return;
+        if (item.CurrentState is not APlayableItem.State.Playable) return;
         if (item.Owner != _playerOnTurn) return;
         if (item != SelectedInteractable as APlayableItem)
         {
@@ -172,7 +169,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     public void DropPlayableItem(APlayableItem item)
     {
         if (CurrentState is not IInteractionSystem.State.Dragging) return;
-        if (!item.IsDraggable) return;
+        if (item.CurrentState is not APlayableItem.State.Dragging) return;
         if (item != SelectedInteractable as APlayableItem)
         {
             // throw new Exception("drop called with non selected item!");

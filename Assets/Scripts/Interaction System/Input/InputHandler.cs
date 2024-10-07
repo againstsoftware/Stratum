@@ -14,14 +14,15 @@ public class InputHandler
 
     private InteractableInput _lastTapped;
 
-    public InputHandler(InputActionAsset inputActions)
+    public InputHandler(IInteractionSystem interactionSystem, InputActionAsset inputActions)
     {
+        _interactionSystem = interactionSystem;
         _inputActions = inputActions;
         _inputActions.FindAction("Scroll").performed += OnScroll;
         _inputActions.FindAction("PointerPosition").performed += OnPointerPositionChanged;
         _inputActions.FindAction("Tap").performed += OnTap;
 
-        _interactionSystem = ServiceLocator.Get<IInteractionSystem>();
+
     }
 
     ~InputHandler()

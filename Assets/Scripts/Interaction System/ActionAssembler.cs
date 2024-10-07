@@ -23,7 +23,7 @@ public static class ActionAssembler
     public static AssemblyState TryAssembleAction(APlayableItem playableItem, IActionReceiver dropLocation)
     {
         _interactionSystem ??= ServiceLocator.Get<IInteractionSystem>();
-        
+
         PlayableItem = null;
         _receiversQueue.Clear();
         _receiversList.Clear();
@@ -46,9 +46,9 @@ public static class ActionAssembler
             ValidDropLocation.OwnerSlot => dropLocation is SlotReceiver && playableItem.Owner == dropLocation.Owner,
             ValidDropLocation.AnySlot => dropLocation is SlotReceiver,
             ValidDropLocation.AnyTerritory => dropLocation is TerritoryReceiver,
-            ValidDropLocation.OwnerCard => dropLocation is PlayableCard pc && !pc.IsPlayed &&
+            ValidDropLocation.OwnerCard => dropLocation is PlayableCard pc && pc.CurrentState is APlayableItem.State.Played &&
                                            playableItem.Owner == dropLocation.Owner,
-            ValidDropLocation.AnyCard => dropLocation is PlayableCard pc && !pc.IsPlayed,
+            ValidDropLocation.AnyCard => dropLocation is PlayableCard pc && pc.CurrentState is APlayableItem.State.Played,
             ValidDropLocation.TableCenter => dropLocation is TableCenter,
             ValidDropLocation.DiscardPile => dropLocation is DiscardPileReceiver && playableItem is PlayableCard,
             _ => throw new ArgumentOutOfRangeException()
@@ -96,7 +96,7 @@ public static class ActionAssembler
             //le decimos al sistema que vuelva a idle
             return AssemblyState.Failed;
         }
-        
+
         _actionReceivers.Add(receiver);
         _receiversList.Add(receiver.GetReceiverStruct(ValidAction.ActionReceiverToDropLocation(validReceiver)));
 
@@ -108,13 +108,17 @@ public static class ActionAssembler
 
     private static bool SendCompletedAction()
     {
-        var actor = PlayableItem.Owner;
-        var receivers = _receiversList.ToArray();
-        if (!ServiceLocator.Get<IRulesSystem>().IsValidAction(actor, PlayableItem.ActionItem, receivers))
+        var playerActionStruct = new PlayerAction(
+            PlayableItem.Owner,
+            PlayableItem.ActionItem,
+            _receiversList.ToArray(),
+            PlayableItem.IndexInHand);
+
+        if (!ServiceLocator.Get<IRulesSystem>().IsValidAction(playerActionStruct))
             return false;
 
 
-        ServiceLocator.Get<IRulesSystem>().PerformAction(actor, PlayableItem.ActionItem, receivers);
+        ServiceLocator.Get<IRulesSystem>().PerformAction(playerActionStruct);
         //devolver true desactiva el Interaction System, lo vuelve a activar el sistema de turnos cuando acaben los efectos
         return true;
     }

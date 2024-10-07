@@ -12,7 +12,7 @@ public class GameModel : IModel
     private readonly Dictionary<PlayerCharacter, Player> _players = new();
 
 
-    public GameModel(PlayerCharacter starter, Deck[] _decks)
+    public GameModel(PlayerCharacter starter, IDeck[] _decks)
     {
         PlayerOnTurn = starter;
         
@@ -25,14 +25,14 @@ public class GameModel : IModel
     
     public Player GetPlayer(PlayerCharacter character) => _players[character];
     
-    public void PlaceCardOnSlot(ACard card, PlayerCharacter slotOwner, int slotIndex, bool atTheBottom = false)
+    public void PlaceCardOnSlot(ICard card, PlayerCharacter slotOwner, int slotIndex, bool atTheBottom = false)
     {
         var ownerPlayer = _players[slotOwner];
         var tableCard = ownerPlayer.Territory.Slots[slotIndex].PlaceCard(card, atTheBottom);
-        if (card is PopulationCard) Ecosystem.OnPopulationCardPlace(tableCard);
+        if (card.CardType is ICard.Card.Population) Ecosystem.OnPopulationCardPlace(tableCard);
     }
 
-    public void PlaceInlfuenceCardOnCard(InfluenceCard influenceCard, ACard card, PlayerCharacter slotOwner,
+    public void PlaceInlfuenceCardOnCard(ICard influenceCard, ICard card, PlayerCharacter slotOwner,
         int slotIndex, int cardIndex)
     {
         var ownerPlayer = _players[slotOwner];
@@ -45,7 +45,7 @@ public class GameModel : IModel
         tableCard.PlaceInlfuenceCard(influenceCard);
     }
 
-    public void MoveCardBetweenSlots(ACard card, PlayerCharacter slotOwner, int slotIndex, int cardIndex,
+    public void MoveCardBetweenSlots(ICard card, PlayerCharacter slotOwner, int slotIndex, int cardIndex,
         PlayerCharacter targetSlotOwner,
         int targetSlotIndex)
     {
@@ -62,7 +62,7 @@ public class GameModel : IModel
         targetSlot.MoveCard(tableCard);
     }
 
-    public void RemoveCardFromSlot(ACard card, PlayerCharacter slotOwner, int slotIndex, int cardIndex)
+    public void RemoveCardFromSlot(ICard card, PlayerCharacter slotOwner, int slotIndex, int cardIndex)
     {
         var ownerPlayer = _players[slotOwner];
         var slot = ownerPlayer.Territory.Slots[slotIndex];
@@ -72,10 +72,10 @@ public class GameModel : IModel
 
         slot.RemoveCard(tableCard);
 
-        if (card is PopulationCard) Ecosystem.OnPopulationCardDie(tableCard);
+        if (card.CardType is ICard.Card.Population) Ecosystem.OnPopulationCardDie(tableCard);
     }
 
-    public void RemoveInfluenceCardFromCard(InfluenceCard influenceCard, ACard card, PlayerCharacter slotOwner,
+    public void RemoveInfluenceCardFromCard(ICard influenceCard, ICard card, PlayerCharacter slotOwner,
         int slotIndex, int cardIndex)
     {
         var ownerPlayer = _players[slotOwner];
@@ -98,7 +98,7 @@ public class GameModel : IModel
         {
             if (filter is not null && filter(tableCard)) continue;
 
-            if (tableCard.Card is PopulationCard) Ecosystem.OnPopulationCardDie(tableCard);
+            if (tableCard.Card.CardType is ICard.Card.Population) Ecosystem.OnPopulationCardDie(tableCard);
             slot.RemoveCard(tableCard);
         }
     }
