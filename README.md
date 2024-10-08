@@ -340,7 +340,7 @@ Todos ellos con un **objetivo común: mantener viva y activa la comunidad, asegu
 
 ### Seis Bloques Principales (Stakeholders):
 #### 1. Jugadores y comunidad de fans (Clientes y Usuarios Finales):
-Este bloque representa a los usuarios del juego, quienes no solo participan activamente en las partidas competitivas, sino que también son una comunidad que crea y consume contenido alrededor del juego (streams, vídeos, foros, etc.). Estos jugadores buscan mejorar sus habilidades, ganar torneos, obtener reconocimiento; y también contribuyen al crecimiento del juego al compartir sus experiencias, estrategias y generar discusiones.
+Este bloque representa a los usuarios del juego, quienes no solo participan activamente en las partidas competitivas, sino que también son una comunidad que crea y consume contenido alrededor del juego (streams, vídeos, foros, etc.). Estos jugadores buscan mejorar sus habilidades, ganar torneos, obtener reconocimiento, y también contribuyen al crecimiento del juego al compartir sus experiencias, estrategias y generar discusiones.
 
 Su rol va más allá del juego en sí: son embajadores del mismo, promoviendo el juego competitivo en redes sociales, organizando partidas informales, y contribuyendo al ambiente competitivo y colaborativo que mantiene viva la comunidad. Además, pueden influir en las tendencias de las estrategias y en la evolución del juego a través de su participación activa y feedback.
 
@@ -348,7 +348,7 @@ Su rol va más allá del juego en sí: son embajadores del mismo, promoviendo el
 Los responsables de organizar y gestionar los torneos a diferentes niveles (locales, nacionales, internacionales). Garantizan que las reglas sean justas, el ambiente sea competitivo, y los premios atractivos.
 
 #### 3. Desarrolladores y Diseñadores del Juego (Productores):
-Son quienes crean y mantienen el juego competitivo, ajustando las mecánicas, balanceando las cartas y lanzando expansiones para mantener el interés del juego. También diseñan cartas y personajes que introducen nuevas dinámicas de juego.
+Son quienes crean y mantienen el juego competitivo, ajustando las mecánicas, balanceando las cartas y lanzando expansiones para mantener el interés del juego.
 
 #### 4. Distribuidores y Tiendas (Canales de Distribución):
 Los encargados de la venta y distribución del juego de cartas y sus actualizaciones, ya sea de forma física en tiendas o en línea. También pueden ofrecer productos relacionados con los torneos (entradas, merchandising, las cartas en físico…).
@@ -362,29 +362,26 @@ Los encargados de hacer llegar el juego al público objetivo, a través de estra
 
 ### Relaciones entre los bloques:
 #### Jugadores y Comunidad - Torneos:
-Participan en los torneos organizados de forma presencial, aportan la cuota de inscripción y reciben premios a cambio.
-Proveen feedback y opiniones sobre la experiencia en torneos, que los organizadores pueden usar para ajustar sus eventos.
+Los jugadores participan en los torneos organizados de forma presencial, aportan la cuota de inscripción y reciben premios a cambio.
+Además, proveen feedback y opiniones sobre la experiencia en torneos, que los organizadores pueden usar para ajustar sus eventos.
 
 #### Jugadores y Comunidad - Empresa:
-Dan feedback sobre la mecánica del juego, sugiriendo mejoras o equilibrando cartas. También pueden probar nuevas expansiones.
-A cambio, la empresa (los desarrolladores y diseñadores del juego) les aporta el producto (videojuego) y las diferentes actualizaciones.
-
-Los desarrolladores crean contenido que atrae a la comunidad de jugadores competitivos (los que quieran partidas competitivas pagarán la suscripción mensual), y la comunidad, a su vez, genera contenido (streams, guías, videos) que incrementa la popularidad del juego y lo mantiene activo.
+Los jugadores proporcionan retroalimentación valiosa sobre la mecánica del juego, sugiriendo mejoras y ajustes para equilibrar las cartas y otros elementos. Además, pueden participar en pruebas de nuevas actualizaciones.
+A cambio, la empresa (desarrolladores y diseñadores) les ofrece un producto de calidad, el videojuego, junto con actualizaciones constantes que se ajustan a las necesidades de la comunidad. Además, crean contenido dirigido a atraer a jugadores competitivos, quienes, si desean participar en partidas avanzadas, pagarán una suscripción mensual.
+Por su parte, la comunidad genera contenido (streams, guías, videos) que incrementa la popularidad del juego y lo mantiene activo.
 
 #### Jugadores y Comunidad - Marketing:
-Se crean campañas publicitarias dirigidas a atraer más jugadores y mantener activa la comunidad.
-Trabajan con influencers de la comunidad para amplificar el impacto de las campañas.
+El equipo de marketing desarrolla campañas publicitarias dirigidas a atraer nuevos jugadores y mantener activa la comunidad existente. Para maximizar el alcance y el impacto de estas campañas, colaboran con influencers dentro de la comunidad, quienes generan una mayor visibilidad del juego.
 
 #### Torneos - Empresa:
-Colaboran para garantizar que las reglas y las cartas estén equilibradas para los torneos.
-Los torneos proveen feedback a los desarrolladores sobre cómo se comportan las mecánicas del juego en situaciones competitivas.
-La empresa a cambio proporciona adaptaciones del juego para que en competitivo varíen las cartas que más se juegan (cambios en el metajuego).
+La empresa y los organizadores de torneos colaboran para asegurar que las reglas y las cartas estén debidamente equilibradas para las competiciones. Los torneos, a su vez, proporcionan feedback a los desarrolladores sobre el comportamiento de las mecánicas del juego en un entorno competitivo.
+En respuesta, la empresa implementa ajustes en el juego, introduciendo cambios en el metajuego y variando las cartas más jugadas, con el fin de mantener un entorno competitivo dinámico y equilibrado.
 
 #### Torneos - Sponsors e inversores:
-Los organizadores buscan sponsors para financiar los torneos, obteniendo apoyo económico para premios, logística y marketing. Los sponsors buscan visibilidad y conexión con la audiencia clave a través de estos eventos.
+Los organizadores buscan sponsors para financiar los torneos, obteniendo apoyo económico para premios, logística y marketing. Los sponsors buscan visibilidad y conexión con la audiencia a través de estos eventos.
 
 #### Marketing - Torneos:
-Promocionan torneos y eventos organizados, asegurando que los jugadores se enteren y así aumentar el número de participantes.
+Promocionan torneos y eventos organizados, asegurándose de captar la atención de los  jugadores y así aumentar el número de participantes.
 
 #### Distribuidores y tiendas - Empresa:
 La empresa paga a estas tiendas para que realicen los productos que quieren y a cambio, esas tiendas producen esos productos y los distribuyen (merch).
@@ -431,6 +428,9 @@ Los jugadores podrán descargar y jugar el juego sin costo, pero tendrán acceso
 - Los jugadores podrán crear partidas privadas en las que invitarán a sus amigos utilizando un código de sesión generado al crear una sala. 
 - No tendrán acceso al matchmaking automatizado ni a las modalidades competitivas.
 
+#### Acceso a Torneos Oficiales
+- Los jugadores podrán participar en torneos presenciales, donde podrán obtener **recompensas** y ganar prestigio en la comunidad.
+
 #### Limitaciones:
 - **Sin acceso a Matchmaking Competitivo**: Solo podrán jugar en sesiones privadas con amigos.
 - **Sin recompensas competitivas**: No participarán en el sistema de recompensas de temporada o torneos.
@@ -445,7 +445,6 @@ Los jugadores que opten por la **suscripción mensual** desbloquearán una serie
 #### Recompensas y Progresión:
 - **Sistema de Clasificación (Ranking)**: Los jugadores suscriptores podrán subir en el sistema de clasificación global, compitiendo por una mejor posición en las tablas de clasificación (leaderboards).
 - **Recompensas de Temporada**: Al final de cada temporada competitiva (3 meses de duración), se otorgarán recompensas físicas por rango.
-- **Acceso a Torneos Oficiales**: Los jugadores podrán participar en torneos presenciales, donde podrán obtener **recompensas** y ganar prestigio en la comunidad.
 - **Estadísticas del modo competitivo**: Tendrán acceso a un **panel de estadísticas** de sus partidas competitivas, que incluirán datos como el porcentaje de victorias por tipo de mazo, entre otras cosas.
 
 ### 3. Desarrollo Continuo del Juego y Eventos Especiales
