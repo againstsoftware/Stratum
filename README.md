@@ -363,11 +363,14 @@ Los encargados de hacer llegar el juego al público objetivo, a través de estra
 ### Relaciones entre los bloques:
 #### Jugadores y Comunidad - Torneos:
 Los jugadores participan en los torneos organizados de forma presencial, aportan la cuota de inscripción y reciben premios a cambio.
+
 Además, proveen feedback y opiniones sobre la experiencia en torneos, que los organizadores pueden usar para ajustar sus eventos.
 
 #### Jugadores y Comunidad - Empresa:
 Los jugadores proporcionan retroalimentación valiosa sobre la mecánica del juego, sugiriendo mejoras y ajustes para equilibrar las cartas y otros elementos. Además, pueden participar en pruebas de nuevas actualizaciones.
+
 A cambio, la empresa (desarrolladores y diseñadores) les ofrece un producto de calidad, el videojuego, junto con actualizaciones constantes que se ajustan a las necesidades de la comunidad. Además, crean contenido dirigido a atraer a jugadores competitivos, quienes, si desean participar en partidas avanzadas, pagarán una suscripción mensual.
+
 Por su parte, la comunidad genera contenido (streams, guías, videos) que incrementa la popularidad del juego y lo mantiene activo.
 
 #### Jugadores y Comunidad - Marketing:
@@ -375,6 +378,7 @@ El equipo de marketing desarrolla campañas publicitarias dirigidas a atraer nue
 
 #### Torneos - Empresa:
 La empresa y los organizadores de torneos colaboran para asegurar que las reglas y las cartas estén debidamente equilibradas para las competiciones. Los torneos, a su vez, proporcionan feedback a los desarrolladores sobre el comportamiento de las mecánicas del juego en un entorno competitivo.
+
 En respuesta, la empresa implementa ajustes en el juego, introduciendo cambios en el metajuego y variando las cartas más jugadas, con el fin de mantener un entorno competitivo dinámico y equilibrado.
 
 #### Torneos - Sponsors e inversores:
