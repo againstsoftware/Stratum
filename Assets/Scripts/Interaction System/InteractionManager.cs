@@ -13,15 +13,22 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     public IInteractionSystem.State CurrentState { get; private set; } = IInteractionSystem.State.Idle;
     public InputHandler Input { get; private set; }
 
+    public Camera Camera { get; private set; }
+    [field:SerializeField] public LayerMask InteractablesLayer { get; private set; }
+    
+    public IReadOnlyList<IActionReceiver> CurrentActionReceivers => ActionAssembler.ActionReceivers;
+    public APlayableItem CurrentActionPlayableItem => ActionAssembler.PlayableItem;
+    
+    
 
     [SerializeField] private PlayerCharacter _playerOnTurn;
     [SerializeField] private InputActionAsset _inputActions;
-    [SerializeField] private LayerMask _dropLocationLayer;
+
     [SerializeField] private float _itemCamOffsetOnDrag;
     [SerializeField] private float _dropLocationCheckFrequency;
 
     private InputAction _pointerPosAction;
-    private Camera _cam;
+    
     private CameraMovement _cameraMovement;
     private Transform _dragItemTransform;
 
@@ -40,21 +47,17 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
 
     private void Awake()
     {
-        ServiceLocator.Register<IInteractionSystem>(this);
-        //ServiceLocator.Register<IRulesSystem>(new DummyRulesManager()); //de pega
-        ServiceLocator.Register<IRulesSystem>(new RulesManager());
-
         _dropLocationCheckPeriod = 1f / _dropLocationCheckFrequency;
-
-        Input = new(_inputActions);
+        
+        Input = new(this, _inputActions);
         Input.PointerPosition += OnPointerPositionChanged;
     }
     
 
     private void Start()
     {
-        _cam = Camera.main;
-        _cameraMovement = _cam.GetComponent<CameraMovement>();
+        Camera = Camera.main;
+        _cameraMovement = Camera.GetComponent<CameraMovement>();
         _rulebook = FindAnyObjectByType<Rulebook>();
     }
     
@@ -76,7 +79,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
                 break;
 
             case IInteractionSystem.State.Dragging:
-                var newPos = _cam.ScreenToWorldPoint(
+                var newPos = Camera.ScreenToWorldPoint(
                     new Vector3(_screenPointerPosition.x, _screenPointerPosition.y, _itemCamOffsetOnDrag));
                 newPos.y = Mathf.Max(.2f, newPos.y);
                 _dragItemTransform.position = newPos;
@@ -138,7 +141,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     public void DragPlayableItem(APlayableItem item)
     {
         if (CurrentState is not IInteractionSystem.State.Idle) return;
-        if (!item.IsDraggable) return;
+        if (item.CurrentState is not APlayableItem.State.Playable) return;
         if (item.Owner != _playerOnTurn) return;
         if (item != SelectedInteractable as APlayableItem)
         {
@@ -166,7 +169,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     public void DropPlayableItem(APlayableItem item)
     {
         if (CurrentState is not IInteractionSystem.State.Dragging) return;
-        if (!item.IsDraggable) return;
+        if (item.CurrentState is not APlayableItem.State.Dragging) return;
         if (item != SelectedInteractable as APlayableItem)
         {
             // throw new Exception("drop called with non selected item!");
@@ -260,8 +263,8 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     private void CheckDropLocations()
     {
         _draggingItem.SetColliderActive(false);
-        Ray ray = _cam.ScreenPointToRay(_screenPointerPosition);
-        var hit = Physics.Raycast(ray, out var hitInfo, float.MaxValue, _dropLocationLayer);
+        Ray ray = Camera.ScreenPointToRay(_screenPointerPosition);
+        var hit = Physics.Raycast(ray, out var hitInfo, float.MaxValue, InteractablesLayer);
         _draggingItem.SetColliderActive(true);
         if (!hit || hitInfo.collider is null)
         {

@@ -1,11 +1,11 @@
 public class Player
 {
     public readonly PlayerCharacter Character;
-    public readonly Deck Deck;
+    public readonly IDeck Deck;
     public readonly HandOfCards HandOfCards;
     public readonly Territory Territory;
 
-    internal Player(PlayerCharacter character, Deck deck)
+    internal Player(PlayerCharacter character, IDeck deck)
     {
         Character = character;
         Deck = deck;

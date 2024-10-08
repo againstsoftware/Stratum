@@ -5,7 +5,7 @@ public class Slot
     public IReadOnlyList<TableCard> PlacedCards => _placedCards;
     private readonly List<TableCard> _placedCards = new();
 
-    internal TableCard PlaceCard(ACard card, bool atTheBottom = false)
+    internal TableCard PlaceCard(ICard card, bool atTheBottom = false)
     {
         var tableCard = new TableCard(card);
 

@@ -37,7 +37,8 @@ MonoBehaviour:
     <Receivers>k__BackingField: 
   - <DropLocation>k__BackingField: 5
     <Receivers>k__BackingField: 00000000
-  _populationType: 2
+  _effects: 00000000
+  _populationType: 1
   references:
     version: 2
     RefIds: []

@@ -4,9 +4,12 @@ using UnityEngine;
 
 public static class ActionAssembler
 {
+    public static IReadOnlyList<IActionReceiver> ActionReceivers => _actionReceivers;
+    public static APlayableItem PlayableItem;
+
     private static readonly Queue<ValidActionReceiver> _receiversQueue = new();
     private static readonly List<Receiver> _receiversList = new();
-    private static APlayableItem _playableItem;
+    private static readonly List<IActionReceiver> _actionReceivers = new();
 
     private static IInteractionSystem _interactionSystem;
 
@@ -20,6 +23,11 @@ public static class ActionAssembler
     public static AssemblyState TryAssembleAction(APlayableItem playableItem, IActionReceiver dropLocation)
     {
         _interactionSystem ??= ServiceLocator.Get<IInteractionSystem>();
+
+        PlayableItem = null;
+        _receiversQueue.Clear();
+        _receiversList.Clear();
+        _actionReceivers.Clear();
 
         foreach (var validAction in playableItem.ActionItem.ValidActions)
         {
@@ -38,9 +46,9 @@ public static class ActionAssembler
             ValidDropLocation.OwnerSlot => dropLocation is SlotReceiver && playableItem.Owner == dropLocation.Owner,
             ValidDropLocation.AnySlot => dropLocation is SlotReceiver,
             ValidDropLocation.AnyTerritory => dropLocation is TerritoryReceiver,
-            ValidDropLocation.OwnerCard => dropLocation is PlayableCard pc && !pc.IsPlayed &&
+            ValidDropLocation.OwnerCard => dropLocation is PlayableCard pc && pc.CurrentState is APlayableItem.State.Played &&
                                            playableItem.Owner == dropLocation.Owner,
-            ValidDropLocation.AnyCard => dropLocation is PlayableCard pc && !pc.IsPlayed,
+            ValidDropLocation.AnyCard => dropLocation is PlayableCard pc && pc.CurrentState is APlayableItem.State.Played,
             ValidDropLocation.TableCenter => dropLocation is TableCenter,
             ValidDropLocation.DiscardPile => dropLocation is DiscardPileReceiver && playableItem is PlayableCard,
             _ => throw new ArgumentOutOfRangeException()
@@ -52,10 +60,14 @@ public static class ActionAssembler
     {
         _receiversQueue.Clear();
         _receiversList.Clear();
-        _playableItem = playableItem;
+        PlayableItem = playableItem;
         foreach (var receiver in validAction.Receivers) _receiversQueue.Enqueue(receiver);
         if (dropLocation is not TableCenter)
+        {
+            _actionReceivers.Add(dropLocation);
             _receiversList.Add(dropLocation.GetReceiverStruct(validAction.DropLocation));
+        }
+
         if (_receiversQueue.Count > 0)
         {
             //decirle al IS que se ponga en modo choosing
@@ -71,10 +83,10 @@ public static class ActionAssembler
         var validReceiver = _receiversQueue.Dequeue();
         bool isValid = validReceiver switch
         {
-            ValidActionReceiver.OwnerSlot => receiver is SlotReceiver && _playableItem.Owner == receiver.Owner,
+            ValidActionReceiver.OwnerSlot => receiver is SlotReceiver && PlayableItem.Owner == receiver.Owner,
             ValidActionReceiver.AnySlot => receiver is SlotReceiver,
             ValidActionReceiver.AnyTerritory => receiver is TerritoryReceiver,
-            ValidActionReceiver.OwnerCard => receiver is PlayableCard && _playableItem.Owner == receiver.Owner,
+            ValidActionReceiver.OwnerCard => receiver is PlayableCard && PlayableItem.Owner == receiver.Owner,
             ValidActionReceiver.AnyCard => receiver is PlayableCard,
             _ => throw new ArgumentOutOfRangeException()
         };
@@ -85,6 +97,7 @@ public static class ActionAssembler
             return AssemblyState.Failed;
         }
 
+        _actionReceivers.Add(receiver);
         _receiversList.Add(receiver.GetReceiverStruct(ValidAction.ActionReceiverToDropLocation(validReceiver)));
 
         if (_receiversQueue.Count > 0) return AssemblyState.Ongoing;
@@ -95,13 +108,17 @@ public static class ActionAssembler
 
     private static bool SendCompletedAction()
     {
-        var actor = _playableItem.Owner;
-        var receivers = _receiversList.ToArray();
-        if (!ServiceLocator.Get<IRulesSystem>().IsValidAction(actor, _playableItem.ActionItem, receivers))
+        var playerActionStruct = new PlayerAction(
+            PlayableItem.Owner,
+            PlayableItem.ActionItem,
+            _receiversList.ToArray(),
+            PlayableItem.IndexInHand);
+
+        if (!ServiceLocator.Get<IRulesSystem>().IsValidAction(playerActionStruct))
             return false;
 
-        
-        ServiceLocator.Get<IRulesSystem>().PerformAction(actor, _playableItem.ActionItem, receivers);
+
+        ServiceLocator.Get<IRulesSystem>().PerformAction(playerActionStruct);
         //devolver true desactiva el Interaction System, lo vuelve a activar el sistema de turnos cuando acaben los efectos
         return true;
     }

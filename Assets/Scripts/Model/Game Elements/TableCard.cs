@@ -1,10 +1,10 @@
 public class TableCard
 {
-    public readonly ACard Card;
+    public readonly ICard Card;
     public int TurnsAlive { get; private set; }
     public TableCard InfluenceCardOnTop { get; private set; }
 
-    internal TableCard(ACard card)
+    internal TableCard(ICard card)
     {
         Card = card;
     }
@@ -15,7 +15,7 @@ public class TableCard
         InfluenceCardOnTop?.AdvanceTurn();
     }
 
-    internal void PlaceInlfuenceCard(InfluenceCard card)
+    internal void PlaceInlfuenceCard(ICard card)
     {
         InfluenceCardOnTop = new TableCard(card);
     }

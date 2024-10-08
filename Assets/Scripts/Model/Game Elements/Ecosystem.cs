@@ -11,53 +11,53 @@ public class Ecosystem
 
     private int _totalPopulationCards;
 
-    internal void OnPopulationCardPlace(TableCard card)
+    internal void OnPopulationCardPlace(TableCard tableCard)
     {
-        if (card.Card is not PopulationCard pc) throw new Exception("Peticion invalida tal");
+        if (tableCard.Card.CardType is not ICard.Card.Population) throw new Exception("Peticion invalida tal");
 
-        foreach (var type in pc.GetTypes())
+        foreach (var type in tableCard.Card.GetPopulations())
         {
             switch (type)
             {
-                case PopulationCard.Type.Plant:
-                    _plants.Add(card);
+                case ICard.Population.Plant:
+                    _plants.Add(tableCard);
                     break;
-                case PopulationCard.Type.Herbivore:
-                    _herbivores.Add(card);
+                case ICard.Population.Herbivore:
+                    _herbivores.Add(tableCard);
                     break;
-                case PopulationCard.Type.Carnivore:
-                    _carnivores.Add(card);
+                case ICard.Population.Carnivore:
+                    _carnivores.Add(tableCard);
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new Exception("Peticion invalida tal");
             }
         }
 
         _totalPopulationCards++;
     }
 
-    internal void OnPopulationCardDie(TableCard card)
+    internal void OnPopulationCardDie(TableCard tableCard)
     {
-        if (card.Card is not PopulationCard pc) throw new Exception("Peticion invalida tal");
+        if (tableCard.Card.CardType is not ICard.Card.Population) throw new Exception("Peticion invalida tal");
 
-        foreach (var type in pc.GetTypes())
+        foreach (var type in tableCard.Card.GetPopulations())
         {
             switch (type)
             {
-                case PopulationCard.Type.Plant:
-                    _plants.Remove(card);
+                case ICard.Population.Plant:
+                    _plants.Remove(tableCard);
                     break;
-                case PopulationCard.Type.Herbivore:
-                    _herbivores.Remove(card);
+                case ICard.Population.Herbivore:
+                    _herbivores.Remove(tableCard);
                     break;
-                case PopulationCard.Type.Carnivore:
-                    _carnivores.Remove(card);
+                case ICard.Population.Carnivore:
+                    _carnivores.Remove(tableCard);
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new Exception("Peticion invalida tal");
             }
         }
 
-        _totalPopulationCards++;
+        _totalPopulationCards--;
     }
 }

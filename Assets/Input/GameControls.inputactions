@@ -31,6 +31,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Tap",
+                    "type": "Button",
+                    "id": "a6e577d6-31cb-4859-b77f-2515feda05e8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -71,7 +80,7 @@
                     "name": "",
                     "id": "84cdfe12-4d9e-431b-870e-b08a49eaa7f9",
                     "path": "<Touchscreen>/Press",
-                    "interactions": "",
+                    "interactions": "Hold",
                     "processors": "",
                     "groups": "Touch",
                     "action": "PointerPress",
@@ -97,6 +106,17 @@
                     "processors": "InvertVector2(invertX=false)",
                     "groups": "Touch",
                     "action": "Scroll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8bd40418-3c9f-438c-8103-2937593e0592",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": "Touch",
+                    "action": "Tap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
