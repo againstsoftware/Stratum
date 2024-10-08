@@ -13,6 +13,7 @@ public interface IInteractionSystem : IService
     public LayerMask InteractablesLayer { get; }
     public IReadOnlyList<IActionReceiver> CurrentActionReceivers { get; }
     public APlayableItem CurrentActionPlayableItem { get; }
+    public PlayerCharacter LocalPlayer { get; set; }
 
 
     public void SelectInteractable(IInteractable item);

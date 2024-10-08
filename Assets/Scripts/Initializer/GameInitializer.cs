@@ -19,6 +19,7 @@ public class GameInitializer : MonoBehaviour
         
         ServiceLocator.Register<IView>(FindAnyObjectByType<ViewManager>());
         ServiceLocator.Register<ITurnSystem>(FindAnyObjectByType<TurnManager>());
-
+    
+        ServiceLocator.Register<INetworkSystem>(FindAnyObjectByType<GameNetwork>());
     }
 }

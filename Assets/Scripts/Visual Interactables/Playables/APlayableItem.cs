@@ -24,7 +24,6 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
     private Vector3 _defaultMeshScale;
     protected Vector3 _inHandPosition;
     private Quaternion _inHandRotation;
-    private Transform _camTransform;
     private Collider _collider;
     private float _t;
     private Vector3 _travelStartPosition, _travelEndPosition;
@@ -47,7 +46,6 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
 
     protected virtual void Start()
     {
-        _camTransform = Camera.main.transform;
     }
 
     private void Update()

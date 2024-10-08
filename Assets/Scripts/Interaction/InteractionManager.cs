@@ -19,20 +19,22 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     public IReadOnlyList<IActionReceiver> CurrentActionReceivers => ActionAssembler.ActionReceivers;
     public APlayableItem CurrentActionPlayableItem => ActionAssembler.PlayableItem;
     
+    public PlayerCharacter LocalPlayer { get; set; }
     
     
-    [SerializeField] private PlayerCharacter _localPlayer;
     [SerializeField] private InputActionAsset _inputActions;
-    [SerializeField] private Rulebook _rulebook;
 
     [SerializeField] private float _itemCamOffsetOnDrag;
     [SerializeField] private float _dropLocationCheckFrequency;
 
     [SerializeField] private GameConfig _config;
     
+
     private InputAction _pointerPosAction;
     
     private CameraMovement _cameraMovement;
+    private Rulebook _rulebook;
+
     private Transform _dragItemTransform;
 
     private Vector3 _screenPointerPosition;
@@ -44,6 +46,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     private readonly HashSet<IActionReceiver> _selectedReceivers = new();
     private IActionReceiver _selectedReceiver;
 
+    
 
     private int _actionsLeft;
 
@@ -62,7 +65,9 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     private void Start()
     {
         Camera = Camera.main;
+        
         _cameraMovement = Camera.GetComponent<CameraMovement>();
+        _rulebook = Camera.GetComponentInChildren<Rulebook>();
 
         ServiceLocator.Get<ITurnSystem>().OnTurnChanged += OnTurnChanged;
     }
@@ -122,7 +127,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
             throw new Exception("select called with null item!");
         }
 
-        if (!item.CanInteractWithoutOwnership && item.Owner != _localPlayer) return;
+        if (!item.CanInteractWithoutOwnership && item.Owner != LocalPlayer) return;
         var old = SelectedInteractable;
         if (old is not null) old.OnDeselect();
         SelectedInteractable = item;
@@ -151,7 +156,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     {
         if (CurrentState is not IInteractionSystem.State.Idle) return;
         if (item.CurrentState is not APlayableItem.State.Playable) return;
-        if (item.Owner != _localPlayer) return;
+        if (item.Owner != LocalPlayer) return;
         if (item != SelectedInteractable as APlayableItem)
         {
             throw new Exception("drag called with non selected item!");
@@ -319,7 +324,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
 
     private void OnTurnChanged(PlayerCharacter onTurn)
     {
-        if (onTurn != _localPlayer)
+        if (onTurn != LocalPlayer)
         {
             CurrentState = IInteractionSystem.State.Waiting;
             return;
