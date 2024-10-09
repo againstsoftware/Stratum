@@ -296,40 +296,41 @@ El estilo visual de **Stratum** se inspira en una combinación de arte **low-pol
 
 Inspiración:
 
-![Cartas1](/Readme%20Files/Arte/Imagen1.png)  
-![Cartas2](/Readme%20Files/Arte/Imagen2.png)  
-![Sofá](/Readme%20Files/Arte/Imagen3.png)  
+![Cartas1](/Readme%20Files/Arte/Imagen1.jpg)  
+![Cartas2](/Readme%20Files/Arte/Imagen2.jpg)  
+![Sofá](/Readme%20Files/Arte/Imagen3.jpg)  
 ![Marcos](/Readme%20Files/Arte/Imagen4.png)  
-![Paleta](/Readme%20Files/Arte/Imagen5.png)   
-![Ascensor](/Readme%20Files/Arte/Imagen6.png)  
-![Gato](/Readme%20Files/Arte/Imagen7.png)  
+![Paleta](/Readme%20Files/Arte/Imagen5.jpg)   
+![Ascensor](/Readme%20Files/Arte/Imagen6.jpg)  
+![Gato](/Readme%20Files/Arte/Imagen7.jpg)  
 
 ### Modelado 3D
 Los modelos tridimensionales del entorno de juego y los personajes se desarrollarán con un estilo **low-poly**, evocando la estética de juegos de la era **PSX**. Este enfoque simplificado ayuda a capturar la esencia visual de cada elemento sin sobrecargar la representación gráfica, manteniendo un aspecto nítido y comprensible en un entorno 3D.
 
 -	**Entornos**: Los territorios donde los jugadores colocarán sus cartas serán diseñados con geometría simple y texturas planas que respeten el estilo low-poly. Las texturas y colores de cada territorio reflejarán los temas de la facción a la que pertenecen (naturaleza, industria, hongos).   
-![Escenario](/Readme%20Files/Arte/Imagen8.png)  
-![Hongos1](/Readme%20Files/Arte/Imagen9.png)  
+![Escenario](/Readme%20Files/Arte/Imagen8.jpg)  
+![Hongos1](/Readme%20Files/Arte/Imagen9.jpg)  
 ![Hongos2](/Readme%20Files/Arte/Imagen10.png)  
 ![Fabrica](/Readme%20Files/Arte/Imagen11.png)  
-![Lobo](/Readme%20Files/Arte/Imagen12.png)  
-![Ciervo](/Readme%20Files/Arte/Imagen13.png)  
-![Animales](/Readme%20Files/Arte/Imagen14.png)  
+![Lobo](/Readme%20Files/Arte/Imagen12.jpg)  
+![Ciervo](/Readme%20Files/Arte/Imagen13.jpg)  
+![Animales](/Readme%20Files/Arte/Imagen14.jpg)  
 
 - **Personajes**: Cada uno de los personajes será representado con modelos 3D de baja resolución que mantendrán características distintivas de sus facciones, mientras que sus detalles principales se concentrarán en las siluetas y colores característicos.
     - **Sagitario**: Ente de la naturaleza inspirado en un centauro.
-    ![Centauro1](/Readme%20Files/Arte/Imagen15.png)  
-    ![Centauro2](/Readme%20Files/Arte/Imagen16.png)  
+    ![Centauro1](/Readme%20Files/Arte/Imagen15.jpg)  
+    ![Centauro2](/Readme%20Files/Arte/Imagen16.jpg)  
     - **Ygdra**: Diosa del bosque.
-    ![Ygdra1](/Readme%20Files/Arte/Imagen17.png)  
-    ![Ygdra2](/Readme%20Files/Arte/Imagen18.png)  
-    ![Ygdra3](/Readme%20Files/Arte/Imagen19.png)  
+    ![Ygdra1](/Readme%20Files/Arte/Imagen17.jpg)  
+    ![Ygdra2](/Readme%20Files/Arte/Imagen18.jpg)  
+    ![Ygdra3](/Readme%20Files/Arte/Imagen19.jpg)  
 
-    - **El Magnate**: Humano que quiere construir una industria.
-    ![Humano1](/Readme%20Files/Arte/Imagen20.png)  
+    - **El Magnate**: Humano que quiere construir una industria.   
+    ![Humano1](/Readme%20Files/Arte/Imagen20.png)   
     ![Humano2](/Readme%20Files/Arte/Imagen21.png)  
+
     - **Fu'ngaloth**: Entidad de los hongos.
-    ![Fu'ngaloth1](/Readme%20Files/Arte/Imagen22.png)  
+    ![Fu'ngaloth1](/Readme%20Files/Arte/Imagen22.jpg)  
     ![Fu'ngaloth2](/Readme%20Files/Arte/Imagen23.png)  
     ![Fu'ngaloth3](/Readme%20Files/Arte/Imagen24.png)  
     
@@ -338,8 +339,8 @@ El juego utilizará **cel-shading** para lograr un estilo visual estilizado. Est
 
 - **Volumetría y Luces**: Se emplearán luces volumétricas sutiles para enfatizar momentos clave del juego, como cuando un jugador realiza una acción importante o cuando se producen cambios dramáticos en el ecosistema.
 
-![Lethal Company](/Readme%20Files/Arte/Imagen25.png)  
-![Jet Set Radio](/Readme%20Files/Arte/Imagen26.png)  
+![Lethal Company](/Readme%20Files/Arte/Imagen25.jpg)  
+![Jet Set Radio](/Readme%20Files/Arte/Imagen26.jpg)  
 
 ## 4.2. Arte de las Cartas
 ### Cartas de Población
@@ -347,17 +348,17 @@ El juego utilizará **cel-shading** para lograr un estilo visual estilizado. Est
 Las cartas de población representan a plantas, herbívoros y carnívoros. Cada tipo de carta será ilustrada en 2D, manteniendo el estilo general del Art Nouveau con énfasis en líneas fluidas y detalles orgánicos.
 
 - **Plantas**: Diseñadas con tonos verdes y marrones. Las ilustraciones mostrarán plantas robustas y vitales enmarcadas por patrones orgánicos.   
-![Flor1](/Readme%20Files/Arte/Imagen27.png)   
-![Flor2](/Readme%20Files/Arte/Imagen28.png)   
-![Flor3](/Readme%20Files/Arte/Imagen29.png)
+![Flor1](/Readme%20Files/Arte/Imagen27.jpg)   
+![Flor2](/Readme%20Files/Arte/Imagen28.jpg)   
+![Flor3](/Readme%20Files/Arte/Imagen29.jpg)
 
 - **Herbívoros**: Representados con colores cálidos y suaves destacando el equilibrio en el ecosistema.  
-![Ciervo2](/Readme%20Files/Arte/Imagen30.png)  
-![Ciervo3](/Readme%20Files/Arte/Imagen31.png)
+![Ciervo2](/Readme%20Files/Arte/Imagen30.jpg)  
+![Ciervo3](/Readme%20Files/Arte/Imagen31.jpg)
 
 - **Carnívoros**: Con tonos más oscuros y formas agresivas, pero siempre respetando la estética estilizada y orgánica del juego.  
-![Lobo2](/Readme%20Files/Arte/Imagen32.png)  
-![Oso](/Readme%20Files/Arte/Imagen33.png)  
+![Lobo2](/Readme%20Files/Arte/Imagen32.jpg)  
+![Oso](/Readme%20Files/Arte/Imagen33.jpg)  
 
 ### Cartas de Influencia
 Cada facción tendrá cartas de influencia únicas que permitirán alterar el ecosistema. El estilo artístico variará según la facción:
