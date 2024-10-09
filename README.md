@@ -308,7 +308,7 @@ Inspiración:
 Los modelos tridimensionales del entorno de juego y los personajes se desarrollarán con un estilo **low-poly**, evocando la estética de juegos de la era **PSX**. Este enfoque simplificado ayuda a capturar la esencia visual de cada elemento sin sobrecargar la representación gráfica, manteniendo un aspecto nítido y comprensible en un entorno 3D.
 
 -	**Entornos**: Los territorios donde los jugadores colocarán sus cartas serán diseñados con geometría simple y texturas planas que respeten el estilo low-poly. Las texturas y colores de cada territorio reflejarán los temas de la facción a la que pertenecen (naturaleza, industria, hongos).   
-![Escenario](/Readme%20Files/Arte/Imagen8.jpg)  
+![Escenario](/Readme%20Files/Arte/Imagen8.png)  
 ![Hongos1](/Readme%20Files/Arte/Imagen9.jpg)  
 ![Hongos2](/Readme%20Files/Arte/Imagen10.png)  
 ![Fabrica](/Readme%20Files/Arte/Imagen11.png)  
@@ -318,18 +318,22 @@ Los modelos tridimensionales del entorno de juego y los personajes se desarrolla
 
 - **Personajes**: Cada uno de los personajes será representado con modelos 3D de baja resolución que mantendrán características distintivas de sus facciones, mientras que sus detalles principales se concentrarán en las siluetas y colores característicos.
     - **Sagitario**: Ente de la naturaleza inspirado en un centauro.
+
     ![Centauro1](/Readme%20Files/Arte/Imagen15.jpg)  
     ![Centauro2](/Readme%20Files/Arte/Imagen16.jpg)  
     - **Ygdra**: Diosa del bosque.
+
     ![Ygdra1](/Readme%20Files/Arte/Imagen17.jpg)  
     ![Ygdra2](/Readme%20Files/Arte/Imagen18.jpg)  
     ![Ygdra3](/Readme%20Files/Arte/Imagen19.jpg)  
 
-    - **El Magnate**: Humano que quiere construir una industria.   
+    - **El Magnate**: Humano que quiere construir una industria.  
+
     ![Humano1](/Readme%20Files/Arte/Imagen20.png)   
     ![Humano2](/Readme%20Files/Arte/Imagen21.png)  
 
     - **Fu'ngaloth**: Entidad de los hongos.
+    
     ![Fu'ngaloth1](/Readme%20Files/Arte/Imagen22.jpg)  
     ![Fu'ngaloth2](/Readme%20Files/Arte/Imagen23.png)  
     ![Fu'ngaloth3](/Readme%20Files/Arte/Imagen24.png)  
