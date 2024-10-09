@@ -7,7 +7,7 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     public override bool OnlyVisibleOnOverview => false;
     public override bool CanInteractWithoutOwnership => _canInteractWithoutOwnership;
 
-    public override IActionItem ActionItem => Card;
+    public override AActionItem ActionItem => Card;
     public override int IndexInHand { get; set; }
     public bool IsDropEnabled { get; private set; } = false;
 
@@ -42,7 +42,8 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
         {
             OnPlayed(playLocation);
             onPlayedCallback();
-            _actionCompletedCallback();
+            _actionCompletedCallback?.Invoke();
+            _actionCompletedCallback = null;
             return;
         }
         
@@ -51,7 +52,8 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
         {
             OnPlayed(playLocation);
             onPlayedCallback();
-            _actionCompletedCallback();
+            _actionCompletedCallback?.Invoke();
+            _actionCompletedCallback = null;
         });
         
     }

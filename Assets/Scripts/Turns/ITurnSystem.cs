@@ -7,4 +7,6 @@ public interface ITurnSystem : IService
     public void StartInitialTurn();
 
     public void OnActionEnded();
+
+    public void ChangeTurn(PlayerCharacter playerOnTurn);
 }

@@ -9,15 +9,17 @@ public class DummyRulesManager : IRulesSystem
     public bool IsValidAction(PlayerAction action) => true;
     public void PerformAction(PlayerAction action)
     {
-        (ServiceLocator.Get<ITurnSystem>() as MonoBehaviour).
-            StartCoroutine(cor(() => ServiceLocator.Get<IExecutor>().ExecuteEffectCommands(action)));
+        (ServiceLocator.Get<ITurnSystem>() as MonoBehaviour). //puede ser cualquier monobehaviour (es de pega)
+            StartCoroutine(SendToExecute(action));
     }
 
-    IEnumerator cor(Action a)
+    private IEnumerator SendToExecute(PlayerAction action)
     {
         yield return null;
-        a();
-
+        
+        ServiceLocator.Get<ICommunicationSystem>().SendActionToAuthority(action);
+        
+        // ServiceLocator.Get<IExecutor>().ExecuteEffectCommands(action);
     }
 
 }

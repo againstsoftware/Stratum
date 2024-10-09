@@ -313,11 +313,12 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     {
         if (_actionsLeft == 0)
         {
-            
+            Debug.Log("no actions left in IM");
             CurrentState = IInteractionSystem.State.Waiting;
             return;
         }
-        
+        Debug.Log("starting next action");
+
         _actionsLeft--;
         CurrentState = IInteractionSystem.State.Idle;
     }

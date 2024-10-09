@@ -8,7 +8,7 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
     
     public abstract bool OnlyVisibleOnOverview { get; }
     public abstract bool CanInteractWithoutOwnership { get; }
-    public abstract IActionItem ActionItem { get; }
+    public abstract AActionItem ActionItem { get; }
     public abstract int IndexInHand { get; set; }
 
     

@@ -117,7 +117,7 @@ public static class ActionAssembler
         if (!ServiceLocator.Get<IRulesSystem>().IsValidAction(playerActionStruct))
             return false;
 
-
+        
         ServiceLocator.Get<IRulesSystem>().PerformAction(playerActionStruct);
         //devolver true desactiva el Interaction System, lo vuelve a activar el sistema de turnos cuando acaben los efectos
         return true;

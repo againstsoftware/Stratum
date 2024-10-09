@@ -35,5 +35,6 @@ public class EffectExecutor : IExecutor
         
         //notificamos final de la accion
         Debug.Log("accion ejecutada!");
+        ServiceLocator.Get<ITurnSystem>().OnActionEnded();
     }
 }

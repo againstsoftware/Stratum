@@ -7,7 +7,7 @@ public class PlayableToken : APlayableItem, IRulebookEntry
     public override bool CanInteractWithoutOwnership => true;
 
     [SerializeField] private Token _token;
-    public override IActionItem ActionItem => _token;
+    public override AActionItem ActionItem => _token;
     public override int IndexInHand { get; set; } = -1;
 
 

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class GameInitializer : MonoBehaviour
@@ -20,6 +21,12 @@ public class GameInitializer : MonoBehaviour
         ServiceLocator.Register<IView>(FindAnyObjectByType<ViewManager>());
         ServiceLocator.Register<ITurnSystem>(FindAnyObjectByType<TurnManager>());
     
-        ServiceLocator.Register<INetworkSystem>(FindAnyObjectByType<GameNetwork>());
+        ServiceLocator.Register<ICommunicationSystem>(FindAnyObjectByType<GameNetwork>());
+    }
+
+    private IEnumerator Start()
+    {
+        yield return null;
+        ServiceLocator.Get<ITurnSystem>().StartInitialTurn();
     }
 }

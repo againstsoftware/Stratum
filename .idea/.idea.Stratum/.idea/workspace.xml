@@ -34,6 +34,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/ToggleGroup.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Editor/Canvas/AssertionFailureOnOutputVertexCount.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Runtime/Canvas/NoActiveCameraInSceneDoesNotCrashEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Runtime/Canvas/RectTransformValidAfterEnable.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -137,6 +138,7 @@
       <workItem from="1728318635299" duration="15802000" />
       <workItem from="1728387522126" duration="5137000" />
       <workItem from="1728395684758" duration="4507000" />
+      <workItem from="1728468517899" duration="6738000" />
     </task>
     <servers />
   </component>
@@ -147,37 +149,5 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Interaction/InteractionManager.cs</url>
-          <line>137</line>
-          <properties documentPath="C:\Users\migue\Documents\GitHub\Stratum\Assets\Scripts\Interaction\InteractionManager.cs" initialLine="134" containingFunctionPresentation="Method 'SelectInteractable'">
-            <startOffsets>
-              <option value="4178" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4213" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Interaction/InteractionManager.cs</url>
-          <line>150</line>
-          <properties documentPath="C:\Users\migue\Documents\GitHub\Stratum\Assets\Scripts\Interaction\InteractionManager.cs" initialLine="147" containingFunctionPresentation="Method 'DeselectInteractable'">
-            <startOffsets>
-              <option value="4624" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4649" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

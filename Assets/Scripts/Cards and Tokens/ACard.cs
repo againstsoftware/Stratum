@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Localization;
 using System.Collections.Generic;
 
-public abstract class ACard : ScriptableObject, IActionItem, ICard, IEffectContainer
+public abstract class ACard : AActionItem, ICard, IEffectContainer
 {
     public string Name { get => _name.GetLocalizedString(); }
     public string Description { get => _description.GetLocalizedString(); }
@@ -11,7 +11,7 @@ public abstract class ACard : ScriptableObject, IActionItem, ICard, IEffectConta
     
     [SerializeField] private LocalizedString _name, _description;
 
-    [field: SerializeField] public ValidAction[] ValidActions { get; private set; } = 
+    [field: SerializeField] public override ValidAction[] ValidActions { get; protected set; } = 
         { new ValidAction(ValidDropLocation.DiscardPile) };
 
 
