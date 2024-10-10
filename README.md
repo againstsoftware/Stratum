@@ -29,6 +29,17 @@
 
 [4. Arte y apartado visual](#4-arte-y-apartado-visual)
 
+* [4.1. Estilo Visual General](#41-estilo-visual-general)
+
+* [4.2. Arte de las Cartas](#42-arte-de-las-cartas)
+
+* [4.3. Escenarios y Ambientación](#43-escenarios-y-ambientación)
+
+* [4.4. El Ecosistema](#44-el-ecosistema)
+
+* [4.5. Iconografía y Tipografía](#45-iconografía-y-tipografía)
+
+
 [5. Sonido y Música](#5-sonido-y-música)
 
 * [5.1. Visión General del Sonido](#51-visión-general-del-sonido)
@@ -277,8 +288,145 @@ Como jugador, ahora es tu turno. **Stratum**, el juego ancestral que ha determin
 
 
 # 4. Arte y apartado visual
-...
 
+
+## 4.1. Estilo Visual General
+El estilo visual de **Stratum** se inspira en una combinación de arte **low-poly** y elementos estilizados del **Art Nouveau**. Este enfoque se alinea con la temática del juego, que enfrenta la preservación de los ecosistemas contra su explotación industrial y la expansión de los hongos.
+
+
+Inspiración:
+
+![Cartas1](/Readme%20Files/Arte/Imagen1.jpg)  
+![Cartas2](/Readme%20Files/Arte/Imagen2.jpg)  
+![Sofá](/Readme%20Files/Arte/Imagen3.jpg)  
+![Marcos](/Readme%20Files/Arte/Imagen4.png)  
+![Paleta](/Readme%20Files/Arte/Imagen5.jpg)   
+![Ascensor](/Readme%20Files/Arte/Imagen6.jpg)  
+![Gato](/Readme%20Files/Arte/Imagen7.jpg)  
+
+### Modelado 3D
+Los modelos tridimensionales del entorno de juego y los personajes se desarrollarán con un estilo **low-poly**, evocando la estética de juegos de la era **PSX**. Este enfoque simplificado ayuda a capturar la esencia visual de cada elemento sin sobrecargar la representación gráfica, manteniendo un aspecto nítido y comprensible en un entorno 3D.
+
+-	**Entornos**: Los territorios donde los jugadores colocarán sus cartas serán diseñados con geometría simple y texturas planas que respeten el estilo low-poly. Las texturas y colores de cada territorio reflejarán los temas de la facción a la que pertenecen (naturaleza, industria, hongos).   
+![Escenario](/Readme%20Files/Arte/Imagen8.png)  
+![Hongos1](/Readme%20Files/Arte/Imagen9.jpg)  
+![Hongos2](/Readme%20Files/Arte/Imagen10.png)  
+![Fabrica](/Readme%20Files/Arte/Imagen11.png)  
+![Lobo](/Readme%20Files/Arte/Imagen12.jpg)  
+![Ciervo](/Readme%20Files/Arte/Imagen13.jpg)  
+![Animales](/Readme%20Files/Arte/Imagen14.jpg)  
+
+- **Personajes**: Cada uno de los personajes será representado con modelos 3D de baja resolución que mantendrán características distintivas de sus facciones, mientras que sus detalles principales se concentrarán en las siluetas y colores característicos.
+    - **Sagitario**: Ente de la naturaleza inspirado en un centauro.
+
+    ![Centauro1](/Readme%20Files/Arte/Imagen15.jpg)  
+    ![Centauro2](/Readme%20Files/Arte/Imagen16.jpg)  
+    - **Ygdra**: Diosa del bosque.
+
+    ![Ygdra1](/Readme%20Files/Arte/Imagen17.jpg)  
+    ![Ygdra2](/Readme%20Files/Arte/Imagen18.jpg)  
+    ![Ygdra3](/Readme%20Files/Arte/Imagen19.jpg)  
+
+    - **El Magnate**: Humano que quiere construir una industria.  
+
+    ![Humano1](/Readme%20Files/Arte/Imagen20.png)   
+    ![Humano2](/Readme%20Files/Arte/Imagen21.png)  
+
+    - **Fu'ngaloth**: Entidad de los hongos.
+    
+    ![Fu'ngaloth1](/Readme%20Files/Arte/Imagen22.jpg)  
+    ![Fu'ngaloth2](/Readme%20Files/Arte/Imagen23.png)  
+    ![Fu'ngaloth3](/Readme%20Files/Arte/Imagen24.png)  
+    
+### Renderizado y Texturizado
+El juego utilizará **cel-shading** para lograr un estilo visual estilizado. Este enfoque, junto con el uso de modelos **low-poly** y texturas simples y planas, se ha seleccionado para optimizar el rendimiento en todos los dispositivos, ofreciendo una experiencia fluida y accesible sin sacrificar el estilo visual del juego.
+
+- **Volumetría y Luces**: Se emplearán luces volumétricas sutiles para enfatizar momentos clave del juego, como cuando un jugador realiza una acción importante o cuando se producen cambios dramáticos en el ecosistema.
+
+![Lethal Company](/Readme%20Files/Arte/Imagen25.jpg)  
+![Jet Set Radio](/Readme%20Files/Arte/Imagen26.jpg)  
+
+## 4.2. Arte de las Cartas
+### Cartas de Población
+
+Las cartas de población representan a plantas, herbívoros y carnívoros. Cada tipo de carta será ilustrada en 2D, manteniendo el estilo general del Art Nouveau con énfasis en líneas fluidas y detalles orgánicos.
+
+- **Plantas**: Diseñadas con tonos verdes y marrones. Las ilustraciones mostrarán plantas robustas y vitales enmarcadas por patrones orgánicos.   
+![Flor1](/Readme%20Files/Arte/Imagen27.jpg)   
+![Flor2](/Readme%20Files/Arte/Imagen28.jpg)   
+![Flor3](/Readme%20Files/Arte/Imagen29.jpg)
+
+- **Herbívoros**: Representados con colores cálidos y suaves destacando el equilibrio en el ecosistema.  
+![Ciervo2](/Readme%20Files/Arte/Imagen30.jpg)  
+![Ciervo3](/Readme%20Files/Arte/Imagen31.jpg)
+
+- **Carnívoros**: Con tonos más oscuros y formas agresivas, pero siempre respetando la estética estilizada y orgánica del juego.  
+![Lobo2](/Readme%20Files/Arte/Imagen32.jpg)  
+![Oso](/Readme%20Files/Arte/Imagen33.jpg)  
+
+### Cartas de Influencia
+Cada facción tendrá cartas de influencia únicas que permitirán alterar el ecosistema. El estilo artístico variará según la facción:
+
+- **Naturaleza**: Las cartas de Sagitario y Ygdra tendrán ilustraciones en 2D que evoquen la vitalidad del ecosistema.
+- **Industria**: Las cartas de El Magnate destacarán la maquinaria y la destrucción del ecosistema con tonos grises y metálicos.
+- **Fungi**: Las cartas de Fu’ngaloth tendrán elementos que evoquen corrupción y expansión de hongos, usando una paleta de colores oscuros y púrpuras.
+
+
+## 4.3. Escenarios y Ambientación
+En **Stratum**, el entorno de juego se divide en dos planos principales: la mesa de juego física y el ecosistema en el centro de la mesa.
+
+### La Mesa de Juego
+La mesa, que sirve de escenario principal, está diseñada con una decoración estilo Art Nouveau. El jugador verá su propia mano de cartas en primer plano y alrededor podrá observar a los demás personajes que se encuentran en las otras posiciones de la mesa.
+
+-	**Decoración de la Mesa**: La mesa está adornada con elementos temáticos que evocan el mundo de **Sylveria**, el bosque legendario donde tiene lugar el conflicto. Los bordes de la mesa pueden estar decorados con grabados de ramas y hojas que representen a la Naturaleza, tuberías o engranajes industriales que evoquen a la Industria, y hongos que brotan del borde en representación de Fungi. La ambientación busca transmitir la sensación de que la mesa es un reflejo físico del conflicto entre las facciones.
+
+-	**Los Personajes**: Además de ver su propia mano, el jugador puede ver representaciones estilizadas en **low-poly** de los otros personajes (Sagitario, Ygdra, El Magnate, Fu’ngaloth) sentados alrededor de la mesa.
+
+-	**Detalles en la Habitación**: Más allá de la mesa, el entorno visible puede incluir una habitación decorada con objetos que aluden al lore del juego. 
+
+
+### El Ecosistema
+El ecosistema es la manifestación visual de las cartas jugadas en la mesa, cobrando vida en un espacio mágico sobre la superficie de juego. Cada vez que un jugador coloca una carta de población (plantas, herbívoros, carnívoros, fábricas o macrohongos), esta se traduce en una representación tridimensional en el ecosistema.
+
+-	**Visualización del Ecosistema**: El ecosistema se expande sobre el centro de la mesa, con cada carta jugada reflejándose en el entorno. Este espacio mágico se desarrolla frente a los ojos del jugador, cambiando de forma constante en función de las jugadas.
+
+-	**Reacción del Escenario**: El ecosistema no es estático. A medida que se desequilibra o se estabiliza con nuevas cartas, el ambiente responde: cuando la Naturaleza predomina, el entorno se llena de vida, con colores verdes vibrantes, crecimiento de plantas y fauna visible. Si la Industria gana terreno, la atmósfera se vuelve más fría y mecánica, con humo y fábricas emergiendo. Si Fungi toma el control, el entorno se cubre de hongos, la vegetación se marchita y el escenario adquiere un tono oscuro y decadente.
+
+-	**Interacción Visual**: Cuando se coloca una carta en uno de los cinco espacios del jugador, su efecto se proyecta instantáneamente en el ecosistema. Este cambio en el ecosistema es dinámico y afecta a la atmósfera general, añadiendo una capa de interacción visual entre las decisiones de los jugadores y el estado del juego.
+
+## 4.4. El Ecosistema
+Las animaciones y efectos especiales no solo añaden dinamismo visual al juego, sino que también refuerzan la narrativa y el impacto de las jugadas, haciendo que las interacciones entre los jugadores y el ecosistema sean más inmersivas. Cada jugada cobra vida con animaciones que destacan tanto el acto de colocar cartas como los efectos de las cartas de influencia.
+
+### Colocación de Cartas
+Cuando un jugador coloca una carta en uno de sus cinco espacios de territorio, el personaje correspondiente realiza una animación para posicionarla en el tablero:
+
+-	**Animación de Colocación**: Desde la perspectiva en primera persona, el jugador ve la mano del personaje levantarse, tomar una carta de la mano disponible, y colocarla suavemente sobre el espacio seleccionado en la mesa. Simultáneamente, la representación visual de esa carta en el ecosistema (planta, animal, fábrica o hongo) aparece mágicamente en su lugar sobre la mesa.
+
+### Cartas de Influencia con Animaciones Especiales
+Varias cartas de influencia tienen efectos visuales únicos que afectan tanto al ecosistema como al escenario general, reflejando el poder de las facciones en el conflicto.
+
+-	**Animación del Incendio**: Cuando un jugador usa una carta de incendio, se muestra una rápida propagación de fuego a partir del territorio seleccionado. El fuego consume todas las cartas de población y construcciones en esa área, con animaciones de llamas naranjas y rojas que devoran el ecosistema.
+
+-	**Animación de Fruta con Semillas**: Cuando la carta se coloca sobre una planta, una sutil animación muestra la planta a la que le crece una fruta. 
+
+-	**Animación del Pesticida**: Al jugar esta carta, una nube oscura de pesticida sale de la mano del Magnate y cubre rápidamente el territorio objetivo.
+
+-	**Animación de Fuegos Artificiales**: Al activarse, varios cohetes luminosos se disparan hacia el cielo desde el territorio seleccionado, estallando en luces brillantes de diferentes colores. Las criaturas en ese territorio, ya sean herbívoros o carnívoros, se sobresaltan y son movidas a otro espacio vacío en el tablero.
+
+-	**Animación de Esporas Explosivas**: Cuando se juega esta carta, se ve cómo el territorio objetivo es cubierto por una nube densa de esporas púrpuras que se extiende rápidamente por el área, cubriendo a todas las cartas de población en una neblina tóxica. Las cartas afectadas mueren al instante, y la nube de esporas permanece unos momentos, antes de disiparse lentamente, dejando el territorio vacío y sin vida.
+
+### Impacto General en el Ecosistema
+Cada vez que una carta de influencia es jugada, los cambios en el ecosistema afectan el ambiente visual general. Si el ecosistema es dominado por la Naturaleza, el escenario se vuelve más brillante y lleno de vida. Si la Industria toma el control, el ambiente se torna más sombrío, con tonos metálicos y nubes de humo. Cuando Fungi prevalece, el escenario se oscurece y se cubre de hongos y esporas.
+Estas animaciones no solo complementan el aspecto estratégico del juego, sino que también crean una atmósfera envolvente que mantiene al jugador inmerso en el conflicto entre las facciones, reforzando el impacto de cada jugada.
+
+## 4.5. Iconografía y Tipografía
+La iconografía y tipografía en **Stratum** jugarán un papel crucial en la transmisión clara de información sin romper la inmersión, ya que todo estará integrado en el entorno de manera diegética. No habrá una interfaz convencional en pantalla; en su lugar, los elementos visuales y textuales estarán presentes directamente en los objetos del entorno, asegurando que el jugador reciba la información necesaria sin salir de la experiencia.
+
+### Iconografía
+La iconografía y tipografía en Stratum jugarán un papel crucial en la transmisión clara de información sin romper la inmersión, ya que todo estará integrado en el entorno de manera diegética. No habrá una interfaz convencional en pantalla; en su lugar, los elementos visuales y textuales estarán presentes directamente en los objetos del entorno, asegurando que el jugador reciba la información necesaria sin salir de la experiencia.
+
+### Tipografía
+La tipografía en el juego será simple, mínima y sutil, utilizada únicamente cuando sea estrictamente necesario para transmitir información clave, como nombres de cartas, reglas, o descripciones. Esta información estará integrada en el entorno de juego, siguiendo el concepto de interfaz diegética
 
 # 5. Sonido y Música
 

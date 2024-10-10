@@ -10,7 +10,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
 {
     public IInteractable SelectedInteractable { get; private set; }
     public IActionReceiver SelectedDropLocation { get; private set; }
-    public IInteractionSystem.State CurrentState { get; private set; } = IInteractionSystem.State.Idle;
+    public IInteractionSystem.State CurrentState { get; private set; } = IInteractionSystem.State.Waiting;
     public InputHandler Input { get; private set; }
 
     public Camera Camera { get; private set; }
@@ -20,13 +20,16 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     public APlayableItem CurrentActionPlayableItem => ActionAssembler.PlayableItem;
     
     
-
-    [SerializeField] private PlayerCharacter _playerOnTurn;
+    
+    [SerializeField] private PlayerCharacter _localPlayer;
     [SerializeField] private InputActionAsset _inputActions;
+    [SerializeField] private Rulebook _rulebook;
 
     [SerializeField] private float _itemCamOffsetOnDrag;
     [SerializeField] private float _dropLocationCheckFrequency;
 
+    [SerializeField] private GameConfig _config;
+    
     private InputAction _pointerPosAction;
     
     private CameraMovement _cameraMovement;
@@ -35,12 +38,14 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     private Vector3 _screenPointerPosition;
 
     // private Vector3 _screenOffsetOnDrag;
-    private Rulebook _rulebook;
     private bool _isSelectedRulebookOpener;
     private APlayableItem _draggingItem;
     private float _dropLocationCheckTimer, _dropLocationCheckPeriod;
-    private HashSet<IActionReceiver> _selectedReceivers = new();
+    private readonly HashSet<IActionReceiver> _selectedReceivers = new();
     private IActionReceiver _selectedReceiver;
+
+
+    private int _actionsLeft;
 
 
     #region Callbacks
@@ -58,13 +63,17 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     {
         Camera = Camera.main;
         _cameraMovement = Camera.GetComponent<CameraMovement>();
-        _rulebook = FindAnyObjectByType<Rulebook>();
+
+        ServiceLocator.Get<ITurnSystem>().OnTurnChanged += OnTurnChanged;
     }
     
     
     private void OnDisable()
     {
         Input.PointerPosition -= OnPointerPositionChanged;
+        var ts = ServiceLocator.Get<ITurnSystem>();
+        if(ts is not null) ts.OnTurnChanged -= OnTurnChanged;
+
     }
 
 
@@ -113,7 +122,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
             throw new Exception("select called with null item!");
         }
 
-        if (!item.CanInteractWithoutOwnership && item.Owner != _playerOnTurn) return;
+        if (!item.CanInteractWithoutOwnership && item.Owner != _localPlayer) return;
         var old = SelectedInteractable;
         if (old is not null) old.OnDeselect();
         SelectedInteractable = item;
@@ -142,7 +151,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     {
         if (CurrentState is not IInteractionSystem.State.Idle) return;
         if (item.CurrentState is not APlayableItem.State.Playable) return;
-        if (item.Owner != _playerOnTurn) return;
+        if (item.Owner != _localPlayer) return;
         if (item != SelectedInteractable as APlayableItem)
         {
             throw new Exception("drag called with non selected item!");
@@ -202,13 +211,13 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
                 CurrentState = IInteractionSystem.State.Choosing;
                 _selectedReceivers.Clear();
                 _selectedReceivers.Add(dropLocation);
-                item.OnDrop(dropLocation);
+                item.OnDrop(dropLocation, TryStartAction);
                 break;
 
             case ActionAssembler.AssemblyState.Completed:
                 CurrentState = IInteractionSystem.State.Waiting;
                 Debug.Log("accion ensamblada!!!");
-                item.OnDrop(dropLocation);
+                item.OnDrop(dropLocation, TryStartAction);
                 break;
         }
     }
@@ -292,5 +301,31 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
         }
 
         SelectedDropLocation.OnDraggingSelect();
+    }
+
+
+    private void TryStartAction()
+    {
+        if (_actionsLeft == 0)
+        {
+            
+            CurrentState = IInteractionSystem.State.Waiting;
+            return;
+        }
+        
+        _actionsLeft--;
+        CurrentState = IInteractionSystem.State.Idle;
+    }
+
+    private void OnTurnChanged(PlayerCharacter onTurn)
+    {
+        if (onTurn != _localPlayer)
+        {
+            CurrentState = IInteractionSystem.State.Waiting;
+            return;
+        }
+
+        _actionsLeft = _config.ActionsPerTurn;
+        TryStartAction();
     }
 }

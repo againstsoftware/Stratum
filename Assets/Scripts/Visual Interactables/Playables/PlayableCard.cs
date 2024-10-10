@@ -42,6 +42,7 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
         {
             OnPlayed(playLocation);
             onPlayedCallback();
+            _actionCompletedCallback();
             return;
         }
         
@@ -50,6 +51,7 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
         {
             OnPlayed(playLocation);
             onPlayedCallback();
+            _actionCompletedCallback();
         });
         
     }
@@ -111,9 +113,9 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     }
 
 
-    public override void OnDrop(IActionReceiver dropLocation)
+    public override void OnDrop(IActionReceiver dropLocation, Action actionCompletedCallback)
     {
-        base.OnDrop(dropLocation);
+        base.OnDrop(dropLocation, actionCompletedCallback);
         transform.parent = null;
         transform.rotation = dropLocation.SnapTransform.rotation;
     }

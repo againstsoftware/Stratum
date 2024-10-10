@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class GameInitializer : MonoBehaviour
 {
-    [SerializeField] private PlayerCharacter _starter;
+    [SerializeField] private GameConfig _config;
     [SerializeField] private Deck[] _decks;
 
     private void Awake()
     {
-        var gameModel = new GameModel(_starter, Array.ConvertAll(_decks, d => d as IDeck));
+        var gameModel = new GameModel(_config.TurnOrder[0], Array.ConvertAll(_decks, d => d as IDeck));
         ServiceLocator.Register<IModel>(gameModel);
         
         ServiceLocator.Register<IInteractionSystem>(FindAnyObjectByType<InteractionManager>());
@@ -18,6 +18,7 @@ public class GameInitializer : MonoBehaviour
         ServiceLocator.Register<IExecutor>(new EffectExecutor());
         
         ServiceLocator.Register<IView>(FindAnyObjectByType<ViewManager>());
+        ServiceLocator.Register<ITurnSystem>(FindAnyObjectByType<TurnManager>());
 
     }
 }
