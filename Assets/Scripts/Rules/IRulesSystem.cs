@@ -1,10 +1,15 @@
 using System;
+using System.Collections.Generic;
 public interface IRulesSystem : IService
 {
+    // comprobación local
     public bool IsValidAction(PlayerAction action); //esta comprueba en local
     
     
     //esta comprueba en host (rpc) y la ejecuta si es valida
     //si no aprueba la jugada, hay discrepancia entre cliente y host, se expulsa al jugador y se cancela la partida por chetos
     public void PerformAction(PlayerAction action);
+
+    // TURNO ECOSISTEMA
+    public void CheckEcosystemRules(List<TableCard> populationA, List<TableCard> populationB, List<TableCard> populationC);
 }
