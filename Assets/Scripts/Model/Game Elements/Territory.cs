@@ -8,7 +8,7 @@ public class Territory
     {
         Owner = owner;
         Slots = new Slot[5];
-        for (int i = 0; i < 5; i++) Slots[i] = new Slot();
+        for (int i = 0; i < 5; i++) Slots[i] = new Slot(this, i);
     }
 
     internal void AdvanceTurn()

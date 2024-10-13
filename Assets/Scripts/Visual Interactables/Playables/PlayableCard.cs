@@ -11,9 +11,9 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     public override int IndexInHand { get; set; }
     public bool IsDropEnabled { get; private set; } = false;
 
-    [field:SerializeField] public ACard Card { get; private set; }
+    public ACard Card { get; private set; }
     [field:SerializeField] public Transform SnapTransform { get; private set; }
-
+    
 
     public string GetName() => Card.Name;
     public string GetDescription() => Card.Description;
@@ -21,7 +21,11 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
 
     public SlotReceiver SlotWherePlaced { get; private set; }
     public PlayableCard CardWherePlaced { get; private set; }
+
+    public Action<PlayableCard> OnCardPlayed;
     
+    
+    [SerializeField] private float  _drawTravelDuration, _reposInHandTravelDuration;
     [SerializeField] private float _closestCardZ;
     
     
@@ -34,10 +38,14 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     {
         _hand = transform.parent;
     }
+
+    
     
     
     public override void Play(IActionReceiver playLocation, Action onPlayedCallback)
     {
+        OnCardPlayed?.Invoke(this);
+        
         if (CurrentState is not State.Playable && IsOnPlayLocation(playLocation))
         {
             OnPlayed(playLocation);
@@ -48,7 +56,7 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
         }
         
         //no se ha jugado visualmente a la mesa
-        Travel(playLocation.SnapTransform, State.Played, () =>
+        Travel(playLocation.SnapTransform, _playTravelDuration, State.Played, () =>
         {
             OnPlayed(playLocation);
             onPlayedCallback();
@@ -73,7 +81,6 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
         SlotWherePlaced = playLocation as SlotReceiver;
         CardWherePlaced = playLocation as PlayableCard;
 
-        //moverla a la playLocation
         if (SlotWherePlaced is not null) SlotWherePlaced.AddCardOnTop(this);
     }
     
@@ -127,13 +134,34 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
         transform.parent = _hand;
         base.OnDragCancel();
     }
-    
-    
-    public Receiver GetReceiverStruct(ValidDropLocation actionDropLocation) => 
-        new (actionDropLocation, Owner, 
-            CardWherePlaced is not null ? CardWherePlaced.SlotWherePlaced.IndexOnTerritory : SlotWherePlaced.IndexOnTerritory,
-            CardWherePlaced is not null ? CardWherePlaced.IndexOnSlot : IndexOnSlot);
 
-    
-    
+
+    public Receiver GetReceiverStruct(ValidDropLocation actionDropLocation)
+    {
+        return new (actionDropLocation, Owner, 
+            CardWherePlaced is not null ? 
+                    CardWherePlaced.SlotWherePlaced.IndexOnTerritory : SlotWherePlaced.IndexOnTerritory,
+            CardWherePlaced is not null ? CardWherePlaced.IndexOnSlot : IndexOnSlot);
+    }
+
+
+    public void DrawTravel(Transform target, Action callback)
+    {
+        _inHandPosition = target.position;
+        _inHandRotation = target.rotation;
+        Travel(target, _drawTravelDuration, State.Playable, callback);
+    }
+
+    public void ReposInHand(Transform target, Action callback)
+    {
+        Travel(target, _reposInHandTravelDuration, State.Playable, callback);
+    }
+
+    public void Initialize(ACard card, PlayerCharacter owner)
+    {
+        if (Card is not null) throw new Exception("carta ya asignada no se puede reasignar!");
+        Card = card;
+        Owner = owner;
+    }
+
 }

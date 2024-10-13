@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using Unity.Netcode;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GameNetwork : NetworkBehaviour, ICommunicationSystem
 {
@@ -15,7 +16,9 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
             return IsServer;
         }
     }
-    
+
+    public bool IsRNGSynced { get; private set; }
+
     [SerializeField] private GameConfig _config;
 
     private PlayerCharacter _localPlayer;
@@ -36,6 +39,28 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
         }
 
         ServiceLocator.Get<IInteractionSystem>().LocalPlayer = _localPlayer;
+    }
+
+    public void SyncRNGs()
+    {
+        if (!IsServer) return;
+        GenerateSeedServerRpc();
+    }
+
+    
+    
+    [ServerRpc]
+    private void GenerateSeedServerRpc()
+    {
+        var seed = Guid.NewGuid().GetHashCode();
+        SendSeedToClientRpc(seed);
+    }
+
+    [ClientRpc]
+    private void SendSeedToClientRpc(int seed)
+    {
+        Random.InitState(seed);
+        IsRNGSynced = true;
     }
 
 
@@ -75,15 +100,14 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
             throw new Exception("Error! Mandando rpcs sin estar spawneado");
 
         if (action.Actor == _localPlayer)
-            ServiceLocator.Get<IExecutor>().ExecuteEffectCommands(action);
+            ServiceLocator.Get<IExecutor>().ExecutePlayerActionEffects(action);
         
         
         if (IsServer) 
             CheckRulesThenExec(action);
         else 
             SendActionToServerRpc(new NetworkPlayerAction(action, _config));
-
-
+        
     }
 
     public void SendTurnChange(PlayerCharacter playerOnTurn)
@@ -118,6 +142,6 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
     {
         if (action.Actor == _localPlayer) return;
         
-        ServiceLocator.Get<IExecutor>().ExecuteEffectCommands(action.ToPlayerAction(_config));
+        ServiceLocator.Get<IExecutor>().ExecutePlayerActionEffects(action.ToPlayerAction(_config));
     }
 }

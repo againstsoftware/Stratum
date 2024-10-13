@@ -3,8 +3,9 @@ public interface ITurnSystem : IService
 {
     public PlayerCharacter PlayerOnTurn { get; }
     public event Action<PlayerCharacter> OnTurnChanged;
+    public event Action OnGameStart;
 
-    public void StartInitialTurn();
+    public void StartGame();
 
     public void OnActionEnded();
 

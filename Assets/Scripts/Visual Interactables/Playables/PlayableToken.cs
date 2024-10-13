@@ -15,7 +15,14 @@ public class PlayableToken : APlayableItem, IRulebookEntry
     public string GetName() => _token.Name;
 
     public string GetDescription() => _token.Description;
-    
+
+
+    protected override void Awake()
+    {
+        base.Awake();
+        _inHandPosition = transform.position;
+        _inHandRotation = transform.rotation;
+    }
     
     public override void Play(IActionReceiver playLocation, Action onPlayedCallback)
     {

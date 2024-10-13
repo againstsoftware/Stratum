@@ -11,8 +11,7 @@ public class Player
         Deck = deck;
         HandOfCards = new();
         Territory = new(Character);
-
-        for (int i = 0; i < 5; i++) DrawCard();
+        
     }
 
     internal void AdvanceTurn()
@@ -20,10 +19,11 @@ public class Player
         Territory.AdvanceTurn();
     }
 
-    internal void DrawCard()
+    internal ICard DrawCard()
     {
         var drewCard = Deck.DrawCard();
         HandOfCards.AddCard(drewCard);
+        return drewCard;
     }
 }
 

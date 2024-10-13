@@ -6,6 +6,8 @@ public class TurnManager : MonoBehaviour, ITurnSystem
 {
     public PlayerCharacter PlayerOnTurn { get; private set; } = PlayerCharacter.None;
     public event Action<PlayerCharacter> OnTurnChanged;
+    public event Action OnGameStart;
+
 
     [SerializeField] private GameConfig _config;
     private int _orderIdx = -1;
@@ -23,26 +25,32 @@ public class TurnManager : MonoBehaviour, ITurnSystem
 
 
 
-    public void StartInitialTurn()
+    public void StartGame()
     {
-        _orderIdx = 0;
-        PlayerOnTurn = _order[_orderIdx];
-        _actionsLeft = _numberOfActions;
-        OnTurnChanged?.Invoke(PlayerOnTurn);
+        // _orderIdx = 0;
+        // PlayerOnTurn = _order[_orderIdx];
+        // _actionsLeft = _numberOfActions;
+        // OnTurnChanged?.Invoke(PlayerOnTurn);
+
+
+        _orderIdx = -1;
+        _actionsLeft = 1;
+        PlayerOnTurn = PlayerCharacter.None;
+        OnGameStart?.Invoke();
     }
 
-    public void OnActionEnded()
+    public void OnActionEnded() //lo llama el ejecutor de comandos
     {
         _actionsLeft--;
         if (_actionsLeft > 0) return;
         NextTurn(); 
     }
 
-    private void NextTurn() // solo en la autoridad (server)
+    private void NextTurn() 
     {
         _turnCompleted = true;
         
-        if (!ServiceLocator.Get<ICommunicationSystem>().IsAuthority) return;
+        if (!ServiceLocator.Get<ICommunicationSystem>().IsAuthority) return; // solo en la autoridad (server)
 
         _orderIdx = (_orderIdx + 1) % _order.Length;
         PlayerOnTurn = _order[_orderIdx];
@@ -58,7 +66,7 @@ public class TurnManager : MonoBehaviour, ITurnSystem
 
     private IEnumerator WaitExecutionAndChangeTurn(PlayerCharacter playerOnTurn)
     {
-        while (!_turnCompleted) yield return null;
+        while (!_turnCompleted) yield return null; //si todavia no se han ejecutado todos los efectos se espera
         
         PlayerOnTurn = playerOnTurn;
         OnTurnChanged?.Invoke(PlayerOnTurn);

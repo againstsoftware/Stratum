@@ -8,6 +8,8 @@ public class GameConfig : ScriptableObject
     [field:SerializeField] public int ActionsPerTurn { get; private set; }
     
     [field:SerializeField] public PlayerCharacter[] TurnOrder { get; private set; }
+    [field:SerializeField] public GameObject CardPrefab { get; private set; }
+    
 
     [SerializeField] private AActionItem[] _actionItems;
 

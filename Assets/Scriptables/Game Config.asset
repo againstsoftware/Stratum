@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ActionsPerTurn>k__BackingField: 2
   <TurnOrder>k__BackingField: 0100000002000000000000000300000004000000
+  <CardPrefab>k__BackingField: {fileID: 2141958488974887041, guid: 9a7220bdfd419da458924201ca6a845b,
+    type: 3}
   _actionItems:
   - {fileID: 11400000, guid: 6181fded5cad13a4faf491db26c1a0de, type: 2}
   - {fileID: 11400000, guid: cb4d7773b65c8644791d211c81c30775, type: 2}

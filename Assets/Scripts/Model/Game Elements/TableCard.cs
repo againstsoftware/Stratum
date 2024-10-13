@@ -3,6 +3,8 @@ public class TableCard
     public readonly ICard Card;
     public int TurnsAlive { get; private set; }
     public TableCard InfluenceCardOnTop { get; private set; }
+    public Slot Slot { get; internal set; }
+    public int SlotIndex { get; internal set; }
 
     internal TableCard(ICard card)
     {

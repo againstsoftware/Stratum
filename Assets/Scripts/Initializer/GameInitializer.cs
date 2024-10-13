@@ -14,7 +14,7 @@ public class GameInitializer : MonoBehaviour
         
         ServiceLocator.Register<IInteractionSystem>(FindAnyObjectByType<InteractionManager>());
         
-        ServiceLocator.Register<IRulesSystem>(new DummyRulesManager()); //de pega
+        ServiceLocator.Register<IRulesSystem>(FindAnyObjectByType<DummyRulesManager>()); //de pega
         
         ServiceLocator.Register<IExecutor>(new EffectExecutor());
         
@@ -27,6 +27,6 @@ public class GameInitializer : MonoBehaviour
     private IEnumerator Start()
     {
         yield return null;
-        ServiceLocator.Get<ITurnSystem>().StartInitialTurn();
+        ServiceLocator.Get<ITurnSystem>().StartGame();
     }
 }
