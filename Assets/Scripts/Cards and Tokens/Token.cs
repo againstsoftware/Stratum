@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Localization;
 using System.Collections.Generic;
@@ -10,9 +11,14 @@ public class Token : AActionItem, IEffectContainer
     
     [SerializeField] private LocalizedString _name, _description;
 
-    [field: SerializeField] public override ValidAction[] ValidActions { get; protected set; } = 
-        { new ValidAction(ValidDropLocation.DiscardPile) };
+    [SerializeField] public ValidAction[] ValidActions;
     
     [SerializeField] private Effect[] _effects;
-    public IReadOnlyList<Effect> Effects => _effects;
+    public override IEnumerable<ValidAction> GetValidActions() => ValidActions;
+
+    public IEnumerable<Effect> GetEffects(int index)
+    {
+        if (index != 0) throw new Exception($"token solo tiene 1 secuencia de efectos!!! no {index}!");
+        return _effects;
+    }
 }

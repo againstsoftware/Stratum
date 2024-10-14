@@ -11,10 +11,12 @@ public class EffectExecutor : IExecutor
     public void ExecutePlayerActionEffects(PlayerAction action)
     {
         _currentAction = action;
+        var item = action.ActionItem as IEffectContainer;
         _commandDEQueue = new();
-        var card = _currentAction.ActionItem as ACard;
-        var token = _currentAction.ActionItem as Token;
-        var effects = card is not null ? card.Effects : token.Effects;
+
+        var effectsIndex = action.EffectsIndex;
+
+        var effects = item.GetEffects(effectsIndex);
 
         foreach (var e in effects) EnqueueCommand(EffectCommands.Get(e));
         TryExecuteNextCommand();

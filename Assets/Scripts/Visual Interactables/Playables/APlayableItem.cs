@@ -10,7 +10,7 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
     public abstract bool CanInteractWithoutOwnership { get; }
     public abstract AActionItem ActionItem { get; }
     public abstract int IndexInHand { get; set; }
-
+    public event Action OnDiscard;
     
     public enum State { Playable, Dragging, Traveling, Waiting, Played }
 
@@ -31,6 +31,8 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
     private State _travelEndState;
     private Action _onTravelEndCallback;
     protected Action _actionCompletedCallback;
+
+    protected bool _destroyed;
 
     protected virtual void Awake()
     {
@@ -63,6 +65,12 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
         }
     }
 
+    private void OnDestroy()
+    {
+        _destroyed = true;
+        OnDiscard?.Invoke();
+    }
+
     public abstract void Play(IActionReceiver playLocation, Action onPlayedCallback);
 
 
@@ -73,6 +81,7 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
 
     public virtual void OnDeselect()
     {
+        if (_destroyed) return;
         _meshTransform.localScale = _defaultMeshScale;
     }
 

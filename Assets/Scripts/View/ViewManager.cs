@@ -65,7 +65,20 @@ public class ViewManager : MonoBehaviour, IView
 
     public void Discard(PlayerCharacter actor, int cardIndex, Action callback)
     {
-        
+        var playerActor = _players[actor];
+        var playableCard = playerActor.Cards[cardIndex];
+        var discardPile = playerActor.DiscardPile;
+        playableCard.Play(discardPile, () =>
+        {
+            StartCoroutine(DestroyCard(playableCard.gameObject));
+            callback?.Invoke();
+        });
+    }
+
+    private IEnumerator DestroyCard(GameObject card)
+    {
+        yield return null;
+        Destroy(card);
     }
 
     public void DrawCards(PlayerCharacter actor, IReadOnlyList<ACard> cards, Action callback)

@@ -26,6 +26,7 @@ public class Rulebook : MonoBehaviour
         if (_currentEntry == entry) return;
         
         _currentEntry = entry;
+        _currentEntry.OnDiscard += OnEntryDiscard;
         _nameText.text = entry.GetName();
         _descriptionText.text = entry.GetDescription();
 
@@ -47,4 +48,14 @@ public class Rulebook : MonoBehaviour
         if(_currentEntry is null) _animator.Play(_downAnim);
         _isUp = false;
     }
+
+    private void OnEntryDiscard()
+    {
+        if (_currentEntry is null) return;
+        _currentEntry.OnDiscard -= OnEntryDiscard;
+
+        HideRulebook();
+    }
+    
+    
 }

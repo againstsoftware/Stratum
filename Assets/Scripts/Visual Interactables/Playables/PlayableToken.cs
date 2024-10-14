@@ -9,9 +9,7 @@ public class PlayableToken : APlayableItem, IRulebookEntry
     [SerializeField] private Token _token;
     public override AActionItem ActionItem => _token;
     public override int IndexInHand { get; set; } = -1;
-
-
-
+    
     public string GetName() => _token.Name;
 
     public string GetDescription() => _token.Description;

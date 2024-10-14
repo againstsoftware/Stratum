@@ -129,7 +129,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
 
         if (!item.CanInteractWithoutOwnership && item.Owner != LocalPlayer) return;
         var old = SelectedInteractable;
-        if (old is not null) old.OnDeselect();
+        if (old is not null) DeselectInteractable(old);
         SelectedInteractable = item;
         item.OnSelect();
         if (item is IRulebookEntry entry)

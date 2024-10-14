@@ -70,18 +70,20 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
         public int ActionItemID;
         public Receiver[] Receivers;
         public int CardIndexInHand;
+        public int EffectsIndex;
 
         public NetworkPlayerAction(PlayerAction action, GameConfig config)
         {
             Actor = action.Actor;
             Receivers = action.Receivers;
             CardIndexInHand = action.CardIndexInHand;
+            EffectsIndex = action.EffectsIndex;
             ActionItemID = config.ActionItemToID(action.ActionItem);
         }
 
         public PlayerAction ToPlayerAction(GameConfig config)
         {
-            return new PlayerAction(Actor, config.IDToActionItem(ActionItemID), Receivers, CardIndexInHand);
+            return new PlayerAction(Actor, config.IDToActionItem(ActionItemID), Receivers, CardIndexInHand, EffectsIndex);
         }
         
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
@@ -90,6 +92,7 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
             serializer.SerializeValue(ref ActionItemID);
             serializer.SerializeValue(ref Receivers);
             serializer.SerializeValue(ref CardIndexInHand);
+            serializer.SerializeValue(ref EffectsIndex);
         }
     }
     

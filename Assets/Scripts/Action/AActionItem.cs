@@ -1,8 +1,9 @@
 
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class AActionItem : ScriptableObject
 {
-    public abstract ValidAction[] ValidActions { get; protected set; }
 
+    public abstract IEnumerable<ValidAction> GetValidActions();
 }

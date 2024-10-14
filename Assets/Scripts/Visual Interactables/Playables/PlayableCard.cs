@@ -28,6 +28,7 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     [SerializeField] private float  _drawTravelDuration, _reposInHandTravelDuration;
     [SerializeField] private float _closestCardZ;
     
+
     
     private float _startZ;
     private bool _canInteractWithoutOwnership = false;
@@ -96,6 +97,7 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
 
     public override void OnDeselect()
     {
+        if (_destroyed) return;
         base.OnDeselect();
         if(CurrentState is State.Playable)
             transform.localPosition = new(transform.localPosition.x, transform.localPosition.y, _startZ);

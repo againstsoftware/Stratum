@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public interface IEffectContainer
 {
-    public IReadOnlyList<Effect> Effects { get; }
+    public IEnumerable<Effect> GetEffects(int index);
 }
 
 

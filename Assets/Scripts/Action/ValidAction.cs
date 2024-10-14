@@ -13,6 +13,7 @@ public class ValidAction
         Receivers = receivers;
     }
 
+    public int Index { get; set; } = 0;
 
     public static ValidDropLocation ActionReceiverToDropLocation(ValidActionReceiver r) => r switch
     {
