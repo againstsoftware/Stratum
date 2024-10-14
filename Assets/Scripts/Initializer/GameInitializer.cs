@@ -13,7 +13,7 @@ public class GameInitializer : MonoBehaviour
         
         ServiceLocator.Register<IInteractionSystem>(FindAnyObjectByType<InteractionManager>());
         
-        ServiceLocator.Register<IRulesSystem>(new DummyRulesManager()); //de pega
+        //ServiceLocator.Register<IRulesSystem>(new DummyRulesManager()); //de pega
         
         ServiceLocator.Register<IExecutor>(new EffectExecutor());
         

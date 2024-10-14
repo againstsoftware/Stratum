@@ -2,10 +2,9 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-
+/*
 public class DummyRulesManager : IRulesSystem
 {
-    
     public bool IsValidAction(PlayerAction action) => true;
     public void PerformAction(PlayerAction action)
     {
@@ -21,3 +20,4 @@ public class DummyRulesManager : IRulesSystem
     }
 
 }
+*/

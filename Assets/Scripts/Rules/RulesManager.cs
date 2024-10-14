@@ -8,42 +8,48 @@ public class RulesManager : IRulesSystem
 {
     public bool IsValidAction(PlayerAction action)
     {   
-        PlayerCharacter actor = action.Actor;
-        IActionItem actionItem = action.ActionItem;
-        IReadOnlyList<Receiver> receivers = action.Receivers;
+        // NO IMPLEMENTADO: comprobar que es una carta de poblacion 
+            // una vez se implemente eso tambien poner que si no es de ningun tipo de los que hay -> trampas
 
-        foreach(var validAction in actionItem.ValidActions)
+        // es el jugador del turno actual
+        if(ServiceLocator.Get<IModel>().GetPlayer(action.Actor).Character != ServiceLocator.Get<IModel>().PlayerOnTurn)
         {
-            foreach(var receiver in receivers)
-            {
-                if(validAction.DropLocation == receiver.Location || validAction.DropLocation == ValidDropLocation.AnySlot)
-                {
-                    return true;
-                }
-            }
+            return false;
         }
-        return false;
+
+        // se ha jugado en slot vacio
+        if(ServiceLocator.Get<IModel>().GetPlayer(action.Actor).Territory.Slots[action.Receivers[0].Index].PlacedCards.Count != 0)
+        {
+            return false;
+        }
+
+        // tiene en la mano la carta jugada
+            // DUDA: cómo accedo a la info de la carta actual jugada?
+        /*
+        if(ServiceLocator.Get<IModel>().GetPlayer(action.Actor).HandOfCards.Cards.Contains(action.ActionItem)))
+        {
+            return false;
+        }
+        */
+
+        // no tiene mas de 5 cartas (este no se si hace falta)
+        if(ServiceLocator.Get<IModel>().GetPlayer(action.Actor).HandOfCards.Cards.Count > 5)
+        {
+            return false;
+        }
+
+        return true;
+
     }
 
+
+    // rpc
     public void PerformAction(PlayerAction action)
     {
         bool isPerformable = false;
 
-        PlayerCharacter actor = action.Actor;
-        IActionItem actionItem = action.ActionItem;
-        IReadOnlyList<Receiver> receivers = action.Receivers;
-
-        foreach(var validAction in actionItem.ValidActions)
-        {
-            foreach(var receiver in receivers)
-            {
-                if(validAction.DropLocation == receiver.Location || validAction.DropLocation == ValidDropLocation.AnySlot)
-                {
-                    isPerformable = true;
-                    // SendCommandExec();
-                }
-            }
-        }
+        // pondria lo mismo que en IsValidAction, lo que cambia es que se estan comprobando las cosas con el model del host y
+        // le pasa la info de la accion al ejecutor 
             
         if(!isPerformable) 
         {
