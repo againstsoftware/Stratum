@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.NetworkInformation;
 using UnityEngine;
 
 public class RulesManager : IRulesSystem
@@ -11,31 +9,62 @@ public class RulesManager : IRulesSystem
         // NO IMPLEMENTADO: comprobar que es una carta de poblacion 
             // una vez se implemente eso tambien poner que si no es de ningun tipo de los que hay -> trampas
 
-        // es el jugador del turno actual
-        if(ServiceLocator.Get<IModel>().GetPlayer(action.Actor).Character != ServiceLocator.Get<IModel>().PlayerOnTurn)
+        // solo se comprueba si es una carta 
+        if(action.ActionItem is ICard)
         {
-            return false;
-        }
+            // COMPROBACIONES GENERICAS PARA CARTAS
+            ICard playedCard = action.ActionItem as ICard;
+            ICard modelCard = ServiceLocator.Get<IModel>().GetPlayer(action.Actor).HandOfCards.Cards[action.CardIndexInHand];
+            
+            // tiene en la mano la carta
+            if(playedCard != modelCard)
+            {
+                return false;
+            }
 
-        // se ha jugado en slot vacio
-        if(ServiceLocator.Get<IModel>().GetPlayer(action.Actor).Territory.Slots[action.Receivers[0].Index].PlacedCards.Count != 0)
-        {
-            return false;
-        }
+            // es el jugador del turno actual
+            if(ServiceLocator.Get<IModel>().GetPlayer(action.Actor).Character != ServiceLocator.Get<IModel>().PlayerOnTurn)
+            {
+                return false;
+            }
 
-        // tiene en la mano la carta jugada
-            // DUDA: cómo accedo a la info de la carta actual jugada?
-        /*
-        if(ServiceLocator.Get<IModel>().GetPlayer(action.Actor).HandOfCards.Cards.Contains(action.ActionItem)))
-        {
-            return false;
-        }
-        */
+            // se ha jugado en slot vacio
+            if(ServiceLocator.Get<IModel>().GetPlayer(action.Actor).Territory.Slots[action.Receivers[0].Index].PlacedCards.Count != 0)
+            {
+                return false;
+            }
 
-        // no tiene mas de 5 cartas (este no se si hace falta)
-        if(ServiceLocator.Get<IModel>().GetPlayer(action.Actor).HandOfCards.Cards.Count > 5)
-        {
-            return false;
+            // no tiene mas de 5 cartas (este no se si hace falta)
+            if(ServiceLocator.Get<IModel>().GetPlayer(action.Actor).HandOfCards.Cards.Count > 5)
+            {
+                return false;
+            }
+
+            // REGLAS SI ES DE POBLACION 
+            if(playedCard.CardType is ICard.Card.Population)
+            {
+
+            }
+
+            // REGLAS SI INFLUENCIA
+            if(playedCard.CardType is ICard.Card.Influence)
+            {
+
+            }
+
+            // REGLAS SI MUSHROOM
+            if(playedCard.CardType is ICard.Card.Mushroom)
+            {
+
+            }
+
+            // REGLAS SI MACROFUNGI
+            if(playedCard.CardType is ICard.Card.Macrofungi)
+            {
+
+            }
+
+            
         }
 
         return true;
