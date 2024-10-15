@@ -6,7 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Miguel.unity
+    path: Assets/Scenes/Miguel Lobby.unity
+    guid: dd763b9d58cc628409275c089e654851
+  - enabled: 1
+    path: Assets/Scenes/Miguel Game.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 1b6fc65c44efdef48a5786528fc9d374,

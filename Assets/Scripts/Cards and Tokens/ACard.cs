@@ -1,8 +1,9 @@
+using System;
 using UnityEngine;
 using UnityEngine.Localization;
 using System.Collections.Generic;
 
-public abstract class ACard : ScriptableObject, IActionItem, ICard, IEffectContainer
+public abstract class ACard : AActionItem, ICard, IEffectContainer
 {
     public string Name { get => _name.GetLocalizedString(); }
     public string Description { get => _description.GetLocalizedString(); }
@@ -11,18 +12,31 @@ public abstract class ACard : ScriptableObject, IActionItem, ICard, IEffectConta
     
     [SerializeField] private LocalizedString _name, _description;
 
-    [field: SerializeField] public ValidAction[] ValidActions { get; private set; } = 
-        { new ValidAction(ValidDropLocation.DiscardPile) };
+    [Serializable]
+    public class ActionEffect
+    {
+        public ValidAction ValidAction;
+        public Effect[] Effects;
+    }
 
-
-    [SerializeField] private Effect[] _effects;
-    public IReadOnlyList<Effect> Effects => _effects;
+    [SerializeField] private ActionEffect[] _actionEffects;
     
     public abstract ICard.Card CardType { get; }
     public abstract ICard.Population[] GetPopulations();
 
 
+    public IEnumerable<Effect> GetEffects(int index) => _actionEffects[index].Effects;
+    
 
-
-
+    public override IEnumerable<ValidAction> GetValidActions()
+    {
+        List<ValidAction> validActions = new();
+        int i = 0;
+        foreach (var ae in _actionEffects)
+        {
+            ae.ValidAction.Index = i++;
+            validActions.Add(ae.ValidAction);
+        }
+        return validActions;
+    }
 }

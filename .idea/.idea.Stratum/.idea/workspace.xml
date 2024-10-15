@@ -11,30 +11,37 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3b24cc7fa9794ed8ab04312c53e6dedd172c00/2d/9843db20/CreateAssetMenuAttribute.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c91a25f185b743118a39aafa100dff0959c00/df/f9b7f98a/SerializedObjectBindingContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/fe7039efe678478d9c83e73bc6a6566d94b400/73/e78f97ca/SerializedObject.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interaction System/CameraMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.8.12/Runtime/BurstString.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.8.12/Tests/Editor/BurstDisassemberCoreInstructionTests.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.8.12/Tests/Runtime/Shared/036-CSharpFunctionPointers.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.8.12/Tests/Runtime/Shared/Helpers/DataRange.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.7.0/InputSystem/Actions/InputActionState.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.7.0/InputSystem/Devices/Precompiled/FastKeyboard.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.localization@1.4.5/Runtime/Component Localizers/LocalizeStringEvent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@1.3.1/Unity.Mathematics/random.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@1.6.0/Runtime/Connection/NetworkConnectionManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@1.6.0/Runtime/Messaging/NetworkMessageManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@1.6.0/Runtime/NetworkVariable/NetworkVariable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@1.6.0/Runtime/SceneManagement/NetworkSceneManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@14.0.8/Editor/UniversalRenderPipelineAsset/UniversalRenderPipelineAssetUI.Skin.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.searcher@4.9.2/Tests/Editor/SearcherTests.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.transport@2.3.0/Runtime/WebSocket/WebSocket.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Editor/UI/MenuOptions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Editor/UI/PropertyDrawers/NavigationDrawer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/Raycasters/PhysicsRaycaster.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Image.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/SpecializedCollections/IndexedSet.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/StencilMaterial.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/ToggleGroup.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Editor/Canvas/AssertionFailureOnOutputVertexCount.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Editor/Dropdown/DropdownOptionsListDrawer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Editor/EventSystem/InterceptedEventsPreviewTests.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Runtime/Canvas/NoActiveCameraInSceneDoesNotCrashEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Runtime/Canvas/RectTransformValidAfterEnable.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -69,6 +76,14 @@
   }
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$USER_HOME$/Desktop/Stratum Builds/Netcode Test Builds/Lobby+Game_v1\Stratum.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\migue\Desktop\Stratum Builds\Netcode Test Builds\Lobby_v1" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.10f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\migue\Documents\GitHub\Stratum\Stratum -debugCodeOptimization" />
@@ -95,10 +110,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="118780">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="118780" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -128,6 +143,12 @@
       <workItem from="1728303403079" duration="4083000" />
       <workItem from="1728308577829" duration="2648000" />
       <workItem from="1728318635299" duration="15802000" />
+      <workItem from="1728387522126" duration="5137000" />
+      <workItem from="1728395684758" duration="4507000" />
+      <workItem from="1728468517899" duration="6738000" />
+      <workItem from="1728747099528" duration="12921000" />
+      <workItem from="1728849262196" duration="6089000" />
+      <workItem from="1728925595377" duration="3729000" />
     </task>
     <servers />
   </component>
@@ -138,24 +159,5 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Interaction/CameraMovement.cs</url>
-          <line>59</line>
-          <properties documentPath="C:\Users\migue\Documents\GitHub\Stratum\Assets\Scripts\Interaction\CameraMovement.cs" initialLine="60" containingFunctionPresentation="Method 'OnScroll'">
-            <startOffsets>
-              <option value="1788" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1821" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

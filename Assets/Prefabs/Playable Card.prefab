@@ -61,9 +61,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Owner>k__BackingField: 0
   _meshInChild: 1
-  _returnDuration: 0.15
+  _playTravelDuration: 0.2
   <Card>k__BackingField: {fileID: 0}
   <SnapTransform>k__BackingField: {fileID: 5258903042657958836}
+  _drawTravelDuration: 0.15
+  _reposInHandTravelDuration: 0.1
   _closestCardZ: -0.025
 --- !u!1 &6836350613875473651
 GameObject:

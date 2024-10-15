@@ -12,6 +12,7 @@ public static class ActionAssembler
     private static readonly List<IActionReceiver> _actionReceivers = new();
 
     private static IInteractionSystem _interactionSystem;
+    private static ValidAction _validAction;
 
     public enum AssemblyState
     {
@@ -28,8 +29,9 @@ public static class ActionAssembler
         _receiversQueue.Clear();
         _receiversList.Clear();
         _actionReceivers.Clear();
+        _validAction = null;
 
-        foreach (var validAction in playableItem.ActionItem.ValidActions)
+        foreach (var validAction in playableItem.ActionItem.GetValidActions())
         {
             if (!CheckIfValid(playableItem, dropLocation, validAction)) continue;
             return AssembleAction(playableItem, dropLocation, validAction);
@@ -60,6 +62,7 @@ public static class ActionAssembler
     {
         _receiversQueue.Clear();
         _receiversList.Clear();
+        _validAction = validAction;
         PlayableItem = playableItem;
         foreach (var receiver in validAction.Receivers) _receiversQueue.Enqueue(receiver);
         if (dropLocation is not TableCenter)
@@ -112,12 +115,13 @@ public static class ActionAssembler
             PlayableItem.Owner,
             PlayableItem.ActionItem,
             _receiversList.ToArray(),
-            PlayableItem.IndexInHand);
+            PlayableItem.IndexInHand,
+            _validAction.Index);
 
         if (!ServiceLocator.Get<IRulesSystem>().IsValidAction(playerActionStruct))
             return false;
 
-
+        
         ServiceLocator.Get<IRulesSystem>().PerformAction(playerActionStruct);
         //devolver true desactiva el Interaction System, lo vuelve a activar el sistema de turnos cuando acaben los efectos
         return true;

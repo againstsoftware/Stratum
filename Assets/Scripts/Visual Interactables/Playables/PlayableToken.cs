@@ -7,15 +7,20 @@ public class PlayableToken : APlayableItem, IRulebookEntry
     public override bool CanInteractWithoutOwnership => true;
 
     [SerializeField] private Token _token;
-    public override IActionItem ActionItem => _token;
+    public override AActionItem ActionItem => _token;
     public override int IndexInHand { get; set; } = -1;
-
-
-
+    
     public string GetName() => _token.Name;
 
     public string GetDescription() => _token.Description;
-    
+
+
+    protected override void Awake()
+    {
+        base.Awake();
+        _inHandPosition = transform.position;
+        _inHandRotation = transform.rotation;
+    }
     
     public override void Play(IActionReceiver playLocation, Action onPlayedCallback)
     {

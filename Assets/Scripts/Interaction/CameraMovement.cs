@@ -31,7 +31,8 @@ public class CameraMovement : MonoBehaviour
 
     private void OnDisable()
     {
-        _interactionSystem.Input.Scroll -= OnScroll;
+        if(_interactionSystem is not null && _interactionSystem.Input is not null)
+            _interactionSystem.Input.Scroll -= OnScroll;
     }
 
 

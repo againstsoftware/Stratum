@@ -4,21 +4,32 @@ using UnityEngine;
 
 public class EffectExecutor : IExecutor
 {
-    private Queue<EffectCommand> _commandQueue;
+    private List<EffectCommand> _commandDEQueue;
     private PlayerAction _currentAction;
+    private Action _rulesCallback;
 
-    public void ExecuteEffectCommands(PlayerAction action)
+    public void ExecutePlayerActionEffects(PlayerAction action)
     {
         _currentAction = action;
-        _commandQueue = new();
-        var card = _currentAction.ActionItem as ACard;
-        var token = _currentAction.ActionItem as Token;
-        var effects = card is not null ? card.Effects : token.Effects;
-        
-        foreach(var e in effects) _commandQueue.Enqueue(EffectCommands.Get(e));
-        
+        var item = action.ActionItem as IEffectContainer;
+        _commandDEQueue = new();
+
+        var effectsIndex = action.EffectsIndex;
+
+        var effects = item.GetEffects(effectsIndex);
+
+        foreach (var e in effects) EnqueueCommand(EffectCommands.Get(e));
         TryExecuteNextCommand();
     }
+
+    public void ExecuteRulesEffects(IEnumerable<Effect> effects, Action rulesCallback)
+    {
+        _commandDEQueue = new();
+        _rulesCallback = rulesCallback;
+        foreach (var e in effects) EnqueueCommand(EffectCommands.Get(e));
+        TryExecuteNextCommand();
+    }
+
 
     private void Execute(EffectCommand effectCommand)
     {
@@ -27,13 +38,39 @@ public class EffectExecutor : IExecutor
 
     private void TryExecuteNextCommand()
     {
-        if (_commandQueue.TryDequeue(out var command))
+        if (DequeueCommand(out var command))
         {
             Execute(command);
+            return;
+        }
+
+        if (_rulesCallback is not null)
+        {
+            var cb = _rulesCallback;
+            _rulesCallback = null;
+            cb();
             return;
         }
         
         //notificamos final de la accion
         Debug.Log("accion ejecutada!");
+        ServiceLocator.Get<ITurnSystem>().OnActionEnded();
     }
+
+
+    private void EnqueueCommand(EffectCommand ec) => _commandDEQueue.Insert(0, ec);
+
+
+    private bool DequeueCommand(out EffectCommand ec)
+    {
+        ec = null;
+        if (_commandDEQueue.Count == 0) return false;
+
+        ec = _commandDEQueue[^1];
+        _commandDEQueue.RemoveAt(_commandDEQueue.Count - 1);
+        return true;
+    }
+
+
+    public void PushCommand(Effect effect) => _commandDEQueue.Add(EffectCommands.Get(effect));
 }

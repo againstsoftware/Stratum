@@ -1,18 +1,24 @@
+using System;
 using UnityEngine;
 using UnityEngine.Localization;
 using System.Collections.Generic;
 
 [CreateAssetMenu(menuName = "Token")]
-public class Token : ScriptableObject, IActionItem, IEffectContainer
+public class Token : AActionItem, IEffectContainer
 {
     public string Name { get => _name.GetLocalizedString(); }
     public string Description { get => _description.GetLocalizedString(); }
     
     [SerializeField] private LocalizedString _name, _description;
 
-    [field: SerializeField] public ValidAction[] ValidActions { get; private set; } = 
-        { new ValidAction(ValidDropLocation.DiscardPile) };
+    [SerializeField] public ValidAction[] ValidActions;
     
     [SerializeField] private Effect[] _effects;
-    public IReadOnlyList<Effect> Effects => _effects;
+    public override IEnumerable<ValidAction> GetValidActions() => ValidActions;
+
+    public IEnumerable<Effect> GetEffects(int index)
+    {
+        if (index != 0) throw new Exception($"token solo tiene 1 secuencia de efectos!!! no {index}!");
+        return _effects;
+    }
 }

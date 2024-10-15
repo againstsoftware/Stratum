@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class GameInitializer : MonoBehaviour
@@ -13,12 +14,19 @@ public class GameInitializer : MonoBehaviour
         
         ServiceLocator.Register<IInteractionSystem>(FindAnyObjectByType<InteractionManager>());
         
-        ServiceLocator.Register<IRulesSystem>(new DummyRulesManager()); //de pega
+        ServiceLocator.Register<IRulesSystem>(FindAnyObjectByType<DummyRulesManager>()); //de pega
         
         ServiceLocator.Register<IExecutor>(new EffectExecutor());
         
         ServiceLocator.Register<IView>(FindAnyObjectByType<ViewManager>());
         ServiceLocator.Register<ITurnSystem>(FindAnyObjectByType<TurnManager>());
+    
+        ServiceLocator.Register<ICommunicationSystem>(FindAnyObjectByType<GameNetwork>());
+    }
 
+    private IEnumerator Start()
+    {
+        yield return null;
+        ServiceLocator.Get<ITurnSystem>().StartGame();
     }
 }

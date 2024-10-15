@@ -1,19 +1,21 @@
-
 using System.Collections.Generic;
 
 public struct PlayerAction
 {
-    public readonly PlayerCharacter Actor;
-    public readonly IActionItem ActionItem;
-    public readonly IReadOnlyList<Receiver> Receivers;
-    public readonly int CardIndexInHand;
+    public PlayerCharacter Actor;
+    public AActionItem ActionItem;
+    public Receiver[] Receivers;
+    public int CardIndexInHand;
+    public int EffectsIndex;
 
-    public PlayerAction(PlayerCharacter actor, IActionItem actionItem, IReadOnlyList<Receiver> receivers,
-        int cardIndexInHand)
+    public PlayerAction(PlayerCharacter actor, AActionItem actionItem, Receiver[] receivers,
+        int cardIndexInHand, int effectsIndex)
     {
         Actor = actor;
         ActionItem = actionItem;
         Receivers = receivers;
         CardIndexInHand = cardIndexInHand;
+        EffectsIndex = effectsIndex;
     }
+
 }

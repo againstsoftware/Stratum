@@ -14,7 +14,7 @@ public class HandOfCards
             throw new IndexOutOfRangeException("Error! Mano con + de 5 cartas.");
     }
 
-    public ICard RemoveCard(int index)
+    internal ICard RemoveCard(int index)
     {
         var card = _cards[index];
         _cards.RemoveAt(index);
