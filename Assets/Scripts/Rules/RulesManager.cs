@@ -1,11 +1,41 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class RulesManager : IRulesSystem
 {
     public bool IsValidAction(PlayerAction action)
     {   
+        /*
+        general:
+            x - que sea el turno de quien juegue 
+
+        cartas:
+            x - comprobar indice de la carta en la mano en model a ver si coincide
+
+        tokens:
+            x - comprobar que el personaje (actor) que hace la accion puede jugar un token (overlord o fungaloth)
+
+
+
+        si es una carta de criatura:
+            - comprobar que los receivers es una lista de 1 solo elemento
+            - comprobar que ese elemento es un slot y esta vacio
+
+        token de construccion:
+            - comprobar que los receivers es una lista de 1 solo elemento
+            - que ese elemento es un territorio
+            - que ese territorio no este construido
+            - que no haya un carnivoro en ningun slot de ese territorio
+            - que haya por lo menos 2 plantas en los slots de ese territorio
+
+        token de macrohongo:
+            - comprobar que los receiver es una lista de 3 elementos
+            - que cada elemento sea una carta de seta
+            - que cada una de esas cartas este presente en el model en el territorio y posicion que indica
+        */
+
         // NO IMPLEMENTADO: comprobar que es una carta de poblacion 
             // una vez se implemente eso tambien poner que si no es de ningun tipo de los que hay -> trampas
 
@@ -23,7 +53,7 @@ public class RulesManager : IRulesSystem
             }
 
             // es el jugador del turno actual
-            if(ServiceLocator.Get<IModel>().GetPlayer(action.Actor).Character != ServiceLocator.Get<IModel>().PlayerOnTurn)
+            if(action.Actor != ServiceLocator.Get<IModel>().PlayerOnTurn)
             {
                 return false;
             }
@@ -52,19 +82,80 @@ public class RulesManager : IRulesSystem
 
             }
 
-            // REGLAS SI MUSHROOM
+            // MUSHROOM
             if(playedCard.CardType is ICard.Card.Mushroom)
             {
-
+                return false;
             }
 
-            // REGLAS SI MACROFUNGI
+            // MACROFUNGI
             if(playedCard.CardType is ICard.Card.Macrofungi)
+            {
+                return false;
+            }
+        }
+
+        // TOKEN
+        if(action.ActionItem is Token)
+        {
+            // el jugador es Ovelord (token de construccion)
+            if(action.Actor == PlayerCharacter.Overlord)
+            {
+                // estoy suponiendo que no puede haber errores de que el overlord pille el token de fungi
+
+                // receivers 1 solo elemento
+                if(action.Receivers.Count != 1)
+                {
+                    return false;
+                }
+
+                // comprobar si es territorio
+                if(action.Receivers[0].Location != ValidDropLocation.AnyTerritory)
+                {
+                    return false;
+                }
+
+                // comprobar si territorio ya construido
+                if(ServiceLocator.Get<IModel>().GetPlayer(action.Receivers[0].LocationOwner).Territory.HasConstruction)
+                {
+                    return false;
+                }
+
+                // comprobar si hay algun carnivoro y 2 plantas
+                int herbCount = 0;
+                foreach(var slot in ServiceLocator.Get<IModel>().GetPlayer(action.Receivers[0].LocationOwner).Territory.Slots)
+                {
+                    foreach(var placedCard in slot.PlacedCards)
+                    {
+                        // hay carnivoros
+                        if(placedCard.Card.CardType is (ICard.Card)ICard.Population.Carnivore)
+                        {
+                            return false;
+                        }
+                        // hay dos herbivoros
+                        if(placedCard.Card.CardType is (ICard.Card)ICard.Population.Herbivore)
+                        {
+                            herbCount++;
+                        }
+                    }
+                }
+                // no hay s2 plantas al menos
+                if(herbCount < 2)
+                {
+                    return false;
+                } 
+            }
+
+            // token de fungi
+            else if(action.Actor == PlayerCharacter.Fungaloth)
             {
 
             }
-
             
+            else
+            {
+                return false;
+            }
         }
 
         return true;
@@ -75,15 +166,6 @@ public class RulesManager : IRulesSystem
     // rpc
     public void PerformAction(PlayerAction action)
     {
-        bool isPerformable = false;
-
-        // pondria lo mismo que en IsValidAction, lo que cambia es que se estan comprobando las cosas con el model del host y
-        // le pasa la info de la accion al ejecutor 
-            
-        if(!isPerformable) 
-        {
-            Debug.Log("trampas");
-        }
     }
 
     // TODO ESTO DE REGLAS ESTÁ MUY GUARRO SON PRUEBAS
