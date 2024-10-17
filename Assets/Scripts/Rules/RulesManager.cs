@@ -1,48 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.Search;
 using UnityEngine;
 
 public class RulesManager : IRulesSystem
 {
     public bool IsValidAction(PlayerAction action)
     {   
-        /*
-        general:
-            x - que sea el turno de quien juegue 
-
-        cartas:
-            x - comprobar indice de la carta en la mano en model a ver si coincide
-
-        tokens:
-            x - comprobar que el personaje (actor) que hace la accion puede jugar un token (overlord o fungaloth)
-
-
-
-        si es una carta de criatura:
-            - comprobar que los receivers es una lista de 1 solo elemento
-            - comprobar que ese elemento es un slot y esta vacio
-
-        token de construccion:
-            - comprobar que los receivers es una lista de 1 solo elemento
-            - que ese elemento es un territorio
-            - que ese territorio no este construido
-            - que no haya un carnivoro en ningun slot de ese territorio
-            - que haya por lo menos 2 plantas en los slots de ese territorio
-
-        token de macrohongo:
-            - comprobar que los receiver es una lista de 3 elementos
-            - que cada elemento sea una carta de seta
-            - que cada una de esas cartas este presente en el model en el territorio y posicion que indica
-        */
-
-        // NO IMPLEMENTADO: comprobar que es una carta de poblacion 
-            // una vez se implemente eso tambien poner que si no es de ningun tipo de los que hay -> trampas
-
-        // solo se comprueba si es una carta 
         if(action.ActionItem is ICard)
         {
-            // COMPROBACIONES GENERICAS PARA CARTAS
             ICard playedCard = action.ActionItem as ICard;
             ICard modelCard = ServiceLocator.Get<IModel>().GetPlayer(action.Actor).HandOfCards.Cards[action.CardIndexInHand];
             
@@ -98,12 +65,9 @@ public class RulesManager : IRulesSystem
         // TOKEN
         if(action.ActionItem is Token)
         {
-            // el jugador es Ovelord (token de construccion)
+            // construccion
             if(action.Actor == PlayerCharacter.Overlord)
             {
-                // estoy suponiendo que no puede haber errores de que el overlord pille el token de fungi
-
-                // receivers 1 solo elemento
                 if(action.Receivers.Count != 1)
                 {
                     return false;
@@ -139,17 +103,37 @@ public class RulesManager : IRulesSystem
                         }
                     }
                 }
-                // no hay s2 plantas al menos
+                // 2 plantas al menos
                 if(herbCount < 2)
                 {
                     return false;
                 } 
             }
-
-            // token de fungi
+            // macrohongo
             else if(action.Actor == PlayerCharacter.Fungaloth)
             {
-
+                // comprobar receivers 3 elementos
+                if(action.Receivers.Count != 3)
+                {
+                    return false;
+                }
+                
+                int mushroomNum = 0;
+                for(int i = 0;i < action.Receivers.Count; i++)
+                {
+                    Slot slot = ServiceLocator.Get<IModel>().GetPlayer(action.Receivers[i].LocationOwner).Territory.Slots[action.Receivers[i].Index];
+                    foreach(var placedCard in slot.PlacedCards)
+                    {
+                        if(placedCard.Card.CardType is ICard.Card.Mushroom)
+                        {
+                            mushroomNum++;
+                        }
+                    }
+                }
+                if(mushroomNum < 3)
+                {
+                    return false;
+                }
             }
             
             else
@@ -167,6 +151,8 @@ public class RulesManager : IRulesSystem
     public void PerformAction(PlayerAction action)
     {
     }
+
+    
 
     // TODO ESTO DE REGLAS ESTÁ MUY GUARRO SON PRUEBAS
     public void CheckEcosystemRules(List<TableCard> plants, List<TableCard> herbivorous, List<TableCard> carnivorous)
