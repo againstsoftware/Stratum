@@ -152,57 +152,90 @@ public class RulesManager : IRulesSystem
     {
     }
 
-    
 
-    // TODO ESTO DE REGLAS ESTÁ MUY GUARRO SON PRUEBAS
-    public void CheckEcosystemRules(List<TableCard> plants, List<TableCard> herbivorous, List<TableCard> carnivorous)
+    private void CheckEcosystemRules()
     {
-        // esto es una guarrería lo hago para probar cosas de lógica. Habría que cambiar seguramente cómo se le pasa la info más bien
-        List<List<TableCard>> populationList = new List<List<TableCard>>();
-        populationList.Add(plants);
-        populationList.Add(herbivorous);
-        populationList.Add(carnivorous);
+        // new EffectsList
+        
+        IReadOnlyList<TableCard> plants = ServiceLocator.Get<IModel>().Ecosystem.Plants;
+        IReadOnlyList<TableCard> herbivores = ServiceLocator.Get<IModel>().Ecosystem.Herbivores;
+        IReadOnlyList<TableCard> carnivores = ServiceLocator.Get<IModel>().Ecosystem.Carnivores;
 
-        for(int i = 1;i < populationList.Count; i++)
-        {
-            // se comprueba que haya alguno del tipo, no tiene sentido hacerlo sino
-            if(populationList[i].Count > 0)
-            {
-                bool dies = CheckPopulationDeath(populationList[i], populationList[i - 1], populationList[i + 1]);
-                // si muere  no incrementa
-                if(!dies)
-                {
-                    bool increases = CheckPopulationIncrease(populationList[i], populationList[i - 1], populationList[i + 1]);   
-                }
-                // muere 
-                else
-                {
-                    // -1 populationTipo
-                }
-            }
-        }
-    }
+        int plantsNum = plants.Count;
+        int herbivoresNum = herbivores.Count;
+        int carnivoresNum = carnivores.Count;
 
-    // se está haciendo pensando para herbívoros realmente no es genérico
-    private bool CheckPopulationDeath(List<TableCard> pToCheck, List<TableCard> pInferior, List<TableCard> pSuperior)
-    {
-        // hay dos plantas más (population inferior)
-        if((pToCheck.Count - pInferior.Count) > 1)
-        {
-            return true;
-        }
-        // hay dos carnivoros mas (population superior)
-        if((pSuperior.Count - pToCheck.Count) > 1)
-        {
-            return true;
-        }
-        // no se cumple alguna de las condiciones, no muere
-        return false;
-    }
+        bool herbivoresDeath = false;
+        bool carnivoresDeath = false;
 
-    private bool CheckPopulationIncrease(List<TableCard> pToCheck, List<TableCard> pInferior, List<TableCard> pSuperior)
-    {
-        return false;
+        // 1. Herbivores Death
+        if(herbivoresNum < 1)
+        {
+            // no die
+        }
+        else if(plantsNum < 1)
+        {
+            herbivoresDeath = true;
+            herbivoresNum--;
+        }
+        else if((herbivoresNum - plantsNum) >= 2)
+        {
+            herbivoresDeath = true;
+            herbivoresNum--;
+            // effect
+        }
+        else if((carnivoresNum - herbivoresNum) >= 2)
+        {
+            herbivoresDeath = true;
+            herbivoresNum--;
+            // effect
+        }
+
+        // 2. Herbivores Increase
+        if(herbivoresDeath || herbivoresNum < 1 || plantsNum < 1)
+        {
+            // nada
+        }
+        else if(carnivoresNum < 1)
+        {
+            herbivoresNum++;
+            //effects
+        }
+        else if((herbivoresNum - carnivoresNum) >= 2)
+        {
+            herbivoresNum++;
+            //effects
+        }
+        else if((plantsNum - herbivoresNum) >= 2)
+        {
+            herbivoresNum++;
+        }
+
+        // 3. Carnivores Death
+        if(carnivoresNum < 1)
+        {
+            // no ide
+        }
+        else if(herbivoresNum < 1)
+        {
+            carnivoresDeath = true;
+            carnivoresNum--;
+        }
+        else if((carnivoresNum - herbivoresNum) >= 2)
+        {
+            carnivoresDeath = true;
+            carnivoresNum--;
+        }
+
+        // 4. Carnivores Increase
+        if(carnivoresDeath || carnivoresNum < 1)
+        {
+            //nada
+        }
+        else if((herbivoresNum - carnivoresNum) >= 2)
+        {
+            carnivoresNum++;
+        }
     }
 
 }

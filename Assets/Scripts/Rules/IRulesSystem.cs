@@ -10,6 +10,4 @@ public interface IRulesSystem : IService
     //si no aprueba la jugada, hay discrepancia entre cliente y host, se expulsa al jugador y se cancela la partida por chetos
     public void PerformAction(PlayerAction action);
 
-    // TURNO ECOSISTEMA
-    public void CheckEcosystemRules(List<TableCard> populationA, List<TableCard> populationB, List<TableCard> populationC);
 }

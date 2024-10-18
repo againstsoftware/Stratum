@@ -7,6 +7,10 @@ public class Ecosystem
     public TableCard LastHerbivore => _herbivores.Count > 0 ? _herbivores[^1] : null;
     public TableCard LastCarnivore => _carnivores.Count > 0 ? _carnivores[^1] : null;
 
+    public IReadOnlyList<TableCard> Plants => _plants;
+    public IReadOnlyList<TableCard> Herbivores => _herbivores;
+    public IReadOnlyList<TableCard> Carnivores => _carnivores;
+
     private readonly List<TableCard> _plants = new(), _herbivores = new(), _carnivores = new();
 
     private int _totalPopulationCards;
