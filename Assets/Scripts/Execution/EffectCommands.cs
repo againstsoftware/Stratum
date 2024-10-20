@@ -16,6 +16,7 @@ public static class EffectCommands
         Effect.Discard => _discard,
         Effect.Draw2 => _draw2,
         Effect.Draw5 => _draw5,
+        Effect.OverviewSwitch => _overviewSwitch,
 
         _ => throw new ArgumentOutOfRangeException()
     };
@@ -26,11 +27,10 @@ public static class EffectCommands
         var card = action.ActionItem as ICard;
         var owner = action.Actor;
         var slotIndex = action.Receivers[0].Index;
-        var cardIndex = action.CardIndexInHand;
-        ServiceLocator.Get<IModel>().RemoveCardFromHand(owner, action.CardIndexInHand);
+        ServiceLocator.Get<IModel>().RemoveCardFromHand(owner, card);
         ServiceLocator.Get<IModel>().PlaceCardOnSlot(card, owner, slotIndex);
         //update al view asincrono
-        ServiceLocator.Get<IView>().PlayCardOnSlot(owner, owner, cardIndex, slotIndex, callback);
+        ServiceLocator.Get<IView>().PlayCardOnSlot(card as ACard, owner, owner, slotIndex, callback);
     };
 
     private static readonly EffectCommand _growCarnivore = (_, callback) =>
@@ -63,9 +63,9 @@ public static class EffectCommands
 
     private static readonly EffectCommand _discard = (action, callback) =>
     {
-        ServiceLocator.Get<IModel>().RemoveCardFromHand(action.Actor, action.CardIndexInHand);
+        ServiceLocator.Get<IModel>().RemoveCardFromHand(action.Actor, action.ActionItem as ICard);
 
-        ServiceLocator.Get<IView>().Discard(action.Actor, action.CardIndexInHand, callback);
+        ServiceLocator.Get<IView>().Discard(action.Actor, callback);
     };
 
     private static readonly PlayerCharacter[] _turnOrder = new[] //seria lo suyo usar GameConfig pero zzzz
@@ -77,11 +77,15 @@ public static class EffectCommands
 
     private static readonly EffectCommand _draw2 = (_, callback) =>
     {
+        Dictionary<PlayerCharacter, List<ACard>> cardsDrawn = new();
         foreach(var character in _turnOrder)
         {
             if (character is PlayerCharacter.None) continue;
             var cards = ServiceLocator.Get<IModel>().PlayerDrawCards(character, 2);
+            cardsDrawn.Add(character, new List<ACard>(cards.Cast<ACard>()));
         }
+        
+        DrawCardInView(cardsDrawn, 0, callback);
     };
 
     private static readonly EffectCommand _draw5 = (_, callback) =>
@@ -116,4 +120,9 @@ public static class EffectCommands
         var cards = cardsDrawn[actor];
         ServiceLocator.Get<IView>().DrawCards(actor, cards, () => DrawCardInView(cardsDrawn, index + 1, callback));
     }
+
+    private static readonly EffectCommand _overviewSwitch = (_, callback) =>
+    {
+        ServiceLocator.Get<IView>().SwitchCamToOverview(callback);
+    };
 }

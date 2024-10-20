@@ -15,7 +15,7 @@ public interface IModel : IService
     public event Action<TableCard> OnPopulationGrow;
     public event Action<TableCard> OnPopulationDie;
 
-    public void RemoveCardFromHand(PlayerCharacter player, int cardIndex);
+    public void RemoveCardFromHand(PlayerCharacter player, ICard card);
     public void PlaceCardOnSlot(ICard card, PlayerCharacter slotOwner, int slotIndex, bool atTheBottom = false);
 
     public (TableCard parent, TableCard son) GrowPopulation(ICard.Population population);
@@ -44,7 +44,6 @@ public interface IModel : IService
     
     public void AdvanceTurn(PlayerCharacter playerOnTurn);
     
-    public void AdvanceTurnToEcosystem();
 
     public IReadOnlyList<ICard> PlayerDrawCards(PlayerCharacter character, int amount);
 }

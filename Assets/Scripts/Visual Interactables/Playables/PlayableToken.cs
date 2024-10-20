@@ -8,7 +8,6 @@ public class PlayableToken : APlayableItem, IRulebookEntry
 
     [SerializeField] private Token _token;
     public override AActionItem ActionItem => _token;
-    public override int IndexInHand { get; set; } = -1;
     
     public string GetName() => _token.Name;
 
@@ -18,8 +17,8 @@ public class PlayableToken : APlayableItem, IRulebookEntry
     protected override void Awake()
     {
         base.Awake();
-        _inHandPosition = transform.position;
-        _inHandRotation = transform.rotation;
+        InHandPosition = transform.position;
+        InHandRotation = transform.rotation;
     }
     
     public override void Play(IActionReceiver playLocation, Action onPlayedCallback)

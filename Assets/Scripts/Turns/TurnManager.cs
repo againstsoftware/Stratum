@@ -42,8 +42,7 @@ public class TurnManager : MonoBehaviour, ITurnSystem
     public void OnActionEnded() //lo llama el ejecutor de comandos
     {
         _actionsLeft--;
-        if (_actionsLeft > 0) return;
-        NextTurn(); 
+        if (_actionsLeft == 0 || PlayerOnTurn is PlayerCharacter.None) NextTurn(); 
     }
 
     private void NextTurn() 
@@ -69,8 +68,9 @@ public class TurnManager : MonoBehaviour, ITurnSystem
         while (!_turnCompleted) yield return null; //si todavia no se han ejecutado todos los efectos se espera
         
         PlayerOnTurn = playerOnTurn;
+        _actionsLeft = _numberOfActions;
+        ServiceLocator.Get<IModel>().AdvanceTurn(PlayerOnTurn);
         OnTurnChanged?.Invoke(PlayerOnTurn);
-
         _turnCompleted = false;
     }
 

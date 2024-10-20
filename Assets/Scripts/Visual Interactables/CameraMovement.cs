@@ -1,9 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-
+using System;
 public class CameraMovement : MonoBehaviour
 {
     [SerializeField] private float _transitionDuration;
@@ -14,7 +10,8 @@ public class CameraMovement : MonoBehaviour
     private bool _isInDefault = true;
     private bool _isChangingPerspective;
     private float t = 0f;
-    private IInteractionSystem _interactionSystem;
+    private Action _onFinishCallback = null;
+    
     
     private void Awake()
     {
@@ -22,18 +19,6 @@ public class CameraMovement : MonoBehaviour
         _overviewPerspective = (_overviewTransform.position, _overviewTransform.rotation);
     }
 
-    private void Start()
-    {
-        _interactionSystem = ServiceLocator.Get<IInteractionSystem>();
-        _interactionSystem.Input.Scroll += OnScroll;
-    }
-
-
-    private void OnDisable()
-    {
-        if(_interactionSystem is not null && _interactionSystem.Input is not null)
-            _interactionSystem.Input.Scroll -= OnScroll;
-    }
 
 
     private void Update()
@@ -48,23 +33,27 @@ public class CameraMovement : MonoBehaviour
         {
             _isChangingPerspective = false;
             // _isInDefault = !_isInDefault;
+            _onFinishCallback?.Invoke();
+            _onFinishCallback = null;
         }
     }
     
-    private void OnScroll(float scroll)
+    public void MoveCameraOnScroll(float scroll)
     {
-        if (scroll == 0f || _interactionSystem.CurrentState is IInteractionSystem.State.Dragging) return;
-        if (scroll > 0f && _isInDefault)
+        switch (scroll)
         {
-            ChangeToOverview();
-        }
-        else if (scroll < 0f && !_isInDefault)
-        {
-            ChangeToDefault();
+            case 0f:
+                return;
+            case > 0f when _isInDefault:
+                ChangeToOverview();
+                break;
+            case < 0f when !_isInDefault:
+                ChangeToDefault();
+                break;
         }
     }
 
-    public void ChangeToOverview()
+    public void ChangeToOverview(Action callback = null)
     {
         _isInDefault = false;
 
@@ -78,14 +67,16 @@ public class CameraMovement : MonoBehaviour
         }
         else
         {
+            _onFinishCallback?.Invoke();
             t = 1f - t;
         }
+        _onFinishCallback = callback;
     }
 
-    public void ChangeToDefault()
+    public void ChangeToDefault(Action callback = null)
     {
         _isInDefault = true;
-
+        
        // if (_isInDefault && !_isChangingPerspective) return;
         _targetPerspective = _defaultPerspective;
         _startPerspective = _overviewPerspective;
@@ -96,7 +87,9 @@ public class CameraMovement : MonoBehaviour
         }
         else
         {
+            _onFinishCallback?.Invoke();
             t = 1f - t;
         }
+        _onFinishCallback = callback;
     }
 }

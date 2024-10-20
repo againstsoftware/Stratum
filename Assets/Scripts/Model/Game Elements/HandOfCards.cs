@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 public class HandOfCards
 {
-    public IReadOnlyList<ICard> Cards => _cards;
 
     private readonly List<ICard> _cards = new();
 
@@ -14,10 +13,7 @@ public class HandOfCards
             throw new IndexOutOfRangeException("Error! Mano con + de 5 cartas.");
     }
 
-    internal ICard RemoveCard(int index)
-    {
-        var card = _cards[index];
-        _cards.RemoveAt(index);
-        return card;
-    }
+    internal bool RemoveCard(ICard card) => _cards.Remove(card);
+
+    public bool Contains(ICard card) => _cards.Contains(card);
 }

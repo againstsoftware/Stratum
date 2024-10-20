@@ -7,12 +7,15 @@ public class SlotReceiver : MonoBehaviour, IActionReceiver
     [field:SerializeField] public PlayerCharacter Owner { get; private set; }
     [field:SerializeField] public TerritoryReceiver Territory { get; private set; }
     [field:SerializeField] public Transform SnapTransform { get; private set; }
-
+    [field:SerializeField] public Transform SnapTransformBottom { get; private set; }
+    [SerializeField] private Vector3 _offset;
     public bool IsDropEnabled { get; private set; } = true;
     public bool CanInteractWithoutOwnership => true;
     public int IndexOnTerritory { get; set; }
 
-    private List<PlayableCard> _cardsOnTop = new();
+    public IReadOnlyList<PlayableCard> Cards => _cards;
+    
+    private readonly List<PlayableCard> _cards = new();
     
     private Material _material;
     private void Awake()
@@ -47,16 +50,27 @@ public class SlotReceiver : MonoBehaviour, IActionReceiver
     
     public void AddCardOnTop(PlayableCard card)
     {
-        _cardsOnTop.Add(card);    
-        int i = 0;
-        foreach(var c in _cardsOnTop) c.IndexOnSlot = i++; 
+        _cards.Add(card);    
+        UpdateCards();
     }
 
-    public void RemoveCardOnTop(PlayableCard card)
+    public void AddCardAtTheBottom(PlayableCard card)
     {
-        _cardsOnTop.Remove(card);
+        _cards.Insert(0, card);
+        UpdateCards();
+    }
+
+    public void RemoveCard(PlayableCard card)
+    {
+        _cards.Remove(card);
+        UpdateCards();
+    }
+
+    private void UpdateCards()
+    {
         int i = 0;
-        foreach(var c in _cardsOnTop) c.IndexOnSlot = i++; 
+        foreach(var c in _cards) c.IndexOnSlot = i++;
+        SnapTransform.localPosition = SnapTransformBottom.localPosition + _cards.Count * _offset;
     }
 
 }

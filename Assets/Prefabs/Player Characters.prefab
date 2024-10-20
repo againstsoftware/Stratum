@@ -121,9 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c968b06dd4c049f3950f3e4f1a7efb04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Owner>k__BackingField: 1
   _meshInChild: 0
-  _returnDuration: 0.15
+  _playTravelDuration: 0
   _token: {fileID: 11400000, guid: cb4d7773b65c8644791d211c81c30775, type: 2}
 --- !u!114 &3364258935315834384
 MonoBehaviour:
@@ -293,9 +292,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c968b06dd4c049f3950f3e4f1a7efb04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Owner>k__BackingField: 1
   _meshInChild: 0
-  _returnDuration: 0.15
+  _playTravelDuration: 0
   _token: {fileID: 11400000, guid: 6181fded5cad13a4faf491db26c1a0de, type: 2}
 --- !u!114 &3633787597434820414
 MonoBehaviour:
@@ -317,7 +315,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6867347033489190595}
     m_Modifications:
+    - target: {fileID: 99059403063026409, guid: 35342ae149e635a41bf38c43fdae0942,
+        type: 3}
+      propertyPath: <Owner>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 189010872286178472, guid: 35342ae149e635a41bf38c43fdae0942,
+        type: 3}
+      propertyPath: <Owner>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 596429827899217018, guid: 35342ae149e635a41bf38c43fdae0942,
         type: 3}
       propertyPath: <Owner>k__BackingField
       value: 1
@@ -402,10 +410,20 @@ PrefabInstance:
       propertyPath: <Owner>k__BackingField
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3267927779421636198, guid: 35342ae149e635a41bf38c43fdae0942,
+        type: 3}
+      propertyPath: <Owner>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3777926153977100254, guid: 35342ae149e635a41bf38c43fdae0942,
         type: 3}
       propertyPath: m_Name
       value: Sagitario
+      objectReference: {fileID: 0}
+    - target: {fileID: 4224987928829361738, guid: 35342ae149e635a41bf38c43fdae0942,
+        type: 3}
+      propertyPath: <Owner>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5982451065699023978, guid: 35342ae149e635a41bf38c43fdae0942,
         type: 3}
@@ -451,7 +469,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6867347033489190595}
     m_Modifications:
+    - target: {fileID: 99059403063026409, guid: 35342ae149e635a41bf38c43fdae0942,
+        type: 3}
+      propertyPath: <Owner>k__BackingField
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 189010872286178472, guid: 35342ae149e635a41bf38c43fdae0942,
+        type: 3}
+      propertyPath: <Owner>k__BackingField
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 596429827899217018, guid: 35342ae149e635a41bf38c43fdae0942,
         type: 3}
       propertyPath: <Owner>k__BackingField
       value: 3
@@ -541,10 +569,20 @@ PrefabInstance:
       propertyPath: <Owner>k__BackingField
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3267927779421636198, guid: 35342ae149e635a41bf38c43fdae0942,
+        type: 3}
+      propertyPath: <Owner>k__BackingField
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3777926153977100254, guid: 35342ae149e635a41bf38c43fdae0942,
         type: 3}
       propertyPath: m_Name
       value: Overlord
+      objectReference: {fileID: 0}
+    - target: {fileID: 4224987928829361738, guid: 35342ae149e635a41bf38c43fdae0942,
+        type: 3}
+      propertyPath: <Owner>k__BackingField
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5982451065699023978, guid: 35342ae149e635a41bf38c43fdae0942,
         type: 3}
@@ -594,7 +632,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6867347033489190595}
     m_Modifications:
+    - target: {fileID: 99059403063026409, guid: 35342ae149e635a41bf38c43fdae0942,
+        type: 3}
+      propertyPath: <Owner>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 189010872286178472, guid: 35342ae149e635a41bf38c43fdae0942,
+        type: 3}
+      propertyPath: <Owner>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 596429827899217018, guid: 35342ae149e635a41bf38c43fdae0942,
         type: 3}
       propertyPath: <Owner>k__BackingField
       value: 2
@@ -684,10 +732,20 @@ PrefabInstance:
       propertyPath: <Owner>k__BackingField
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3267927779421636198, guid: 35342ae149e635a41bf38c43fdae0942,
+        type: 3}
+      propertyPath: <Owner>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3777926153977100254, guid: 35342ae149e635a41bf38c43fdae0942,
         type: 3}
       propertyPath: m_Name
       value: Fungaloth
+      objectReference: {fileID: 0}
+    - target: {fileID: 4224987928829361738, guid: 35342ae149e635a41bf38c43fdae0942,
+        type: 3}
+      propertyPath: <Owner>k__BackingField
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5982451065699023978, guid: 35342ae149e635a41bf38c43fdae0942,
         type: 3}
