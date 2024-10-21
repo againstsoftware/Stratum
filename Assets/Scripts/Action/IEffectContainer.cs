@@ -17,6 +17,7 @@ public enum Effect
     KillCarnivore,
     Discard,
     Draw2,
-    Draw5
+    Draw5,
+    OverviewSwitch
 }
 

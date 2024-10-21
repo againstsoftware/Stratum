@@ -73,7 +73,7 @@ public class LobbyNetwork : NetworkBehaviour
         }
 
 
-        NetworkManager.SceneManager.LoadScene("Miguel Game", LoadSceneMode.Single);
+        NetworkManager.SceneManager.LoadScene("Game", LoadSceneMode.Single);
 
 
     }

@@ -9,12 +9,15 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
     public abstract bool OnlyVisibleOnOverview { get; }
     public abstract bool CanInteractWithoutOwnership { get; }
     public abstract AActionItem ActionItem { get; }
-    public abstract int IndexInHand { get; set; }
     public event Action OnDiscard;
     
     public enum State { Playable, Dragging, Traveling, Waiting, Played }
 
     public State CurrentState { get; protected set; } = State.Playable;
+
+    public Action<APlayableItem> OnItemDrag, OnItemDrop;
+    public Vector3 InHandPosition;
+    public Quaternion InHandRotation;
     
 
     [SerializeField] private bool _meshInChild;
@@ -22,8 +25,6 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
     private float _travelDuration;
     private Transform _meshTransform;
     private Vector3 _defaultMeshScale;
-    protected Vector3 _inHandPosition;
-    protected Quaternion _inHandRotation;
     private Collider _collider;
     private float _t;
     private Vector3 _travelStartPosition, _travelEndPosition;
@@ -89,6 +90,7 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
     {
         CurrentState = State.Dragging;
         OnDeselect();
+        OnItemDrag?.Invoke(this);
     }
 
     public virtual void OnDragCancel()
@@ -102,6 +104,7 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
         transform.position = dropLocation.SnapTransform.position;
         CurrentState = State.Waiting;
         _actionCompletedCallback = actionCompletedCallback;
+        OnItemDrop?.Invoke(this);
     }
  
 
@@ -118,8 +121,8 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
         _collider.enabled = false;
         _travelStartPosition = transform.position;
         _travelStartRotation = transform.rotation;
-        _travelEndPosition = _inHandPosition;
-        _travelEndRotation = _inHandRotation;
+        _travelEndPosition = InHandPosition;
+        _travelEndRotation = InHandRotation;
         _onTravelEndCallback = callback;
     }
 

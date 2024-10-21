@@ -59,6 +59,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
         
         Input = new(this, _inputActions);
         Input.PointerPosition += OnPointerPositionChanged;
+        Input.Scroll += OnScroll;
     }
     
 
@@ -114,6 +115,12 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     private void OnPointerPositionChanged(Vector2 pointerPos)
     {
         _screenPointerPosition = pointerPos;
+    }
+
+    private void OnScroll(float scroll)
+    {
+        if (CurrentState is IInteractionSystem.State.Dragging || scroll == 0f) return;
+        _cameraMovement.MoveCameraOnScroll(scroll);
     }
 
     #endregion
@@ -293,6 +300,11 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
         if (newDropLocation == SelectedDropLocation) return;
         if (SelectedDropLocation is not null) SelectedDropLocation.OnDraggingDeselect();
 
+        if (newDropLocation is null)
+        {
+            throw new Exception($"drop location no tiene iactionreceiver! : {hitInfo.collider.name}");
+        }
+        
         if (!newDropLocation.IsDropEnabled ||
             (!newDropLocation.CanInteractWithoutOwnership && newDropLocation.Owner != _draggingItem.Owner))
             return;

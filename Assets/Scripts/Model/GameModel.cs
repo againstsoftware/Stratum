@@ -31,11 +31,12 @@ public class GameModel : IModel
 
     
     
-    public void RemoveCardFromHand(PlayerCharacter player, int cardIndex)
+    public void RemoveCardFromHand(PlayerCharacter player, ICard card)
     {
         var playerHand = _players[player].HandOfCards;
 
-        playerHand.RemoveCard(cardIndex);
+        if (!playerHand.RemoveCard(card))
+            throw new Exception("error!! intentado quitar carta que no existe en la mano!");
     }
     
     public void PlaceCardOnSlot(ICard card, PlayerCharacter slotOwner, int slotIndex, bool atTheBottom = false)
@@ -181,28 +182,24 @@ public class GameModel : IModel
     public void AdvanceTurn(PlayerCharacter playerOnTurn)
     {
         PlayerOnTurn = playerOnTurn;
+        IsOnEcosystemTurn = PlayerOnTurn is PlayerCharacter.None;
+        
         foreach (var player in _players.Values)
         {
             player.AdvanceTurn();
         }
     }
 
-    public void AdvanceTurnToEcosystem()
-    {
-        IsOnEcosystemTurn = true;
-        foreach (var player in _players.Values) player.AdvanceTurn();
-    }
-
     public IReadOnlyList<ICard> PlayerDrawCards(PlayerCharacter character, int amount)
     {
-        List<ICard> drewCards = new();
+        List<ICard> drawnCards = new();
         var player = _players[character];
         for (int i = 0; i < amount; i++)
         {
             var card = player.DrawCard();
-            drewCards.Add(card);
+            drawnCards.Add(card);
         }
 
-        return drewCards;
+        return drawnCards;
     }
 }

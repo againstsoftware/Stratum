@@ -22,7 +22,7 @@ public abstract class ACard : AActionItem, ICard, IEffectContainer
     [SerializeField] private ActionEffect[] _actionEffects;
     
     public abstract ICard.Card CardType { get; }
-    public abstract ICard.Population[] GetPopulations();
+    public abstract IEnumerable<ICard.Population> GetPopulations();
 
 
     public IEnumerable<Effect> GetEffects(int index) => _actionEffects[index].Effects;

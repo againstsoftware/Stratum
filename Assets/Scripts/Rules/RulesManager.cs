@@ -1,241 +1,104 @@
-using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
-using UnityEditor.Search;
 using UnityEngine;
 
-public class RulesManager : IRulesSystem
+public class RulesManager : MonoBehaviour, IRulesSystem
 {
-    public bool IsValidAction(PlayerAction action)
-    {   
-        if(action.ActionItem is ICard)
-        {
-            ICard playedCard = action.ActionItem as ICard;
-            ICard modelCard = ServiceLocator.Get<IModel>().GetPlayer(action.Actor).HandOfCards.Cards[action.CardIndexInHand];
-            
-            // tiene en la mano la carta
-            if(playedCard != modelCard)
-            {
-                return false;
-            }
+    private void Start()
+    {
+        ServiceLocator.Get<ITurnSystem>().OnGameStart += OnGameStart;
+        ServiceLocator.Get<ITurnSystem>().OnTurnChanged += OnTurnChanged;
+        ServiceLocator.Get<IModel>().OnPopulationGrow += OnPopulationGrow;
+        ServiceLocator.Get<IModel>().OnPopulationDie += OnPopulationDie;
+    }
 
-            // es el jugador del turno actual
-            if(action.Actor != ServiceLocator.Get<IModel>().PlayerOnTurn)
-            {
-                return false;
-            }
-
-            // se ha jugado en slot vacio
-            if(ServiceLocator.Get<IModel>().GetPlayer(action.Actor).Territory.Slots[action.Receivers[0].Index].PlacedCards.Count != 0)
-            {
-                return false;
-            }
-
-            // no tiene mas de 5 cartas (este no se si hace falta)
-            if(ServiceLocator.Get<IModel>().GetPlayer(action.Actor).HandOfCards.Cards.Count > 5)
-            {
-                return false;
-            }
-
-            // REGLAS SI ES DE POBLACION 
-            if(playedCard.CardType is ICard.Card.Population)
-            {
-
-            }
-
-            // REGLAS SI INFLUENCIA
-            if(playedCard.CardType is ICard.Card.Influence)
-            {
-
-            }
-
-            // MUSHROOM
-            if(playedCard.CardType is ICard.Card.Mushroom)
-            {
-                return false;
-            }
-
-            // MACROFUNGI
-            if(playedCard.CardType is ICard.Card.Macrofungi)
-            {
-                return false;
-            }
-        }
-
-        // TOKEN
-        if(action.ActionItem is Token)
-        {
-            // construccion
-            if(action.Actor == PlayerCharacter.Overlord)
-            {
-                if(action.Receivers.Count != 1)
-                {
-                    return false;
-                }
-
-                // comprobar si es territorio
-                if(action.Receivers[0].Location != ValidDropLocation.AnyTerritory)
-                {
-                    return false;
-                }
-
-                // comprobar si territorio ya construido
-                if(ServiceLocator.Get<IModel>().GetPlayer(action.Receivers[0].LocationOwner).Territory.HasConstruction)
-                {
-                    return false;
-                }
-
-                // comprobar si hay algun carnivoro y 2 plantas
-                int herbCount = 0;
-                foreach(var slot in ServiceLocator.Get<IModel>().GetPlayer(action.Receivers[0].LocationOwner).Territory.Slots)
-                {
-                    foreach(var placedCard in slot.PlacedCards)
-                    {
-                        // hay carnivoros
-                        if(placedCard.Card.CardType is (ICard.Card)ICard.Population.Carnivore)
-                        {
-                            return false;
-                        }
-                        // hay dos herbivoros
-                        if(placedCard.Card.CardType is (ICard.Card)ICard.Population.Herbivore)
-                        {
-                            herbCount++;
-                        }
-                    }
-                }
-                // 2 plantas al menos
-                if(herbCount < 2)
-                {
-                    return false;
-                } 
-            }
-            // macrohongo
-            else if(action.Actor == PlayerCharacter.Fungaloth)
-            {
-                // comprobar receivers 3 elementos
-                if(action.Receivers.Count != 3)
-                {
-                    return false;
-                }
-                
-                int mushroomNum = 0;
-                for(int i = 0;i < action.Receivers.Count; i++)
-                {
-                    Slot slot = ServiceLocator.Get<IModel>().GetPlayer(action.Receivers[i].LocationOwner).Territory.Slots[action.Receivers[i].Index];
-                    foreach(var placedCard in slot.PlacedCards)
-                    {
-                        if(placedCard.Card.CardType is ICard.Card.Mushroom)
-                        {
-                            mushroomNum++;
-                        }
-                    }
-                }
-                if(mushroomNum < 3)
-                {
-                    return false;
-                }
-            }
-            
-            else
-            {
-                return false;
-            }
-        }
-
-        return true;
-
+    private void OnDisable()
+    {
+        ServiceLocator.Get<ITurnSystem>().OnGameStart -= OnGameStart;
+        ServiceLocator.Get<ITurnSystem>().OnTurnChanged -= OnTurnChanged;
+        ServiceLocator.Get<IModel>().OnPopulationGrow -= OnPopulationGrow;
+        ServiceLocator.Get<IModel>().OnPopulationDie -= OnPopulationDie;
     }
 
 
-    // rpc
+    public bool IsValidAction(PlayerAction action) => RulesCheck.CheckAction(action);
+
+
     public void PerformAction(PlayerAction action)
     {
+        StartCoroutine(SendToExecute(action));
     }
 
-
-    private void CheckEcosystemRules()
+    private IEnumerator SendToExecute(PlayerAction action)
     {
-        // new EffectsList
-        
-        IReadOnlyList<TableCard> plants = ServiceLocator.Get<IModel>().Ecosystem.Plants;
-        IReadOnlyList<TableCard> herbivores = ServiceLocator.Get<IModel>().Ecosystem.Herbivores;
-        IReadOnlyList<TableCard> carnivores = ServiceLocator.Get<IModel>().Ecosystem.Carnivores;
-
-        int plantsNum = plants.Count;
-        int herbivoresNum = herbivores.Count;
-        int carnivoresNum = carnivores.Count;
-
-        bool herbivoresDeath = false;
-        bool carnivoresDeath = false;
-
-        // 1. Herbivores Death
-        if(herbivoresNum < 1)
-        {
-            // no die
-        }
-        else if(plantsNum < 1)
-        {
-            herbivoresDeath = true;
-            herbivoresNum--;
-        }
-        else if((herbivoresNum - plantsNum) >= 2)
-        {
-            herbivoresDeath = true;
-            herbivoresNum--;
-            // effect
-        }
-        else if((carnivoresNum - herbivoresNum) >= 2)
-        {
-            herbivoresDeath = true;
-            herbivoresNum--;
-            // effect
-        }
-
-        // 2. Herbivores Increase
-        if(herbivoresDeath || herbivoresNum < 1 || plantsNum < 1)
-        {
-            // nada
-        }
-        else if(carnivoresNum < 1)
-        {
-            herbivoresNum++;
-            //effects
-        }
-        else if((herbivoresNum - carnivoresNum) >= 2)
-        {
-            herbivoresNum++;
-            //effects
-        }
-        else if((plantsNum - herbivoresNum) >= 2)
-        {
-            herbivoresNum++;
-        }
-
-        // 3. Carnivores Death
-        if(carnivoresNum < 1)
-        {
-            // no ide
-        }
-        else if(herbivoresNum < 1)
-        {
-            carnivoresDeath = true;
-            carnivoresNum--;
-        }
-        else if((carnivoresNum - herbivoresNum) >= 2)
-        {
-            carnivoresDeath = true;
-            carnivoresNum--;
-        }
-
-        // 4. Carnivores Increase
-        if(carnivoresDeath || carnivoresNum < 1)
-        {
-            //nada
-        }
-        else if((herbivoresNum - carnivoresNum) >= 2)
-        {
-            carnivoresNum++;
-        }
+        yield return null;
+        ServiceLocator.Get<ICommunicationSystem>().SendActionToAuthority(action);
     }
 
+
+    private void OnGameStart()
+    {
+        StartCoroutine(StartGame());
+    }
+
+    private IEnumerator StartGame()
+    {
+        var comms = ServiceLocator.Get<ICommunicationSystem>();
+        comms.SyncRNGs();
+        while (!comms.IsRNGSynced) yield return null;
+        Debug.Log("random sincronizado!");
+
+        ServiceLocator.Get<IExecutor>().ExecuteRulesEffects(new[] { Effect.Draw5 }, null);
+    }
+
+    private void OnTurnChanged(PlayerCharacter onTurn)
+    {
+        if (onTurn is not PlayerCharacter.None) return;
+
+        //ecosistema 
+        PlayEcosystemTurn();
+    }
+
+    private void PlayEcosystemTurn()
+    {
+        var effects = RulesCheck.CheckEcosystem();
+        ServiceLocator.Get<IExecutor>().ExecuteRulesEffects(effects, EndRound);
+    }
+
+    //estos metodos se llaman en medio de la ejecucion de efectos del turno del ecosistema
+    //o cuando por una carta de inlfuencia, muere o crece una poblacion en cualquier momento
+    //comprueban si la carta de poblacion respectiva tiene un efecto al crecer/morir que se deba empujar a la cola
+    private void OnPopulationGrow(TableCard tableCard)
+    {
+    }
+
+    private void OnPopulationDie(TableCard tableCard)
+    {
+    }
+
+
+    private void EndRound() //comprueba si hay algun efecto de final de ronda que se deba aplicar y lo aplica
+    {
+        if (RulesCheck.CheckRoundEnd( out var effects))
+            ServiceLocator.Get<IExecutor>().ExecuteRulesEffects(effects, StartNextRound);
+
+        else StartNextRound();
+    }
+
+    private void StartNextRound() //comprueba condicion de victoria e inicia la siguiente ronda robando 2
+    {
+        //comprobar si hay condiciones de victoria
+        if (HasSomeoneWon())
+        {
+            //hacer cosas de game over
+            Debug.Log("hay un ganador");
+            return;
+        }
+
+        //inicia la siguiente ronda con todos los jugadores robando y luego empieza el turno del primero
+        ServiceLocator.Get<IExecutor>().ExecuteRulesEffects(new[] { Effect.Draw2 }, null);
+    }
+
+    private bool HasSomeoneWon() => false;
 }

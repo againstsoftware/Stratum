@@ -115,12 +115,15 @@ public static class ActionAssembler
             PlayableItem.Owner,
             PlayableItem.ActionItem,
             _receiversList.ToArray(),
-            PlayableItem.IndexInHand,
             _validAction.Index);
 
         if (!ServiceLocator.Get<IRulesSystem>().IsValidAction(playerActionStruct))
+        {
+            Debug.Log("Accion no valida tras comprobacion en local.");
             return false;
-
+        }
+        
+        Debug.Log("Comprobacion de la accion en local exitosa! mandando la accion a la autoridad");
         
         ServiceLocator.Get<IRulesSystem>().PerformAction(playerActionStruct);
         //devolver true desactiva el Interaction System, lo vuelve a activar el sistema de turnos cuando acaben los efectos

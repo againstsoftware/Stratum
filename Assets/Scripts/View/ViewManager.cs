@@ -7,14 +7,24 @@ public class ViewManager : MonoBehaviour, IView
 {
 
     [SerializeField] private ViewPlayer _sagitario, _ygdra, _fungaloth, _overlord;
-
+    [SerializeField] private GameConfig _config;
+    
     private Dictionary<PlayerCharacter, ViewPlayer> _players;
-
     private bool _playersInitialized;
+    private CameraMovement _cameraMovement;
+    
     private void Awake()
     {
         if(!_playersInitialized) InitPlayers();
     }
+
+    private void Start()
+    {
+        _cameraMovement = Camera.main.GetComponent<CameraMovement>();
+    }
+    
+    
+    
 
     public ViewPlayer GetViewPlayer(PlayerCharacter character)
     {
@@ -22,6 +32,64 @@ public class ViewManager : MonoBehaviour, IView
         return _players[character];
     }
 
+    public void PlayCardOnSlot(ACard card, PlayerCharacter actor, PlayerCharacter slotOwner, int slotIndex, Action callback)
+    {
+        var playerActor = _players[actor];
+        var playerSlotOwner = _players[slotOwner];
+        var slot = playerSlotOwner.Territory.Slots[slotIndex];
+        playerActor.PlayCardOnSlot(card, slot, callback);
+    }
+
+
+    public void GrowPopulationCard(PlayerCharacter slotOwner, int slotIndex, Action callback)
+    {
+        var playerOwner = _players[slotOwner];
+        var slot = playerOwner.Territory.Slots[slotIndex]; //la carta de mas arriba del slot
+        var card = slot.Cards[^1].Card;
+        
+        var newCardGO = Instantiate(_config.CardPrefab, slot.SnapTransform.position, slot.SnapTransform.rotation);
+        var newPlayableCard = newCardGO.GetComponent<PlayableCard>();
+        newPlayableCard.Initialize(card, slotOwner, APlayableItem.State.Played);
+        slot.AddCardOnTop(newPlayableCard);
+        StartCoroutine(DelayCall(callback, .5f)); //de prueba
+    }
+
+
+    public void KillPopulationCard(PlayerCharacter slotOwner, int slotIndex, Action callback)
+    {
+        var playerOwner = _players[slotOwner];
+        var slot = playerOwner.Territory.Slots[slotIndex]; //la carta de mas arriba del slot
+        var card = slot.Cards[^1];
+        slot.RemoveCard(card);
+        // StartCoroutine(DestroyCard(card.gameObject, callback));
+        Destroy(card);
+        callback?.Invoke();
+    }
+
+    public void Discard(PlayerCharacter actor, Action callback)
+    {
+        var playerActor = _players[actor];
+        playerActor.DiscardCard(callback);
+    }
+
+    public void DrawCards(PlayerCharacter actor, IReadOnlyList<ACard> cards, Action callback)
+    {
+        StartCoroutine(Draw(actor, cards, callback));
+    }
+
+    public void SwitchCamToOverview(Action callback)
+    {
+        _cameraMovement.ChangeToOverview(callback);
+    }
+
+    // private IEnumerator DestroyCard(GameObject card, Action callback = null)
+    // {
+    //     yield return null;
+    //     Destroy(card);
+    //     callback?.Invoke();
+    // }
+    
+    
     private void InitPlayers()
     {
         _playersInitialized = true;
@@ -41,51 +109,12 @@ public class ViewManager : MonoBehaviour, IView
             viewPlayer.Initialize(character);
         }
     }
-
-    public void PlayCardOnSlot(PlayerCharacter actor, PlayerCharacter slotOwner, int cardIndex, int slotIndex, Action callback)
+    
+    private IEnumerator DelayCall(Action a, float delay)
     {
-        var playerActor = _players[actor];
-        var playerSlotOwner = _players[slotOwner];
-        var playableCard = playerActor.Cards[cardIndex];
-        var slot = playerSlotOwner.Territory.Slots[slotIndex];
-        
-        playableCard.Play(slot, callback);
-    }
-
-
-    public void GrowPopulationCard(PlayerCharacter slotOwner, int slotIndex, Action callback)
-    {
-        
-    }
-
-    public void KillPopulationCard(PlayerCharacter slotOwner, int slotIndex, Action callback)
-    {
-        
-    }
-
-    public void Discard(PlayerCharacter actor, int cardIndex, Action callback)
-    {
-        var playerActor = _players[actor];
-        var playableCard = playerActor.Cards[cardIndex];
-        var discardPile = playerActor.DiscardPile;
-        playableCard.Play(discardPile, () =>
-        {
-            StartCoroutine(DestroyCard(playableCard.gameObject));
-            callback?.Invoke();
-        });
-    }
-
-    private IEnumerator DestroyCard(GameObject card)
-    {
-        yield return null;
-        Destroy(card);
-    }
-
-    public void DrawCards(PlayerCharacter actor, IReadOnlyList<ACard> cards, Action callback)
-    {
-        StartCoroutine(Draw(actor, cards, callback));
-    }
-
+        yield return new WaitForSeconds(delay);
+        a?.Invoke();   
+    } 
     private IEnumerator Draw(PlayerCharacter actor, IReadOnlyList<ACard> cards, Action callback)
     {
         var playerActor = _players[actor];
@@ -97,4 +126,5 @@ public class ViewManager : MonoBehaviour, IView
         }
         callback?.Invoke();
     }
+    
 }

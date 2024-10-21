@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 
 public class GameNetwork : NetworkBehaviour, ICommunicationSystem
@@ -32,9 +33,25 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
         _localPlayer = localNetworkPlayer.Character.Value;
         foreach (PlayerCharacter character in Enum.GetValues(typeof(PlayerCharacter)))
         {
-            if(character == _localPlayer || character is PlayerCharacter.None) continue;
-            var cam = ServiceLocator.Get<IView>().GetViewPlayer(character).Camera;
-            Destroy(cam.gameObject);
+            if (character is PlayerCharacter.None) continue;
+
+            var viewPlayer = ServiceLocator.Get<IView>().GetViewPlayer(character);
+            var cam = viewPlayer.Camera;
+            
+            if (character != _localPlayer)
+            {
+                Destroy(cam.gameObject);
+            }
+            else
+            {
+                //temporal mientras no hay mas luces
+                var lightTransform = FindAnyObjectByType<Light>().transform.parent;
+                lightTransform.LookAt(cam.transform.forward);
+                
+                var input = FindAnyObjectByType<PlayerInput>().camera = cam;
+
+                viewPlayer.IsLocalPlayer = true;
+            }
         
         }
 
@@ -64,53 +81,26 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
     }
 
 
-    private struct NetworkPlayerAction : INetworkSerializable
-    {
-        public PlayerCharacter Actor;
-        public int ActionItemID;
-        public Receiver[] Receivers;
-        public int CardIndexInHand;
-        public int EffectsIndex;
 
-        public NetworkPlayerAction(PlayerAction action, GameConfig config)
-        {
-            Actor = action.Actor;
-            Receivers = action.Receivers;
-            CardIndexInHand = action.CardIndexInHand;
-            EffectsIndex = action.EffectsIndex;
-            ActionItemID = config.ActionItemToID(action.ActionItem);
-        }
 
-        public PlayerAction ToPlayerAction(GameConfig config)
-        {
-            return new PlayerAction(Actor, config.IDToActionItem(ActionItemID), Receivers, CardIndexInHand, EffectsIndex);
-        }
-        
-        public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
-        {
-            serializer.SerializeValue(ref Actor);
-            serializer.SerializeValue(ref ActionItemID);
-            serializer.SerializeValue(ref Receivers);
-            serializer.SerializeValue(ref CardIndexInHand);
-            serializer.SerializeValue(ref EffectsIndex);
-        }
-    }
-    
-    
     public void SendActionToAuthority(PlayerAction action)
     {
         if (!IsSpawned)
             throw new Exception("Error! Mandando rpcs sin estar spawneado");
 
-        if (action.Actor == _localPlayer)
-            ServiceLocator.Get<IExecutor>().ExecutePlayerActionEffects(action);
-        
-        
-        if (IsServer) 
-            CheckRulesThenExec(action);
-        else 
+        if (action.Actor != _localPlayer)
+            throw new Exception("Error! Mandando rpcs de accion sin ser el jugador local");
+
+        ServiceLocator.Get<IExecutor>().ExecutePlayerActionEffects(action);
+        if (IsServer) //si somos servidor no hace falta recheck, solo mandamos la accion a los clientes
+        {
+            SendActionToExecuteInClientRpc(new NetworkPlayerAction(action, _config));
+        }
+        else // pero si no somos server, enviamos la accion al server para check de trampas
+        {
             SendActionToServerRpc(new NetworkPlayerAction(action, _config));
-        
+        }
+
     }
 
     public void SendTurnChange(PlayerCharacter playerOnTurn)
@@ -126,18 +116,14 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
 
 
     [ServerRpc(RequireOwnership = false)]
-    private void SendActionToServerRpc(NetworkPlayerAction action)
+    private void SendActionToServerRpc(NetworkPlayerAction networkAction) //comporueba las reglas en el server 
     {
-        CheckRulesThenExec(action.ToPlayerAction(_config));
-    }
-
-    //Solo invocado en el SERVER
-    private void CheckRulesThenExec(PlayerAction action)
-    {
+        var action = networkAction.ToPlayerAction(_config);
+        
         if (!ServiceLocator.Get<IRulesSystem>().IsValidAction(action))
             throw new Exception($"JUGADOR {action.Actor} HA HECHO TRAMPA! HAY INCONSISTENCIAS!");
        
-        SendActionToExecuteInClientRpc(new NetworkPlayerAction(action, _config));
+        else SendActionToExecuteInClientRpc(networkAction);
     }
 
     [ClientRpc]

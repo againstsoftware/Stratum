@@ -8,7 +8,6 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     public override bool CanInteractWithoutOwnership => _canInteractWithoutOwnership;
 
     public override AActionItem ActionItem => Card;
-    public override int IndexInHand { get; set; }
     public bool IsDropEnabled { get; private set; } = false;
 
     public ACard Card { get; private set; }
@@ -39,8 +38,6 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     {
         _hand = transform.parent;
     }
-
-    
     
     
     public override void Play(IActionReceiver playLocation, Action onPlayedCallback)
@@ -83,6 +80,11 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
         CardWherePlaced = playLocation as PlayableCard;
 
         if (SlotWherePlaced is not null) SlotWherePlaced.AddCardOnTop(this);
+
+        if (playLocation is DiscardPileReceiver)
+        {
+            //se puede destruir aqui tal vez? en vez de en el viewplayer
+        }
     }
     
     
@@ -149,8 +151,8 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
 
     public void DrawTravel(Transform target, Action callback)
     {
-        _inHandPosition = target.position;
-        _inHandRotation = target.rotation;
+        InHandPosition = target.position;
+        InHandRotation = target.rotation;
         Travel(target, _drawTravelDuration, State.Playable, callback);
     }
 
@@ -159,11 +161,18 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
         Travel(target, _reposInHandTravelDuration, State.Playable, callback);
     }
 
-    public void Initialize(ACard card, PlayerCharacter owner)
+    public void Initialize(ACard card, PlayerCharacter owner, State initialState = State.Playable)
     {
         if (Card is not null) throw new Exception("carta ya asignada no se puede reasignar!");
         Card = card;
         Owner = owner;
+        CurrentState = initialState;
+    }
+
+    public void SetCard(ACard card)
+    {
+        if (Card is not null) throw new Exception("carta ya asignada no se puede reasignar!");
+        Card = card;
     }
 
 }

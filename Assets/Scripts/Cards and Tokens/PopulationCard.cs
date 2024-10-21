@@ -19,7 +19,7 @@ public class PopulationCard : ACard
         _secondaryType = population;
         return true;
     }
-    public override ICard.Population[] GetPopulations() => _secondaryType is ICard.Population.None ? 
+    public override IEnumerable<ICard.Population> GetPopulations() => _secondaryType is ICard.Population.None ? 
         new[] { _populationType } : 
         new[] { _populationType, _secondaryType };
     
