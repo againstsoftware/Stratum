@@ -10,6 +10,8 @@ public class GameConfig : ScriptableObject
     [field:SerializeField] public PlayerCharacter[] TurnOrder { get; private set; }
     [field:SerializeField] public GameObject CardPrefab { get; private set; }
     
+    [field:SerializeField] public MushroomCard Mushroom { get; private set; }
+    [field:SerializeField] public MacrofungiCard Macrofungi { get; private set; }
 
     [SerializeField] private AActionItem[] _actionItems;
 

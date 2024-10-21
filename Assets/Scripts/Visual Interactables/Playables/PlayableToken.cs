@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayableToken : APlayableItem, IRulebookEntry
 {
@@ -7,8 +9,9 @@ public class PlayableToken : APlayableItem, IRulebookEntry
     public override bool CanInteractWithoutOwnership => true;
 
     [SerializeField] private Token _token;
+    [SerializeField] private PlayerCharacter _owner;
     public override AActionItem ActionItem => _token;
-    
+
     public string GetName() => _token.Name;
 
     public string GetDescription() => _token.Description;
@@ -19,10 +22,45 @@ public class PlayableToken : APlayableItem, IRulebookEntry
         base.Awake();
         InHandPosition = transform.position;
         InHandRotation = transform.rotation;
+        Owner = _owner;
     }
-    
+
     public override void Play(IActionReceiver playLocation, Action onPlayedCallback)
     {
-        throw new NotImplementedException();
+        if (CurrentState is not State.Playable && IsOnPlayLocation(playLocation))
+        {
+            ReturnToHand(() =>
+            {
+                onPlayedCallback();
+                _actionCompletedCallback?.Invoke();
+                _actionCompletedCallback = null;
+            });
+            return;
+        }
+
+        //no se ha jugado visualmente a la mesa
+        Travel(playLocation.SnapTransform, _playTravelDuration, State.Played, () =>
+        {
+            StartCoroutine(WaitAndDo(.5f, () =>
+            {
+                ReturnToHand(() =>
+                {
+                    onPlayedCallback();
+                    _actionCompletedCallback?.Invoke();
+                    _actionCompletedCallback = null;
+                });
+            }));
+        });
+    }
+
+    private IEnumerator WaitAndDo(float delay, Action callback)
+    {
+        yield return new WaitForSeconds(delay);
+        callback?.Invoke();
+    }
+
+    public override void OnDrop(IActionReceiver dropLocation, Action actionCompletedCallback)
+    {
+        base.OnDrop(dropLocation, actionCompletedCallback);
     }
 }

@@ -14,24 +14,24 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     public InputHandler Input { get; private set; }
 
     public Camera Camera { get; private set; }
-    [field:SerializeField] public LayerMask InteractablesLayer { get; private set; }
-    
+    [field: SerializeField] public LayerMask InteractablesLayer { get; private set; }
+
     public IReadOnlyList<IActionReceiver> CurrentActionReceivers => ActionAssembler.ActionReceivers;
     public APlayableItem CurrentActionPlayableItem => ActionAssembler.PlayableItem;
-    
+
     public PlayerCharacter LocalPlayer { get; set; }
-    
-    
+
+
     [SerializeField] private InputActionAsset _inputActions;
 
     [SerializeField] private float _itemCamOffsetOnDrag;
     [SerializeField] private float _dropLocationCheckFrequency;
 
     [SerializeField] private GameConfig _config;
-    
+
 
     private InputAction _pointerPosAction;
-    
+
     private CameraMovement _cameraMovement;
     private Rulebook _rulebook;
 
@@ -46,7 +46,6 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     private readonly HashSet<IActionReceiver> _selectedReceivers = new();
     private IActionReceiver _selectedReceiver;
 
-    
 
     private int _actionsLeft;
 
@@ -56,30 +55,29 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     private void Awake()
     {
         _dropLocationCheckPeriod = 1f / _dropLocationCheckFrequency;
-        
+
         Input = new(this, _inputActions);
         Input.PointerPosition += OnPointerPositionChanged;
         Input.Scroll += OnScroll;
     }
-    
+
 
     private void Start()
     {
         Camera = Camera.main;
-        
+
         _cameraMovement = Camera.GetComponent<CameraMovement>();
         _rulebook = Camera.GetComponentInChildren<Rulebook>();
 
         ServiceLocator.Get<ITurnSystem>().OnTurnChanged += OnTurnChanged;
     }
-    
-    
+
+
     private void OnDisable()
     {
         Input.PointerPosition -= OnPointerPositionChanged;
         var ts = ServiceLocator.Get<ITurnSystem>();
-        if(ts is not null) ts.OnTurnChanged -= OnTurnChanged;
-
+        if (ts is not null) ts.OnTurnChanged -= OnTurnChanged;
     }
 
 
@@ -161,9 +159,24 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
 
     public void DragPlayableItem(APlayableItem item)
     {
-        if (CurrentState is not IInteractionSystem.State.Idle) return;
-        if (item.CurrentState is not APlayableItem.State.Playable) return;
-        if (item.Owner != LocalPlayer) return;
+        if (CurrentState is not IInteractionSystem.State.Idle)
+        {
+            Debug.Log($"el IM no esta en idle, esta en {CurrentState}");
+            return;
+        }
+
+        if (item.CurrentState is not APlayableItem.State.Playable)
+        {
+            Debug.Log($"el obj no esta en playable, esta en {item.CurrentState}");
+            return;
+        }
+
+        if (item.Owner != LocalPlayer)
+        {
+            Debug.Log($"el objeto no es del localplayer({LocalPlayer}) sino de {item.Owner}");
+            return;
+        }
+
         if (item != SelectedInteractable as APlayableItem)
         {
             throw new Exception("drag called with non selected item!");
@@ -306,7 +319,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
             //no hace falta (?) porque pasa con los tokens que estan en la layer pero no son receivers
             //throw new Exception($"drop location no tiene iactionreceiver! : {hitInfo.collider.name}");
         }
-        
+
         if (!newDropLocation.IsDropEnabled ||
             (!newDropLocation.CanInteractWithoutOwnership && newDropLocation.Owner != _draggingItem.Owner))
             return;
@@ -331,6 +344,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
             CurrentState = IInteractionSystem.State.Waiting;
             return;
         }
+
         Debug.Log("starting next action");
 
         _actionsLeft--;

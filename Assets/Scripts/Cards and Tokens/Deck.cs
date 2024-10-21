@@ -1,7 +1,9 @@
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [CreateAssetMenu(menuName = "Deck")]
 public class Deck : ScriptableObject, IDeck
@@ -9,7 +11,7 @@ public class Deck : ScriptableObject, IDeck
     [field:SerializeField] public PlayerCharacter Owner { get; private set; }
 
     [System.Serializable]
-    public class CardAmount
+    private class CardAmount
     {
         public ACard Card;
         public int Amount;
@@ -23,10 +25,17 @@ public class Deck : ScriptableObject, IDeck
             return _size;
         }
     }
+    
+    
+    //para cartas que NO esten en el mazo
+    public ICard Mushroom => _mushroom;
+    public ICard Macrofungi => _macrofungi;
 
     [SerializeField] private CardAmount[] Cards;
 
-
+    [SerializeField] private MushroomCard _mushroom;
+    [SerializeField] private MacrofungiCard _macrofungi;
+    
     private int _size;
     private bool _initialized;
     private ACard[] _deck;

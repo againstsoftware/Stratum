@@ -13,11 +13,11 @@ public static class RulesCheck
         {action.ActionItem.name}
         Receivers:
         {string.Join("\n    ", action.Receivers
-        .Select(r => $"{r.Location} - {r.LocationOwner} ->idx: {r.Index} ->idx2: {r.SecondIndex}"))}
+            .Select(r => $"{r.Location} - {r.LocationOwner} ->idx: {r.Index} ->idx2: {r.SecondIndex}"))}
         effects idx: {action.EffectsIndex}
         ------------------------------------------------
         ");
-        
+
         // es el jugador del turno actual
         if (action.Actor != ServiceLocator.Get<IModel>().PlayerOnTurn)
         {
@@ -60,7 +60,7 @@ public static class RulesCheck
         }
     }
 
-    
+
     public static IEnumerable<Effect> CheckEcosystem()
     {
         // new EffectsList
@@ -154,11 +154,26 @@ public static class RulesCheck
         else carnivoresGrow = false;
 
         List<Effect> effects = new() { Effect.OverviewSwitch };
-        if (herbivoresDeath) effects.Add(Effect.KillHerbivore);
-        else if (herbivoresGrow) effects.Add(Effect.GrowHerbivore);
-        
-        if (carnivoresDeath) effects.Add(Effect.KillCarnivore);
-        else if (carnivoresGrow) effects.Add(Effect.GrowCarnivore);
+
+        if (herbivoresDeath)
+        {
+            effects.Add(Effect.KillHerbivore);
+            effects.Add(Effect.GrowMushroomEcosystem);
+        }
+        else if (herbivoresGrow)
+        {
+            effects.Add(Effect.GrowHerbivore);
+        }
+
+        if (carnivoresDeath)
+        {
+            effects.Add(Effect.KillCarnivore);
+            effects.Add(Effect.GrowMushroomEcosystem);
+        }
+        else if (carnivoresGrow)
+        {
+            effects.Add(Effect.GrowCarnivore);
+        }
 
         return effects;
     }
@@ -169,8 +184,7 @@ public static class RulesCheck
         effects = null;
         return false;
     }
-    
-    
+
 
     private static bool CheckPopulationCardAction(PlayerAction action)
     {
@@ -183,15 +197,16 @@ public static class RulesCheck
                     Debug.Log("rechazada porque el slot no es del que jugo la carta de poblacion!");
                     return false;
                 }
-                
-                if (ServiceLocator.Get<IModel>().GetPlayer(action.Actor).Territory.
-                        Slots[action.Receivers[0].Index].PlacedCards.Count != 0)
+
+                if (ServiceLocator.Get<IModel>().GetPlayer(action.Actor).Territory.Slots[action.Receivers[0].Index]
+                        .PlacedCards.Count != 0)
                 {
                     Debug.Log("rechazada porque el slot donde se jugo la carta de poblacion no esta vacio");
                     return false;
                 }
+
                 return true;
-            
+
             case ValidDropLocation.DiscardPile:
                 var owner = action.Receivers[0].LocationOwner;
                 if (owner != action.Actor)
@@ -199,13 +214,13 @@ public static class RulesCheck
                     Debug.Log("rechazada porque la pila de descarte no es del que jugo la carta de poblacion!");
                     return false;
                 }
+
                 return true;
-            
-            default: 
+
+            default:
                 Debug.Log($"rechazada porque la carta de poblacion se jugo en {action.Receivers[0].Location}");
                 return false;
         }
-        
     }
 
     private static bool CheckInfluenceCardAction(PlayerAction action)
@@ -254,17 +269,15 @@ public static class RulesCheck
             return false;
 
 
-        int mushroomNum = 0;
         foreach (var receiver in action.Receivers)
         {
-            Slot slot = ServiceLocator.Get<IModel>().GetPlayer(receiver.LocationOwner).Territory
-                .Slots[receiver.Index];
+            Slot slot = ServiceLocator.Get<IModel>().GetPlayer(receiver.LocationOwner).Territory.Slots[receiver.Index];
 
             var placedCard = slot.PlacedCards[receiver.SecondIndex];
-            if (placedCard.Card.CardType is ICard.Card.Mushroom)
-                mushroomNum++;
+            if (placedCard.Card.CardType is not ICard.Card.Mushroom)
+                return false;
         }
 
-        return mushroomNum == 3;
+        return true;
     }
 }

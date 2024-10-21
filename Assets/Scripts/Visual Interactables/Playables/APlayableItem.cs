@@ -5,20 +5,27 @@ using UnityEngine.Serialization;
 public abstract class APlayableItem : MonoBehaviour, IInteractable
 {
     public PlayerCharacter Owner { get; protected set; } = PlayerCharacter.None;
-    
+
     public abstract bool OnlyVisibleOnOverview { get; }
     public abstract bool CanInteractWithoutOwnership { get; }
     public abstract AActionItem ActionItem { get; }
     public event Action OnDiscard;
-    
-    public enum State { Playable, Dragging, Traveling, Waiting, Played }
+
+    public enum State
+    {
+        Playable,
+        Dragging,
+        Traveling,
+        Waiting,
+        Played
+    }
 
     public State CurrentState { get; protected set; } = State.Playable;
 
     public Action<APlayableItem> OnItemDrag, OnItemDrop;
-    public Vector3 InHandPosition;
-    public Quaternion InHandRotation;
-    
+    public Vector3 InHandPosition { get; set; }
+    public Quaternion InHandRotation { get; set; }
+
 
     [SerializeField] private bool _meshInChild;
     [SerializeField] protected float _playTravelDuration;
@@ -53,8 +60,8 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
     {
         if (CurrentState is not State.Traveling) return;
 
-        transform.position = Vector3.Lerp(_travelStartPosition, _travelEndPosition,  _t);
-        transform.rotation = Quaternion.Lerp( _travelStartRotation, _travelEndRotation, _t);
+        transform.position = Vector3.Lerp(_travelStartPosition, _travelEndPosition, _t);
+        transform.rotation = Quaternion.Lerp(_travelStartRotation, _travelEndRotation, _t);
         _t += Time.deltaTime / _travelDuration;
         if (_t >= 1f)
         {
@@ -106,7 +113,7 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
         _actionCompletedCallback = actionCompletedCallback;
         OnItemDrop?.Invoke(this);
     }
- 
+
 
     public void SetColliderActive(bool active) => _collider.enabled = active;
 
@@ -141,4 +148,9 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
         _onTravelEndCallback = callback;
     }
 
+    protected bool IsOnPlayLocation(IActionReceiver playLocation)
+    {
+        var distance = playLocation.SnapTransform.position - transform.position;
+        return distance.magnitude < .01f;
+    }
 }

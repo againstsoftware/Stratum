@@ -55,6 +55,22 @@ MonoBehaviour:
     m_Key: mf_token_desc
     m_Metadata:
       m_Items: []
+  - m_Id: 6595463762145280
+    m_Key: mushroom_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6595605105995776
+    m_Key: mushroom_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6605650585710592
+    m_Key: macrofungi_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6605703316500480
+    m_Key: macrofungi_desc
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

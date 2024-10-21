@@ -63,12 +63,7 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
         });
         
     }
-
-    protected bool IsOnPlayLocation(IActionReceiver playLocation)
-    {
-        var distance = playLocation.SnapTransform.position - transform.position;
-        return distance.magnitude < .01f;
-    }
+    
 
     private void OnPlayed(IActionReceiver playLocation)
     {
@@ -130,7 +125,7 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     {
         base.OnDrop(dropLocation, actionCompletedCallback);
         transform.parent = null;
-        transform.rotation = dropLocation.SnapTransform.rotation;
+        transform.rotation = dropLocation.SnapTransform.rotation; //?????? hay que cambiarlo
     }
 
     public override void OnDragCancel()
@@ -166,7 +161,20 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
         SetCard(card);
         Owner = owner;
         CurrentState = initialState;
+            
     }
+
+    public void InitializeOnSlot(ACard card, PlayerCharacter slotOwner, SlotReceiver slot)
+    {
+        SetCard(card);
+        Owner = slotOwner;
+        CurrentState = State.Played;
+        IsDropEnabled = true;
+        _canInteractWithoutOwnership = true;
+        SlotWherePlaced = slot;
+    }
+    
+    
 
     public void SetCard(ACard card)
     {

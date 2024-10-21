@@ -18,6 +18,8 @@ public enum Effect
     Discard,
     Draw2,
     Draw5,
-    OverviewSwitch
+    OverviewSwitch,
+    GrowMushroomEcosystem,
+    GrowMacrofungi
 }
 

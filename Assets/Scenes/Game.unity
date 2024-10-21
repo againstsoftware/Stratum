@@ -390,6 +390,7 @@ MonoBehaviour:
   _ygdra: {fileID: 401353343}
   _fungaloth: {fileID: 401353344}
   _overlord: {fileID: 401353342}
+  _tableCenter: {fileID: 941732000}
   _config: {fileID: 11400000, guid: 00c45f89111b6ac4f9b8c6ebeb9d9e38, type: 2}
 --- !u!4 &524133050
 Transform:

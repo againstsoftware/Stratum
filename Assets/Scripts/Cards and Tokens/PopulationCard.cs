@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Cards/Population Card")]
+// [CreateAssetMenu(menuName = "Cards/Population Card")]
 public class PopulationCard : ACard
 {
     public override bool CanHaveInfluenceCardOnTop => true;

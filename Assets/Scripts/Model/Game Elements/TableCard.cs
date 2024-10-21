@@ -4,7 +4,7 @@ public class TableCard
     public int TurnsAlive { get; private set; }
     public TableCard InfluenceCardOnTop { get; private set; }
     public Slot Slot { get; internal set; }
-    public int SlotIndex { get; internal set; }
+    public int IndexInSlot { get; internal set; }
 
     internal TableCard(ICard card)
     {

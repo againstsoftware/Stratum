@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 public class GameModel : IModel
 {
@@ -8,29 +9,28 @@ public class GameModel : IModel
     public bool IsOnEcosystemTurn { get; private set; }
 
     public Ecosystem Ecosystem { get; private set; } = new();
-    
+
     public event Action<TableCard> OnPopulationGrow;
     public event Action<TableCard> OnPopulationDie;
-    
 
     private readonly Dictionary<PlayerCharacter, Player> _players = new();
 
+    private Slot _lastDeathSlot;
 
     public GameModel(PlayerCharacter starter, IDeck[] _decks)
     {
         PlayerOnTurn = starter;
-        
+
         foreach (PlayerCharacter character in Enum.GetValues(typeof(PlayerCharacter)))
         {
             if (character is PlayerCharacter.None) continue;
             _players.Add(character, new Player(character, _decks.Single(deck => deck.Owner == character)));
         }
     }
-    
+
     public Player GetPlayer(PlayerCharacter character) => _players[character];
 
-    
-    
+
     public void RemoveCardFromHand(PlayerCharacter player, ICard card)
     {
         var playerHand = _players[player].HandOfCards;
@@ -38,7 +38,7 @@ public class GameModel : IModel
         if (!playerHand.RemoveCard(card))
             throw new Exception("error!! intentado quitar carta que no existe en la mano!");
     }
-    
+
     public void PlaceCardOnSlot(ICard card, PlayerCharacter slotOwner, int slotIndex, bool atTheBottom = false)
     {
         var ownerPlayer = _players[slotOwner];
@@ -46,7 +46,7 @@ public class GameModel : IModel
         if (card.CardType is ICard.Card.Population) Ecosystem.OnPopulationCardPlace(tableCard);
     }
 
-    public (TableCard parent, TableCard son) GrowPopulation(ICard.Population population)
+    public (TableCard parent, TableCard son) GrowLastPlacedPopulation(ICard.Population population)
     {
         TableCard growCard = population switch
         {
@@ -64,23 +64,35 @@ public class GameModel : IModel
         return (growCard, newCard);
     }
 
-    public TableCard KillPopulation(ICard.Population population)
+    public TableCard KillLastPlacedPopulation(ICard.Population population)
     {
         TableCard killCard = population switch
         {
             ICard.Population.Plant => Ecosystem.LastPlant,
             ICard.Population.Herbivore => Ecosystem.LastHerbivore,
             ICard.Population.Carnivore => Ecosystem.LastCarnivore,
-            ICard.Population.None => throw new ArgumentOutOfRangeException(),
             _ => throw new ArgumentOutOfRangeException()
         };
-        
-        killCard.Slot.RemoveCard(killCard);
+
+        _lastDeathSlot = killCard.Slot;
+        _lastDeathSlot.RemoveCard(killCard);
         Ecosystem.OnPopulationCardDie(killCard);
         OnPopulationDie?.Invoke(killCard);
 
         return killCard;
     }
+
+    public TableCard GrowMushroomEcosystem()
+    {
+        //para pillar una seta da igual el mazo sea de sagitaio o quien sea (se que esta regular pero era lo + fast)
+        var mushroom = GetPlayer(PlayerCharacter.Sagitario).Deck.Mushroom;
+        var slot = _lastDeathSlot;
+        if (slot is null) throw new Exception("Error! no hay slot registrado donde poner la seta!");
+        _lastDeathSlot = null;
+
+        return slot.PlaceCard(mushroom, true);
+    }
+
 
     public void PlaceInlfuenceCardOnCard(ICard influenceCard, ICard card, PlayerCharacter slotOwner,
         int slotIndex, int cardIndex)
@@ -112,17 +124,23 @@ public class GameModel : IModel
         targetSlot.MoveCard(tableCard);
     }
 
-    public void RemoveCardFromSlot(ICard card, PlayerCharacter slotOwner, int slotIndex, int cardIndex)
+    public void RemoveCardFromSlot(PlayerCharacter slotOwner, int slotIndex, int cardIndex)
     {
         var ownerPlayer = _players[slotOwner];
         var slot = ownerPlayer.Territory.Slots[slotIndex];
         var tableCard = slot.PlacedCards[cardIndex];
 
-        if (tableCard.Card != card) throw new Exception("Error! Peticion incorrecta al modelo.");
+        // if (tableCard.Card != card) throw new Exception("Error! la carta dada es diferente a la carta en la pos dada!");
 
         slot.RemoveCard(tableCard);
 
-        if (card.CardType is ICard.Card.Population) Ecosystem.OnPopulationCardDie(tableCard);
+
+        //NO hace falta de momento pero para influs quiza si
+        // if (card.CardType is ICard.Card.Population)
+        // {
+        //     Ecosystem.OnPopulationCardDie(tableCard);
+        //     
+        // }
     }
 
     public void RemoveInfluenceCardFromCard(ICard influenceCard, ICard card, PlayerCharacter slotOwner,
@@ -183,7 +201,7 @@ public class GameModel : IModel
     {
         PlayerOnTurn = playerOnTurn;
         IsOnEcosystemTurn = PlayerOnTurn is PlayerCharacter.None;
-        
+
         foreach (var player in _players.Values)
         {
             player.AdvanceTurn();

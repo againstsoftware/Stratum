@@ -16,6 +16,10 @@ MonoBehaviour:
   <TurnOrder>k__BackingField: 0100000002000000000000000300000004000000
   <CardPrefab>k__BackingField: {fileID: 2141958488974887041, guid: a7cfe0d9aa4629d4d88d94ac908f43b2,
     type: 3}
+  <Mushroom>k__BackingField: {fileID: 11400000, guid: bd7b466f40e50dd48b379b235eeaa96d,
+    type: 2}
+  <Macrofungi>k__BackingField: {fileID: 11400000, guid: 86ab07ff152c2e741b6507f7c67302b1,
+    type: 2}
   _actionItems:
   - {fileID: 11400000, guid: 6181fded5cad13a4faf491db26c1a0de, type: 2}
   - {fileID: 11400000, guid: cb4d7773b65c8644791d211c81c30775, type: 2}

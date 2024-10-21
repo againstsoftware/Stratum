@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using CardLocation = IView.CardLocation;
 public class ViewManager : MonoBehaviour, IView
 {
 
     [SerializeField] private ViewPlayer _sagitario, _ygdra, _fungaloth, _overlord;
+    [SerializeField] private TableCenter _tableCenter;
     [SerializeField] private GameConfig _config;
     
     private Dictionary<PlayerCharacter, ViewPlayer> _players;
@@ -32,38 +34,40 @@ public class ViewManager : MonoBehaviour, IView
         return _players[character];
     }
 
-    public void PlayCardOnSlot(ACard card, PlayerCharacter actor, PlayerCharacter slotOwner, int slotIndex, Action callback)
+    public void PlayCardOnSlot(ACard card, PlayerCharacter actor, CardLocation location, Action callback)
     {
         var playerActor = _players[actor];
-        var playerSlotOwner = _players[slotOwner];
-        var slot = playerSlotOwner.Territory.Slots[slotIndex];
+        var playerSlotOwner = _players[location.SlotOwner];
+        var slot = playerSlotOwner.Territory.Slots[location.SlotIndex];
         playerActor.PlayCardOnSlot(card, slot, callback);
     }
 
 
-    public void GrowPopulationCard(PlayerCharacter slotOwner, int slotIndex, Action callback)
+    public void GrowPopulationCard(CardLocation location, Action callback)
     {
-        var playerOwner = _players[slotOwner];
-        var slot = playerOwner.Territory.Slots[slotIndex]; //la carta de mas arriba del slot
+        var playerOwner = _players[location.SlotOwner];
+        var slot = playerOwner.Territory.Slots[location.SlotIndex]; //la carta de mas arriba del slot
         var card = slot.Cards[^1].Card;
         
         var newCardGO = Instantiate(_config.CardPrefab, slot.SnapTransform.position, slot.SnapTransform.rotation);
         var newPlayableCard = newCardGO.GetComponent<PlayableCard>();
-        newPlayableCard.Initialize(card, slotOwner, APlayableItem.State.Played);
+        newPlayableCard.InitializeOnSlot(card, location.SlotOwner, slot);
         slot.AddCardOnTop(newPlayableCard);
-        StartCoroutine(DelayCall(callback, .5f)); //de prueba
+        StartCoroutine(DelayCall(callback, 1f)); //de prueba
     }
 
 
-    public void KillPopulationCard(PlayerCharacter slotOwner, int slotIndex, Action callback)
+    public void KillPopulationCard(CardLocation location, Action callback)
     {
-        var playerOwner = _players[slotOwner];
-        var slot = playerOwner.Territory.Slots[slotIndex]; //la carta de mas arriba del slot
-        var card = slot.Cards[^1];
+        var playerOwner = _players[location.SlotOwner];
+        var slot = playerOwner.Territory.Slots[location.SlotIndex]; 
+        var card = slot.Cards[^1]; //la carta de mas arriba del slot
+        if (card.Card is not PopulationCard) throw new Exception("Error! La carta a matar no es de poblacion");
         slot.RemoveCard(card);
         // StartCoroutine(DestroyCard(card.gameObject, callback));
-        Destroy(card);
-        callback?.Invoke();
+        Destroy(card.gameObject);
+        // callback?.Invoke();
+        StartCoroutine(DelayCall(callback, 1f)); //de prueba
     }
 
     public void Discard(PlayerCharacter actor, Action callback)
@@ -82,6 +86,63 @@ public class ViewManager : MonoBehaviour, IView
         _cameraMovement.ChangeToOverview(callback);
     }
 
+    public void GrowMushroom(CardLocation location, Action callback)
+    {
+        var card = _config.Mushroom;
+        var playerOwner = _players[location.SlotOwner];
+        var slot = playerOwner.Territory.Slots[location.SlotIndex];
+        
+        var newCardGO = Instantiate(_config.CardPrefab, slot.SnapTransform.position, slot.SnapTransform.rotation);
+        var newPlayableCard = newCardGO.GetComponent<PlayableCard>();
+        newPlayableCard.InitializeOnSlot(card, location.SlotOwner, slot);
+        slot.AddCardAtTheBottom(newPlayableCard);
+        StartCoroutine(DelayCall(callback, 1f)); //de prueba
+    }
+
+    public void GrowMacrofungi(CardLocation[] locations, Action callback)
+    {
+        if (locations.Length != 3) throw new Exception("Error! != 3 setas para macrohongo en view!");
+        
+        var token = GetViewPlayer(PlayerCharacter.Fungaloth).Token;
+        token.Play(_tableCenter, () =>
+        {
+            StartCoroutine(DestroyMushroomsAndGrowMacrofungi(locations, callback));
+        });
+    }
+
+    private IEnumerator DestroyMushroomsAndGrowMacrofungi(CardLocation[] locations, Action callback)
+    {
+        
+        CardLocation location = default;
+        ViewPlayer playerOwner;
+        SlotReceiver slot;
+        foreach (var l in locations)
+        {
+            location = l;
+            playerOwner = _players[location.SlotOwner];
+            slot = playerOwner.Territory.Slots[location.SlotIndex]; 
+            var card = slot.Cards[0]; //la carta de mas abajo del slot
+            if (card.Card is not MushroomCard) throw new Exception("Error! La carta para macrohongo no es seta!");
+            slot.RemoveCard(card);
+            Destroy(card.gameObject);
+            yield return new WaitForSeconds(.5f);
+        }
+        //la ultima location es donde crece el macrohongo
+        playerOwner = _players[location.SlotOwner];
+        slot = playerOwner.Territory.Slots[location.SlotIndex];
+        
+        var newCardGO = Instantiate(_config.CardPrefab, slot.SnapTransform.position, slot.SnapTransform.rotation);
+        var newPlayableCard = newCardGO.GetComponent<PlayableCard>();
+        newPlayableCard.InitializeOnSlot(_config.Macrofungi, location.SlotOwner, slot);
+        slot.AddCardAtTheBottom(newPlayableCard);
+        
+        yield return new WaitForSeconds(.5f);
+        callback?.Invoke();
+    }
+
+    
+    
+    
     // private IEnumerator DestroyCard(GameObject card, Action callback = null)
     // {
     //     yield return null;

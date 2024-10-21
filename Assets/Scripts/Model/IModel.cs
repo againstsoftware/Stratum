@@ -18,8 +18,10 @@ public interface IModel : IService
     public void RemoveCardFromHand(PlayerCharacter player, ICard card);
     public void PlaceCardOnSlot(ICard card, PlayerCharacter slotOwner, int slotIndex, bool atTheBottom = false);
 
-    public (TableCard parent, TableCard son) GrowPopulation(ICard.Population population);
-    public TableCard KillPopulation(ICard.Population population);
+    public (TableCard parent, TableCard son) GrowLastPlacedPopulation(ICard.Population population);
+    public TableCard KillLastPlacedPopulation(ICard.Population population);
+
+    public TableCard GrowMushroomEcosystem();
 
     public void PlaceInlfuenceCardOnCard(ICard influenceCard, ICard card, PlayerCharacter slotOwner,
         int slotIndex, int cardIndex);
@@ -27,7 +29,7 @@ public interface IModel : IService
     public void MoveCardBetweenSlots(ICard card, PlayerCharacter slotOwner, int slotIndex, int cardIndex,
         PlayerCharacter targetSlotOwner, int targetSlotIndex);
 
-    public void RemoveCardFromSlot(ICard card, PlayerCharacter slotOwner, int slotIndex, int cardIndex);
+    public void RemoveCardFromSlot(/*ICard card, */PlayerCharacter slotOwner, int slotIndex, int cardIndex);
 
     public void RemoveInfluenceCardFromCard(ICard influenceCard, ICard card, PlayerCharacter slotOwner,
         int slotIndex, int cardIndex);
