@@ -21,7 +21,7 @@
 
 * [1.7. Cartas](#17-cartas)
 
-[2. Controles](#2-controles)
+[2. Interacción y Navegación](#2-interacción-y-navegación)
 
 [3. Narrativa](#3-narrativa)
 
@@ -38,7 +38,6 @@
 * [4.4. El ecosistema](#44-el-ecosistema)
 
 * [4.5. Iconografía y tipografía](#45-iconografía-y-tipografía)
-
 
 [5. Sonido y Música](#5-sonido-y-música)
 
@@ -71,7 +70,7 @@
 En esta sección se explicarán todas las mecánicas del juego. Al ser un juego de cartas, se seguirá la estructura que suelen tener los manuales de  juegos de cartas de mesa.
 
 ## 1.1. Descripción del juego
-_Stratum_ es un juego de cartas para 4 jugadores, en el que hay un ecosistema al que contribuyen todos los jugadores jugando **cartas de población**: plantas, herbívoros y carnívoros. Este ecosistema está vivo y va cambiando si está desequilibrado, para balancearse de forma natural. Cada jugador juega el papel de un personaje. Los 4 personajes están divididos en 3 facciones, cada una de las cuales busca imponer sus intereses sobre las demás, usando las leyes de la naturaleza a su favor para equilibrar o desequilibrar el ecosistema. Además, cada jugador tiene en su mazo **cartas de influencia**, únicas para cada personaje, las cuales puede usar para influir en el ecosistema de manera artificial.
+**Stratum** es un juego de cartas para 4 jugadores, en el que hay un ecosistema al que contribuyen todos los jugadores jugando **cartas de población**: plantas, herbívoros y carnívoros. Este ecosistema está vivo y va cambiando si está desequilibrado, para balancearse de forma natural. Cada jugador juega el papel de un personaje. Los 4 personajes están divididos en 3 facciones, cada una de las cuales busca imponer sus intereses sobre las demás, usando las leyes de la naturaleza a su favor para equilibrar o desequilibrar el ecosistema. Además, cada jugador tiene en su mazo **cartas de influencia**, únicas para cada personaje, las cuales puede usar para influir en el ecosistema de manera artificial.
 
 ## 1.2. Facciones
 
@@ -242,9 +241,71 @@ El macrohongo no puede ser destruido por cartas de influencia, a menos que la de
 - **Moho:** Coloca una carta de hongo sobre un espacio vacío de un territorio con construcción.
 
 
-# 2. Controles
-...
+# 2. Interacción y navegación
 
+**Stratum** es un videojuego sin interfaz externa al escenario (Head-Up Display), por lo tanto todas las interacciones del usuario se realizan tocando, moviendo y manipulando objetos del escenario, tridimensionales. La cámara es en primera persona, con movimientos entre posiciones fijas. En esta sección se explicarán todas esas interacciones, y el flujo de pantallas del juego.
+
+## 2.1. Menú principal
+Es una escena que consta de un pasillo tipo vestíbulo, con una mesa alta al final, y 1 puerta a cada lado, también al final. El jugador podrá cambiar entre 2 posiciones fijas: lejos y cerca de la mesa. Al acercarse verá varios objetos con los que puede interactuar.
+
+### Radio de onda corta:
+![Radio de onda corta](https://c8.alamy.com/comp/2B41YF7/am-shortwave-radio-dial-2B41YF7.jpg)
+
+Tiene 6 perillas con caracteres alfanuméricos encima que cambian cuando gira su manivela. Además tiene 2 botones: Crear sala y Unirse a sala. 
+
+Pulsar el de crear sala hace que las perillas giren para mostrar el código de 6 caracteres de la sala, para compartirlo con el resto de jugadores. 
+
+Pulsar el de unirse a sala hace que, cuando escribas un caracter con el teclado, se gire la manivela para mostrarlo, y se pase a la siguiente manivela. De esta forma se puede escribir el código, y cuando se haya escrito entero se intentará unir a esa sala.
+
+Cuando haya 4 jugadores en la sala, se deseleccionará la radio en el juego de los 4, y se activará una animación de caminar hacia la puerta de la izquierda. Cuando llegue, se abrirá, y se transicionará a la habitación del juego.
+
+### Gramófono
+![Gramófono](https://djvitage.com/wp-content/uploads/2024/08/gramofono-retro-19645057.webp)
+
+Tiene un vinilo, una manivela y una perilla. También tiene una nota sobre él, explicando el uso de cada elemento.
+
+Al pulsar el disco, este cambia de lado, cambiando también el idioma del juego.
+
+Al pulsar la manivela, va cambiando entre 3 estados, haciendo que el disco gire a 3 respectivas velocidades, cada una representa una configuración de gráficos: baja, media y alta.
+
+Al pulsar la rueda va girando entre 5 estados de volumen, de menos a más. Al pulsarla en el estado de mayor volúmen, pasa al estado de 0 volumen.
+
+### Libro de registro
+![Libro de registro](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjbXQIXsjSDk2vS0vi9g5FosehG5gd_0V73FQA_tYth6aq8Fm_nBGIXLb8WmYs5X2ZXQFP0v-yQtK5auyxeElZxf6-_ct2ztjjSwOxgVcNwqh7xPrvV5jknyDd_lVV1P2wmNylsW3gqOSmN/w1200-h630-p-k-no-nu/20180913_FLR_HistoricLedgers-56.jpg)
+
+Al pulsarlo, se abre por la mitad y permite cambiar entre 2 páginas, arrastrando.
+ 1. **Créditos:** en la primera página aparecen los créditos del juego, escritos "a mano" en el libro.
+ 2. **Contacto:** en la segunda página hay iconos de las redes sociales del estudio. Al pulsarlos, abren en el navegador del jugador el vínculo elegido.
+
+ ### **Manual de reglas:** 
+ 
+ ![Reglas](https://static.wikia.nocookie.net/nickelodeon/images/a/a5/Darules.jpg/revision/latest/scale-to-width-down/250?cb=20170212060658)
+
+ Al pulsarlo, se abre por el principio, y empieza una animacion de "entrar en el manual". Este transporta al jugador al tutorial del juego.
+
+
+## 2.2. Habitación del juego
+
+En esta escena el jugador empieza entrando por la puerta de la habitación, viendo que los otros 3 personajes ya están sentados en la mesa del centro de la habitación. El jugador avanza automáticamente y se sienta. y comienza la partida.
+
+Cuando gana una de las facciones, sucede:
+
+1. Aparece un orbe (o dos, si ha ganado la facción Naturaleza) en el centro de la mesa, y se dirige hacia la facción ganadora. 
+2. Depende de si ha ganado Naturaleza o no, la facción ganadora absorbe el orbe, o lo destruye, para simbolizar fusionarse o imponerse con el ecosistema que estaba en disputa.
+3. El jugador local se levanta el primero, y sale por la puerta, fundiendo al menú principal.
+
+
+## 2.3. Controles
+
+En una partida, se seleccionan las cartas con el cursor y se juegan arrastrándolas, haciendo click y manteniendo, y soltando sobre el elemento (carta, espacio de territorio, pila de descarte, etc.) donde se quiera jugarla. Con la rueda del ratón se cambia entre 2 perspectivas, una más enfocada en la mano de cartas, y otra enfocada en la mesa, vista desde arriba.
+
+En móvil, igualmente, se pulsa para seleccionar y se mantiene pulsado para arrastrar cartas. Se desliza verticalmente para cambiar entre las 2 perspectivas.
+
+Para interactuar con los objetos del menú principal, se usa el ratón para destacarlos con el cursor, y el clic para seleccionarlos al pulsar sobre ellos. Para introducir el código de sala en la radio se usa el teclado.
+
+En móvil, al pulsar sobre un objeto se destaca, y al mantener pulsado se selecciona. 
+
+Para introducir el código de sala en la radio, se despliega el teclado táctil mientras esté seleccionada. El equipo de **Against Software** pide perdón a todos los jugadores por este uso de interfaz gráfica, pues se ha tratado de evitar cualquier tipo de _HUD_, pero para que funcione la radio correctamente en navegadores móviles hemos tenido que recurrir a esto.
 
 # 3. Narrativa
 
@@ -319,6 +380,7 @@ Los modelos tridimensionales del entorno de juego y los personajes se desarrolla
 - **Personajes**: Cada uno de los personajes será representado con modelos 3D de baja resolución que mantendrán características distintivas de sus facciones, mientras que sus detalles principales se concentrarán en las siluetas y colores característicos.
     - **Sagitario**: ente de la naturaleza inspirado en un centauro.
 
+
     ![Centauro1](/Readme%20Files/Arte/Imagen15.jpg)  
     ![Centauro2](/Readme%20Files/Arte/Imagen16.jpg)  
     - **Ygdra**: diosa del bosque.
@@ -352,6 +414,7 @@ El juego utilizará **cel-shading** para lograr un estilo visual estilizado. Est
 Las cartas de población representan a plantas, herbívoros y carnívoros. Cada tipo de carta será ilustrada en 2D, manteniendo el estilo general del Art Nouveau con énfasis en líneas fluidas y detalles orgánicos.
 
 - **Plantas**: diseñadas con tonos verdes y marrones. Las ilustraciones mostrarán plantas robustas y vitales enmarcadas por patrones orgánicos.   
+
 ![Flor1](/Readme%20Files/Arte/Imagen27.jpg)   
 ![Flor2](/Readme%20Files/Arte/Imagen28.jpg)   
 ![Flor3](/Readme%20Files/Arte/Imagen29.jpg)
@@ -423,7 +486,7 @@ Estas animaciones no solo complementan el aspecto estratégico del juego, sino q
 La iconografía y tipografía en **Stratum** jugarán un papel crucial en la transmisión clara de información sin romper la inmersión, ya que todo estará integrado en el entorno de manera diegética. No habrá una interfaz convencional en pantalla; en su lugar, los elementos visuales y textuales estarán presentes directamente en los objetos del entorno, asegurando que el jugador reciba la información necesaria sin salir de la experiencia.
 
 ### Iconografía
-La iconografía y tipografía en Stratum jugarán un papel crucial en la transmisión clara de información sin romper la inmersión, ya que todo estará integrado en el entorno de manera diegética. No habrá una interfaz convencional en pantalla; en su lugar, los elementos visuales y textuales estarán presentes directamente en los objetos del entorno, asegurando que el jugador reciba la información necesaria sin salir de la experiencia.
+La iconografía y tipografía en **Stratum** jugarán un papel crucial en la transmisión clara de información sin romper la inmersión, ya que todo estará integrado en el entorno de manera diegética. No habrá una interfaz convencional en pantalla; en su lugar, los elementos visuales y textuales estarán presentes directamente en los objetos del entorno, asegurando que el jugador reciba la información necesaria sin salir de la experiencia.
 
 ### Tipografía
 La tipografía en el juego será simple, mínima y sutil, utilizada únicamente cuando sea estrictamente necesario para transmitir información clave, como nombres de cartas, reglas, o descripciones. Esta información estará integrada en el entorno de juego, siguiendo el concepto de interfaz diegética
