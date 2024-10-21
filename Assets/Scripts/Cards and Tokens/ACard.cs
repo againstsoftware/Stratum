@@ -10,7 +10,11 @@ public abstract class ACard : AActionItem, ICard, IEffectContainer
     
     public abstract bool CanHaveInfluenceCardOnTop { get; }
     
+    [field:SerializeField] public Texture ObverseTex { get; private set; }
+    
+    
     [SerializeField] private LocalizedString _name, _description;
+
 
     [Serializable]
     public class ActionEffect

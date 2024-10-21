@@ -26,7 +26,7 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     
     [SerializeField] private float  _drawTravelDuration, _reposInHandTravelDuration;
     [SerializeField] private float _closestCardZ;
-    
+    [SerializeField] private MeshRenderer _mesh;
 
     
     private float _startZ;
@@ -163,8 +163,7 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
 
     public void Initialize(ACard card, PlayerCharacter owner, State initialState = State.Playable)
     {
-        if (Card is not null) throw new Exception("carta ya asignada no se puede reasignar!");
-        Card = card;
+        SetCard(card);
         Owner = owner;
         CurrentState = initialState;
     }
@@ -172,7 +171,9 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     public void SetCard(ACard card)
     {
         if (Card is not null) throw new Exception("carta ya asignada no se puede reasignar!");
+        if (card is null) return;
         Card = card;
+        _mesh.materials[1].mainTexture = card.ObverseTex;
     }
 
 }

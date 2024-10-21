@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3e78f34a01405240afc16a07ae3e997, type: 3}
   m_Name: Plant
   m_EditorClassIdentifier: 
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: a3092cb328cca0d4690456b85d7447c8,
+    type: 3}
   _name:
     m_TableReference:
       m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4

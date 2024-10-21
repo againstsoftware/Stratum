@@ -302,7 +302,9 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
 
         if (newDropLocation is null)
         {
-            throw new Exception($"drop location no tiene iactionreceiver! : {hitInfo.collider.name}");
+            return;
+            //no hace falta (?) porque pasa con los tokens que estan en la layer pero no son receivers
+            //throw new Exception($"drop location no tiene iactionreceiver! : {hitInfo.collider.name}");
         }
         
         if (!newDropLocation.IsDropEnabled ||

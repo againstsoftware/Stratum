@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3e78f34a01405240afc16a07ae3e997, type: 3}
   m_Name: Carnivore
   m_EditorClassIdentifier: 
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: ab9952ccd9d01ee4c903120f19cde83f,
+    type: 3}
   _name:
     m_TableReference:
       m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
