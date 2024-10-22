@@ -177,13 +177,43 @@ public class GameModel : IModel
         for (int i = 0; i < 5; i++) RemoveCardsFromSlot(owner, i, filter);
     }
 
-    public void PlaceConstruction(PlayerCharacter territoryOwner)
+    public void PlaceConstruction(PlayerCharacter territoryOwner, out TableCard plant1, out TableCard plant2)
     {
         var ownerPlayer = _players[territoryOwner];
-
+        
         if (ownerPlayer.Territory.HasConstruction)
-            throw new Exception("Error! Peticion incorrecta al modelo.");
+            throw new Exception("Error! Construyendo en territorio ya construido.");
+        
+        var plants = new List<TableCard>();
 
+        foreach (var slot in ownerPlayer.Territory.Slots)
+        {
+            foreach (var tableCard in slot.PlacedCards)
+            {
+                if (tableCard.Card.CardType is not ICard.Card.Population ||
+                    !tableCard.Card.GetPopulations().Contains(ICard.Population.Plant)) continue;
+
+                plants.Add(tableCard);
+            }
+        }
+
+        if (plants.Count < 2) throw new Exception("Error! menos de 2 plantas para construir!");
+
+        if (plants.Count > 2)
+        {
+            //esto hace que plants se ordene de mas vieja a mas nueva jugada
+            var ecosystemPlants = new List<TableCard>(Ecosystem.Plants);
+            plants.Sort((x, y) => plants.FindIndex(card => card == x).CompareTo(
+                ecosystemPlants.FindIndex(card => card == y)));
+        }
+
+        //quitamos las 2 ultimas plantas
+        RemoveCardFromSlot(territoryOwner, plants[^1].Slot.SlotIndexInTerritory, plants[^1].IndexInSlot);
+        RemoveCardFromSlot(territoryOwner, plants[^2].Slot.SlotIndexInTerritory, plants[^2].IndexInSlot);
+
+        plant1 = plants[^1];
+        plant2 = plants[^2];
+        
         ownerPlayer.Territory.HasConstruction = true;
     }
 
@@ -208,10 +238,13 @@ public class GameModel : IModel
         }
     }
 
-    public IReadOnlyList<ICard> PlayerDrawCards(PlayerCharacter character, int amount)
+    public IReadOnlyList<ICard> PlayerDrawCards(PlayerCharacter character /*, int amount*/)
     {
         List<ICard> drawnCards = new();
         var player = _players[character];
+
+        int amount = 5 - player.HandOfCards.Count;
+
         for (int i = 0; i < amount; i++)
         {
             var card = player.DrawCard();

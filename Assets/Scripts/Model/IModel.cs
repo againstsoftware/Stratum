@@ -40,12 +40,12 @@ public interface IModel : IService
     //el filtro debe dar true para las cartas que se quieran salvar de eliminar
     public void RemoveCardsFromTerritory(PlayerCharacter owner, Predicate<TableCard> filter = null);
     
-    public void PlaceConstruction(PlayerCharacter territoryOwner);
+    public void PlaceConstruction(PlayerCharacter territoryOwner, out TableCard plant1, out TableCard plant2);
     
     public void RemoveConstruction(PlayerCharacter territoryOwner);
     
     public void AdvanceTurn(PlayerCharacter playerOnTurn);
     
 
-    public IReadOnlyList<ICard> PlayerDrawCards(PlayerCharacter character, int amount);
+    public IReadOnlyList<ICard> PlayerDrawCards(PlayerCharacter character/*, int amount*/);
 }

@@ -30,8 +30,10 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  ValidActions: []
-  _effects: 
+  ValidActions:
+  - <DropLocation>k__BackingField: 5
+    <Receivers>k__BackingField: 02000000
+  _effects: 080000000b000000
   references:
     version: 2
     RefIds: []

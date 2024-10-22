@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 public delegate void EffectCommand(PlayerAction playerAction, Action onCompletedCallback);
 
@@ -14,11 +15,12 @@ public static class EffectCommands
         Effect.KillCarnivore => _killCarnivore,
         Effect.KillHerbivore => _killHerbivore,
         Effect.Discard => _discard,
-        Effect.Draw2 => _draw2,
-        Effect.Draw5 => _draw5,
+        Effect.Draw2 => _draw,
+        Effect.Draw5 => _draw,
         Effect.OverviewSwitch => _overviewSwitch,
         Effect.GrowMushroomEcosystem => _growMushroomEcosystem,
         Effect.GrowMacrofungi => _growMacrofungi,
+        Effect.Construct => _construct,
 
         _ => throw new ArgumentOutOfRangeException()
     };
@@ -85,31 +87,31 @@ public static class EffectCommands
     };
 
 
-    private static readonly EffectCommand _draw2 = (_, callback) =>
+    private static readonly EffectCommand _draw = (_, callback) =>
     {
         Dictionary<PlayerCharacter, List<ACard>> cardsDrawn = new();
         foreach (var character in _turnOrder)
         {
             if (character is PlayerCharacter.None) continue;
-            var cards = ServiceLocator.Get<IModel>().PlayerDrawCards(character, 2);
+            var cards = ServiceLocator.Get<IModel>().PlayerDrawCards(character /*, 2*/);
             cardsDrawn.Add(character, new List<ACard>(cards.Cast<ACard>()));
         }
 
         DrawCardInView(cardsDrawn, 0, callback);
     };
 
-    private static readonly EffectCommand _draw5 = (_, callback) =>
-    {
-        Dictionary<PlayerCharacter, List<ACard>> cardsDrawn = new();
-        foreach (var character in _turnOrder)
-        {
-            if (character is PlayerCharacter.None) continue;
-            var cards = ServiceLocator.Get<IModel>().PlayerDrawCards(character, 5);
-            cardsDrawn.Add(character, new List<ACard>(cards.Cast<ACard>()));
-        }
-
-        DrawCardInView(cardsDrawn, 0, callback);
-    };
+    // private static readonly EffectCommand _draw5 = (_, callback) =>
+    // {
+    //     Dictionary<PlayerCharacter, List<ACard>> cardsDrawn = new();
+    //     foreach (var character in _turnOrder)
+    //     {
+    //         if (character is PlayerCharacter.None) continue;
+    //         var cards = ServiceLocator.Get<IModel>().PlayerDrawCards(character, 5);
+    //         cardsDrawn.Add(character, new List<ACard>(cards.Cast<ACard>()));
+    //     }
+    //
+    //     DrawCardInView(cardsDrawn, 0, callback);
+    // };
 
     private static void DrawCardInView(Dictionary<PlayerCharacter, List<ACard>> cardsDrawn, int index, Action callback)
     {
@@ -158,11 +160,36 @@ public static class EffectCommands
             locations.Add(new IView.CardLocation() { SlotOwner = slotOwner, SlotIndex = slotIndex });
             var cardIndex = receiver.SecondIndex;
             ServiceLocator.Get<IModel>().RemoveCardFromSlot(slotOwner, slotIndex, cardIndex);
-
         }
+
         var macrofungiCard = ServiceLocator.Get<IModel>().GetPlayer(PlayerCharacter.Sagitario).Deck.Macrofungi;
         ServiceLocator.Get<IModel>().PlaceCardOnSlot(macrofungiCard, slotOwner, slotIndex, true);
-        
+
         ServiceLocator.Get<IView>().GrowMacrofungi(locations.ToArray(), callback);
+    };
+
+    private static readonly EffectCommand _construct = (action, callback) =>
+    {
+        var owner = action.Receivers[0].LocationOwner;
+        ServiceLocator.Get<IModel>().PlaceConstruction(owner, out var plant1, out var plant2);
+
+        var location1 = new IView.CardLocation()
+        {
+            SlotIndex = plant1.Slot.SlotIndexInTerritory, CardIndex = plant1.IndexInSlot,
+            SlotOwner = plant1.Slot.Territory.Owner
+        };
+
+        var location2 = new IView.CardLocation()
+        {
+            SlotIndex = plant2.Slot.SlotIndexInTerritory, CardIndex = plant2.IndexInSlot,
+            SlotOwner = plant2.Slot.Territory.Owner
+        };
+
+        Debug.Log("construccion plantas tal:");
+        Debug.Log($"1: si: {location1.SlotIndex}, ci: {location1.CardIndex}");
+        Debug.Log($"2: si: {location2.SlotIndex}, ci: {location2.CardIndex}");
+
+
+        ServiceLocator.Get<IView>().PlaceConstruction(location1, location2, callback);
     };
 }

@@ -20,6 +20,7 @@ public enum Effect
     Draw5,
     OverviewSwitch,
     GrowMushroomEcosystem,
-    GrowMacrofungi
+    GrowMacrofungi,
+    Construct
 }
 

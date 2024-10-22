@@ -10,8 +10,10 @@ public class TerritoryReceiver : MonoBehaviour, IActionReceiver
     public bool IsDropEnabled { get; private set; } = true;
     public bool CanInteractWithoutOwnership => true;
 
-
+    public bool HasConstruction { get; private set; }
+    
     private Material _material;
+    private GameObject _construction;
     private void Awake()
     {
         _material = transform.Find("Mesh").GetComponent<MeshRenderer>().material;
@@ -20,6 +22,22 @@ public class TerritoryReceiver : MonoBehaviour, IActionReceiver
         {
             Slots[i].IndexOnTerritory = i;
         }
+    }
+
+    public void BuildConstruction(GameObject prefab)
+    {
+        _construction = Instantiate(prefab, transform);
+        // _construction.transform.localPosition = prefab.transform.position;
+        _construction.transform.localPosition = Vector3.zero;
+        _construction.transform.localRotation = prefab.transform.rotation;
+        HasConstruction = true;
+    }
+
+    public void DestroyConstruction()
+    {
+        Destroy(_construction);
+        _construction = null;
+        HasConstruction = false;
     }
 
     public void OnDraggingSelect()

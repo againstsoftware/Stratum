@@ -249,7 +249,7 @@ public static class RulesCheck
             foreach (var placedCard in slot.PlacedCards)
             {
                 if (placedCard.Card.CardType is not ICard.Card.Population) continue;
-
+                
                 if (placedCard.Card.GetPopulations().Contains(ICard.Population.Carnivore))
                     return false;
 

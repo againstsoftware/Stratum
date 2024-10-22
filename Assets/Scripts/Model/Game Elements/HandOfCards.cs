@@ -16,4 +16,6 @@ public class HandOfCards
     internal bool RemoveCard(ICard card) => _cards.Remove(card);
 
     public bool Contains(ICard card) => _cards.Contains(card);
+
+    public int Count => _cards.Count;  
 }

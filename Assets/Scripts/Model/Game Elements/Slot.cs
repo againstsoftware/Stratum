@@ -41,6 +41,8 @@ public class Slot
     {
         card.OnRemove();
         _placedCards.Remove(card);
+        int i = 0;
+        foreach (var pc in _placedCards) pc.IndexInSlot = i++;
     }
 
     internal void AdvanceTurn()

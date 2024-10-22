@@ -7,6 +7,7 @@ public interface IView : IService
     {
         public PlayerCharacter SlotOwner;
         public int SlotIndex;
+        public int CardIndex;
     }
     public ViewPlayer GetViewPlayer(PlayerCharacter character);
     public void PlayCardOnSlot(ACard card, PlayerCharacter actor, CardLocation location, Action callback);
@@ -18,4 +19,6 @@ public interface IView : IService
     public void GrowMushroom(CardLocation location, Action callback);
 
     public void GrowMacrofungi(CardLocation[] locations, Action callback);
+
+    public void PlaceConstruction(CardLocation plant1Location, CardLocation plant2Location, Action callback);
 }
