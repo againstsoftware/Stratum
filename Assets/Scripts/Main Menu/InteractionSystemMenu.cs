@@ -12,7 +12,6 @@ public class InteractionSystemMenu : MonoBehaviour, IInteractionSystemMenu
     [SerializeField] private InputActionAsset _inputActions;
     [field: SerializeField] public LayerMask InteractablesLayer { get; private set; }
 
-
     private void Awake()
     {
         Input = new(this, _inputActions);
@@ -22,8 +21,6 @@ public class InteractionSystemMenu : MonoBehaviour, IInteractionSystemMenu
     private void Start()
     {
         Camera = Camera.main;
-
-
     }
 
     private void OnPointerPress()
