@@ -16,10 +16,20 @@ public class InteractionSystemMenu : MonoBehaviour, IInteractionSystemMenu
     private void Awake()
     {
         Input = new(this, _inputActions);
+        Input.PointerPress += OnPointerPress;
     }
 
     private void Start()
     {
         Camera = Camera.main;
+
+
+    }
+
+    private void OnPointerPress()
+    {
+        Debug.Log("onpointerpress");
+
+        Application.OpenURL("https://oscaralri.github.io/");
     }
 }

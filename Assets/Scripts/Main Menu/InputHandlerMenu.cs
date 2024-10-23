@@ -8,7 +8,7 @@ public class InputHandlerMenu
 {
     private InputActionAsset _inputActions;
 
-
+    public event Action PointerPress; 
     private Vector2 _pointerPosition;
     private IInteractionSystemMenu _interactionSystem;
 
@@ -43,7 +43,8 @@ public class InputHandlerMenu
         if(hit)
         {
             Debug.Log("hit");
-            Application.OpenURL("https://github.com/againstsoftware/Stratum");
+            PointerPress?.Invoke();
+            //Application.OpenURL("https://github.com/againstsoftware/Stratum");
         }
 
     }
