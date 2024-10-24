@@ -549,7 +549,7 @@ El juego está dirigido a jugadores de +13 años, que pueden ser tanto casuales 
 En este documento, se presenta una "caja de herramientas" que examina seis bloques principales de stakeholders, detallando sus responsabilidades y cómo interactúan entre sí para fortalecer la escena competitiva. Cada grupo contribuye a su manera a la evolución del juego, desde la creación de contenido y la organización de eventos hasta la promoción y financiamiento.
 Todos ellos con un **objetivo común: mantener viva y activa la comunidad, asegurar un entorno competitivo atractivo y garantizar la viabilidad del negocio.**
 
-### Seis bloques principales (stakeholders):
+### Siete bloques principales (stakeholders):
 #### 1. Jugadores y comunidad de fans (clientes y usuarios finales):
 Este bloque representa a los usuarios del juego, quienes no solo participan activamente en las partidas competitivas, sino que también son una comunidad que crea y consume contenido alrededor del juego (streams, vídeos, foros, etc.). Estos jugadores buscan mejorar sus habilidades, ganar torneos, obtener reconocimiento, y también contribuyen al crecimiento del juego al compartir sus experiencias, estrategias y generar discusiones.
 
@@ -569,6 +569,9 @@ Empresas o marcas que patrocinan torneos y eventos competitivos, ofreciendo recu
 
 #### 6. Marketing y comunicación (mediadores):
 Los encargados de hacer llegar el juego al público objetivo, a través de estrategias de branding, redes sociales, eventos de lanzamiento, campañas publicitarias y colaboración con influencers de juegos de mesa y rol.
+
+#### 7. Unity:
+La empresa paga a Unity por el uso de sus servicios de Unity Cloud, incluyendo Unity Relay y Unity Matchmaking, para alojar los servidores y gestionar las partidas en línea. A cambio, Unity proporciona la infraestructura necesaria para el hosting, conexión entre jugadores y organización de partidas multijugador. Además, la empresa hace uso del motor de juego para el desarrollo del videojuego.
 
 
 ### Relaciones entre los bloques:
@@ -615,6 +618,10 @@ Colaboran en la creación de campañas para incrementar el número de ventas y d
 
 #### Sponsors e inversores - Marketing:
 Los sponsors también colaboran con el equipo de marketing para asegurarse de tener la visibilidad adecuada en todas las campañas de marketing.
+
+#### Empresa - Unity:
+La empresa paga por los servicios en la nube de Unity (Unity cloud, relay y matchmaking), garantizando la infraestructura y soporte necesarios para el juego en línea.
+Unity proporciona el motor de juego gratuito y servicios de infraestructura que facilitan el hosting y el emparejamiento de jugadores.
 
 ### Esquema
 ![Caja de Herramientas](/Readme%20Files/Caja_de_Herramientas.png)
