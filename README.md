@@ -96,9 +96,11 @@ Cada jugador tiene delante su **territorio**. Este está compuesto por 5 espacio
 Cada jugador empieza con 5 cartas.
 
 El ecosistema (la mesa) empieza con 4 cartas de población: 2 plantas, 1 herbívoro y 1 carnívoro. Estas se disponen de manera aleatoria, cada una en el espacio de territorio situado más a la izquierda de cada jugador.
+
 ![Ejemplo Inicio](/Readme%20Files/EjemplodeComienzo.png)
 
 Comienza jugando Sagitario, y el orden de turnos sigue el sentido inverso a las agujas del reloj.
+
 ![Orden de Juego](/Readme%20Files/OrdenJuego.png)
 
 ## 1.4. Rondas y turnos
