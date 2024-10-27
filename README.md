@@ -33,11 +33,13 @@
 
 * [4.2. Arte de las cartas](#42-arte-de-las-cartas)
 
-* [4.3. Escenarios y ambientación](#43-escenarios-y-ambientación)
+* [4.3. Fichas y arte de los personajes](#43-fichas-y-arte-de-los-personajes)
 
-* [4.4. El ecosistema](#44-el-ecosistema)
+* [4.4. Escenarios y ambientación](#44-escenarios-y-ambientación)
 
-* [4.5. Iconografía y tipografía](#45-iconografía-y-tipografía)
+* [4.5. El ecosistema](#45-el-ecosistema)
+
+* [4.6. Iconografía y tipografía](#46-iconografía-y-tipografía)
 
 [5. Sonido y Música](#5-sonido-y-música)
 
@@ -549,7 +551,7 @@ El ecosistema es la manifestación visual de las cartas jugadas en la mesa, cobr
 
 -	**Interacción visual**: Cuando se coloca una carta en uno de los cinco espacios del jugador, su efecto se proyecta instantáneamente en el ecosistema. Este cambio en el ecosistema es dinámico y afecta a la atmósfera general, añadiendo una capa de interacción visual entre las decisiones de los jugadores y el estado del juego.
 
-## 4.4. El ecosistema
+## 4.5. El ecosistema
 Las animaciones y efectos especiales no solo añaden dinamismo visual al juego, sino que también refuerzan la narrativa y el impacto de las jugadas, haciendo que las interacciones entre los jugadores y el ecosistema sean más inmersivas. Cada jugada cobra vida con animaciones que destacan tanto el acto de colocar cartas como los efectos de las cartas de influencia.
 
 ### Colocación de cartas
@@ -574,7 +576,7 @@ Varias cartas de influencia tienen efectos visuales únicos que afectan tanto al
 Cada vez que una carta de influencia es jugada, los cambios en el ecosistema afectan el ambiente visual general. Si el ecosistema es dominado por la naturaleza, el escenario se vuelve más brillante y lleno de vida. Si la industria toma el control, el ambiente se torna más sombrío, con tonos metálicos y nubes de humo. Cuando fungi prevalece, el escenario se oscurece y se cubre de hongos y esporas.
 Estas animaciones no solo complementan el aspecto estratégico del juego, sino que también crean una atmósfera envolvente que mantiene al jugador inmerso en el conflicto entre las facciones, reforzando el impacto de cada jugada.
 
-## 4.5. Iconografía y tipografía
+## 4.6. Iconografía y tipografía
 La iconografía y tipografía en **Stratum** jugarán un papel crucial en la transmisión clara de información sin romper la inmersión, ya que todo estará integrado en el entorno de manera diegética. No habrá una interfaz convencional en pantalla; en su lugar, los elementos visuales y textuales estarán presentes directamente en los objetos del entorno, asegurando que el jugador reciba la información necesaria sin salir de la experiencia.
 
 ### Iconografía
