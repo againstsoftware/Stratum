@@ -349,11 +349,8 @@ Como jugador, ahora es tu turno. **Stratum**, el juego ancestral que ha determin
 
 
 # 4. Arte y apartado visual
-
-
 ## 4.1. Estilo visual general
 El estilo visual de **Stratum** se inspira en una combinación de arte **low-poly** y elementos estilizados del **Art Nouveau**. Este enfoque se alinea con la temática del juego, que enfrenta la preservación de los ecosistemas contra su explotación industrial y la expansión de los hongos.
-
 
 Inspiración:
 
@@ -377,28 +374,7 @@ Los modelos tridimensionales del entorno de juego y los personajes se desarrolla
 ![Ciervo](/Readme%20Files/Arte/Imagen13.jpg)  
 ![Animales](/Readme%20Files/Arte/Imagen14.jpg)  
 
-- **Personajes**: Cada uno de los personajes será representado con modelos 3D de baja resolución que mantendrán características distintivas de sus facciones, mientras que sus detalles principales se concentrarán en las siluetas y colores característicos.
-    - **Sagitario**: ente de la naturaleza inspirado en un centauro.
 
-
-    ![Centauro1](/Readme%20Files/Arte/Imagen15.jpg)  
-    ![Centauro2](/Readme%20Files/Arte/Imagen16.jpg)  
-    - **Ygdra**: diosa del bosque.
-
-    ![Ygdra1](/Readme%20Files/Arte/Imagen17.jpg)  
-    ![Ygdra2](/Readme%20Files/Arte/Imagen18.jpg)  
-    ![Ygdra3](/Readme%20Files/Arte/Imagen19.jpg)  
-
-    - **El magnate**: humano que quiere construir una industria.  
-
-    ![Humano1](/Readme%20Files/Arte/Imagen20.png)   
-    ![Humano2](/Readme%20Files/Arte/Imagen21.png)  
-
-    - **Fu'ngaloth**: entidad de los hongos.
-    
-    ![Fu'ngaloth1](/Readme%20Files/Arte/Imagen22.jpg)  
-    ![Fu'ngaloth2](/Readme%20Files/Arte/Imagen23.png)  
-    ![Fu'ngaloth3](/Readme%20Files/Arte/Imagen24.png)  
     
 ### Renderizado y texturizado
 El juego utilizará **cel-shading** para lograr un estilo visual estilizado. Este enfoque, junto con el uso de modelos **low-poly** y texturas simples y planas, se ha seleccionado para optimizar el rendimiento en todos los dispositivos, ofreciendo una experiencia fluida y accesible sin sacrificar el estilo visual del juego.
@@ -413,19 +389,37 @@ El juego utilizará **cel-shading** para lograr un estilo visual estilizado. Est
 
 Las cartas de población representan a plantas, herbívoros y carnívoros. Cada tipo de carta será ilustrada en 2D, manteniendo el estilo general del Art Nouveau con énfasis en líneas fluidas y detalles orgánicos.
 
-- **Plantas**: diseñadas con tonos verdes y marrones. Las ilustraciones mostrarán plantas robustas y vitales enmarcadas por patrones orgánicos.   
+## Plantas 
+Diseñadas con tonos azulados. Las ilustración mostrará una flor enmarcada por patrones orgánicos.   
 
+## Referencias
 ![Flor1](/Readme%20Files/Arte/Imagen27.jpg)   
 ![Flor2](/Readme%20Files/Arte/Imagen28.jpg)   
 ![Flor3](/Readme%20Files/Arte/Imagen29.jpg)
 
-- **Herbívoros**: representados con colores cálidos y suaves destacando el equilibrio en el ecosistema.  
+## Arte Final
+![CartaPlantas](/Readme%20Files/Arte/Carta/cartas/plants.png)
+
+## Herbívoros
+Representados con colores cálidos y suaves destacando el equilibrio en el ecosistema.  
+## Referencias
 ![Ciervo2](/Readme%20Files/Arte/Imagen30.jpg)  
 ![Ciervo3](/Readme%20Files/Arte/Imagen31.jpg)
+## Arte Final
+![Carta Herbívoros](/Readme%20Files/Arte/Carta/cartas/hervibores.png)
 
-- **Carnívoros**: con tonos más oscuros y formas agresivas, pero siempre respetando la estética estilizada y orgánica del juego.  
+## Carnívoros
+Con tonos más rojizos y formas agresivas, pero siempre respetando la estética estilizada y orgánica del juego.  
+## Referencias
 ![Lobo2](/Readme%20Files/Arte/Imagen32.jpg)  
 ![Oso](/Readme%20Files/Arte/Imagen33.jpg)  
+## Arte Final
+![Carta Carnívoros](/Readme%20Files/Arte/Carta/cartas/carnivores.png)
+
+## Hongos
+Carta con colores morados. Con estética orgánica haciendo una representación de setas/hongos.
+## Arte Final
+![Carta Hongos](/Readme%20Files/Arte/Carta/cartas/fungus.png)
 
 ### Cartas de influencia
 Cada facción tendrá cartas de influencia únicas que permitirán alterar el ecosistema. El estilo artístico variará según la facción:
@@ -434,8 +428,99 @@ Cada facción tendrá cartas de influencia únicas que permitirán alterar el ec
 - **Industria**: las cartas de El magnate destacarán la maquinaria y la destrucción del ecosistema con tonos grises y metálicos.
 - **Fungi**: las cartas de Fu’ngaloth tendrán elementos que evoquen corrupción y expansión de hongos, usando una paleta de colores oscuros y púrpuras.
 
+## 4.3. Fichas y arte de los personajes
+  ### Personajes
 
-## 4.3. Escenarios y ambientación
+  Cada uno de los personajes será representado con **modelos 3D de baja resolución** que mantendrán características distintivas de sus facciones, mientras que sus detalles principales se concentrarán en las siluetas y colores característicos.
+  ## Sagitario
+
+  **Facción**: Naturaleza  
+  **Rol**: Protector de la fauna / Guardián de las bestias  
+
+  ## Descripción Física
+  - **Edad**: Eterno, pero aparenta unos 30 años  
+  - **Altura**: 2.10 m  
+  - **Complexión**: Fuerte y atlética, con una figura estilizada y elegante  
+  - **Rasgos físicos**: Sagitario tiene una presencia majestuosa, con rasgos faciales afilados y ojos dorados que reflejan sabiduría y ferocidad. Sus orejas son puntiagudas, y tiene cuernos que se curvan hacia atrás, reminiscentes de una cabra.  
+  - **Vestimenta**: Su tren superior está recubierto por hojas de los árboles del bosque. Lleva una lanza imbuida con la esencia de las criaturas del bosque; la punta es de piedra lunar y brilla ligeramente en la oscuridad.  
+
+  ## Personalidad
+  - **Ferozmente protector**: Sagitario es el defensor absoluto de todas las criaturas de Sylveria. Está dispuesto a luchar hasta el final para proteger el equilibrio natural, y su instinto protector es tan salvaje como los animales que cuida.  
+  - **Conexión primitiva**: Tiene una conexión profunda y casi mística con la fauna, lo que le permite comunicarse con los animales, entender sus necesidades y sentir su dolor. Esta habilidad le permite liderar ejércitos de bestias cuando es necesario.  
+  - **Sabiduría ancestral**: Aunque es temible en la batalla, Sagitario es también una figura sabia y reflexiva. Su conocimiento de la naturaleza es vasto, y siempre busca armonía antes que conflicto, aunque no dudará en usar la fuerza si el equilibrio está amenazado.  
+  - **Desconfianza hacia la humanidad**: Después de ver cómo la humanidad explota y destruye el entorno, Sagitario ha desarrollado una actitud distante y cautelosa hacia los humanos, especialmente aquellos que buscan explotar la naturaleza para su propio beneficio.  
+
+  ## Historia
+  Nacido del corazón del bosque de Sylveria, Sagitario es un ente creado por el poder mismo de la naturaleza. Surgió cuando las bestias se unieron para pedir protección contra la creciente amenaza humana. Durante siglos, ha sido el guardián silencioso de las criaturas del bosque, vigilando desde las sombras y actuando solo cuando es absolutamente necesario.
+
+  Con la llegada de *El Magnate* y su sed de dominación industrial, Sagitario se ha visto obligado a abandonar su papel como observador pasivo para tomar acción directa. Ahora, lidera la resistencia de la naturaleza contra la invasión industrial, utilizando su conocimiento del terreno y su conexión con las bestias para enfrentarse a las máquinas de El Magnate.
+
+  ## Motivaciones
+  - **Proteger a Sylveria**: La misión principal de Sagitario es asegurar que el equilibrio natural de Sylveria se mantenga intacto, haciendo todo lo posible para evitar que los humanos destruyan el hogar de las criaturas que ha jurado proteger.
+  - **Restaurar el equilibrio**: Sagitario no solo quiere detener la industrialización; también sueña con revertir el daño que se ha hecho. Desea un Sylveria donde la naturaleza pueda florecer sin interferencias externas, donde cada criatura tenga un lugar seguro.
+  - **Venganza contra los explotadores**: Aunque prefiere la paz, la furia de Sagitario se desata contra aquellos que buscan explotar el mundo natural. No muestra misericordia hacia los cazadores, taladores o cualquiera que amenace la vida silvestre de Sylveria.
+  
+  ## Referencias
+
+    ![Centauro1](/Readme%20Files/Arte/Imagen15.jpg)  
+    ![Centauro2](/Readme%20Files/Arte/Imagen16.jpg) 
+  ## Modelo Final
+  ![Sagitario](/Readme%20Files/Arte/Sagitario.png)
+
+  ## Ygdra
+  Diosa del bosque.
+
+  ## Referencias
+
+    ![Ygdra1](/Readme%20Files/Arte/Imagen17.jpg)  
+    ![Ygdra2](/Readme%20Files/Arte/Imagen18.jpg)  
+    ![Ygdra3](/Readme%20Files/Arte/Imagen19.jpg)  
+
+  ## El Magnate
+  **Facción**: Industria  
+  **Rol**: Líder de la industria / Visionario corporativo  
+
+  ## Descripción Física
+  - **Edad**: 55 años  
+  - **Altura**: 1.65 m  
+  - **Complexión**: Corpulento, de figura redondeada  
+  - **Rasgos físicos**: El Magnate es un individuo de tez pálida, con una nariz prominente y un bigote característico. Su cabello, de tonos blancos y grises, está peinado hacia atrás.  
+  - **Vestimenta**: Siempre utiliza trajes industriales hechos a medida en tonos oscuros, como gris metálico o negro. Lleva un sombrero de copa, un monóculo y un bastón, del que depende ligeramente al caminar.  
+
+  ## Personalidad
+  - **Ambición desmedida**: Movido por el deseo de control absoluto, El Magnate ve la naturaleza solo como un recurso que debe ser aprovechado. No se detendrá ante nada para imponer su visión de progreso.  
+  - **Carisma frío**: Aunque es implacable, posee una presencia magnética que atrae a aquellos que buscan poder y éxito. Manipula y convence con facilidad, mostrando gran habilidad para persuadir en sus discursos y propuestas.  
+  - **Visionario**: Cree firmemente en el avance de la tecnología y la industrialización como el futuro inevitable. Para él, la eficiencia y el orden son esenciales, y considera que la naturaleza es un obstáculo que debe ser superado.  
+  - **Desprecio por la naturaleza**: No siente odio por la naturaleza, sino que la considera irrelevante en su visión de progreso. Para él, los árboles, ríos y animales representan barreras arcaicas. La preocupación de otros hacia la naturaleza le parece una debilidad sentimental.  
+  - **Maquinador**: Aunque no tiene problema en aliarse temporalmente con otras facciones, siempre planea traicionarlas cuando ya no le son útiles.  
+
+  ## Historia
+  Nacido en una región devastada por la pobreza, El Magnate creció con una profunda desconfianza hacia la naturaleza, viendo en ella una fuerza que necesitaba ser dominada. Con una mente brillante para los negocios y la ingeniería, ascendió rápidamente en el mundo corporativo, acumulando riqueza y poder, y fundando un imperio industrial.
+
+  Cuando descubrió los recursos invaluables de Sylveria, vio en este bosque la última barrera entre él y la dominación total del mundo. Para él, Sylveria no es un hogar de vida sino una mina de riquezas sin explotar, lista para ser transformada en progreso y grandeza bajo su liderazgo. Ha impulsado la construcción de fábricas y minas en los bordes del bosque, poniendo en marcha su plan de industrialización sin piedad.
+
+  ## Motivaciones
+  - **Dominar Sylveria**: Su objetivo es transformar Sylveria en una vasta ciudad industrial, reemplazando cada árbol y río con maquinaria, fábricas y recursos bajo su control.  
+  - **Progreso tecnológico**: Para El Magnate, la naturaleza es obsoleta y debe ceder su lugar a la modernidad. Sueña con un mundo donde la tecnología domine todos los ámbitos de la vida.  
+  - **Control y orden**: Desea imponer un orden rígido y absoluto en Sylveria, optimizando cada recurso y manteniendo todo bajo su dominio. La vida natural debe ser subordinada a sus planes de progreso y grandeza.
+  ## Referencias
+
+    ![Humano1](/Readme%20Files/Arte/Imagen20.png)   
+    ![Humano2](/Readme%20Files/Arte/Imagen21.png)  
+  
+  ## Modelo Final
+  ![ElMagnate](/Readme%20Files/Arte/ElMagnate.png)  
+
+  ## Fu'ngaloth
+  Entidad de los hongos.
+
+  ## Referencias
+
+    ![Fu'ngaloth1](/Readme%20Files/Arte/Imagen22.jpg)  
+    ![Fu'ngaloth2](/Readme%20Files/Arte/Imagen23.png)  
+    ![Fu'ngaloth3](/Readme%20Files/Arte/Imagen24.png)  
+
+## 4.4. Escenarios y ambientación
 En **Stratum**, el entorno de juego se divide en dos planos principales: la mesa de juego física y el ecosistema en el centro de la mesa.
 
 ### La mesa de juego
