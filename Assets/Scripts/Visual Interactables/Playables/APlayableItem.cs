@@ -45,8 +45,8 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
     protected virtual void Awake()
     {
         _meshTransform = _meshInChild ? transform.GetChild(0) : transform;
-        if (!_meshTransform.TryGetComponent<MeshRenderer>(out _))
-            throw new Exception($"Playable Item without mesh child! ({gameObject.name})");
+        // if (!_meshTransform.TryGetComponent<MeshRenderer>(out _))
+        //     throw new Exception($"Playable Item without mesh child! ({gameObject.name})");
 
         _collider = _meshTransform.GetComponent<Collider>();
         _defaultMeshScale = _meshTransform.localScale;
