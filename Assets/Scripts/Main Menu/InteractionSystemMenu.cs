@@ -15,7 +15,7 @@ public class InteractionSystemMenu : MonoBehaviour, IInteractionSystemMenu
     private void Awake()
     {
         Input = new(this, _inputActions);
-        Input.PointerPress += OnPointerPress;
+        // Input.PointerPress += OnPointerPress;
     }
 
     private void Start()
@@ -23,10 +23,9 @@ public class InteractionSystemMenu : MonoBehaviour, IInteractionSystemMenu
         Camera = Camera.main;
     }
 
-    private void OnPointerPress()
+    private void OnDestroy()
     {
-        Debug.Log("onpointerpress");
-
-        Application.OpenURL("https://oscaralri.github.io/");
+        Input.Dispose();
+        Input = null;
     }
 }

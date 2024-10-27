@@ -8,7 +8,6 @@ public class InputHandlerMenu
 {
     private InputActionAsset _inputActions;
 
-    public event Action PointerPress; 
     private Vector2 _pointerPosition;
     private IInteractionSystemMenu _interactionSystem;
 
@@ -23,7 +22,7 @@ public class InputHandlerMenu
     }
 
     
-    ~InputHandlerMenu()
+    public void Dispose()
     {
         //_inputActions.FindAction("Scroll").performed -= OnScroll;
         _inputActions.FindAction("PointerPosition").performed -= OnPointerPositionChanged;
@@ -37,14 +36,16 @@ public class InputHandlerMenu
 
     private void OnPointerPress(InputAction.CallbackContext ctx)
     {
-        Debug.Log("ontap");
-        Ray ray = _interactionSystem.Camera.ScreenPointToRay(_pointerPosition);
+        // Debug.Log("ontap");
+            Ray ray = _interactionSystem.Camera.ScreenPointToRay(_pointerPosition);
         var hit = Physics.Raycast(ray, out var hitInfo, float.MaxValue, _interactionSystem.InteractablesLayer);
-        if(hit)
+        if(hit && hitInfo.collider)
         {
-            Debug.Log("hit");
-            PointerPress?.Invoke();
+            // Debug.Log("hit");
+            // PointerPress?.Invoke();
             //Application.OpenURL("https://github.com/againstsoftware/Stratum");
+            
+            hitInfo.collider.GetComponent<IMenuInteractable>().OnPointerPress();
         }
 
     }

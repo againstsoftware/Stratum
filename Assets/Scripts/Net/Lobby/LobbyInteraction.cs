@@ -40,7 +40,7 @@ public class LobbyInteraction : MonoBehaviour
 
     public void UpdatePlayerCount(int count)
     {
-        _playerCountText.text = $"Connected Players: {count}";
+        _playerCountText.text = $"Jugadores: {count}";
     }
 
     private void OnHostStartedLocal(string joinCode)
@@ -48,7 +48,7 @@ public class LobbyInteraction : MonoBehaviour
         _hostButton.SetActive(false);
         _clientButton.SetActive(false);
         _codeInput.SetActive(false);
-        _hostCodeText.text = $"Join Code: {joinCode}";
+        _hostCodeText.text = $"Código de Sala: {joinCode}";
     }
 
     private void OnClientStartedLocal()
