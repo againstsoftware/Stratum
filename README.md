@@ -91,17 +91,15 @@ Los jugadores se disponen, uno a cada lado de una mesa cuadrada, siguiendo este 
 
 Cada jugador tiene delante su **territorio**. Este está compuesto por 5 espacios de territorio. Cuando sea su turno, el jugador podrá jugar cartas de criatura en estos espacios.
 
-![Territorios](/Readme%20Files/tablero.png)
-
 Cada jugador empieza con 5 cartas.
 
 El ecosistema (la mesa) empieza con 4 cartas de población: 2 plantas, 1 herbívoro y 1 carnívoro. Estas se disponen de manera aleatoria, cada una en el espacio de territorio situado más a la izquierda de cada jugador.
 
-![Ejemplo Inicio](/Readme%20Files/EjemplodeComienzo.png)
+![Ejemplo Inicio](/Readme%20Files/EjemploComienzo.png)
 
 Comienza jugando Sagitario, y el orden de turnos sigue el sentido inverso a las agujas del reloj.
 
-![Orden de Juego](/Readme%20Files/OrdenJuego.png)
+![Orden de Juego](/Readme%20Files/OrdendeJuego.png)
 
 ## 1.4. Rondas y turnos
 Una ronda consiste en los turnos de los 4 jugadores, y el turno del ecosistema.
