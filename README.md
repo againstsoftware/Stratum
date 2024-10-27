@@ -33,13 +33,13 @@
 
 * [4.2. Arte de las cartas](#42-arte-de-las-cartas)
 
-* [4.3. Arte de las cartas](#42-fichas-y-arte-de-los-personajes)
+* [4.3. Arte de las cartas](#43-fichas-y-arte-de-los-personajes)
 
-* [4.4. Escenarios y ambientación](#43-escenarios-y-ambientación)
+* [4.4. Escenarios y ambientación](#44-escenarios-y-ambientación)
 
-* [4.5. El ecosistema](#44-el-ecosistema)
+* [4.5. El ecosistema](#45-el-ecosistema)
 
-* [4.6. Iconografía y tipografía](#45-iconografía-y-tipografía)
+* [4.6. Iconografía y tipografía](#46-iconografía-y-tipografía)
 
 [5. Sonido y Música](#5-sonido-y-música)
 
