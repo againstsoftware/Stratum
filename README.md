@@ -63,7 +63,10 @@
 
 
 # 0. Introducción
-...
+
+Este es el _Game Design Document_ de **Stratum**, donde se describen todos los aspectos del proyecto.
+
+**Stratum** es un videojuego de cartas multijugador en línea para 4 jugadores, desarrollado como proyecto para varias asignaturas de 4° año de la carrera de Diseño y Desarrollo de Videojuegos en la Universidad Rey Juan Carlos. Cada apartado explica el videojuego desde distintos puntos de vista y detalla sus características principales, aunque lo esencial es que **Stratum** ofrece una experiencia "analógica" e inmersiva sin necesidad de una interfaz gráfica visible, permitiendo a los jugadores sumergirse en la creación de un ecosistema en constante cambio.
 
 
 # 1. Reglamento
