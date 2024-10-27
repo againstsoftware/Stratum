@@ -398,7 +398,7 @@ Diseñadas con tonos azulados. Las ilustración mostrará una flor enmarcada por
 ![Flor3](/Readme%20Files/Arte/Imagen29.jpg)
 
 ## Arte Final
-![CartaPlantas](/Readme%20Files/Arte/Carta/cartas/plants.png)
+![CartaPlantas](/Arte/Carta/cartas/plants.png)
 
 ## Herbívoros
 Representados con colores cálidos y suaves destacando el equilibrio en el ecosistema.  
@@ -406,7 +406,7 @@ Representados con colores cálidos y suaves destacando el equilibrio en el ecosi
 ![Ciervo2](/Readme%20Files/Arte/Imagen30.jpg)  
 ![Ciervo3](/Readme%20Files/Arte/Imagen31.jpg)
 ## Arte Final
-![Carta Herbívoros](/Readme%20Files/Arte/Carta/cartas/hervibores.png)
+![Carta Herbívoros](/Arte/Carta/cartas/hervibores.png)
 
 ## Carnívoros
 Con tonos más rojizos y formas agresivas, pero siempre respetando la estética estilizada y orgánica del juego.  
@@ -414,12 +414,12 @@ Con tonos más rojizos y formas agresivas, pero siempre respetando la estética 
 ![Lobo2](/Readme%20Files/Arte/Imagen32.jpg)  
 ![Oso](/Readme%20Files/Arte/Imagen33.jpg)  
 ## Arte Final
-![Carta Carnívoros](/Readme%20Files/Arte/Carta/cartas/carnivores.png)
+![Carta Carnívoros](/Arte/Carta/cartas/carnivores.png)
 
 ## Hongos
 Carta con colores morados. Con estética orgánica haciendo una representación de setas/hongos.
 ## Arte Final
-![Carta Hongos](/Readme%20Files/Arte/Carta/cartas/fungus.png)
+![Carta Hongos](/Arte/Carta/cartas/fungus.png)
 
 ### Cartas de influencia
 Cada facción tendrá cartas de influencia únicas que permitirán alterar el ecosistema. El estilo artístico variará según la facción:
@@ -462,8 +462,8 @@ Cada facción tendrá cartas de influencia únicas que permitirán alterar el ec
   
   ## Referencias
 
-    ![Centauro1](/Readme%20Files/Arte/Imagen15.jpg)  
-    ![Centauro2](/Readme%20Files/Arte/Imagen16.jpg) 
+  ![Centauro1](/Readme%20Files/Arte/Imagen15.jpg)  
+  ![Centauro2](/Readme%20Files/Arte/Imagen16.jpg) 
   ## Modelo Final
   ![Sagitario](/Readme%20Files/Arte/Sagitario.png)
 
@@ -472,9 +472,9 @@ Cada facción tendrá cartas de influencia únicas que permitirán alterar el ec
 
   ## Referencias
 
-    ![Ygdra1](/Readme%20Files/Arte/Imagen17.jpg)  
-    ![Ygdra2](/Readme%20Files/Arte/Imagen18.jpg)  
-    ![Ygdra3](/Readme%20Files/Arte/Imagen19.jpg)  
+  ![Ygdra1](/Readme%20Files/Arte/Imagen17.jpg)  
+  ![Ygdra2](/Readme%20Files/Arte/Imagen18.jpg)  
+  ![Ygdra3](/Readme%20Files/Arte/Imagen19.jpg)  
 
   ## El Magnate
   **Facción**: Industria  
@@ -505,8 +505,8 @@ Cada facción tendrá cartas de influencia únicas que permitirán alterar el ec
   - **Control y orden**: Desea imponer un orden rígido y absoluto en Sylveria, optimizando cada recurso y manteniendo todo bajo su dominio. La vida natural debe ser subordinada a sus planes de progreso y grandeza.
   ## Referencias
 
-    ![Humano1](/Readme%20Files/Arte/Imagen20.png)   
-    ![Humano2](/Readme%20Files/Arte/Imagen21.png)  
+  ![Humano1](/Readme%20Files/Arte/Imagen20.png)   
+  ![Humano2](/Readme%20Files/Arte/Imagen21.png)  
   
   ## Modelo Final
   ![ElMagnate](/Readme%20Files/Arte/ElMagnate.png)  
@@ -516,9 +516,9 @@ Cada facción tendrá cartas de influencia únicas que permitirán alterar el ec
 
   ## Referencias
 
-    ![Fu'ngaloth1](/Readme%20Files/Arte/Imagen22.jpg)  
-    ![Fu'ngaloth2](/Readme%20Files/Arte/Imagen23.png)  
-    ![Fu'ngaloth3](/Readme%20Files/Arte/Imagen24.png)  
+  ![Fu'ngaloth1](/Readme%20Files/Arte/Imagen22.jpg)  
+  ![Fu'ngaloth2](/Readme%20Files/Arte/Imagen23.png)  
+  ![Fu'ngaloth3](/Readme%20Files/Arte/Imagen24.png)  
 
 ## 4.4. Escenarios y ambientación
 En **Stratum**, el entorno de juego se divide en dos planos principales: la mesa de juego física y el ecosistema en el centro de la mesa.
