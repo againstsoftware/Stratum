@@ -33,7 +33,7 @@
 
 * [4.2. Arte de las cartas](#42-arte-de-las-cartas)
 
-* [4.3. Arte de las cartas](#43-fichas-y-arte-de-los-personajes)
+* [4.3. Fichas y arte de los personajes](#43-fichas-y-arte-de-los-personajes)
 
 * [4.4. Escenarios y ambientación](#44-escenarios-y-ambientación)
 
