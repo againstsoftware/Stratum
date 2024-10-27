@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UserInfo : MonoBehaviour
 {
@@ -30,6 +31,23 @@ public class UserInfo : MonoBehaviour
 
     public void CheckPassword(string password)
     {
-        if(password == _password) Debug.Log("password correcta");
+        if (password != _password) return;
+        
+        Debug.Log("password correcta");
+        
+        var txt = canvas.transform.Find("Username_TXT").gameObject;
+        
+        Transform[] canvasChildren = canvas.GetComponentsInChildren<Transform>(true);
+        foreach (Transform child in canvasChildren)
+        {
+            child.gameObject.SetActive(false);
+        }
+
+        txt.SetActive(true);
+        txt.GetComponent<TextMeshProUGUI>().text = "Contraseña correcta! (se recargará la escena)";
+        
+        Invoke(nameof(Reload), 3f);
     }
+
+    private void Reload() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 }
