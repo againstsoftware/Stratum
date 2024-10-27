@@ -96,8 +96,10 @@ Cada jugador tiene delante su **territorio**. Este está compuesto por 5 espacio
 Cada jugador empieza con 5 cartas.
 
 El ecosistema (la mesa) empieza con 4 cartas de población: 2 plantas, 1 herbívoro y 1 carnívoro. Estas se disponen de manera aleatoria, cada una en el espacio de territorio situado más a la izquierda de cada jugador.
+![Ejemplo Inicio](/Readme%20Files/EjemplodeComienzo.png)
 
 Comienza jugando Sagitario, y el orden de turnos sigue el sentido inverso a las agujas del reloj.
+![Orden de Juego](/Readme%20Files/OrdenJuego.png)
 
 ## 1.4. Rondas y turnos
 Una ronda consiste en los turnos de los 4 jugadores, y el turno del ecosistema.
@@ -113,6 +115,8 @@ El jugador puede usar una acción para descartar una carta, en vez de jugarla. T
 Cuando ha terminado su turno el último jugador (Fu'ngaloth), es el turno del ecosistema. En este, las cartas de población que hay sobre la mesa pueden crecer o morir, según las Reglas del Ecosistema.
 
 Cuando termina el turno del ecosistema, todos los jugadores roban 2 cartas, para volver a comenzar su turno con 5.
+
+![Ronda](/Readme%20Files/Ronda.png)
 
 
 ## 1.5. Ecosistema
