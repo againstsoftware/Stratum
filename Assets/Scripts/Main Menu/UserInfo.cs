@@ -9,20 +9,22 @@ public class UserInfo : MonoBehaviour
 
     [SerializeField] private Canvas canvas;
 
-    // metodo que se llama desde la web
     public void ReceiveUsername(string username)
     {
-        Debug.Log($"username {username}");
         _username = username;
 
-        canvas.gameObject.SetActive(true);
+        Transform[] canvasChildren = canvas.GetComponentsInChildren<Transform>(true);
+        foreach (Transform child in canvasChildren)
+        {
+            child.gameObject.SetActive(true);
+        }
+
         TextMeshProUGUI usernameText = canvas.transform.Find("Username_TXT").GetComponent<TextMeshProUGUI>();    
         usernameText.text = $"Usuario: {username}";
     }
 
     public void ReceivePassword(string password)
     {
-        Debug.Log($"password {password}");
         _password = password;
     }
 
