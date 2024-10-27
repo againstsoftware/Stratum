@@ -1,6 +1,7 @@
 
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class TableCenter : MonoBehaviour, IActionReceiver
 {
@@ -10,22 +11,23 @@ public class TableCenter : MonoBehaviour, IActionReceiver
     public bool IsDropEnabled => true;
     public bool CanInteractWithoutOwnership => true;
 
+    [SerializeField] private MeshRenderer _tableMesh;
     
     
     private Material _material;
     private void Awake()
     {
-        _material = GetComponent<MeshRenderer>().material;
+        _material = _tableMesh.material;
     }
 
     public void OnDraggingSelect()
     {
-        GetComponent<MeshRenderer>().material = null;
+        _tableMesh.material = null;
     }
 
     public void OnDraggingDeselect()
     {
-        GetComponent<MeshRenderer>().material = _material;
+        _tableMesh.material = _material;
     }
     
     

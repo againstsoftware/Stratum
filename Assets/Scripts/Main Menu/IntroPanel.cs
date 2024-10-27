@@ -26,6 +26,7 @@ public class IntroPanel : MonoBehaviour
         "Esto constituye el esqueleto del Modelo de Negocio de <b>Stratum</b>.",
         "Para aprender a jugar, todavía no hay tutorial, pero puedes consultar el reglamento del juego en " +
         "https://github.com/againstsoftware/Stratum",
+        "Están implementadas todas las mecánicas del reglamento, menos las cartas de influencia, y las condiciones de victoria (el juego es infinito por ahora).",
         "¡Disfruta del juego!"
     };
 
