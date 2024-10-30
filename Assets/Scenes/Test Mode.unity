@@ -499,7 +499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c32eef16fc4a4ea3918c6a7b78b83540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &2110119353
+--- !u!1 &1589172144
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -507,56 +507,35 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2110119356}
-  - component: {fileID: 2110119355}
-  - component: {fileID: 2110119354}
+  - component: {fileID: 1589172146}
+  - component: {fileID: 1589172145}
   m_Layer: 0
-  m_Name: Network
+  m_Name: Test Mode Comms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2110119354
+--- !u!114 &1589172145
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2110119353}
+  m_GameObject: {fileID: 1589172144}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 4233958499
-  AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
-  ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
-  SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
---- !u!114 &2110119355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2110119353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dd91a9729d34675b82bd62dd03188c3, type: 3}
+  m_Script: {fileID: 11500000, guid: b71069ac9b5a4ad68b618646ef0d51d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _config: {fileID: 11400000, guid: 00c45f89111b6ac4f9b8c6ebeb9d9e38, type: 2}
---- !u!4 &2110119356
+--- !u!4 &1589172146
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2110119353}
+  m_GameObject: {fileID: 1589172144}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -938,6 +917,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2126101707772982786, guid: 88bcf5cfd8cb8c443bd05ba149fc2383,
+        type: 3}
+      propertyPath: _isTestScene
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5473679443266402275, guid: 88bcf5cfd8cb8c443bd05ba149fc2383,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1008,7 +992,7 @@ SceneRoots:
   - {fileID: 2243270828155580672}
   - {fileID: 3223848512107003968}
   - {fileID: 3434018398612529002}
-  - {fileID: 2110119356}
   - {fileID: 1609081643441272438}
   - {fileID: 401353341}
   - {fileID: 742081771}
+  - {fileID: 1589172146}

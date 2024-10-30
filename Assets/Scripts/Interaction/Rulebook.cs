@@ -24,6 +24,12 @@ public class Rulebook : MonoBehaviour
     public void ShowRulebookEntry(IRulebookEntry entry)
     {
         if (_currentEntry == entry) return;
+
+        if (entry is null)
+        {
+            HideRulebook();
+            return;
+        }
         
         _currentEntry = entry;
         _currentEntry.OnDiscard += OnEntryDiscard;

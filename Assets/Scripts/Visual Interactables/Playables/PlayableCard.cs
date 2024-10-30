@@ -47,9 +47,9 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
         if (CurrentState is not State.Playable && IsOnPlayLocation(playLocation))
         {
             OnPlayed(playLocation);
-            onPlayedCallback();
             _actionCompletedCallback?.Invoke();
             _actionCompletedCallback = null;
+            onPlayedCallback();
             return;
         }
         
@@ -57,9 +57,9 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
         Travel(playLocation.SnapTransform, _playTravelDuration, State.Played, () =>
         {
             OnPlayed(playLocation);
-            onPlayedCallback();
             _actionCompletedCallback?.Invoke();
             _actionCompletedCallback = null;
+            onPlayedCallback();
         });
         
     }
@@ -158,6 +158,12 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
 
     public void Initialize(ACard card, PlayerCharacter owner, State initialState = State.Playable)
     {
+        if (Card is not null) throw new Exception("carta ya asignada no se puede inicializar!");
+        if (card is null)
+        {
+            return;
+        }
+        
         SetCard(card);
         Owner = owner;
         CurrentState = initialState;
@@ -166,6 +172,12 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
 
     public void InitializeOnSlot(ACard card, PlayerCharacter slotOwner, SlotReceiver slot)
     {
+        if (Card is not null) throw new Exception("carta ya asignada no se puede inicializar!");
+        if (card is null)
+        {
+            return;
+        }
+        
         SetCard(card);
         Owner = slotOwner;
         CurrentState = State.Played;
@@ -178,10 +190,11 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
 
     public void SetCard(ACard card)
     {
-        if (Card is not null) throw new Exception("carta ya asignada no se puede reasignar!");
-        if (card is null) return;
+
         Card = card;
         _mesh.materials[1].mainTexture = card.ObverseTex;
+
+        _mesh.GetComponent<Collider>().enabled = true;
     }
 
 }

@@ -48,14 +48,14 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
                 var lightTransform = FindAnyObjectByType<Light>().transform.parent;
                 lightTransform.LookAt(cam.transform.forward);
                 
-                var input = FindAnyObjectByType<PlayerInput>().camera = cam;
+                /*var input = */FindAnyObjectByType<PlayerInput>().camera = cam;
 
                 viewPlayer.IsLocalPlayer = true;
             }
         
         }
 
-        ServiceLocator.Get<IInteractionSystem>().LocalPlayer = _localPlayer;
+        ServiceLocator.Get<IInteractionSystem>().SetLocalPlayer(_localPlayer, Camera.main);
     }
 
     public void SyncRNGs()
