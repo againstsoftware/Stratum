@@ -136,11 +136,11 @@ public class GameModel : IModel
 
 
         //NO hace falta de momento pero para influs quiza si
-        // if (card.CardType is ICard.Card.Population)
-        // {
-        //     Ecosystem.OnPopulationCardDie(tableCard);
-        //     
-        // }
+        //edit: SI que hace falta wtfffffffffffffff
+        if (tableCard.Card.CardType is ICard.Card.Population)
+        {
+            Ecosystem.OnPopulationCardDie(tableCard);
+        }
     }
 
     public void RemoveInfluenceCardFromCard(ICard influenceCard, ICard card, PlayerCharacter slotOwner,

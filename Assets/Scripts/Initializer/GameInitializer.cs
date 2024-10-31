@@ -6,7 +6,7 @@ public class GameInitializer : MonoBehaviour
 {
     [SerializeField] private GameConfig _config;
     [SerializeField] private Deck[] _decks;
-
+    [SerializeField] private bool _isTestScene;
     private void Awake()
     {
         var gameModel = new GameModel(_config.TurnOrder[0], Array.ConvertAll(_decks, d => d as IDeck));
@@ -21,8 +21,9 @@ public class GameInitializer : MonoBehaviour
         
         ServiceLocator.Register<IView>(FindAnyObjectByType<ViewManager>());
         ServiceLocator.Register<ITurnSystem>(FindAnyObjectByType<TurnManager>());
-    
-        ServiceLocator.Register<ICommunicationSystem>(FindAnyObjectByType<GameNetwork>());
+        
+        if(_isTestScene)  ServiceLocator.Register<ICommunicationSystem>(FindAnyObjectByType<TestModeCommunications>());
+        else ServiceLocator.Register<ICommunicationSystem>(FindAnyObjectByType<GameNetwork>());
     }
 
     private IEnumerator Start()

@@ -36,7 +36,7 @@ public class ViewPlayer : MonoBehaviour
         var newCardGO = Instantiate(_config.CardPrefab, _deckSnap.position, _deckSnap.rotation, _hand);
         var newPlayableCard = newCardGO.GetComponent<PlayableCard>();
 
-        if (!IsLocalPlayer) card = null;
+        // if (!IsLocalPlayer) card = null;
         newPlayableCard.Initialize(card, Character);
 
         Cards.Add(newPlayableCard);

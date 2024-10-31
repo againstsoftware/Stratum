@@ -13,7 +13,7 @@ public interface IInteractionSystem : IService
     public LayerMask InteractablesLayer { get; }
     public IReadOnlyList<IActionReceiver> CurrentActionReceivers { get; }
     public APlayableItem CurrentActionPlayableItem { get; }
-    public PlayerCharacter LocalPlayer { get; set; }
+    public PlayerCharacter LocalPlayer { get; }
 
 
     public void SelectInteractable(IInteractable item);
@@ -23,5 +23,7 @@ public interface IInteractionSystem : IService
     public void SelectReceiver(IActionReceiver receiver);
     public void DeselectReceiver(IActionReceiver receiver);
     public void ClickReceiver(IActionReceiver receiver);
+
+    public void SetLocalPlayer(PlayerCharacter character, Camera cam);
 
 }

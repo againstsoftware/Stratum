@@ -19,7 +19,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     public IReadOnlyList<IActionReceiver> CurrentActionReceivers => ActionAssembler.ActionReceivers;
     public APlayableItem CurrentActionPlayableItem => ActionAssembler.PlayableItem;
 
-    public PlayerCharacter LocalPlayer { get; set; }
+    public PlayerCharacter LocalPlayer { get; private set; }
 
 
     [SerializeField] private InputActionAsset _inputActions;
@@ -64,11 +64,6 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
 
     private void Start()
     {
-        Camera = Camera.main;
-
-        _cameraMovement = Camera.GetComponent<CameraMovement>();
-        _rulebook = Camera.GetComponentInChildren<Rulebook>();
-
         ServiceLocator.Get<ITurnSystem>().OnTurnChanged += OnTurnChanged;
     }
 
@@ -361,5 +356,15 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
 
         _actionsLeft = _config.ActionsPerTurn;
         TryStartAction();
+    }
+
+
+
+    public void SetLocalPlayer(PlayerCharacter character, Camera cam)
+    {
+        LocalPlayer = character;
+        Camera = cam;
+        _cameraMovement = Camera.GetComponent<CameraMovement>();
+        _rulebook = Camera.GetComponentInChildren<Rulebook>();
     }
 }

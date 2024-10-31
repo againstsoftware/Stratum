@@ -31,9 +31,9 @@ public class PlayableToken : APlayableItem, IRulebookEntry
         {
             ReturnToHand(() =>
             {
-                onPlayedCallback();
                 _actionCompletedCallback?.Invoke();
                 _actionCompletedCallback = null;
+                onPlayedCallback();
             });
             return;
         }
@@ -45,9 +45,9 @@ public class PlayableToken : APlayableItem, IRulebookEntry
             {
                 ReturnToHand(() =>
                 {
-                    onPlayedCallback();
                     _actionCompletedCallback?.Invoke();
                     _actionCompletedCallback = null;
+                    onPlayedCallback();
                 });
             }));
         });
