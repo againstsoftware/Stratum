@@ -25,7 +25,7 @@ public interface IModel : IService
     public void PlaceInlfuenceCardOnCard(ICard influenceCard, ICard card, PlayerCharacter slotOwner,
         int slotIndex, int cardIndex);
 
-    public void MoveCardBetweenSlots(ICard card, PlayerCharacter slotOwner, int slotIndex, int cardIndex,
+    public void MoveCardBetweenSlots(PlayerCharacter slotOwner, int slotIndex, int cardIndex,
         PlayerCharacter targetSlotOwner, int targetSlotIndex);
 
     public void RemoveCardFromSlot(/*ICard card, */PlayerCharacter slotOwner, int slotIndex, int cardIndex);

@@ -107,7 +107,7 @@ public class GameModel : IModel
         tableCard.PlaceInlfuenceCard(influenceCard);
     }
 
-    public void MoveCardBetweenSlots(ICard card, PlayerCharacter slotOwner, int slotIndex, int cardIndex,
+    public void MoveCardBetweenSlots(PlayerCharacter slotOwner, int slotIndex, int cardIndex,
         PlayerCharacter targetSlotOwner,
         int targetSlotIndex)
     {
@@ -115,7 +115,7 @@ public class GameModel : IModel
         var slot = ownerPlayer.Territory.Slots[slotIndex];
         var tableCard = slot.PlacedCards[cardIndex];
 
-        if (tableCard.Card != card) throw new Exception("Error! Peticion incorrecta al modelo.");
+        // if (tableCard.Card != card) throw new Exception("Error! Peticion incorrecta al modelo.");
 
         slot.RemoveCard(tableCard);
 

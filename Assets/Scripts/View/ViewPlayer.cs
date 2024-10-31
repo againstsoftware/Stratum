@@ -23,6 +23,8 @@ public class ViewPlayer : MonoBehaviour
 
     private PlayableCard _droppedCard;
 
+    private Action _influenceCardActionCompletedCallback;
+    
     public void Initialize(PlayerCharacter character)
     {
         if (Character is not PlayerCharacter.None) throw new Exception("ya inicializado!!");
@@ -52,6 +54,28 @@ public class ViewPlayer : MonoBehaviour
         playableCard.Play(slot, callback);
     }
 
+    public void PlayAndDiscardInfluenceCard(IActionReceiver receiver, Action callback)
+    {
+        PlayableCard playableCard = IsLocalPlayer ? _droppedCard : Cards[0];
+
+        if (IsLocalPlayer)
+        {
+            _influenceCardActionCompletedCallback = playableCard.GetActionCompletedCallback();
+        }
+        
+        playableCard.Play(receiver, () =>
+        {
+            StartCoroutine(DelayCall(() =>
+            {
+                playableCard.Play(DiscardPile, () =>
+                {
+                    StartCoroutine(DestroyCard(playableCard.gameObject, callback));
+                }, false);
+            }, Time.deltaTime)); //delayeamos 1 frame
+           
+        }, false);
+    }
+
     public void DiscardCard(Action callback)
     {
         PlayableCard playableCard = IsLocalPlayer ? _droppedCard : Cards[0];
@@ -69,9 +93,13 @@ public class ViewPlayer : MonoBehaviour
         
         newPlayableCard.Play(slot, callback);
     }
-    
-    
-    
+
+
+    public void CallInfluenceCallback()
+    {
+        _influenceCardActionCompletedCallback?.Invoke();
+        _influenceCardActionCompletedCallback = null;
+    }
     
     private IEnumerator DrawCardsAux(IReadOnlyList<ACard> cards, Action callback)
     {
@@ -148,5 +176,11 @@ public class ViewPlayer : MonoBehaviour
         yield return null;
         Destroy(card);
         callback?.Invoke();
+    }
+    
+    private IEnumerator DelayCall(Action a, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        a?.Invoke();
     }
 }

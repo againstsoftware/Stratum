@@ -36,11 +36,15 @@ MonoBehaviour:
   - ValidAction:
       <DropLocation>k__BackingField: 3
       <Receivers>k__BackingField: 01000000
-    Effects: 
+    Effects: 0d0000000e000000
   - ValidAction:
       <DropLocation>k__BackingField: 5
       <Receivers>k__BackingField: 0300000001000000
-    Effects: 
+    Effects: 0d0000000e000000
+  - ValidAction:
+      <DropLocation>k__BackingField: 6
+      <Receivers>k__BackingField: 
+    Effects: 05000000
   <InfluenceType>k__BackingField: 1
   references:
     version: 2

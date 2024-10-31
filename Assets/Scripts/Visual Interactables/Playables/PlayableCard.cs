@@ -40,15 +40,21 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     }
     
     
-    public override void Play(IActionReceiver playLocation, Action onPlayedCallback)
+    public void Play(IActionReceiver playLocation, Action onPlayedCallback, bool isEndOfAction = true)
     {
         OnCardPlayed?.Invoke(this);
+
+        bool isAlreadyPlayed = CurrentState is not State.Playable &&
+                               (IsOnPlayLocation(playLocation)/* || Card is InfluenceCard*/);
         
-        if (CurrentState is not State.Playable && IsOnPlayLocation(playLocation))
+        if (isAlreadyPlayed)
         {
-            OnPlayed(playLocation);
-            _actionCompletedCallback?.Invoke();
-            _actionCompletedCallback = null;
+            if (isEndOfAction)
+            {
+                OnPlayed(playLocation);
+                _actionCompletedCallback?.Invoke();
+                _actionCompletedCallback = null;
+            }
             onPlayedCallback();
             return;
         }
@@ -56,13 +62,18 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
         //no se ha jugado visualmente a la mesa
         Travel(playLocation.SnapTransform, _playTravelDuration, State.Played, () =>
         {
-            OnPlayed(playLocation);
-            _actionCompletedCallback?.Invoke();
-            _actionCompletedCallback = null;
+            if (isEndOfAction)
+            {
+                OnPlayed(playLocation);
+                _actionCompletedCallback?.Invoke();
+                _actionCompletedCallback = null;
+            }
             onPlayedCallback();
         });
-        
     }
+
+    //PARA CARTAS DE INFLUENCIA QUE SON DESTRUIDAS ANTES DE REPORTART EL CALLBACK DE FIN DE ACCION
+    public Action GetActionCompletedCallback() => _actionCompletedCallback;
     
 
     private void OnPlayed(IActionReceiver playLocation)

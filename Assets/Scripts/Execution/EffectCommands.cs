@@ -24,6 +24,7 @@ public static class EffectCommands
         Effect.GrowMacrofungi => _growMacrofungi,
         Effect.Construct => _construct,
         Effect.PlaceInitialCards => _placeInitialCards,
+        Effect.PlayAndDiscardInfluenceCard =>_playAndDiscardInfluenceCard,
         Effect.MovePopulationToEmptySlot => _movePopulationToEmptySlot,
 
         _ => throw new ArgumentOutOfRangeException()
@@ -38,7 +39,7 @@ public static class EffectCommands
         ServiceLocator.Get<IModel>().RemoveCardFromHand(owner, card);
         ServiceLocator.Get<IModel>().PlaceCardOnSlot(card, owner, slotIndex);
         //update al view asincrono
-        var location = new IView.CardLocation() { SlotOwner = owner, SlotIndex = slotIndex };
+        var location = new IView.CardLocation() { Owner = owner, SlotIndex = slotIndex };
         ServiceLocator.Get<IView>().PlayCardOnSlotFromPlayer(card as ACard, owner, location, callback);
     };
 
@@ -47,7 +48,7 @@ public static class EffectCommands
         var (parent, child) = ServiceLocator.Get<IModel>().GrowLastPlacedPopulation(ICard.Population.Carnivore);
 
         var location = new IView.CardLocation()
-            { SlotOwner = parent.Slot.Territory.Owner, SlotIndex = parent.Slot.SlotIndexInTerritory };
+            { Owner = parent.Slot.Territory.Owner, SlotIndex = parent.Slot.SlotIndexInTerritory };
 
         ServiceLocator.Get<IView>().GrowPopulationCard(location, callback);
     };
@@ -56,7 +57,7 @@ public static class EffectCommands
     {
         var (parent, child) = ServiceLocator.Get<IModel>().GrowLastPlacedPopulation(ICard.Population.Herbivore);
         var location = new IView.CardLocation()
-            { SlotOwner = parent.Slot.Territory.Owner, SlotIndex = parent.Slot.SlotIndexInTerritory };
+            { Owner = parent.Slot.Territory.Owner, SlotIndex = parent.Slot.SlotIndexInTerritory };
         ServiceLocator.Get<IView>().GrowPopulationCard(location, callback);
     };
 
@@ -64,7 +65,7 @@ public static class EffectCommands
     {
         var killed = ServiceLocator.Get<IModel>().KillLastPlacedPopulation(ICard.Population.Carnivore);
         var location = new IView.CardLocation()
-            { SlotOwner = killed.Slot.Territory.Owner, SlotIndex = killed.Slot.SlotIndexInTerritory };
+            { Owner = killed.Slot.Territory.Owner, SlotIndex = killed.Slot.SlotIndexInTerritory };
         ServiceLocator.Get<IView>().KillPopulationCard(location, callback);
     };
 
@@ -73,7 +74,7 @@ public static class EffectCommands
         var killed = ServiceLocator.Get<IModel>().KillLastPlacedPopulation(ICard.Population.Herbivore);
 
         var location = new IView.CardLocation()
-            { SlotOwner = killed.Slot.Territory.Owner, SlotIndex = killed.Slot.SlotIndexInTerritory };
+            { Owner = killed.Slot.Territory.Owner, SlotIndex = killed.Slot.SlotIndexInTerritory };
         ServiceLocator.Get<IView>().KillPopulationCard(location, callback);
     };
 
@@ -116,7 +117,7 @@ public static class EffectCommands
         var slotOwner = mushroom.Slot.Territory.Owner;
         var slotIndex = mushroom.Slot.SlotIndexInTerritory;
         ServiceLocator.Get<IView>()
-            .GrowMushroom(new IView.CardLocation() { SlotOwner = slotOwner, SlotIndex = slotIndex }, callback);
+            .GrowMushroom(new IView.CardLocation() { Owner = slotOwner, SlotIndex = slotIndex }, callback);
     };
 
     private static readonly EffectCommand _growMacrofungi = (action, callback) =>
@@ -129,7 +130,7 @@ public static class EffectCommands
         {
             slotOwner = receiver.LocationOwner;
             slotIndex = receiver.Index;
-            locations.Add(new IView.CardLocation() { SlotOwner = slotOwner, SlotIndex = slotIndex });
+            locations.Add(new IView.CardLocation() { Owner = slotOwner, SlotIndex = slotIndex });
             var cardIndex = receiver.SecondIndex;
             ServiceLocator.Get<IModel>().RemoveCardFromSlot(slotOwner, slotIndex, cardIndex);
         }
@@ -148,13 +149,13 @@ public static class EffectCommands
         var location1 = new IView.CardLocation()
         {
             SlotIndex = plant1.Slot.SlotIndexInTerritory, CardIndex = plant1.IndexInSlot,
-            SlotOwner = plant1.Slot.Territory.Owner
+            Owner = plant1.Slot.Territory.Owner
         };
 
         var location2 = new IView.CardLocation()
         {
             SlotIndex = plant2.Slot.SlotIndexInTerritory, CardIndex = plant2.IndexInSlot,
-            SlotOwner = plant2.Slot.Territory.Owner
+            Owner = plant2.Slot.Territory.Owner
         };
 
         Debug.Log("construccion plantas tal:");
@@ -185,7 +186,7 @@ public static class EffectCommands
             int slotIndex = 0;
             ServiceLocator.Get<IModel>().PlaceCardOnSlot(initialCard, slotOwner, slotIndex);
             //update al view asincrono
-            var location = new IView.CardLocation() { SlotOwner = slotOwner, SlotIndex = slotIndex };
+            var location = new IView.CardLocation() { Owner = slotOwner, SlotIndex = slotIndex };
             
             cardsAndLocations.Add((initialCard, location));
         }
@@ -193,17 +194,44 @@ public static class EffectCommands
         ServiceLocator.Get<IView>().PlaceInitialCards(cardsAndLocations, callback);
     };
 
+    private static readonly EffectCommand _playAndDiscardInfluenceCard = (action, callback) =>
+    {
+        ServiceLocator.Get<IModel>().RemoveCardFromHand(action.Actor, action.ActionItem as ICard);
+
+        bool isTerritory = action.Receivers[0].Location is ValidDropLocation.AnyTerritory;
+        var location = new IView.CardLocation()
+        {
+            IsTerritory = isTerritory,
+            Owner = action.Actor,
+            SlotIndex = isTerritory ? -1 : action.Receivers[0].Index,
+            CardIndex = isTerritory ? -1 : action.Receivers[0].SecondIndex,
+        };
+        ServiceLocator.Get<IView>().PlayAndDiscardInfluenceCard(action.Actor,location, callback);
+    };
+    
     private static readonly EffectCommand _movePopulationToEmptySlot = (action, callback) =>
     {
-        var card = action.ActionItem as ICard;
         var slotOwner = action.Actor;
         var slotIndex = action.Receivers[0].Index;
         var cardIndex = action.Receivers[0].SecondIndex;
         var targetSlotOwner = action.Receivers[1].LocationOwner;
         var targetSlotIndex = action.Receivers[1].Index;
         ServiceLocator.Get<IModel>()
-            .MoveCardBetweenSlots(card, slotOwner, slotIndex, cardIndex, targetSlotOwner, targetSlotIndex);
+            .MoveCardBetweenSlots(slotOwner, slotIndex, cardIndex, targetSlotOwner, targetSlotIndex);
+
+        var from = new IView.CardLocation()
+        {
+            Owner = slotOwner,
+            SlotIndex = slotIndex,
+            CardIndex = cardIndex
+        };
+
+        var to = new IView.CardLocation()
+        {
+            Owner = targetSlotOwner,
+            SlotIndex = targetSlotIndex
+        };
         
-        
+       ServiceLocator.Get<IView>().MovePopulationToEmptySlot(from, to, callback); 
     };
 }

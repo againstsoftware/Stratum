@@ -5,9 +5,10 @@ public interface IView : IService
 {
     public struct CardLocation
     {
-        public PlayerCharacter SlotOwner;
+        public PlayerCharacter Owner;
         public int SlotIndex;
         public int CardIndex;
+        public bool IsTerritory;
     }
     public ViewPlayer GetViewPlayer(PlayerCharacter character);
     public void PlayCardOnSlotFromPlayer(ACard card, PlayerCharacter actor, CardLocation location, Action callback);
@@ -24,5 +25,6 @@ public interface IView : IService
 
     public void PlaceConstruction(CardLocation plant1Location, CardLocation plant2Location, Action callback);
 
+    public void PlayAndDiscardInfluenceCard(PlayerCharacter actor, CardLocation location, Action callback);
     public void MovePopulationToEmptySlot(CardLocation from, CardLocation to, Action callback);
 }

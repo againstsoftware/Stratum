@@ -35,14 +35,14 @@ public class ViewManager : MonoBehaviour, IView
     public void PlayCardOnSlotFromPlayer(ACard card, PlayerCharacter actor, CardLocation location, Action callback)
     {
         var playerActor = _players[actor];
-        var playerSlotOwner = _players[location.SlotOwner];
+        var playerSlotOwner = _players[location.Owner];
         var slot = playerSlotOwner.Territory.Slots[location.SlotIndex];
         playerActor.PlayCardOnSlot(card, slot, callback);
     }
 
     public void PlaceCardOnSlotFromDeck(ACard card, CardLocation location, Action callback)
     {
-        var playerSlotOwner = _players[location.SlotOwner];
+        var playerSlotOwner = _players[location.Owner];
         var slot = playerSlotOwner.Territory.Slots[location.SlotIndex];
         playerSlotOwner.PlaceCardFromDeck(card, slot, callback);
     }
@@ -55,13 +55,13 @@ public class ViewManager : MonoBehaviour, IView
 
     public void GrowPopulationCard(CardLocation location, Action callback)
     {
-        var playerOwner = _players[location.SlotOwner];
+        var playerOwner = _players[location.Owner];
         var slot = playerOwner.Territory.Slots[location.SlotIndex]; //la carta de mas arriba del slot
         var card = slot.Cards[^1].Card;
 
         var newCardGO = Instantiate(_config.CardPrefab, slot.SnapTransform.position, slot.SnapTransform.rotation);
         var newPlayableCard = newCardGO.GetComponent<PlayableCard>();
-        newPlayableCard.InitializeOnSlot(card, location.SlotOwner, slot);
+        newPlayableCard.InitializeOnSlot(card, location.Owner, slot);
         slot.AddCardOnTop(newPlayableCard);
         StartCoroutine(DelayCall(callback, 1f)); //de prueba
     }
@@ -69,7 +69,7 @@ public class ViewManager : MonoBehaviour, IView
 
     public void KillPopulationCard(CardLocation location, Action callback)
     {
-        var playerOwner = _players[location.SlotOwner];
+        var playerOwner = _players[location.Owner];
         var slot = playerOwner.Territory.Slots[location.SlotIndex];
         var card = slot.Cards[^1]; //la carta de mas arriba del slot
         if (card.Card is not PopulationCard) throw new Exception("Error! La carta a matar no es de poblacion");
@@ -99,12 +99,12 @@ public class ViewManager : MonoBehaviour, IView
     public void GrowMushroom(CardLocation location, Action callback)
     {
         var card = _config.Mushroom;
-        var playerOwner = _players[location.SlotOwner];
+        var playerOwner = _players[location.Owner];
         var slot = playerOwner.Territory.Slots[location.SlotIndex];
 
         var newCardGO = Instantiate(_config.CardPrefab, slot.SnapTransform.position, slot.SnapTransform.rotation);
         var newPlayableCard = newCardGO.GetComponent<PlayableCard>();
-        newPlayableCard.InitializeOnSlot(card, location.SlotOwner, slot);
+        newPlayableCard.InitializeOnSlot(card, location.Owner, slot);
         slot.AddCardAtTheBottom(newPlayableCard);
         StartCoroutine(DelayCall(callback, 1f)); //de prueba
     }
@@ -119,7 +119,7 @@ public class ViewManager : MonoBehaviour, IView
 
     public void PlaceConstruction(CardLocation plant1Location, CardLocation plant2Location, Action callback)
     {
-        var ownerPlayer = GetViewPlayer(plant1Location.SlotOwner);
+        var ownerPlayer = GetViewPlayer(plant1Location.Owner);
         var territory = ownerPlayer.Territory;
         if (territory.HasConstruction) 
             throw new Exception("Error!!! Construyendo en territorio ya construido. (view)");
@@ -132,20 +132,30 @@ public class ViewManager : MonoBehaviour, IView
         });
     }
 
+    public void PlayAndDiscardInfluenceCard(PlayerCharacter actor, CardLocation location, Action callback)
+    {
+        var owner = _players[location.Owner];
+        IActionReceiver receiver = location.IsTerritory ? owner.Territory : owner.Territory.Slots[location.SlotIndex];
+        
+        owner.PlayAndDiscardInfluenceCard(receiver, callback);
+    }
+
     public void MovePopulationToEmptySlot(CardLocation from, CardLocation to, Action callback)
     {
-        var playerOwner = _players[from.SlotOwner];
+        var playerOwner = _players[from.Owner];
         var slot = playerOwner.Territory.Slots[from.SlotIndex];
         var card = playerOwner.Territory.Slots[from.SlotIndex].Cards[from.CardIndex]; 
         if (card.Card is not PopulationCard) throw new Exception("Error! La carta a mover no es de poblacion");
         slot.RemoveCard(card);
 
-        var targetOwner = _players[to.SlotOwner];
+        var targetOwner = _players[to.Owner];
         var targetSlot = targetOwner.Territory.Slots[to.SlotIndex];
         
-        card.Initialize(card.Card, to.SlotOwner);
+        card.Initialize(card.Card, to.Owner);
         
         card.Play(targetSlot, callback);
+
+        playerOwner.CallInfluenceCallback();
     }
 
 
@@ -218,7 +228,7 @@ public class ViewManager : MonoBehaviour, IView
         foreach (var l in locations)
         {
             location = l;
-            playerOwner = _players[location.SlotOwner];
+            playerOwner = _players[location.Owner];
             slot = playerOwner.Territory.Slots[location.SlotIndex];
             var card = slot.Cards[0]; //la carta de mas abajo del slot
             if (card.Card is not MushroomCard) throw new Exception("Error! La carta para macrohongo no es seta!");
@@ -229,12 +239,12 @@ public class ViewManager : MonoBehaviour, IView
         }
 
         //la ultima location es donde crece el macrohongo
-        playerOwner = _players[location.SlotOwner];
+        playerOwner = _players[location.Owner];
         slot = playerOwner.Territory.Slots[location.SlotIndex];
 
         var newCardGO = Instantiate(_config.CardPrefab, slot.SnapTransform.position, slot.SnapTransform.rotation);
         var newPlayableCard = newCardGO.GetComponent<PlayableCard>();
-        newPlayableCard.InitializeOnSlot(_config.Macrofungi, location.SlotOwner, slot);
+        newPlayableCard.InitializeOnSlot(_config.Macrofungi, location.Owner, slot);
         slot.AddCardAtTheBottom(newPlayableCard);
 
         yield return new WaitForSeconds(.5f);
@@ -244,7 +254,7 @@ public class ViewManager : MonoBehaviour, IView
     private IEnumerator DestroyPlantsAndConstruct(CardLocation plant1Location, CardLocation plant2Location,
         Action callback)
     {
-        var player = GetViewPlayer(plant1Location.SlotOwner);
+        var player = GetViewPlayer(plant1Location.Owner);
         var territory = player.Territory;
 
         var slot1 = player.Territory.Slots[plant1Location.SlotIndex];

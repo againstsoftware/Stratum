@@ -78,9 +78,7 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
         _destroyed = true;
         OnDiscard?.Invoke();
     }
-
-    public abstract void Play(IActionReceiver playLocation, Action onPlayedCallback);
-
+    
 
     public virtual void OnSelect()
     {

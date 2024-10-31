@@ -321,11 +321,14 @@ public static class RulesCheck
         {
             return false;
         }
-        var card = modelCards[receivers[0].SecondIndex];
-        if (card.Card != action.ActionItem as ICard)
-        {
-            return false;
-        }
+        //
+        // var card = modelCards[receivers[0].SecondIndex];
+        //
+        //
+        // if (card.Card != action.ActionItem as ICard) //!!!!!!!!
+        // {
+        //     return false;
+        // }
         
 
         if (receivers[1].LocationOwner == action.Actor)

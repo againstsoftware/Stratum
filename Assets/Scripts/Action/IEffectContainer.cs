@@ -23,6 +23,8 @@ public enum Effect
     GrowMacrofungi,
     Construct,
     PlaceInitialCards,
-    MovePopulationToEmptySlot
+    PlayAndDiscardInfluenceCard,
+    MovePopulationToEmptySlot,
+    
 }
 

@@ -25,7 +25,7 @@ public class PlayableToken : APlayableItem, IRulebookEntry
         Owner = _owner;
     }
 
-    public override void Play(IActionReceiver playLocation, Action onPlayedCallback)
+    public void Play(IActionReceiver playLocation, Action onPlayedCallback)
     {
         if (CurrentState is not State.Playable/* && IsOnPlayLocation(playLocation)*/)
         {
