@@ -71,6 +71,14 @@ MonoBehaviour:
     m_Key: macrofungi_desc
     m_Metadata:
       m_Items: []
+  - m_Id: 10122221576777728
+    m_Key: migration_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10122316158332928
+    m_Key: migration_desc
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

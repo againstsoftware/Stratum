@@ -17,7 +17,6 @@ public interface IModel : IService
 
     public void RemoveCardFromHand(PlayerCharacter player, ICard card);
     public void PlaceCardOnSlot(ICard card, PlayerCharacter slotOwner, int slotIndex, bool atTheBottom = false);
-
     public (TableCard parent, TableCard son) GrowLastPlacedPopulation(ICard.Population population);
     public TableCard KillLastPlacedPopulation(ICard.Population population);
 

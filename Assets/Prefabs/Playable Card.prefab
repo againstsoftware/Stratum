@@ -62,7 +62,7 @@ MonoBehaviour:
   _meshInChild: 1
   _playTravelDuration: 0.2
   <SnapTransform>k__BackingField: {fileID: 5258903042657958836}
-  _drawTravelDuration: 0.15
+  _drawTravelDuration: 0.225
   _reposInHandTravelDuration: 0.1
   _closestCardZ: -0.025
   _mesh: {fileID: 9088813877132267383}

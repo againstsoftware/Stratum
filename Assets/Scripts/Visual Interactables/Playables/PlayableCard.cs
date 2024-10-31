@@ -158,7 +158,7 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
 
     public void Initialize(ACard card, PlayerCharacter owner, State initialState = State.Playable)
     {
-        if (Card is not null) throw new Exception("carta ya asignada no se puede inicializar!");
+        // if (Card is not null) throw new Exception("carta ya asignada no se puede inicializar!");
         if (card is null)
         {
             return;
@@ -172,7 +172,7 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
 
     public void InitializeOnSlot(ACard card, PlayerCharacter slotOwner, SlotReceiver slot)
     {
-        if (Card is not null) throw new Exception("carta ya asignada no se puede inicializar!");
+        // if (Card is not null) throw new Exception("carta ya asignada no se puede inicializar!");
         if (card is null)
         {
             return;

@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,6 +38,16 @@ public static class RulesCheck
                     Debug.Log($"rechazada porque la carta no esta en la mano del model");
                     return false;
                 }
+                
+                //si es accion de descarte
+                if (action.Receivers.Length == 1 && action.Receivers[0].Location is ValidDropLocation.DiscardPile)
+                {
+                    var owner = action.Receivers[0].LocationOwner;
+                    if (owner == action.Actor) return true;
+                    Debug.Log("rechazada porque la pila de descarte no es del que jugo la carta de poblacion!");
+                    return false;
+                }
+
 
                 return playedCard.CardType switch
                 {
@@ -188,44 +199,44 @@ public static class RulesCheck
 
     private static bool CheckPopulationCardAction(PlayerAction action)
     {
-        switch (action.Receivers[0].Location)
+        if (action.Receivers.Length != 1)
         {
-            case ValidDropLocation.OwnerSlot:
-                var slotOwner = action.Receivers[0].LocationOwner;
-                if (slotOwner != action.Actor)
-                {
-                    Debug.Log("rechazada porque el slot no es del que jugo la carta de poblacion!");
-                    return false;
-                }
-
-                if (ServiceLocator.Get<IModel>().GetPlayer(action.Actor).Territory.Slots[action.Receivers[0].Index]
-                        .PlacedCards.Count != 0)
-                {
-                    Debug.Log("rechazada porque el slot donde se jugo la carta de poblacion no esta vacio");
-                    return false;
-                }
-
-                return true;
-
-            case ValidDropLocation.DiscardPile:
-                var owner = action.Receivers[0].LocationOwner;
-                if (owner != action.Actor)
-                {
-                    Debug.Log("rechazada porque la pila de descarte no es del que jugo la carta de poblacion!");
-                    return false;
-                }
-
-                return true;
-
-            default:
-                Debug.Log($"rechazada porque la carta de poblacion se jugo en {action.Receivers[0].Location}");
-                return false;
+            return false;
         }
+
+        if (action.Receivers[0].Location is not ValidDropLocation.OwnerSlot)
+        {
+            Debug.Log($"rechazada porque la carta de poblacion se jugo en {action.Receivers[0].Location}");
+            return false;
+        }
+
+        var slotOwner = action.Receivers[0].LocationOwner;
+        if (slotOwner != action.Actor)
+        {
+            Debug.Log("rechazada porque el slot no es del que jugo la carta de poblacion!");
+            return false;
+        }
+
+        if (ServiceLocator.Get<IModel>().GetPlayer(action.Actor).Territory.Slots[action.Receivers[0].Index]
+                .PlacedCards.Count != 0)
+        {
+            Debug.Log("rechazada porque el slot donde se jugo la carta de poblacion no esta vacio");
+            return false;
+        }
+
+        return true;
+
     }
 
     private static bool CheckInfluenceCardAction(PlayerAction action)
     {
-        return true;
+        switch (((InfluenceCard)action.ActionItem).InfluenceType)
+        {
+            case InfluenceCard.Type.Migration:
+                return CheckMigration(action);
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
     }
 
     private static bool CheckConstructionAction(PlayerAction action)
@@ -249,7 +260,7 @@ public static class RulesCheck
             foreach (var placedCard in slot.PlacedCards)
             {
                 if (placedCard.Card.CardType is not ICard.Card.Population) continue;
-                
+
                 if (placedCard.Card.GetPopulations().Contains(ICard.Population.Carnivore))
                     return false;
 
@@ -276,6 +287,67 @@ public static class RulesCheck
             var placedCard = slot.PlacedCards[receiver.SecondIndex];
             if (placedCard.Card.CardType is not ICard.Card.Mushroom)
                 return false;
+        }
+
+        return true;
+    }
+
+
+    private static bool CheckMigration(PlayerAction action)
+    {
+        var receivers = action.Receivers;
+        
+        if (receivers.Length != 2)
+        {
+            return false;
+        }
+
+
+        if (receivers[0].Location is not ValidDropLocation.OwnerCard)
+        {
+            return false;
+        }
+        
+
+        var player = ServiceLocator.Get<IModel>().GetPlayer(action.Actor);
+        if (receivers[0].Index is < 0 or >= 5)
+        {
+            return false;
+        }
+
+        var modelCards = player.Territory.Slots[receivers[0].Index].PlacedCards;
+        
+        if (receivers[0].SecondIndex < 0 || receivers[0].SecondIndex >= modelCards.Count)
+        {
+            return false;
+        }
+        var card = modelCards[receivers[0].SecondIndex];
+        if (card.Card != action.ActionItem as ICard)
+        {
+            return false;
+        }
+        
+
+        if (receivers[1].LocationOwner == action.Actor)
+        {
+            return false;
+        }
+
+        if (receivers[1].Location is not ValidDropLocation.AnySlot)
+        {
+            return false;
+        }
+        
+        if (receivers[1].Index is < 0 or >= 5)
+        {
+            return false;
+        }
+
+        var slotOwner = ServiceLocator.Get<IModel>().GetPlayer(receivers[1].LocationOwner);
+        var slot = slotOwner.Territory.Slots[receivers[1].Index];
+        if (slot.PlacedCards.Count > 0)
+        {
+            return false;
         }
 
         return true;

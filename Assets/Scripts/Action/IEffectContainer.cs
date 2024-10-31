@@ -10,7 +10,7 @@ public interface IEffectContainer
 
 public enum Effect
 {
-    PlacePopulationCard,
+    PlacePopulationCardFromPlayer,
     GrowHerbivore,
     GrowCarnivore,
     KillHerbivore,
@@ -21,6 +21,8 @@ public enum Effect
     OverviewSwitch,
     GrowMushroomEcosystem,
     GrowMacrofungi,
-    Construct
+    Construct,
+    PlaceInitialCards,
+    MovePopulationToEmptySlot
 }
 

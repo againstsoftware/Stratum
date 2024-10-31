@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using CardLocation = IView.CardLocation;
 
@@ -31,12 +32,24 @@ public class ViewManager : MonoBehaviour, IView
         return _players[character];
     }
 
-    public void PlayCardOnSlot(ACard card, PlayerCharacter actor, CardLocation location, Action callback)
+    public void PlayCardOnSlotFromPlayer(ACard card, PlayerCharacter actor, CardLocation location, Action callback)
     {
         var playerActor = _players[actor];
         var playerSlotOwner = _players[location.SlotOwner];
         var slot = playerSlotOwner.Territory.Slots[location.SlotIndex];
         playerActor.PlayCardOnSlot(card, slot, callback);
+    }
+
+    public void PlaceCardOnSlotFromDeck(ACard card, CardLocation location, Action callback)
+    {
+        var playerSlotOwner = _players[location.SlotOwner];
+        var slot = playerSlotOwner.Territory.Slots[location.SlotIndex];
+        playerSlotOwner.PlaceCardFromDeck(card, slot, callback);
+    }
+
+    public void PlaceInitialCards(IReadOnlyList<(ACard card, CardLocation location)> cardsAndLocations, Action callback)
+    {
+        StartCoroutine(PlaceInitialCardsAux(cardsAndLocations, callback));
     }
 
 
@@ -73,9 +86,9 @@ public class ViewManager : MonoBehaviour, IView
         playerActor.DiscardCard(callback);
     }
 
-    public void DrawCards(PlayerCharacter actor, IReadOnlyList<ACard> cards, Action callback)
+    public void DrawCards(IReadOnlyDictionary<PlayerCharacter, IReadOnlyList<ACard>> cardsDrawn, Action callback)
     {
-        StartCoroutine(Draw(actor, cards, callback));
+        StartCoroutine(Draw(cardsDrawn, callback));
     }
 
     public void SwitchCamToOverview(Action callback)
@@ -119,6 +132,22 @@ public class ViewManager : MonoBehaviour, IView
         });
     }
 
+    public void MovePopulationToEmptySlot(CardLocation from, CardLocation to, Action callback)
+    {
+        var playerOwner = _players[from.SlotOwner];
+        var slot = playerOwner.Territory.Slots[from.SlotIndex];
+        var card = playerOwner.Territory.Slots[from.SlotIndex].Cards[from.CardIndex]; 
+        if (card.Card is not PopulationCard) throw new Exception("Error! La carta a mover no es de poblacion");
+        slot.RemoveCard(card);
+
+        var targetOwner = _players[to.SlotOwner];
+        var targetSlot = targetOwner.Territory.Slots[to.SlotIndex];
+        
+        card.Initialize(card.Card, to.SlotOwner);
+        
+        card.Play(targetSlot, callback);
+    }
+
 
     // private IEnumerator DestroyCard(GameObject card, Action callback = null)
     // {
@@ -147,6 +176,18 @@ public class ViewManager : MonoBehaviour, IView
             viewPlayer.Initialize(character);
         }
     }
+    
+    private IEnumerator PlaceInitialCardsAux(IReadOnlyList<(ACard card, CardLocation location)> cardsAndLocations,
+        Action callback)
+    {
+        foreach (var (card, location) in cardsAndLocations)
+        {
+            bool isDone = false;
+            PlaceCardOnSlotFromDeck(card, location, () => isDone = true);
+            yield return new WaitUntil(() => isDone);
+        }
+        callback?.Invoke();
+    }
 
     private IEnumerator DelayCall(Action a, float delay)
     {
@@ -154,16 +195,18 @@ public class ViewManager : MonoBehaviour, IView
         a?.Invoke();
     }
 
-    private IEnumerator Draw(PlayerCharacter actor, IReadOnlyList<ACard> cards, Action callback)
+    private IEnumerator Draw(IReadOnlyDictionary<PlayerCharacter, IReadOnlyList<ACard>> cardsDrawn, Action callback)
     {
-        var playerActor = _players[actor];
-        foreach (var card in cards)
+        bool[] arePlayersFinished = new bool[cardsDrawn.Count];
+        int i = 0;
+        foreach (var (character, cards) in cardsDrawn)
         {
-            bool done = false;
-            playerActor.DrawCard(card, () => done = true);
-            while (!done) yield return null;
+            int index = i++;
+            arePlayersFinished[index] = false;
+            GetViewPlayer(character).DrawCards(cards, () => arePlayersFinished[index] = true);
         }
 
+        yield return new WaitUntil( () => arePlayersFinished.All(pf => pf));
         callback?.Invoke();
     }
     

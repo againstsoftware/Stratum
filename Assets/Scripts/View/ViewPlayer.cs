@@ -29,24 +29,10 @@ public class ViewPlayer : MonoBehaviour
         Character = character;
     }
 
-    public void DrawCard(ACard card, Action callback)
+    public void DrawCards(IReadOnlyList<ACard> cards, Action callback)
     {
         if (Cards.Count == 5) throw new Exception("mano llena de cartas no se puede robar!");
-
-        var newCardGO = Instantiate(_config.CardPrefab, _deckSnap.position, _deckSnap.rotation, _hand);
-        var newPlayableCard = newCardGO.GetComponent<PlayableCard>();
-
-        // if (!IsLocalPlayer) card = null;
-        newPlayableCard.Initialize(card, Character);
-
-        Cards.Add(newPlayableCard);
-        newPlayableCard.OnCardPlayed += OnCardPlayed;
-        newPlayableCard.OnItemDrag += OnCardDragged;
-        newPlayableCard.OnItemDrop += OnCardDropped;
-        // newPlayableCard.IndexInHand = Cards.Count - 1;
-
-        var location = _cardLocations[Cards.Count - 1];
-        newPlayableCard.DrawTravel(location, callback);
+        StartCoroutine(DrawCardsAux(cards, callback));
     }
 
     public void PlayCardOnSlot(ACard card, SlotReceiver slot, Action callback)
@@ -73,6 +59,45 @@ public class ViewPlayer : MonoBehaviour
         {
             StartCoroutine(DestroyCard(playableCard.gameObject, callback));
         });
+    }
+
+    public void PlaceCardFromDeck(ACard card, SlotReceiver slot, Action callback)
+    {
+        var newCardGO = Instantiate(_config.CardPrefab, _deckSnap.position, _deckSnap.rotation);
+        var newPlayableCard = newCardGO.GetComponent<PlayableCard>();
+        newPlayableCard.Initialize(card, Character);
+        
+        newPlayableCard.Play(slot, callback);
+    }
+    
+    
+    
+    
+    private IEnumerator DrawCardsAux(IReadOnlyList<ACard> cards, Action callback)
+    {
+        foreach (var card in cards)
+        {
+            var newCardGO = Instantiate(_config.CardPrefab, _deckSnap.position, _deckSnap.rotation, _hand);
+            var newPlayableCard = newCardGO.GetComponent<PlayableCard>();
+
+            // if (!IsLocalPlayer) card = null;
+            newPlayableCard.Initialize(card, Character);
+
+            Cards.Add(newPlayableCard);
+            newPlayableCard.OnCardPlayed += OnCardPlayed;
+            newPlayableCard.OnItemDrag += OnCardDragged;
+            newPlayableCard.OnItemDrop += OnCardDropped;
+            // newPlayableCard.IndexInHand = Cards.Count - 1;
+
+            var location = _cardLocations[Cards.Count - 1];
+
+            bool isDone = false;
+            
+            newPlayableCard.DrawTravel(location, () => isDone = true);
+
+            yield return new WaitUntil(() => isDone);
+        }
+        callback?.Invoke();
     }
 
     private void OnCardPlayed(PlayableCard card)

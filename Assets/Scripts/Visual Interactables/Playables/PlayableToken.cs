@@ -27,7 +27,7 @@ public class PlayableToken : APlayableItem, IRulebookEntry
 
     public override void Play(IActionReceiver playLocation, Action onPlayedCallback)
     {
-        if (CurrentState is not State.Playable && IsOnPlayLocation(playLocation))
+        if (CurrentState is not State.Playable/* && IsOnPlayLocation(playLocation)*/)
         {
             ReturnToHand(() =>
             {
@@ -58,9 +58,5 @@ public class PlayableToken : APlayableItem, IRulebookEntry
         yield return new WaitForSeconds(delay);
         callback?.Invoke();
     }
-
-    public override void OnDrop(IActionReceiver dropLocation, Action actionCompletedCallback)
-    {
-        base.OnDrop(dropLocation, actionCompletedCallback);
-    }
+    
 }

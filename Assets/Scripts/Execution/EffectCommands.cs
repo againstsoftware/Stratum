@@ -7,9 +7,11 @@ public delegate void EffectCommand(PlayerAction playerAction, Action onCompleted
 
 public static class EffectCommands
 {
+    public static GameConfig Config { get; set; }
+
     public static EffectCommand Get(Effect effect) => effect switch
     {
-        Effect.PlacePopulationCard => _placePopulationCard,
+        Effect.PlacePopulationCardFromPlayer => _placePopulationCardfromPlayer,
         Effect.GrowCarnivore => _growCarnivore,
         Effect.GrowHerbivore => _growHerbivore,
         Effect.KillCarnivore => _killCarnivore,
@@ -21,12 +23,14 @@ public static class EffectCommands
         Effect.GrowMushroomEcosystem => _growMushroomEcosystem,
         Effect.GrowMacrofungi => _growMacrofungi,
         Effect.Construct => _construct,
+        Effect.PlaceInitialCards => _placeInitialCards,
+        Effect.MovePopulationToEmptySlot => _movePopulationToEmptySlot,
 
         _ => throw new ArgumentOutOfRangeException()
     };
 
 
-    private static readonly EffectCommand _placePopulationCard = (action, callback) =>
+    private static readonly EffectCommand _placePopulationCardfromPlayer = (action, callback) =>
     {
         var card = action.ActionItem as ICard;
         var owner = action.Actor;
@@ -35,7 +39,7 @@ public static class EffectCommands
         ServiceLocator.Get<IModel>().PlaceCardOnSlot(card, owner, slotIndex);
         //update al view asincrono
         var location = new IView.CardLocation() { SlotOwner = owner, SlotIndex = slotIndex };
-        ServiceLocator.Get<IView>().PlayCardOnSlot(card as ACard, owner, location, callback);
+        ServiceLocator.Get<IView>().PlayCardOnSlotFromPlayer(card as ACard, owner, location, callback);
     };
 
     private static readonly EffectCommand _growCarnivore = (_, callback) =>
@@ -89,7 +93,7 @@ public static class EffectCommands
 
     private static readonly EffectCommand _draw = (_, callback) =>
     {
-        Dictionary<PlayerCharacter, List<ACard>> cardsDrawn = new();
+        Dictionary<PlayerCharacter, IReadOnlyList<ACard>> cardsDrawn = new();
         foreach (var character in _turnOrder)
         {
             if (character is PlayerCharacter.None) continue;
@@ -97,41 +101,9 @@ public static class EffectCommands
             cardsDrawn.Add(character, new List<ACard>(cards.Cast<ACard>()));
         }
 
-        DrawCardInView(cardsDrawn, 0, callback);
+        ServiceLocator.Get<IView>().DrawCards(cardsDrawn, callback);
     };
 
-    // private static readonly EffectCommand _draw5 = (_, callback) =>
-    // {
-    //     Dictionary<PlayerCharacter, List<ACard>> cardsDrawn = new();
-    //     foreach (var character in _turnOrder)
-    //     {
-    //         if (character is PlayerCharacter.None) continue;
-    //         var cards = ServiceLocator.Get<IModel>().PlayerDrawCards(character, 5);
-    //         cardsDrawn.Add(character, new List<ACard>(cards.Cast<ACard>()));
-    //     }
-    //
-    //     DrawCardInView(cardsDrawn, 0, callback);
-    // };
-
-    private static void DrawCardInView(Dictionary<PlayerCharacter, List<ACard>> cardsDrawn, int index, Action callback)
-    {
-        if (index == _turnOrder.Length)
-        {
-            callback();
-            return;
-        }
-
-        var actor = _turnOrder[index];
-
-        if (actor is PlayerCharacter.None)
-        {
-            DrawCardInView(cardsDrawn, index + 1, callback);
-            return;
-        }
-
-        var cards = cardsDrawn[actor];
-        ServiceLocator.Get<IView>().DrawCards(actor, cards, () => DrawCardInView(cardsDrawn, index + 1, callback));
-    }
 
     private static readonly EffectCommand _overviewSwitch = (_, callback) =>
     {
@@ -191,5 +163,47 @@ public static class EffectCommands
 
 
         ServiceLocator.Get<IView>().PlaceConstruction(location1, location2, callback);
+    };
+
+    private static readonly EffectCommand _placeInitialCards = (_, callback) =>
+    {
+        var initialCards = new Stack<PopulationCard>(Config.InitialCards);
+        var players = Config.TurnOrder.ToList();
+        players.Remove(PlayerCharacter.None);
+        
+        var cardsAndLocations = new List<(ACard card, IView.CardLocation location)>();
+
+        int count = Mathf.Min(initialCards.Count, players.Count);
+        while (count > 0)
+        {
+            count--;
+            var index = UnityEngine.Random.Range(0, players.Count);
+            var slotOwner = players[index];
+            players.RemoveAt(index);
+
+            var initialCard = initialCards.Pop();
+            int slotIndex = 0;
+            ServiceLocator.Get<IModel>().PlaceCardOnSlot(initialCard, slotOwner, slotIndex);
+            //update al view asincrono
+            var location = new IView.CardLocation() { SlotOwner = slotOwner, SlotIndex = slotIndex };
+            
+            cardsAndLocations.Add((initialCard, location));
+        }
+        
+        ServiceLocator.Get<IView>().PlaceInitialCards(cardsAndLocations, callback);
+    };
+
+    private static readonly EffectCommand _movePopulationToEmptySlot = (action, callback) =>
+    {
+        var card = action.ActionItem as ICard;
+        var slotOwner = action.Actor;
+        var slotIndex = action.Receivers[0].Index;
+        var cardIndex = action.Receivers[0].SecondIndex;
+        var targetSlotOwner = action.Receivers[1].LocationOwner;
+        var targetSlotIndex = action.Receivers[1].Index;
+        ServiceLocator.Get<IModel>()
+            .MoveCardBetweenSlots(card, slotOwner, slotIndex, cardIndex, targetSlotOwner, targetSlotIndex);
+        
+        
     };
 }

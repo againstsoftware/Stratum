@@ -49,7 +49,8 @@ public class RulesManager : MonoBehaviour, IRulesSystem
         while (!comms.IsRNGSynced) yield return null;
         Debug.Log("random sincronizado!");
 
-        ServiceLocator.Get<IExecutor>().ExecuteRulesEffects(new[] { Effect.Draw5 }, null);
+        ServiceLocator.Get<IExecutor>().ExecuteRulesEffects
+            (new[] { Effect.Draw5, Effect.PlaceInitialCards }, null);
     }
 
     private void OnTurnChanged(PlayerCharacter onTurn)

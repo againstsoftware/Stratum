@@ -24,6 +24,8 @@ public class GameInitializer : MonoBehaviour
         
         if(_isTestScene)  ServiceLocator.Register<ICommunicationSystem>(FindAnyObjectByType<TestModeCommunications>());
         else ServiceLocator.Register<ICommunicationSystem>(FindAnyObjectByType<GameNetwork>());
+
+        EffectCommands.Config = _config;
     }
 
     private IEnumerator Start()
