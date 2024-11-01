@@ -5,6 +5,7 @@ using UnityEngine;
 
 public static class RulesCheck
 {
+    public static GameConfig Config { get; set; }
     public static bool CheckAction(PlayerAction action)
     {
         Debug.Log($@"
@@ -241,6 +242,10 @@ public static class RulesCheck
                 return CheckMigration(action);
             case InfluenceCard.Type.PheromoneFragance:
                 return CheckPheromoneFragance(action);
+            case InfluenceCard.Type.Fireworks:
+                return CheckFireworks(action);
+            case InfluenceCard.Type.AppetizingMushroom:
+                return CheckAppetizingMushroom(action);
             default:
                 throw new ArgumentOutOfRangeException();
         }
@@ -331,6 +336,12 @@ public static class RulesCheck
         
         var card = modelCards[receivers[0].SecondIndex].Card;
 
+        if (card.CardType is not ICard.Card.Population)
+        {
+            return false;
+        }
+        
+
         if (!card.GetPopulations().Contains(ICard.Population.Carnivore) &&
             !card.GetPopulations().Contains(ICard.Population.Herbivore))
         {
@@ -398,6 +409,11 @@ public static class RulesCheck
         }
         
         var card = cardOwnerPlacedCards[receivers[0].SecondIndex].Card;
+        
+        if (card.CardType is not ICard.Card.Population)
+        {
+            return false;
+        }
 
         if (!card.GetPopulations().Contains(ICard.Population.Carnivore) &&
             !card.GetPopulations().Contains(ICard.Population.Herbivore))
@@ -422,7 +438,7 @@ public static class RulesCheck
             return false;
         }
 
-        var slotOwner = ServiceLocator.Get<IModel>().GetPlayer(action.Actor);
+        var slotOwner = ServiceLocator.Get<IModel>().GetPlayer(receivers[1].LocationOwner);
         var slot = slotOwner.Territory.Slots[receivers[1].Index];
         if (slot.PlacedCards.Count > 0)
         {
@@ -430,5 +446,164 @@ public static class RulesCheck
         }
 
         return true;
+    }
+
+    private static bool CheckFireworks(PlayerAction action)
+    {
+        var receivers = action.Receivers;
+        
+        if (receivers.Length != 2)
+        {
+            return false;
+        }
+
+        if (receivers[0].Location is not ValidDropLocation.AnyCard)
+        {
+            return false;
+        }
+        
+        if (receivers[0].Index is < 0 or >= 5)
+        {
+            return false;
+        }
+        
+        var cardOwner = ServiceLocator.Get<IModel>().GetPlayer(receivers[0].LocationOwner);
+        
+        var cardOwnerPlacedCards = cardOwner.Territory.Slots[receivers[0].Index].PlacedCards;
+        
+        if (receivers[0].SecondIndex < 0 || receivers[0].SecondIndex >= cardOwnerPlacedCards.Count)
+        {
+            return false;
+        }
+        
+        var card = cardOwnerPlacedCards[receivers[0].SecondIndex].Card;
+        
+        if (card.CardType is not ICard.Card.Population)
+        {
+            return false;
+        }
+
+        if (!card.GetPopulations().Contains(ICard.Population.Carnivore) &&
+            !card.GetPopulations().Contains(ICard.Population.Herbivore))
+        {
+            return false;
+        }
+        
+
+        if (receivers[1].Location is not ValidDropLocation.AnySlot)
+        {
+            return false;
+        }
+        
+        if (receivers[1].Index is < 0 or >= 5)
+        {
+            return false;
+        }
+        
+        var slotOwner = ServiceLocator.Get<IModel>().GetPlayer(receivers[1].LocationOwner);
+
+        if (!ArePlayersOpposites(cardOwner.Character, slotOwner.Character))
+        {
+            return false;
+        }
+
+        var slot = slotOwner.Territory.Slots[receivers[1].Index];
+        if (slot.PlacedCards.Count > 0)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    private static bool CheckAppetizingMushroom(PlayerAction action)
+    {
+        var receivers = action.Receivers;
+        
+        if (receivers.Length != 2)
+        {
+            return false;
+        }
+
+        if (receivers[0].Location is not ValidDropLocation.AnyCard)
+        {
+            return false;
+        }
+        
+        if (receivers[0].Index is < 0 or >= 5)
+        {
+            return false;
+        }
+        
+        var cardOwner = ServiceLocator.Get<IModel>().GetPlayer(receivers[0].LocationOwner);
+        
+        var cardOwnerPlacedCards = cardOwner.Territory.Slots[receivers[0].Index].PlacedCards;
+        
+        if (receivers[0].SecondIndex < 0 || receivers[0].SecondIndex >= cardOwnerPlacedCards.Count)
+        {
+            return false;
+        }
+        
+        var card = cardOwnerPlacedCards[receivers[0].SecondIndex].Card;
+        
+        if (card.CardType is not ICard.Card.Population)
+        {
+            return false;
+        }
+
+        if (!card.GetPopulations().Contains(ICard.Population.Carnivore) &&
+            !card.GetPopulations().Contains(ICard.Population.Herbivore))
+        {
+            return false;
+        }
+        
+
+        if (receivers[1].Location is not ValidDropLocation.AnySlot)
+        {
+            return false;
+        }
+        
+        if (receivers[0].LocationOwner == receivers[1].LocationOwner)
+        {
+            return false;
+        }
+        
+        if (receivers[1].Index is < 0 or >= 5)
+        {
+            return false;
+        }
+        
+        var slotOwner = ServiceLocator.Get<IModel>().GetPlayer(receivers[1].LocationOwner);
+
+        if (!ExistsFungiOnTerritory(slotOwner.Territory))
+        {
+            return false;
+        }
+
+        var slot = slotOwner.Territory.Slots[receivers[1].Index];
+        if (slot.PlacedCards.Count > 0)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    private static bool ArePlayersOpposites(PlayerCharacter a, PlayerCharacter b)
+    {
+        var turnOrder = Config.TurnOrder.ToList();
+        turnOrder.Remove(PlayerCharacter.None);
+
+        var aIndex = turnOrder.IndexOf(a);
+        var bIndex = turnOrder.IndexOf(b);
+        
+        return (aIndex == 0 && bIndex == 2) || (aIndex == 2 && bIndex == 0) ||
+               (aIndex == 1 && bIndex == 3) || (aIndex == 3 && bIndex == 1);
+    }
+
+    private static bool ExistsFungiOnTerritory(Territory territory)
+    {
+        return territory.Slots.SelectMany(slot => slot.PlacedCards)
+            .Any(card => card.Card.CardType is ICard.Card.Mushroom or ICard.Card.Macrofungi);
     }
 }

@@ -105,6 +105,26 @@ MonoBehaviour:
       las industrias desde el a\xF1o "
     m_Metadata:
       m_Items: []
+  - m_Id: 10614643192754176
+    m_Localized: Pirotecnia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10614700512112640
+    m_Localized: "Lorem Ipsum es simplemente el texto de relleno de las imprentas
+      y archivos de texto. Lorem Ipsum ha sido el texto de relleno est\xE1ndar de
+      las industrias desde el a\xF1o "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10622166725554176
+    m_Localized: Seta Apetitosa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10622238829834240
+    m_Localized: "Lorem Ipsum es simplemente el texto de relleno de las imprentas
+      y archivos de texto. Lorem Ipsum ha sido el texto de relleno est\xE1ndar de
+      las industrias desde el a\xF1o "
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -202,11 +202,11 @@ public static class EffectCommands
         var location = new IView.CardLocation()
         {
             IsTerritory = isTerritory,
-            Owner = action.Actor,
+            Owner = action.Receivers[0].LocationOwner,
             SlotIndex = isTerritory ? -1 : action.Receivers[0].Index,
             CardIndex = isTerritory ? -1 : action.Receivers[0].SecondIndex,
         };
-        ServiceLocator.Get<IView>().PlayAndDiscardInfluenceCard(action.Actor,location, callback);
+        ServiceLocator.Get<IView>().PlayAndDiscardInfluenceCard(action.Actor, location, callback);
     };
     
     private static readonly EffectCommand _movePopulationToEmptySlot = (action, callback) =>
@@ -232,6 +232,6 @@ public static class EffectCommands
             SlotIndex = targetSlotIndex
         };
         
-       ServiceLocator.Get<IView>().MovePopulationToEmptySlot(from, to, callback); 
+       ServiceLocator.Get<IView>().MovePopulationToEmptySlot(action.Actor, from, to, callback); 
     };
 }

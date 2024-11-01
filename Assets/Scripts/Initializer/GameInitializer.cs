@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public class GameInitializer : MonoBehaviour
@@ -9,7 +10,8 @@ public class GameInitializer : MonoBehaviour
     [SerializeField] private bool _isTestScene;
     private void Awake()
     {
-        var gameModel = new GameModel(_config.TurnOrder[0], Array.ConvertAll(_decks, d => d as IDeck));
+        var gameModel = new GameModel(_config.TurnOrder[0], _decks.Cast<IDeck>().ToArray());
+        
         ServiceLocator.Register<IModel>(gameModel);
         
         ServiceLocator.Register<IInteractionSystem>(FindAnyObjectByType<InteractionManager>());

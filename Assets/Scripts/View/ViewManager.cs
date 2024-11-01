@@ -134,14 +134,16 @@ public class ViewManager : MonoBehaviour, IView
 
     public void PlayAndDiscardInfluenceCard(PlayerCharacter actor, CardLocation location, Action callback)
     {
-        var owner = _players[location.Owner];
-        IActionReceiver receiver = location.IsTerritory ? owner.Territory : owner.Territory.Slots[location.SlotIndex];
+        var playerActor = _players[actor];
+        var receiverOwner = _players[location.Owner];
+        IActionReceiver receiver = location.IsTerritory ? receiverOwner.Territory : receiverOwner.Territory.Slots[location.SlotIndex];
         
-        owner.PlayAndDiscardInfluenceCard(receiver, callback);
+        playerActor.PlayAndDiscardInfluenceCard(receiver, callback);
     }
 
-    public void MovePopulationToEmptySlot(CardLocation from, CardLocation to, Action callback)
+    public void MovePopulationToEmptySlot(PlayerCharacter actor, CardLocation from, CardLocation to, Action callback)
     {
+        var playerActor = _players[actor];
         var playerOwner = _players[from.Owner];
         var slot = playerOwner.Territory.Slots[from.SlotIndex];
         var card = playerOwner.Territory.Slots[from.SlotIndex].Cards[from.CardIndex]; 
@@ -153,9 +155,12 @@ public class ViewManager : MonoBehaviour, IView
         
         card.Initialize(card.Card, to.Owner);
         
-        card.Play(targetSlot, callback);
+        card.Play(targetSlot, () =>
+        {
+            playerActor.CallInfluenceCallback();
+            callback.Invoke();
+        });
 
-        playerOwner.CallInfluenceCallback();
     }
 
 

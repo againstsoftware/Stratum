@@ -87,6 +87,22 @@ MonoBehaviour:
     m_Key: pheromone_desc
     m_Metadata:
       m_Items: []
+  - m_Id: 10614643192754176
+    m_Key: fireworks_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10614700512112640
+    m_Key: fireworks_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10622166725554176
+    m_Key: app_mushroom_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10622238829834240
+    m_Key: app_mushroom_desc
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

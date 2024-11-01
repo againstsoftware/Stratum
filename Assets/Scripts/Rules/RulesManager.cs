@@ -5,12 +5,15 @@ using UnityEngine;
 
 public class RulesManager : MonoBehaviour, IRulesSystem
 {
+    [SerializeField] private GameConfig _config;
     private void Start()
     {
         ServiceLocator.Get<ITurnSystem>().OnGameStart += OnGameStart;
         ServiceLocator.Get<ITurnSystem>().OnTurnChanged += OnTurnChanged;
         ServiceLocator.Get<IModel>().OnPopulationGrow += OnPopulationGrow;
         ServiceLocator.Get<IModel>().OnPopulationDie += OnPopulationDie;
+
+        RulesCheck.Config = _config;
     }
 
     private void OnDisable()

@@ -26,5 +26,5 @@ public interface IView : IService
     public void PlaceConstruction(CardLocation plant1Location, CardLocation plant2Location, Action callback);
 
     public void PlayAndDiscardInfluenceCard(PlayerCharacter actor, CardLocation location, Action callback);
-    public void MovePopulationToEmptySlot(CardLocation from, CardLocation to, Action callback);
+    public void MovePopulationToEmptySlot(PlayerCharacter actor, CardLocation from, CardLocation to, Action callback);
 }

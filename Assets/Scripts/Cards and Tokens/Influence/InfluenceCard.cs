@@ -10,6 +10,8 @@ public class InfluenceCard : ACard
         None,
         Migration,
         PheromoneFragance,
+        Fireworks,
+        AppetizingMushroom
     }
     [field: SerializeField] public Type InfluenceType { get; private set; }
     public override bool CanHaveInfluenceCardOnTop => false;
