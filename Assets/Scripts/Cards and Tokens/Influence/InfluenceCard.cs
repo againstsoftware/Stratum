@@ -9,6 +9,7 @@ public class InfluenceCard : ACard
     {
         None,
         Migration,
+        PheromoneFragance,
     }
     [field: SerializeField] public Type InfluenceType { get; private set; }
     public override bool CanHaveInfluenceCardOnTop => false;

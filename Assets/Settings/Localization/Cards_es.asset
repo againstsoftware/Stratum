@@ -95,6 +95,16 @@ MonoBehaviour:
       las industrias desde el a\xF1o "
     m_Metadata:
       m_Items: []
+  - m_Id: 10600926103203840
+    m_Localized: Fragancia de Feromonas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10601212662247424
+    m_Localized: "Lorem Ipsum es simplemente el texto de relleno de las imprentas
+      y archivos de texto. Lorem Ipsum ha sido el texto de relleno est\xE1ndar de
+      las industrias desde el a\xF1o "
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -92,6 +92,16 @@ MonoBehaviour:
       a
     m_Metadata:
       m_Items: []
+  - m_Id: 10600926103203840
+    m_Localized: Pheromone Fragrance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10601212662247424
+    m_Localized: Lorem Ipsum is simply dummy text of printing presses and text files.
+      Lorem Ipsum has been the industries' standard dummy text since the 1500s, when
+      a
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

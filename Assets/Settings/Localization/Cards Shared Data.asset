@@ -79,6 +79,14 @@ MonoBehaviour:
     m_Key: migration_desc
     m_Metadata:
       m_Items: []
+  - m_Id: 10600926103203840
+    m_Key: pheromone_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10601212662247424
+    m_Key: pheromone_desc
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -211,7 +211,7 @@ public static class EffectCommands
     
     private static readonly EffectCommand _movePopulationToEmptySlot = (action, callback) =>
     {
-        var slotOwner = action.Actor;
+        var slotOwner = action.Receivers[0].LocationOwner;
         var slotIndex = action.Receivers[0].Index;
         var cardIndex = action.Receivers[0].SecondIndex;
         var targetSlotOwner = action.Receivers[1].LocationOwner;
