@@ -1,5 +1,6 @@
 
 using UnityEngine;
+/*
 public class LoginObject: MonoBehaviour, IMenuInteractable
 {
     public void OnPointerPress()
@@ -8,3 +9,4 @@ public class LoginObject: MonoBehaviour, IMenuInteractable
     }
     
 }
+*/

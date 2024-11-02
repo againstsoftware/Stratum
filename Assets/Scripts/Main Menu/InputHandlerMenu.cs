@@ -35,17 +35,19 @@ public class InputHandlerMenu
 
     private void OnPointerPress(InputAction.CallbackContext ctx)
     {
-        // Debug.Log("ontap");
-            Ray ray = _interactionSystem.Camera.ScreenPointToRay(_pointerPosition);
-        var hit = Physics.Raycast(ray, out var hitInfo, float.MaxValue, _interactionSystem.InteractablesLayer);
-        if(hit && hitInfo.collider)
-        {
-            // Debug.Log("hit");
-            // PointerPress?.Invoke();
-            //Application.OpenURL("https://github.com/againstsoftware/Stratum");
-            
-            hitInfo.collider.GetComponent<IMenuInteractable>().OnPointerPress();
-        }
+        Debug.Log("OnPointerPress");
 
+        Ray ray = _interactionSystem.Camera.ScreenPointToRay(_pointerPosition);
+        var hit = Physics.Raycast(ray, out var hitInfo, float.MaxValue, _interactionSystem.InteractablesLayer);
+
+        if(hit && hitInfo.collider)
+        {            
+            Debug.Log("OnPointerPress - hit");
+            hitInfo.collider.GetComponent<IMenuInteractable>().OnPointerPress(_interactionSystem.Camera);
+        }
+        else
+        {
+            //GetComponent<IMenuInteractable>().ResetCamera(_interactionSystem.Camera);
+        }
     }
 }
