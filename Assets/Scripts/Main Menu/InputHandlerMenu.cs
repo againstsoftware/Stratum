@@ -10,8 +10,7 @@ public class InputHandlerMenu
 
     private Vector2 _pointerPosition;
     private IInteractionSystemMenu _interactionSystem;
-
-
+    
     public InputHandlerMenu(IInteractionSystemMenu interactionSystem, InputActionAsset inputActions)
     {
         _interactionSystem = interactionSystem;
