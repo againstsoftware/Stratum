@@ -11,11 +11,13 @@ public class InfluenceCard : ACard
         Migration,
         PheromoneFragance,
         Fireworks,
-        AppetizingMushroom
+        AppetizingMushroom,
+        Rabies
     }
     [field: SerializeField] public Type InfluenceType { get; private set; }
+    [field: SerializeField]public bool IsPersistent { get; private set; }
     public override bool CanHaveInfluenceCardOnTop => false;
     public override ICard.Card CardType => ICard.Card.Influence;
     public override IEnumerable<ICard.Population> GetPopulations() => null;
-
+    
 }

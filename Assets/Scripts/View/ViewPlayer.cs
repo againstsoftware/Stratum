@@ -54,13 +54,21 @@ public class ViewPlayer : MonoBehaviour
         playableCard.Play(slot, callback);
     }
 
-    public void PlayAndDiscardInfluenceCard(IActionReceiver receiver, Action callback)
+    public void PlayAndDiscardInfluenceCard(InfluenceCard card, IActionReceiver receiver, Action callback, bool isEndOfAction = false)
     {
-        PlayableCard playableCard = IsLocalPlayer ? _droppedCard : Cards[0];
+        PlayableCard playableCard = null;
 
         if (IsLocalPlayer)
         {
+            playableCard = _droppedCard;
+            if (card != playableCard.Card) throw new Exception("carta diferente en el view!!");
+
             _influenceCardActionCompletedCallback = playableCard.GetActionCompletedCallback();
+        }
+        else
+        {
+            playableCard = Cards[0];
+            playableCard.SetCard(card);
         }
         
         playableCard.Play(receiver, () =>
@@ -70,7 +78,7 @@ public class ViewPlayer : MonoBehaviour
                 playableCard.Play(DiscardPile, () =>
                 {
                     StartCoroutine(DestroyCard(playableCard.gameObject, callback));
-                }, false);
+                }, isEndOfAction);
             }, Time.deltaTime)); //delayeamos 1 frame
            
         }, false);
@@ -100,6 +108,33 @@ public class ViewPlayer : MonoBehaviour
         _influenceCardActionCompletedCallback?.Invoke();
         _influenceCardActionCompletedCallback = null;
     }
+
+
+    public void PlaceInfluenceOnPopulation(InfluenceCard influence, PlayableCard population, Action callback,
+        bool isEndOfAction = false)
+    {
+        PlayableCard playableCard = null;
+
+        if (IsLocalPlayer)
+        {
+            playableCard = _droppedCard;
+            if (influence != playableCard.Card) throw new Exception("carta diferente en el view!!");
+
+            _influenceCardActionCompletedCallback = playableCard.GetActionCompletedCallback();
+        }
+        else
+        {
+            playableCard = Cards[0];
+            playableCard.SetCard(influence);
+        }
+        
+        playableCard.Play(population, callback, isEndOfAction);
+    }
+    
+    
+    
+    
+    
     
     private IEnumerator DrawCardsAux(IReadOnlyList<ACard> cards, Action callback)
     {

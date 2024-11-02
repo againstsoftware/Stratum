@@ -26,6 +26,8 @@ public static class EffectCommands
         Effect.PlaceInitialCards => _placeInitialCards,
         Effect.PlayAndDiscardInfluenceCard =>_playAndDiscardInfluenceCard,
         Effect.MovePopulationToEmptySlot => _movePopulationToEmptySlot,
+        Effect.PlaceInfluenceOnPopulation => _placeInfluenceOnPopulation,
+        Effect.GiveRabies => _giveRabies,
 
         _ => throw new ArgumentOutOfRangeException()
     };
@@ -206,7 +208,8 @@ public static class EffectCommands
             SlotIndex = isTerritory ? -1 : action.Receivers[0].Index,
             CardIndex = isTerritory ? -1 : action.Receivers[0].SecondIndex,
         };
-        ServiceLocator.Get<IView>().PlayAndDiscardInfluenceCard(action.Actor, location, callback);
+        var influence = action.ActionItem as InfluenceCard;
+        ServiceLocator.Get<IView>().PlayAndDiscardInfluenceCard(action.Actor, influence, location, callback);
     };
     
     private static readonly EffectCommand _movePopulationToEmptySlot = (action, callback) =>
@@ -234,4 +237,41 @@ public static class EffectCommands
         
        ServiceLocator.Get<IView>().MovePopulationToEmptySlot(action.Actor, from, to, callback); 
     };
+
+    private static readonly EffectCommand _placeInfluenceOnPopulation = (action, callback) =>
+    {
+        var slotOwner = action.Receivers[0].LocationOwner;
+        var slotIndex = action.Receivers[0].Index;
+        var cardIndex = action.Receivers[0].SecondIndex;
+        var influenceCard = action.ActionItem as InfluenceCard;
+        ServiceLocator.Get<IModel>().PlaceInlfuenceCardOnCard(influenceCard, slotOwner, slotIndex, cardIndex);
+        
+        var location = new IView.CardLocation()
+        {
+            Owner = slotOwner,
+            SlotIndex = slotIndex,
+            CardIndex = cardIndex
+        };
+        
+        ServiceLocator.Get<IView>().PlaceInfluenceOnPopulation(action.Actor, influenceCard, location, callback);
+    };
+
+    private static readonly EffectCommand _giveRabies = (action, callback) =>
+    {
+        var slotOwner = action.Receivers[0].LocationOwner;
+        var slotIndex = action.Receivers[0].Index;
+        var cardIndex = action.Receivers[0].SecondIndex;
+        
+        ServiceLocator.Get<IModel>().GiveRabies(slotOwner, slotIndex, cardIndex);
+        
+        var location = new IView.CardLocation()
+        {
+            Owner = slotOwner,
+            SlotIndex = slotIndex,
+            CardIndex = cardIndex
+        };
+        
+        ServiceLocator.Get<IView>().GiveRabies(action.Actor, location, callback);
+    };
+
 }

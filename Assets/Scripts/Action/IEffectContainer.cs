@@ -25,6 +25,8 @@ public enum Effect
     PlaceInitialCards,
     PlayAndDiscardInfluenceCard,
     MovePopulationToEmptySlot,
+    PlaceInfluenceOnPopulation,
+    GiveRabies,
     
 }
 

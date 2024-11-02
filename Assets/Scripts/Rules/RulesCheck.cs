@@ -246,6 +246,8 @@ public static class RulesCheck
                 return CheckFireworks(action);
             case InfluenceCard.Type.AppetizingMushroom:
                 return CheckAppetizingMushroom(action);
+            case InfluenceCard.Type.Rabies:
+                return CheckRabies(action);
             default:
                 throw new ArgumentOutOfRangeException();
         }
@@ -273,7 +275,8 @@ public static class RulesCheck
             {
                 if (placedCard.Card.CardType is not ICard.Card.Population) continue;
 
-                if (placedCard.Card.GetPopulations().Contains(ICard.Population.Carnivore))
+                if (placedCard.Card.GetPopulations().Contains(ICard.Population.Carnivore) ||
+                    placedCard.HasRabids)
                     return false;
 
                 if (placedCard.Card.GetPopulations().Contains(ICard.Population.Plant))
@@ -582,6 +585,58 @@ public static class RulesCheck
 
         var slot = slotOwner.Territory.Slots[receivers[1].Index];
         if (slot.PlacedCards.Count > 0)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    private static bool CheckRabies(PlayerAction action)
+    {
+        if (action.Receivers.Length != 1)
+        {
+            return false;
+        }
+
+        var receiver = action.Receivers[0];
+
+        if (receiver.Location != ValidDropLocation.AnyCard)
+        {
+            return false;
+        }
+
+        if (receiver.Index is < 0 or >= 5)
+        {
+            return false;
+        }
+
+        var cardOwner = ServiceLocator.Get<IModel>().GetPlayer(receiver.LocationOwner);
+        var cardOwnerPlacedCards = cardOwner.Territory.Slots[receiver.Index].PlacedCards;
+        
+        if (receiver.SecondIndex < 0 || receiver.SecondIndex >= cardOwnerPlacedCards.Count)
+        {
+            return false;
+        }
+
+        var card = cardOwnerPlacedCards[receiver.SecondIndex];
+
+        if (card.InfluenceCardOnTop is not null)
+        {
+            return false;
+        }
+        
+        if (card.HasRabids)
+        {
+            return false;
+        }
+        
+        if (!card.Card.GetPopulations().Contains(ICard.Population.Herbivore))
+        {
+            return false;
+        }
+
+        if (!card.Card.CanHaveInfluenceCardOnTop)
         {
             return false;
         }

@@ -39,7 +39,7 @@ public class PlayableToken : APlayableItem, IRulebookEntry
         }
 
         //no se ha jugado visualmente a la mesa
-        Travel(playLocation.SnapTransform, _playTravelDuration, State.Played, () =>
+        Travel(playLocation.GetSnapTransform(Owner), _playTravelDuration, State.Played, () =>
         {
             StartCoroutine(WaitAndDo(.5f, () =>
             {

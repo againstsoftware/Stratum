@@ -121,24 +121,26 @@ public class ViewManager : MonoBehaviour, IView
     {
         var ownerPlayer = GetViewPlayer(plant1Location.Owner);
         var territory = ownerPlayer.Territory;
-        if (territory.HasConstruction) 
+        if (territory.HasConstruction)
             throw new Exception("Error!!! Construyendo en territorio ya construido. (view)");
 
         var token = GetViewPlayer(PlayerCharacter.Overlord).Token;
-        
-        token.Play(_tableCenter, () =>
-        {
-            StartCoroutine(DestroyPlantsAndConstruct(plant1Location, plant2Location, callback));
-        });
-    }
 
-    public void PlayAndDiscardInfluenceCard(PlayerCharacter actor, CardLocation location, Action callback)
+        token.Play(_tableCenter,
+            () => { StartCoroutine(DestroyPlantsAndConstruct(plant1Location, plant2Location, callback)); });
+    }
+    
+
+    public void PlayAndDiscardInfluenceCard(PlayerCharacter actor, InfluenceCard card, CardLocation location, Action callback,
+        bool isEndOfAction = false)
     {
         var playerActor = _players[actor];
         var receiverOwner = _players[location.Owner];
-        IActionReceiver receiver = location.IsTerritory ? receiverOwner.Territory : receiverOwner.Territory.Slots[location.SlotIndex];
-        
-        playerActor.PlayAndDiscardInfluenceCard(receiver, callback);
+        IActionReceiver receiver = location.IsTerritory
+            ? receiverOwner.Territory
+            : receiverOwner.Territory.Slots[location.SlotIndex];
+
+        playerActor.PlayAndDiscardInfluenceCard(card, receiver, callback, isEndOfAction);
     }
 
     public void MovePopulationToEmptySlot(PlayerCharacter actor, CardLocation from, CardLocation to, Action callback)
@@ -146,21 +148,40 @@ public class ViewManager : MonoBehaviour, IView
         var playerActor = _players[actor];
         var playerOwner = _players[from.Owner];
         var slot = playerOwner.Territory.Slots[from.SlotIndex];
-        var card = playerOwner.Territory.Slots[from.SlotIndex].Cards[from.CardIndex]; 
+        var card = playerOwner.Territory.Slots[from.SlotIndex].Cards[from.CardIndex];
         if (card.Card is not PopulationCard) throw new Exception("Error! La carta a mover no es de poblacion");
         slot.RemoveCard(card);
 
         var targetOwner = _players[to.Owner];
         var targetSlot = targetOwner.Territory.Slots[to.SlotIndex];
-        
+
         card.Initialize(card.Card, to.Owner);
-        
+
         card.Play(targetSlot, () =>
         {
             playerActor.CallInfluenceCallback();
             callback.Invoke();
         });
+    }
 
+
+    public void PlaceInfluenceOnPopulation(PlayerCharacter actor, InfluenceCard influenceCard, CardLocation location,
+        Action callback, bool isEndOfAction = false)
+    {
+        var playerActor = _players[actor];
+        var playerOwner = _players[location.Owner];
+        var slot = playerOwner.Territory.Slots[location.SlotIndex];
+        var card = playerOwner.Territory.Slots[location.SlotIndex].Cards[location.CardIndex];
+        
+        playerActor.PlaceInfluenceOnPopulation(influenceCard, card, callback, isEndOfAction);
+    }
+
+
+    public void GiveRabies(PlayerCharacter actor, CardLocation location, Action callback)
+    {
+        var playerActor = _players[actor];
+        playerActor.CallInfluenceCallback();
+        callback?.Invoke();
     }
 
 
@@ -191,7 +212,7 @@ public class ViewManager : MonoBehaviour, IView
             viewPlayer.Initialize(character);
         }
     }
-    
+
     private IEnumerator PlaceInitialCardsAux(IReadOnlyList<(ACard card, CardLocation location)> cardsAndLocations,
         Action callback)
     {
@@ -201,6 +222,7 @@ public class ViewManager : MonoBehaviour, IView
             PlaceCardOnSlotFromDeck(card, location, () => isDone = true);
             yield return new WaitUntil(() => isDone);
         }
+
         callback?.Invoke();
     }
 
@@ -221,10 +243,10 @@ public class ViewManager : MonoBehaviour, IView
             GetViewPlayer(character).DrawCards(cards, () => arePlayersFinished[index] = true);
         }
 
-        yield return new WaitUntil( () => arePlayersFinished.All(pf => pf));
+        yield return new WaitUntil(() => arePlayersFinished.All(pf => pf));
         callback?.Invoke();
     }
-    
+
     private IEnumerator DestroyMushroomsAndGrowMacrofungi(CardLocation[] locations, Action callback)
     {
         CardLocation location = default;
@@ -239,7 +261,7 @@ public class ViewManager : MonoBehaviour, IView
             if (card.Card is not MushroomCard) throw new Exception("Error! La carta para macrohongo no es seta!");
 
             DestroyCard(card, slot);
-            
+
             yield return new WaitForSeconds(.5f);
         }
 
@@ -264,16 +286,16 @@ public class ViewManager : MonoBehaviour, IView
 
         var slot1 = player.Territory.Slots[plant1Location.SlotIndex];
         var card1 = slot1.Cards[plant1Location.CardIndex];
-        
+
         var slot2 = player.Territory.Slots[plant2Location.SlotIndex];
         var card2 = slot2.Cards[plant2Location.CardIndex];
-        
+
         DestroyCard(card1, slot1);
         yield return new WaitForSeconds(.25f);
         DestroyCard(card2, slot2);
         yield return new WaitForSeconds(.25f);
-        
-        
+
+
         territory.BuildConstruction(_config.ConstructionPrefab);
 
         yield return new WaitForSeconds(.5f);

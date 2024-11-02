@@ -5,6 +5,7 @@ public class TableCard
     public TableCard InfluenceCardOnTop { get; private set; }
     public Slot Slot { get; internal set; }
     public int IndexInSlot { get; internal set; }
+    public bool HasRabids { get; internal set; }
 
     internal TableCard(ICard card)
     {

@@ -94,14 +94,14 @@ public class GameModel : IModel
     }
 
 
-    public void PlaceInlfuenceCardOnCard(ICard influenceCard, ICard card, PlayerCharacter slotOwner,
+    public void PlaceInlfuenceCardOnCard(ICard influenceCard, PlayerCharacter slotOwner,
         int slotIndex, int cardIndex)
     {
         var ownerPlayer = _players[slotOwner];
         var slot = ownerPlayer.Territory.Slots[slotIndex];
         var tableCard = slot.PlacedCards[cardIndex];
-
-        if (!card.CanHaveInfluenceCardOnTop || tableCard.Card != card)
+        var card = tableCard.Card;
+        if (!card.CanHaveInfluenceCardOnTop || tableCard.InfluenceCardOnTop is not null)
             throw new Exception("Error! Peticion incorrecta al modelo.");
 
         tableCard.PlaceInlfuenceCard(influenceCard);
@@ -226,6 +226,15 @@ public class GameModel : IModel
 
         ownerPlayer.Territory.HasConstruction = false;
     }
+
+    public void GiveRabies(PlayerCharacter slotOwner, int slotIndex, int cardIndex)
+    {
+        var ownerPlayer = _players[slotOwner];
+        var card = ownerPlayer.Territory.Slots[slotIndex].PlacedCards[cardIndex];
+        card.HasRabids = true;
+    }
+    
+    
 
     public void AdvanceTurn(PlayerCharacter playerOnTurn)
     {

@@ -7,6 +7,7 @@ public class SlotReceiver : MonoBehaviour, IActionReceiver
     [field:SerializeField] public PlayerCharacter Owner { get; private set; }
     [field:SerializeField] public TerritoryReceiver Territory { get; private set; }
     [field:SerializeField] public Transform SnapTransform { get; private set; }
+    public Transform GetSnapTransform(PlayerCharacter _) => SnapTransform;
     [field:SerializeField] public Transform SnapTransformBottom { get; private set; }
     [SerializeField] private Vector3 _offset;
     public bool IsDropEnabled { get; private set; } = true;

@@ -8,7 +8,6 @@ public interface IActionReceiver
     public bool CanInteractWithoutOwnership { get; }
 
     public bool IsDropEnabled { get; }
-    public Transform SnapTransform { get; }
     
     public void OnDraggingSelect();
     public void OnDraggingDeselect();
@@ -16,5 +15,7 @@ public interface IActionReceiver
     public void OnChoosingDeselect();
 
     public Receiver GetReceiverStruct(ValidDropLocation actionDropLocation);
+
+    public Transform GetSnapTransform(PlayerCharacter character);
 
 }
