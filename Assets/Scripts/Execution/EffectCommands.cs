@@ -21,6 +21,8 @@ public static class EffectCommands
         Effect.Draw5 => _draw,
         Effect.OverviewSwitch => _overviewSwitch,
         Effect.GrowMushroomEcosystem => _growMushroomEcosystem,
+        Effect.GrowMushroom => _growMushroom,
+        Effect.GrowMushroomEndOfAction => _growMushroomEOA,
         Effect.GrowMacrofungi => _growMacrofungi,
         Effect.Construct => _construct,
         Effect.PlaceInitialCards => _placeInitialCards,
@@ -117,12 +119,31 @@ public static class EffectCommands
 
     private static readonly EffectCommand _growMushroomEcosystem = (_, callback) =>
     {
-        var mushroom = ServiceLocator.Get<IModel>().GrowMushroomEcosystem();
+        var mushroom = ServiceLocator.Get<IModel>().GrowMushroom();
         var slotOwner = mushroom.Slot.Territory.Owner;
         var slotIndex = mushroom.Slot.SlotIndexInTerritory;
         ServiceLocator.Get<IView>()
-            .GrowMushroom(new IView.CardLocation() { Owner = slotOwner, SlotIndex = slotIndex }, callback);
+            .GrowMushroom(PlayerCharacter.None, new IView.CardLocation() { Owner = slotOwner, SlotIndex = slotIndex }, callback);
     };
+    
+    private static readonly EffectCommand _growMushroom = (action, callback) =>
+    {
+        var slotOwner = action.Receivers[0].LocationOwner;
+        var slotIndex = action.Receivers[0].Index;
+        var mushroom = ServiceLocator.Get<IModel>().GrowMushroom(slotOwner, slotIndex);
+        ServiceLocator.Get<IView>()
+            .GrowMushroom(action.Actor,new IView.CardLocation() { Owner = slotOwner, SlotIndex = slotIndex }, callback, false);
+    };
+    
+    private static readonly EffectCommand _growMushroomEOA = (action, callback) =>
+    {
+        var slotOwner = action.Receivers[0].LocationOwner;
+        var slotIndex = action.Receivers[0].Index;
+        var mushroom = ServiceLocator.Get<IModel>().GrowMushroom(slotOwner, slotIndex);
+        ServiceLocator.Get<IView>()
+            .GrowMushroom(action.Actor,new IView.CardLocation() { Owner = slotOwner, SlotIndex = slotIndex }, callback, true);
+    };
+    
 
     private static readonly EffectCommand _growMacrofungi = (action, callback) =>
     {
@@ -246,6 +267,7 @@ public static class EffectCommands
         var slotIndex = action.Receivers[0].Index;
         var cardIndex = action.Receivers[0].SecondIndex;
         var influenceCard = action.ActionItem as InfluenceCard;
+        ServiceLocator.Get<IModel>().RemoveCardFromHand(action.Actor, action.ActionItem as ICard);
         ServiceLocator.Get<IModel>().PlaceInlfuenceCardOnCard(influenceCard, slotOwner, slotIndex, cardIndex);
 
         var location = new IView.CardLocation()

@@ -19,6 +19,9 @@ public class EffectExecutor : IExecutor
         var effects = item.GetEffects(effectsIndex);
 
         foreach (var e in effects) EnqueueCommand(EffectCommands.Get(e));
+
+        UpdatePlayedCardsInModel(action);
+        
         TryExecuteNextCommand();
     }
 
@@ -30,6 +33,17 @@ public class EffectExecutor : IExecutor
         TryExecuteNextCommand();
     }
 
+    private void UpdatePlayedCardsInModel(PlayerAction action)
+    {
+        if (action.ActionItem is Token)
+        {
+            ServiceLocator.Get<IModel>().GetPlayer(action.Actor).TokenPlayed = true;
+        }
+        else if (action.ActionItem is InfluenceCard)
+        {
+            ServiceLocator.Get<IModel>().GetPlayer(action.Actor).InfluencePlayed = true;
+        }
+    }
 
     private void Execute(EffectCommand effectCommand)
     {

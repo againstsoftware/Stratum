@@ -23,7 +23,7 @@ public interface IView : IService
     public void Discard(PlayerCharacter actor, Action callback);
     public void DrawCards(IReadOnlyDictionary<PlayerCharacter, IReadOnlyList<ACard>> cardsDrawn, Action callback);
     public void SwitchCamToOverview(Action callback);
-    public void GrowMushroom(CardLocation location, Action callback);
+    public void GrowMushroom(PlayerCharacter actor, CardLocation location, Action callback, bool isEndOfAction = false);
 
     public void GrowMacrofungi(CardLocation[] locations, Action callback);
 

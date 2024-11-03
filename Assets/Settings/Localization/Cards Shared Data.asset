@@ -135,6 +135,14 @@ MonoBehaviour:
     m_Key: spores_desc
     m_Metadata:
       m_Items: []
+  - m_Id: 11319356305436672
+    m_Key: mold_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11319399942975488
+    m_Key: mold_desc
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

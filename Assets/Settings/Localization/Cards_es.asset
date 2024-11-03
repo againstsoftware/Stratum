@@ -165,6 +165,15 @@ MonoBehaviour:
       las industrias desde el a\xF1o "
     m_Metadata:
       m_Items: []
+  - m_Id: 11319356305436672
+    m_Localized: Moho
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11319399942975488
+    m_Localized: "Coloca una carta de hongo sobre un espacio vac\xEDo de un territorio
+      con construcci\xF3n."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

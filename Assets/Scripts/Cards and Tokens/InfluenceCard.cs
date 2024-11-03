@@ -15,7 +15,8 @@ public class InfluenceCard : ACard
         Rabies,
         Wildfire,
         Arson,
-        ExplosiveSpores
+        ExplosiveSpores,
+        Mold
     }
     [field: SerializeField] public Type InfluenceType { get; private set; }
     [field: SerializeField]public bool IsPersistent { get; private set; }

@@ -20,7 +20,8 @@ public interface IModel : IService
     public (TableCard parent, TableCard son) GrowLastPlacedPopulation(ICard.Population population);
     public TableCard KillLastPlacedPopulation(ICard.Population population);
 
-    public TableCard GrowMushroomEcosystem();
+    public TableCard GrowMushroom();
+    public TableCard GrowMushroom(PlayerCharacter slotOwner, int slotIndex);
 
     public void PlaceInlfuenceCardOnCard(ICard influenceCard, PlayerCharacter slotOwner,
         int slotIndex, int cardIndex);

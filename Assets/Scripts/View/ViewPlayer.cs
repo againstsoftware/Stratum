@@ -33,7 +33,6 @@ public class ViewPlayer : MonoBehaviour
 
     public void DrawCards(IReadOnlyList<ACard> cards, Action callback)
     {
-        if (Cards.Count == 5) throw new Exception("mano llena de cartas no se puede robar!");
         StartCoroutine(DrawCardsAux(cards, callback));
     }
 

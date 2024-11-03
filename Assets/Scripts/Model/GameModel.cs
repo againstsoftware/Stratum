@@ -82,7 +82,7 @@ public class GameModel : IModel
         return killCard;
     }
 
-    public TableCard GrowMushroomEcosystem()
+    public TableCard GrowMushroom()
     {
         //para pillar una seta da igual el mazo sea de sagitaio o quien sea (se que esta regular pero era lo + fast)
         var mushroom = GetPlayer(PlayerCharacter.Sagitario).Deck.Mushroom;
@@ -90,6 +90,14 @@ public class GameModel : IModel
         if (slot is null) throw new Exception("Error! no hay slot registrado donde poner la seta!");
         _lastDeathSlot = null;
 
+        return slot.PlaceCard(mushroom, true);
+    }
+
+    public TableCard GrowMushroom(PlayerCharacter slotOwner, int slotIndex)
+    {
+        var mushroom = GetPlayer(PlayerCharacter.Sagitario).Deck.Mushroom;
+        var ownerPlayer = _players[slotOwner];
+        var slot = ownerPlayer.Territory.Slots[slotIndex];
         return slot.PlaceCard(mushroom, true);
     }
 

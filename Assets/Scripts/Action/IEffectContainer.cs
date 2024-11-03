@@ -28,7 +28,10 @@ public enum Effect
     PlaceInfluenceOnPopulation,
     GiveRabies,
     DestroyAllInTerritory,
-    DestroyNonFungiInTerritory
+    DestroyNonFungiInTerritory,
+    GrowMushroom,
+    GrowMushroomEndOfAction,
+    
     
 }
 

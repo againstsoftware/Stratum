@@ -94,7 +94,7 @@ public class ViewManager : MonoBehaviour, IView
         _cameraMovement.ChangeToOverview(callback);
     }
 
-    public void GrowMushroom(CardLocation location, Action callback)
+    public void GrowMushroom(PlayerCharacter actor, CardLocation location, Action callback, bool isEndOfAction = false)
     {
         var card = _config.Mushroom;
         var playerOwner = _players[location.Owner];
@@ -104,7 +104,14 @@ public class ViewManager : MonoBehaviour, IView
         var newPlayableCard = newCardGO.GetComponent<PlayableCard>();
         newPlayableCard.InitializeOnSlot(card, location.Owner, slot);
         slot.AddCardAtTheBottom(newPlayableCard);
-        StartCoroutine(DelayCall(callback, 1f)); //de prueba
+        StartCoroutine(DelayCall(() =>
+        {
+            if (isEndOfAction)
+            {
+                _players[actor].CallInfluenceCallback();
+            }
+            callback?.Invoke();
+        }, 1f)); //de prueba
     }
 
     public void GrowMacrofungi(CardLocation[] locations, Action callback)
