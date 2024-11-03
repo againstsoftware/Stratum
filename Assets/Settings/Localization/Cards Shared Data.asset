@@ -111,6 +111,30 @@ MonoBehaviour:
     m_Key: rabies_desc
     m_Metadata:
       m_Items: []
+  - m_Id: 11272635391143936
+    m_Key: wildfire_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11272707960991744
+    m_Key: wildfire_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11272742639497216
+    m_Key: arson_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11272787711488000
+    m_Key: arson_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11272832192081920
+    m_Key: spores_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11272888479641600
+    m_Key: spores_desc
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

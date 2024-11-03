@@ -38,4 +38,7 @@ public interface IView : IService
         Action callback, bool isEndOfAction = false);
 
     public void GiveRabies(PlayerCharacter actor, CardLocation location, Action callback);
+
+    public void DestroyInTerritory(PlayerCharacter actor, PlayerCharacter territoryOwner, Action callback,
+        Predicate<ACard> filter = null);
 }

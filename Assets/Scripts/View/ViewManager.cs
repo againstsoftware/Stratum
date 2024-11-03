@@ -74,9 +74,7 @@ public class ViewManager : MonoBehaviour, IView
         var card = slot.Cards[^1]; //la carta de mas arriba del slot
         if (card.Card is not PopulationCard) throw new Exception("Error! La carta a matar no es de poblacion");
         slot.RemoveCard(card);
-        // StartCoroutine(DestroyCard(card.gameObject, callback));
         Destroy(card.gameObject);
-        // callback?.Invoke();
         StartCoroutine(DelayCall(callback, 1f)); //de prueba
     }
 
@@ -184,6 +182,41 @@ public class ViewManager : MonoBehaviour, IView
         callback?.Invoke();
     }
 
+    public void DestroyInTerritory(PlayerCharacter actor, PlayerCharacter territoryOwner, Action callback,
+        Predicate<ACard> filter = null)
+    {
+        var playerActor = _players[actor];
+        var playerOwner = _players[territoryOwner];
+        Stack<PlayableCard> toBeRemoved = new();
+        foreach (var slot in playerOwner.Territory.Slots)
+        {
+            foreach (var card in slot.Cards)
+            {
+                if(filter is not null && filter(card.Card)) continue;
+                toBeRemoved.Push(card);
+                
+                
+            }
+
+            while (toBeRemoved.Any())
+            {
+                var card = toBeRemoved.Pop();
+                slot.RemoveCard(card);
+                Destroy(card.gameObject);
+            }
+        }
+        
+        
+        if(playerOwner.Territory.HasConstruction) 
+            playerOwner.Territory.DestroyConstruction();
+        
+        StartCoroutine(DelayCall(() => 
+        {
+            playerActor.CallInfluenceCallback();
+            callback?.Invoke();
+        }, 0.75f));
+    }
+
 
     // private IEnumerator DestroyCard(GameObject card, Action callback = null)
     // {
@@ -281,13 +314,12 @@ public class ViewManager : MonoBehaviour, IView
     private IEnumerator DestroyPlantsAndConstruct(CardLocation plant1Location, CardLocation plant2Location,
         Action callback)
     {
-        var player = GetViewPlayer(plant1Location.Owner);
-        var territory = player.Territory;
+        var territory = GetViewPlayer(plant1Location.Owner).Territory;
 
-        var slot1 = player.Territory.Slots[plant1Location.SlotIndex];
+        var slot1 = territory.Slots[plant1Location.SlotIndex];
         var card1 = slot1.Cards[plant1Location.CardIndex];
 
-        var slot2 = player.Territory.Slots[plant2Location.SlotIndex];
+        var slot2 = territory.Slots[plant2Location.SlotIndex];
         var card2 = slot2.Cards[plant2Location.CardIndex];
 
         DestroyCard(card1, slot1);

@@ -70,7 +70,14 @@ public class SlotReceiver : MonoBehaviour, IActionReceiver
     private void UpdateCards()
     {
         int i = 0;
-        foreach(var c in _cards) c.IndexOnSlot = i++;
+        foreach (var c in _cards)
+        {
+            c.IndexOnSlot = i;
+            SnapTransform.localPosition = SnapTransformBottom.localPosition + i * _offset;
+            c.transform.position = SnapTransform.position;
+
+            i++;
+        }
         SnapTransform.localPosition = SnapTransformBottom.localPosition + _cards.Count * _offset;
     }
 

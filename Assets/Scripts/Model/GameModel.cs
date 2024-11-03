@@ -140,6 +140,8 @@ public class GameModel : IModel
         if (tableCard.Card.CardType is ICard.Card.Population)
         {
             Ecosystem.OnPopulationCardDie(tableCard);
+            OnPopulationDie?.Invoke(tableCard);
+            
         }
     }
 
@@ -162,12 +164,22 @@ public class GameModel : IModel
     {
         var ownerPlayer = _players[slotOwner];
         var slot = ownerPlayer.Territory.Slots[slotIndex];
+        Stack<TableCard> toBeRemoved = new();
         foreach (var tableCard in slot.PlacedCards)
         {
             if (filter is not null && filter(tableCard)) continue;
+            toBeRemoved.Push(tableCard);
+        }
 
-            if (tableCard.Card.CardType is ICard.Card.Population) Ecosystem.OnPopulationCardDie(tableCard);
+        while (toBeRemoved.Any())
+        {
+            var tableCard = toBeRemoved.Pop();
             slot.RemoveCard(tableCard);
+            if (tableCard.Card.CardType is ICard.Card.Population)
+            {
+                Ecosystem.OnPopulationCardDie(tableCard);
+                OnPopulationDie?.Invoke(tableCard);
+            }
         }
     }
 

@@ -240,14 +240,28 @@ public static class RulesCheck
         {
             case InfluenceCard.Type.Migration:
                 return CheckMigration(action);
+            
             case InfluenceCard.Type.PheromoneFragance:
                 return CheckPheromoneFragance(action);
+            
             case InfluenceCard.Type.Fireworks:
                 return CheckFireworks(action);
+            
             case InfluenceCard.Type.AppetizingMushroom:
                 return CheckAppetizingMushroom(action);
+            
             case InfluenceCard.Type.Rabies:
                 return CheckRabies(action);
+            
+            case InfluenceCard.Type.Wildfire:
+            case InfluenceCard.Type.Arson:
+                return CheckWildfireOrArson(action);
+            
+            case InfluenceCard.Type.ExplosiveSpores:
+                return CheckExplosiveSpores(action);
+            
+              
+            case InfluenceCard.Type.None:
             default:
                 throw new ArgumentOutOfRangeException();
         }
@@ -643,6 +657,45 @@ public static class RulesCheck
 
         return true;
     }
+
+    private static bool CheckWildfireOrArson(PlayerAction action)
+    {
+        if (action.Receivers.Length != 1)
+        {
+            return false;
+        }
+
+        var receiver = action.Receivers[0];
+
+        if (receiver.Location != ValidDropLocation.AnyTerritory)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    private static bool CheckExplosiveSpores(PlayerAction action)
+    {
+        if (action.Receivers.Length != 1)
+        {
+            return false;
+        }
+
+        var receiver = action.Receivers[0];
+
+        if (receiver.Location != ValidDropLocation.AnyTerritory)
+        {
+            return false;
+        }
+
+        var playerOwner = ServiceLocator.Get<IModel>().GetPlayer(receiver.LocationOwner);
+
+        return playerOwner.Territory.Slots.SelectMany(slot => slot.PlacedCards)
+            .Any(card => card.Card is MushroomCard or MacrofungiCard);
+    }
+    
+    
 
     private static bool ArePlayersOpposites(PlayerCharacter a, PlayerCharacter b)
     {

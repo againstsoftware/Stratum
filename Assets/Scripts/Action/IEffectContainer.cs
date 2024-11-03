@@ -27,6 +27,8 @@ public enum Effect
     MovePopulationToEmptySlot,
     PlaceInfluenceOnPopulation,
     GiveRabies,
+    DestroyAllInTerritory,
+    DestroyNonFungiInTerritory
     
 }
 

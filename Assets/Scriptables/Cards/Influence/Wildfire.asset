@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64f9f456e9a64fe2ad5ef38828970525, type: 3}
-  m_Name: Migration
+  m_Name: Wildfire
   m_EditorClassIdentifier: 
-  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 3ca623bb472ce4e40a9b5c0093dfb82c,
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 167cf644952eccf41873de42914980fc,
     type: 3}
   _name:
     m_TableReference:
       m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
     m_TableEntryReference:
-      m_KeyId: 10122221576777728
+      m_KeyId: 11272635391143936
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -27,7 +27,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
     m_TableEntryReference:
-      m_KeyId: 10122316158332928
+      m_KeyId: 11272707960991744
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -38,14 +38,14 @@ MonoBehaviour:
       <Receivers>k__BackingField: 
     Effects: 05000000
   - ValidAction:
-      <DropLocation>k__BackingField: 3
-      <Receivers>k__BackingField: 01000000
-    Effects: 0d0000000e000000
+      <DropLocation>k__BackingField: 2
+      <Receivers>k__BackingField: 
+    Effects: 0d00000011000000
   - ValidAction:
       <DropLocation>k__BackingField: 5
-      <Receivers>k__BackingField: 0300000001000000
-    Effects: 0d0000000e000000
-  <InfluenceType>k__BackingField: 1
+      <Receivers>k__BackingField: 02000000
+    Effects: 0d00000011000000
+  <InfluenceType>k__BackingField: 6
   <IsPersistent>k__BackingField: 0
   references:
     version: 2

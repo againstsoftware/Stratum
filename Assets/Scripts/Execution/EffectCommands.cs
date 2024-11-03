@@ -24,10 +24,12 @@ public static class EffectCommands
         Effect.GrowMacrofungi => _growMacrofungi,
         Effect.Construct => _construct,
         Effect.PlaceInitialCards => _placeInitialCards,
-        Effect.PlayAndDiscardInfluenceCard =>_playAndDiscardInfluenceCard,
+        Effect.PlayAndDiscardInfluenceCard => _playAndDiscardInfluenceCard,
         Effect.MovePopulationToEmptySlot => _movePopulationToEmptySlot,
         Effect.PlaceInfluenceOnPopulation => _placeInfluenceOnPopulation,
         Effect.GiveRabies => _giveRabies,
+        Effect.DestroyAllInTerritory => _destroyAllInTerritory,
+        Effect.DestroyNonFungiInTerritory => _destroyNonFungiInTerritory,
 
         _ => throw new ArgumentOutOfRangeException()
     };
@@ -173,7 +175,7 @@ public static class EffectCommands
         var initialCards = new Stack<PopulationCard>(Config.InitialCards);
         var players = Config.TurnOrder.ToList();
         players.Remove(PlayerCharacter.None);
-        
+
         var cardsAndLocations = new List<(ACard card, IView.CardLocation location)>();
 
         int count = Mathf.Min(initialCards.Count, players.Count);
@@ -189,10 +191,10 @@ public static class EffectCommands
             ServiceLocator.Get<IModel>().PlaceCardOnSlot(initialCard, slotOwner, slotIndex);
             //update al view asincrono
             var location = new IView.CardLocation() { Owner = slotOwner, SlotIndex = slotIndex };
-            
+
             cardsAndLocations.Add((initialCard, location));
         }
-        
+
         ServiceLocator.Get<IView>().PlaceInitialCards(cardsAndLocations, callback);
     };
 
@@ -211,7 +213,7 @@ public static class EffectCommands
         var influence = action.ActionItem as InfluenceCard;
         ServiceLocator.Get<IView>().PlayAndDiscardInfluenceCard(action.Actor, influence, location, callback);
     };
-    
+
     private static readonly EffectCommand _movePopulationToEmptySlot = (action, callback) =>
     {
         var slotOwner = action.Receivers[0].LocationOwner;
@@ -234,8 +236,8 @@ public static class EffectCommands
             Owner = targetSlotOwner,
             SlotIndex = targetSlotIndex
         };
-        
-       ServiceLocator.Get<IView>().MovePopulationToEmptySlot(action.Actor, from, to, callback); 
+
+        ServiceLocator.Get<IView>().MovePopulationToEmptySlot(action.Actor, from, to, callback);
     };
 
     private static readonly EffectCommand _placeInfluenceOnPopulation = (action, callback) =>
@@ -245,14 +247,14 @@ public static class EffectCommands
         var cardIndex = action.Receivers[0].SecondIndex;
         var influenceCard = action.ActionItem as InfluenceCard;
         ServiceLocator.Get<IModel>().PlaceInlfuenceCardOnCard(influenceCard, slotOwner, slotIndex, cardIndex);
-        
+
         var location = new IView.CardLocation()
         {
             Owner = slotOwner,
             SlotIndex = slotIndex,
             CardIndex = cardIndex
         };
-        
+
         ServiceLocator.Get<IView>().PlaceInfluenceOnPopulation(action.Actor, influenceCard, location, callback);
     };
 
@@ -261,17 +263,38 @@ public static class EffectCommands
         var slotOwner = action.Receivers[0].LocationOwner;
         var slotIndex = action.Receivers[0].Index;
         var cardIndex = action.Receivers[0].SecondIndex;
-        
+
         ServiceLocator.Get<IModel>().GiveRabies(slotOwner, slotIndex, cardIndex);
-        
+
         var location = new IView.CardLocation()
         {
             Owner = slotOwner,
             SlotIndex = slotIndex,
             CardIndex = cardIndex
         };
-        
+
         ServiceLocator.Get<IView>().GiveRabies(action.Actor, location, callback);
     };
 
+    private static readonly EffectCommand _destroyAllInTerritory = (action, callback) =>
+    {
+        DestroyInTerritory(action, callback, null);
+    };
+
+    private static readonly EffectCommand _destroyNonFungiInTerritory = (action, callbaack) =>
+    {
+        DestroyInTerritory(action, callbaack, card => card is MushroomCard or MacrofungiCard);
+    };
+
+    private static void DestroyInTerritory(PlayerAction action, Action callback, Predicate<ICard> filter)
+    {
+        var owner = action.Receivers[0].LocationOwner;
+        Predicate<TableCard> modelFilter = filter is null ? null : tCard => filter(tCard.Card);
+        ServiceLocator.Get<IModel>().RemoveCardsFromTerritory(owner, modelFilter);
+
+        if (ServiceLocator.Get<IModel>().GetPlayer(owner).Territory.HasConstruction)
+            ServiceLocator.Get<IModel>().RemoveConstruction(owner);
+        
+        ServiceLocator.Get<IView>().DestroyInTerritory(action.Actor, owner, callback, filter);
+    }
 }

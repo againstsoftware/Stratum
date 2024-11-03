@@ -46,6 +46,7 @@ MonoBehaviour:
       <Receivers>k__BackingField: 0400000001000000
     Effects: 0d0000000e000000
   <InfluenceType>k__BackingField: 3
+  <IsPersistent>k__BackingField: 0
   references:
     version: 2
     RefIds: []

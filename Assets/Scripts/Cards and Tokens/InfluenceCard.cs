@@ -12,7 +12,10 @@ public class InfluenceCard : ACard
         PheromoneFragance,
         Fireworks,
         AppetizingMushroom,
-        Rabies
+        Rabies,
+        Wildfire,
+        Arson,
+        ExplosiveSpores
     }
     [field: SerializeField] public Type InfluenceType { get; private set; }
     [field: SerializeField]public bool IsPersistent { get; private set; }
