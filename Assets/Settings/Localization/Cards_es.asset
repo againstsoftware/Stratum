@@ -90,9 +90,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 10122316158332928
-    m_Localized: "Lorem Ipsum es simplemente el texto de relleno de las imprentas
-      y archivos de texto. Lorem Ipsum ha sido el texto de relleno est\xE1ndar de
-      las industrias desde el a\xF1o "
+    m_Localized: "Elige una carta de carn\xEDvoro o herb\xEDvoro de tu territorio
+      y mu\xE9vela a un espacio vac\xEDo en otro territorio."
     m_Metadata:
       m_Items: []
   - m_Id: 10600926103203840
@@ -100,9 +99,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 10601212662247424
-    m_Localized: "Lorem Ipsum es simplemente el texto de relleno de las imprentas
-      y archivos de texto. Lorem Ipsum ha sido el texto de relleno est\xE1ndar de
-      las industrias desde el a\xF1o "
+    m_Localized: "Elige una carta de herb\xEDvoro o carn\xEDvoro de otro territorio
+      y mu\xE9vela a un espacio vac\xEDo en tu territorio."
     m_Metadata:
       m_Items: []
   - m_Id: 10614643192754176
@@ -110,9 +108,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 10614700512112640
-    m_Localized: "Lorem Ipsum es simplemente el texto de relleno de las imprentas
-      y archivos de texto. Lorem Ipsum ha sido el texto de relleno est\xE1ndar de
-      las industrias desde el a\xF1o "
+    m_Localized: "Elige una carta de herb\xEDvoro o carn\xEDvoro y mu\xE9vela a un
+      espacio vac\xEDo en el territorio opuesto al que se encuentra."
     m_Metadata:
       m_Items: []
   - m_Id: 10622166725554176
@@ -120,9 +117,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 10622238829834240
-    m_Localized: "Lorem Ipsum es simplemente el texto de relleno de las imprentas
-      y archivos de texto. Lorem Ipsum ha sido el texto de relleno est\xE1ndar de
-      las industrias desde el a\xF1o "
+    m_Localized: "Elige una carta de herb\xEDvoro o carn\xEDvoro y mu\xE9vela a un
+      espacio vac\xEDo en un territorio donde haya al menos una carta de hongo o
+      macrohongo."
     m_Metadata:
       m_Items: []
   - m_Id: 10957877249044480
@@ -130,9 +127,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 10957914855174144
-    m_Localized: "Lorem Ipsum es simplemente el texto de relleno de las imprentas
-      y archivos de texto. Lorem Ipsum ha sido el texto de relleno est\xE1ndar de
-      las industrias desde el a\xF1o "
+    m_Localized: "Coloca esta carta sobre una carta de herb\xEDvoro. Mientras no
+      muera, El Magnate no podr\xE1 construir en el territorio donde est\xE9."
     m_Metadata:
       m_Items: []
   - m_Id: 11272635391143936
@@ -140,9 +136,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 11272707960991744
-    m_Localized: "Lorem Ipsum es simplemente el texto de relleno de las imprentas
-      y archivos de texto. Lorem Ipsum ha sido el texto de relleno est\xE1ndar de
-      las industrias desde el a\xF1o "
+    m_Localized: "Elige un territorio. Todas las cartas de poblaci\xF3n, hongo y
+      macrohongo en ese territorio mueren. Si hay una construcci\xF3n, tambi\xE9n
+      se destruye."
     m_Metadata:
       m_Items: []
   - m_Id: 11272742639497216
@@ -150,9 +146,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 11272787711488000
-    m_Localized: "Lorem Ipsum es simplemente el texto de relleno de las imprentas
-      y archivos de texto. Lorem Ipsum ha sido el texto de relleno est\xE1ndar de
-      las industrias desde el a\xF1o "
+    m_Localized: "Elige un territorio. Todas las cartas de poblaci\xF3n, hongo y
+      macrohongo en ese territorio mueren. Si hay una construcci\xF3n, tambi\xE9n
+      se destruye."
     m_Metadata:
       m_Items: []
   - m_Id: 11272832192081920
@@ -160,9 +156,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 11272888479641600
-    m_Localized: "Lorem Ipsum es simplemente el texto de relleno de las imprentas
-      y archivos de texto. Lorem Ipsum ha sido el texto de relleno est\xE1ndar de
-      las industrias desde el a\xF1o "
+    m_Localized: "Elige un territorio donde haya al menos una carta de hongo o macrohongo.
+      Todas las cartas de poblaci\xF3n en ese territorio mueren. Si hay una construcci\xF3n
+      tambi\xE9n se destruye. Las cartas de hongo y macrohongo no mueren."
     m_Metadata:
       m_Items: []
   - m_Id: 11319356305436672
@@ -172,6 +168,24 @@ MonoBehaviour:
   - m_Id: 11319399942975488
     m_Localized: "Coloca una carta de hongo sobre un espacio vac\xEDo de un territorio
       con construcci\xF3n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11334756611125248
+    m_Localized: "Omn\xEDvoro"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11334838618157056
+    m_Localized: "Coloca esta carta sobre una carta de carn\xEDvoro. A partir de
+      ahora, esta carta contar\xE1 tanto como carn\xEDvoro como herb\xEDvoro."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11345899178160128
+    m_Localized: Compost
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11345953246932992
+    m_Localized: "Elige un espacio vac\xEDo de un territorio. Coloca una carta de
+      hongo y una carta de planta encima."
     m_Metadata:
       m_Items: []
   references:

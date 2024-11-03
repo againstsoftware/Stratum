@@ -11,16 +11,6 @@ public class PopulationCard : ACard
     
     [SerializeField] private ICard.Population _populationType;
 
-    private ICard.Population _secondaryType = ICard.Population.None;
-    
-    public bool AddSecondaryType(ICard.Population population)
-    {
-        if (_populationType == population || _secondaryType is not ICard.Population.None) return false;
-        _secondaryType = population;
-        return true;
-    }
-    public override IEnumerable<ICard.Population> GetPopulations() => _secondaryType is ICard.Population.None ? 
-        new[] { _populationType } : 
-        new[] { _populationType, _secondaryType };
-    
+    public override ICard.Population PopulationType => _populationType;
+
 }

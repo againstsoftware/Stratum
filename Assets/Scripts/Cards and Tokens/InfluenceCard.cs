@@ -16,12 +16,14 @@ public class InfluenceCard : ACard
         Wildfire,
         Arson,
         ExplosiveSpores,
-        Mold
+        Mold,
+        Omnivore,
+        Compost
     }
     [field: SerializeField] public Type InfluenceType { get; private set; }
     [field: SerializeField]public bool IsPersistent { get; private set; }
     public override bool CanHaveInfluenceCardOnTop => false;
     public override ICard.Card CardType => ICard.Card.Influence;
-    public override IEnumerable<ICard.Population> GetPopulations() => null;
-    
+    public override ICard.Population PopulationType => ICard.Population.None;
+
 }

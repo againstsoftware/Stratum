@@ -7,7 +7,7 @@ public interface ICard
     public enum Population { None, Carnivore, Herbivore, Plant}
     
     public Card CardType { get; }
-    public IEnumerable<Population> GetPopulations();
+    public Population PopulationType { get; }
     public bool CanHaveInfluenceCardOnTop { get; }
 
 }

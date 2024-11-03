@@ -211,7 +211,7 @@ public class GameModel : IModel
             foreach (var tableCard in slot.PlacedCards)
             {
                 if (tableCard.Card.CardType is not ICard.Card.Population ||
-                    !tableCard.Card.GetPopulations().Contains(ICard.Population.Plant)) continue;
+                    !tableCard.GetPopulations().Contains(ICard.Population.Plant)) continue;
 
                 plants.Add(tableCard);
             }
@@ -253,6 +253,15 @@ public class GameModel : IModel
         var card = ownerPlayer.Territory.Slots[slotIndex].PlacedCards[cardIndex];
         card.HasRabids = true;
     }
+
+    public void MakeOmnivore(PlayerCharacter slotOwner, int slotIndex, int cardIndex)
+    {
+        var ownerPlayer = _players[slotOwner];
+        var card = ownerPlayer.Territory.Slots[slotIndex].PlacedCards[cardIndex];
+
+        card.IsOmnivore = true;
+    }
+
     
     
 

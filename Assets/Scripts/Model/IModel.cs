@@ -22,7 +22,7 @@ public interface IModel : IService
 
     public TableCard GrowMushroom();
     public TableCard GrowMushroom(PlayerCharacter slotOwner, int slotIndex);
-
+    
     public void PlaceInlfuenceCardOnCard(ICard influenceCard, PlayerCharacter slotOwner,
         int slotIndex, int cardIndex);
 
@@ -45,6 +45,9 @@ public interface IModel : IService
     public void RemoveConstruction(PlayerCharacter territoryOwner);
     
     public void GiveRabies(PlayerCharacter slotOwner, int slotIndex, int cardIndex);
+    public void MakeOmnivore(PlayerCharacter slotOwner, int slotIndex, int cardIndex);
+    
+    
     public void AdvanceTurn(PlayerCharacter playerOnTurn);
 
 

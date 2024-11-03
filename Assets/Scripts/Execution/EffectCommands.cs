@@ -12,10 +12,10 @@ public static class EffectCommands
     public static EffectCommand Get(Effect effect) => effect switch
     {
         Effect.PlacePopulationCardFromPlayer => _placePopulationCardfromPlayer,
-        Effect.GrowCarnivore => _growCarnivore,
-        Effect.GrowHerbivore => _growHerbivore,
-        Effect.KillCarnivore => _killCarnivore,
-        Effect.KillHerbivore => _killHerbivore,
+        Effect.GrowCarnivoreEcosystem => _growCarnivore,
+        Effect.GrowHerbivoreEcosystem => _growHerbivore,
+        Effect.KillCarnivoreEcosystem => _killCarnivore,
+        Effect.KillHerbivoreEcosystem => _killHerbivore,
         Effect.Discard => _discard,
         Effect.Draw2 => _draw,
         Effect.Draw5 => _draw,
@@ -32,6 +32,9 @@ public static class EffectCommands
         Effect.GiveRabies => _giveRabies,
         Effect.DestroyAllInTerritory => _destroyAllInTerritory,
         Effect.DestroyNonFungiInTerritory => _destroyNonFungiInTerritory,
+        Effect.MakeOmnivore => _makeOmnivore,
+        Effect.GrowPlant => _growPlant,
+        Effect.GrowPlantEndOfAction => _growPlantEOA,
 
         _ => throw new ArgumentOutOfRangeException()
     };
@@ -56,7 +59,7 @@ public static class EffectCommands
         var location = new IView.CardLocation()
             { Owner = parent.Slot.Territory.Owner, SlotIndex = parent.Slot.SlotIndexInTerritory };
 
-        ServiceLocator.Get<IView>().GrowPopulationCard(location, callback);
+        ServiceLocator.Get<IView>().GrowPopulationCardEcosystem(location, callback);
     };
 
     private static readonly EffectCommand _growHerbivore = (_, callback) =>
@@ -64,7 +67,7 @@ public static class EffectCommands
         var (parent, child) = ServiceLocator.Get<IModel>().GrowLastPlacedPopulation(ICard.Population.Herbivore);
         var location = new IView.CardLocation()
             { Owner = parent.Slot.Territory.Owner, SlotIndex = parent.Slot.SlotIndexInTerritory };
-        ServiceLocator.Get<IView>().GrowPopulationCard(location, callback);
+        ServiceLocator.Get<IView>().GrowPopulationCardEcosystem(location, callback);
     };
 
     private static readonly EffectCommand _killCarnivore = (_, callback) =>
@@ -72,7 +75,7 @@ public static class EffectCommands
         var killed = ServiceLocator.Get<IModel>().KillLastPlacedPopulation(ICard.Population.Carnivore);
         var location = new IView.CardLocation()
             { Owner = killed.Slot.Territory.Owner, SlotIndex = killed.Slot.SlotIndexInTerritory };
-        ServiceLocator.Get<IView>().KillPopulationCard(location, callback);
+        ServiceLocator.Get<IView>().KillPopulationCardEcosystem(location, callback);
     };
 
     private static readonly EffectCommand _killHerbivore = (_, callback) =>
@@ -81,7 +84,7 @@ public static class EffectCommands
 
         var location = new IView.CardLocation()
             { Owner = killed.Slot.Territory.Owner, SlotIndex = killed.Slot.SlotIndexInTerritory };
-        ServiceLocator.Get<IView>().KillPopulationCard(location, callback);
+        ServiceLocator.Get<IView>().KillPopulationCardEcosystem(location, callback);
     };
 
     private static readonly EffectCommand _discard = (action, callback) =>
@@ -319,4 +322,54 @@ public static class EffectCommands
         
         ServiceLocator.Get<IView>().DestroyInTerritory(action.Actor, owner, callback, filter);
     }
+
+    private static readonly EffectCommand _makeOmnivore = (action, callback) =>
+    {
+        var slotOwner = action.Receivers[0].LocationOwner;
+        var slotIndex = action.Receivers[0].Index;
+        var cardIndex = action.Receivers[0].SecondIndex;
+
+        ServiceLocator.Get<IModel>().MakeOmnivore(slotOwner, slotIndex, cardIndex);
+
+        var location = new IView.CardLocation()
+        {
+            Owner = slotOwner,
+            SlotIndex = slotIndex,
+            CardIndex = cardIndex
+        };
+
+        ServiceLocator.Get<IView>().MakeOmnivore(action.Actor, location, callback);
+    };
+
+    private static readonly EffectCommand _growPlant = (action, callback) =>
+    {
+        var card = action.ActionItem as ICard;
+        var slotOwner = action.Receivers[0].LocationOwner;
+        var slotIndex = action.Receivers[0].Index;
+        ServiceLocator.Get<IModel>().PlaceCardOnSlot(card, slotOwner, slotIndex);
+        
+        var location = new IView.CardLocation()
+        {
+            Owner = slotOwner,
+            SlotIndex = slotIndex,
+        };
+        
+        ServiceLocator.Get<IView>().GrowPopulation(action.Actor, location, ICard.Population.Plant, callback);
+    };
+    
+    private static readonly EffectCommand _growPlantEOA = (action, callback) =>
+    {
+        var card = Config.GetPopulationCard(ICard.Population.Plant);
+        var slotOwner = action.Receivers[0].LocationOwner;
+        var slotIndex = action.Receivers[0].Index;
+        ServiceLocator.Get<IModel>().PlaceCardOnSlot(card, slotOwner, slotIndex);
+        
+        var location = new IView.CardLocation()
+        {
+            Owner = slotOwner,
+            SlotIndex = slotIndex,
+        };
+        
+        ServiceLocator.Get<IView>().GrowPopulation(action.Actor, location, ICard.Population.Plant, callback, true);
+    };
 }

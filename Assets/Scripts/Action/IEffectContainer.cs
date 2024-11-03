@@ -11,10 +11,10 @@ public interface IEffectContainer
 public enum Effect
 {
     PlacePopulationCardFromPlayer,
-    GrowHerbivore,
-    GrowCarnivore,
-    KillHerbivore,
-    KillCarnivore,
+    GrowHerbivoreEcosystem,
+    GrowCarnivoreEcosystem,
+    KillHerbivoreEcosystem,
+    KillCarnivoreEcosystem,
     Discard,
     Draw2,
     Draw5,
@@ -31,6 +31,9 @@ public enum Effect
     DestroyNonFungiInTerritory,
     GrowMushroom,
     GrowMushroomEndOfAction,
+    MakeOmnivore,
+    GrowPlant,
+    GrowPlantEndOfAction,
     
     
 }

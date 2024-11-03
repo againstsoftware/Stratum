@@ -53,7 +53,7 @@ public class ViewManager : MonoBehaviour, IView
     }
 
 
-    public void GrowPopulationCard(CardLocation location, Action callback)
+    public void GrowPopulationCardEcosystem(CardLocation location, Action callback)
     {
         var playerOwner = _players[location.Owner];
         var slot = playerOwner.Territory.Slots[location.SlotIndex]; //la carta de mas arriba del slot
@@ -67,7 +67,7 @@ public class ViewManager : MonoBehaviour, IView
     }
 
 
-    public void KillPopulationCard(CardLocation location, Action callback)
+    public void KillPopulationCardEcosystem(CardLocation location, Action callback)
     {
         var playerOwner = _players[location.Owner];
         var slot = playerOwner.Territory.Slots[location.SlotIndex];
@@ -93,6 +93,27 @@ public class ViewManager : MonoBehaviour, IView
     {
         _cameraMovement.ChangeToOverview(callback);
     }
+    
+    public void GrowPopulation(PlayerCharacter actor, CardLocation location, ICard.Population population, Action callback, bool isEndOfAction = false)
+    {
+        var card = _config.GetPopulationCard(population);
+        var playerOwner = _players[location.Owner];
+        var slot = playerOwner.Territory.Slots[location.SlotIndex];
+
+        var newCardGO = Instantiate(_config.CardPrefab, slot.SnapTransform.position, slot.SnapTransform.rotation);
+        var newPlayableCard = newCardGO.GetComponent<PlayableCard>();
+        newPlayableCard.InitializeOnSlot(card, location.Owner, slot);
+        slot.AddCardOnTop(newPlayableCard);
+        StartCoroutine(DelayCall(() =>
+        {
+            if (isEndOfAction)
+            {
+                _players[actor].CallInfluenceCallback();
+            }
+
+            callback?.Invoke();
+        }, .5f)); //de prueba
+    }
 
     public void GrowMushroom(PlayerCharacter actor, CardLocation location, Action callback, bool isEndOfAction = false)
     {
@@ -110,8 +131,9 @@ public class ViewManager : MonoBehaviour, IView
             {
                 _players[actor].CallInfluenceCallback();
             }
+
             callback?.Invoke();
-        }, 1f)); //de prueba
+        }, .5f)); //de prueba
     }
 
     public void GrowMacrofungi(CardLocation[] locations, Action callback)
@@ -134,9 +156,10 @@ public class ViewManager : MonoBehaviour, IView
         token.Play(_tableCenter,
             () => { StartCoroutine(DestroyPlantsAndConstruct(plant1Location, plant2Location, callback)); });
     }
-    
 
-    public void PlayAndDiscardInfluenceCard(PlayerCharacter actor, InfluenceCard card, CardLocation location, Action callback,
+
+    public void PlayAndDiscardInfluenceCard(PlayerCharacter actor, InfluenceCard card, CardLocation location,
+        Action callback,
         bool isEndOfAction = false)
     {
         var playerActor = _players[actor];
@@ -177,12 +200,19 @@ public class ViewManager : MonoBehaviour, IView
         var playerOwner = _players[location.Owner];
         var slot = playerOwner.Territory.Slots[location.SlotIndex];
         var card = playerOwner.Territory.Slots[location.SlotIndex].Cards[location.CardIndex];
-        
+
         playerActor.PlaceInfluenceOnPopulation(influenceCard, card, callback, isEndOfAction);
     }
 
 
     public void GiveRabies(PlayerCharacter actor, CardLocation location, Action callback)
+    {
+        var playerActor = _players[actor];
+        playerActor.CallInfluenceCallback();
+        callback?.Invoke();
+    }
+
+    public void MakeOmnivore(PlayerCharacter actor, CardLocation location, Action callback)
     {
         var playerActor = _players[actor];
         playerActor.CallInfluenceCallback();
@@ -199,10 +229,8 @@ public class ViewManager : MonoBehaviour, IView
         {
             foreach (var card in slot.Cards)
             {
-                if(filter is not null && filter(card.Card)) continue;
+                if (filter is not null && filter(card.Card)) continue;
                 toBeRemoved.Push(card);
-                
-                
             }
 
             while (toBeRemoved.Any())
@@ -212,12 +240,12 @@ public class ViewManager : MonoBehaviour, IView
                 Destroy(card.gameObject);
             }
         }
-        
-        
-        if(playerOwner.Territory.HasConstruction) 
+
+
+        if (playerOwner.Territory.HasConstruction)
             playerOwner.Territory.DestroyConstruction();
-        
-        StartCoroutine(DelayCall(() => 
+
+        StartCoroutine(DelayCall(() =>
         {
             playerActor.CallInfluenceCallback();
             callback?.Invoke();

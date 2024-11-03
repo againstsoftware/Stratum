@@ -18,11 +18,14 @@ public interface IView : IService
         Action callback);
 
     public void PlaceCardOnSlotFromDeck(ACard card, CardLocation location, Action callback);
-    public void GrowPopulationCard(CardLocation location, Action callback);
-    public void KillPopulationCard(CardLocation location, Action callback);
+    public void GrowPopulationCardEcosystem(CardLocation location, Action callback);
+    public void KillPopulationCardEcosystem(CardLocation location, Action callback);
     public void Discard(PlayerCharacter actor, Action callback);
     public void DrawCards(IReadOnlyDictionary<PlayerCharacter, IReadOnlyList<ACard>> cardsDrawn, Action callback);
     public void SwitchCamToOverview(Action callback);
+
+    public void GrowPopulation(PlayerCharacter actor, CardLocation location, ICard.Population population,
+        Action callback, bool isEndOfAction = false);
     public void GrowMushroom(PlayerCharacter actor, CardLocation location, Action callback, bool isEndOfAction = false);
 
     public void GrowMacrofungi(CardLocation[] locations, Action callback);
@@ -38,6 +41,8 @@ public interface IView : IService
         Action callback, bool isEndOfAction = false);
 
     public void GiveRabies(PlayerCharacter actor, CardLocation location, Action callback);
+
+    public void MakeOmnivore(PlayerCharacter actor, CardLocation location, Action callback);
 
     public void DestroyInTerritory(PlayerCharacter actor, PlayerCharacter territoryOwner, Action callback,
         Predicate<ACard> filter = null);

@@ -143,6 +143,24 @@ MonoBehaviour:
     m_Key: mold_desc
     m_Metadata:
       m_Items: []
+  - m_Id: 11334756611125248
+    m_Key: omnivore_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11334838618157056
+    m_Key: omnivore_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11345899178160128
+    m_Key: compost_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11345953246932992
+    m_Key: 'compost_desc
+
+'
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

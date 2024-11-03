@@ -183,22 +183,22 @@ public static class RulesCheck
 
         if (herbivoresDeath)
         {
-            effects.Add(Effect.KillHerbivore);
+            effects.Add(Effect.KillHerbivoreEcosystem);
             effects.Add(Effect.GrowMushroomEcosystem);
         }
         else if (herbivoresGrow)
         {
-            effects.Add(Effect.GrowHerbivore);
+            effects.Add(Effect.GrowHerbivoreEcosystem);
         }
 
         if (carnivoresDeath)
         {
-            effects.Add(Effect.KillCarnivore);
+            effects.Add(Effect.KillCarnivoreEcosystem);
             effects.Add(Effect.GrowMushroomEcosystem);
         }
         else if (carnivoresGrow)
         {
-            effects.Add(Effect.GrowCarnivore);
+            effects.Add(Effect.GrowCarnivoreEcosystem);
         }
 
         return effects;
@@ -276,7 +276,13 @@ public static class RulesCheck
 
             case InfluenceCard.Type.Mold:
                 return CheckMold(action);
-
+            
+            case InfluenceCard.Type.Omnivore:
+                return CheckOmnivore(action);
+            
+            case InfluenceCard.Type.Compost:
+                return CheckCompost(action);
+            
 
             case InfluenceCard.Type.None:
             default:
@@ -306,11 +312,11 @@ public static class RulesCheck
             {
                 if (placedCard.Card.CardType is not ICard.Card.Population) continue;
 
-                if (placedCard.Card.GetPopulations().Contains(ICard.Population.Carnivore) ||
+                if (placedCard.GetPopulations().Contains(ICard.Population.Carnivore) ||
                     placedCard.HasRabids)
                     return false;
 
-                if (placedCard.Card.GetPopulations().Contains(ICard.Population.Plant))
+                if (placedCard.GetPopulations().Contains(ICard.Population.Plant))
                     plants++;
             }
         }
@@ -368,9 +374,9 @@ public static class RulesCheck
             return false;
         }
 
-        var card = modelCards[receivers[0].SecondIndex].Card;
+        var card = modelCards[receivers[0].SecondIndex];
 
-        if (card.CardType is not ICard.Card.Population)
+        if (card.Card.CardType is not ICard.Card.Population)
         {
             return false;
         }
@@ -442,9 +448,9 @@ public static class RulesCheck
             return false;
         }
 
-        var card = cardOwnerPlacedCards[receivers[0].SecondIndex].Card;
+        var card = cardOwnerPlacedCards[receivers[0].SecondIndex];
 
-        if (card.CardType is not ICard.Card.Population)
+        if (card.Card.CardType is not ICard.Card.Population)
         {
             return false;
         }
@@ -509,9 +515,9 @@ public static class RulesCheck
             return false;
         }
 
-        var card = cardOwnerPlacedCards[receivers[0].SecondIndex].Card;
+        var card = cardOwnerPlacedCards[receivers[0].SecondIndex];
 
-        if (card.CardType is not ICard.Card.Population)
+        if (card.Card.CardType is not ICard.Card.Population)
         {
             return false;
         }
@@ -577,9 +583,9 @@ public static class RulesCheck
             return false;
         }
 
-        var card = cardOwnerPlacedCards[receivers[0].SecondIndex].Card;
+        var card = cardOwnerPlacedCards[receivers[0].SecondIndex];
 
-        if (card.CardType is not ICard.Card.Population)
+        if (card.Card.CardType is not ICard.Card.Population)
         {
             return false;
         }
@@ -661,7 +667,7 @@ public static class RulesCheck
             return false;
         }
 
-        if (!card.Card.GetPopulations().Contains(ICard.Population.Herbivore))
+        if (!card.GetPopulations().Contains(ICard.Population.Herbivore))
         {
             return false;
         }
@@ -738,6 +744,88 @@ public static class RulesCheck
         }
 
         return true;
+    }
+
+    private static bool CheckOmnivore(PlayerAction action)
+    {
+        if (action.Receivers.Length != 1)
+        {
+            return false;
+        }
+
+        var receiver = action.Receivers[0];
+
+        if (receiver.Location != ValidDropLocation.AnyCard)
+        {
+            return false;
+        }
+
+        if (receiver.Index is < 0 or >= 5)
+        {
+            return false;
+        }
+
+        var cardOwner = ServiceLocator.Get<IModel>().GetPlayer(receiver.LocationOwner);
+        var cardOwnerPlacedCards = cardOwner.Territory.Slots[receiver.Index].PlacedCards;
+
+        if (receiver.SecondIndex < 0 || receiver.SecondIndex >= cardOwnerPlacedCards.Count)
+        {
+            return false;
+        }
+
+        var card = cardOwnerPlacedCards[receiver.SecondIndex];
+
+        if (card.InfluenceCardOnTop is not null)
+        {
+            return false;
+        }
+
+        if (card.IsOmnivore)
+        {
+            return false;
+        }
+
+        if (!card.GetPopulations().Contains(ICard.Population.Carnivore))
+        {
+            return false;
+        }
+
+        if (!card.Card.CanHaveInfluenceCardOnTop)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    private static bool CheckCompost(PlayerAction action)
+    {
+        if (action.Receivers.Length != 1)
+        {
+            return false;
+        }
+
+        var receiver = action.Receivers[0];
+
+        if (receiver.Location != ValidDropLocation.AnySlot)
+        {
+            return false;
+        }
+
+        if (receiver.Index is < 0 or >= 5)
+        {
+            return false;
+        }
+        
+        var slotOwner = ServiceLocator.Get<IModel>().GetPlayer(receiver.LocationOwner);
+        var slot = slotOwner.Territory.Slots[receiver.Index];
+        if (slot.PlacedCards.Any())
+        {
+            return false;
+        }
+
+        return true;
+
     }
 
 
