@@ -1,8 +1,7 @@
 
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public interface IMenuInteractable
+public interface IMenuInteractable : IPointerEnterHandler, IPointerExitHandler
 {
-    public void OnPointerPress(Camera camera);
-    void ResetCamera(Camera camera);
 }

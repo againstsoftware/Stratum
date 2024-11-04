@@ -7,9 +7,9 @@ using UnityEngine.InputSystem;
 public class InputHandlerMenu
 {
     private InputActionAsset _inputActions;
-
     private Vector2 _pointerPosition;
     private IInteractionSystemMenu _interactionSystem;
+
     
     public InputHandlerMenu(IInteractionSystemMenu interactionSystem, InputActionAsset inputActions)
     {
@@ -35,19 +35,19 @@ public class InputHandlerMenu
 
     private void OnPointerPress(InputAction.CallbackContext ctx)
     {
-        Debug.Log("OnPointerPress");
-
         Ray ray = _interactionSystem.Camera.ScreenPointToRay(_pointerPosition);
         var hit = Physics.Raycast(ray, out var hitInfo, float.MaxValue, _interactionSystem.InteractablesLayer);
 
+        // hit con interactableLayer / zoom
         if(hit && hitInfo.collider)
         {            
-            Debug.Log("OnPointerPress - hit");
-            hitInfo.collider.GetComponent<IMenuInteractable>().OnPointerPress(_interactionSystem.Camera);
+            //hitInfo.collider.GetComponent<IMenuInteractable>().OnPointerPress();
+            _interactionSystem.Camera.GetComponent<MenuCameraMovement>().StartMoving(hitInfo.transform.position);
         }
+        // reset camera
         else
         {
-            //GetComponent<IMenuInteractable>().ResetCamera(_interactionSystem.Camera);
+            _interactionSystem.Camera.GetComponent<MenuCameraMovement>().StartReturning();
         }
     }
 }
