@@ -43,11 +43,14 @@ public class InputHandlerMenu
         {            
             //hitInfo.collider.GetComponent<IMenuInteractable>().OnPointerPress();
             _interactionSystem.Camera.GetComponent<MenuCameraMovement>().StartMoving(hitInfo.transform.position);
+            _interactionSystem.SetState(hitInfo.collider.GetComponent<IMenuInteractable>());
+
         }
         // reset camera
         else
         {
             _interactionSystem.Camera.GetComponent<MenuCameraMovement>().StartReturning();
+            _interactionSystem.ClearState();
         }
     }
 }
