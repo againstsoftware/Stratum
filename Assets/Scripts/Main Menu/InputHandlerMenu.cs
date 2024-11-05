@@ -10,7 +10,7 @@ public class InputHandlerMenu
     private Vector2 _pointerPosition;
     private IInteractionSystemMenu _interactionSystem;
 
-    
+
     public InputHandlerMenu(IInteractionSystemMenu interactionSystem, InputActionAsset inputActions)
     {
         _interactionSystem = interactionSystem;
@@ -20,7 +20,7 @@ public class InputHandlerMenu
         _inputActions.FindAction("PointerPress").performed += OnPointerPress;
     }
 
-    
+
     public void Dispose()
     {
         //_inputActions.FindAction("Scroll").performed -= OnScroll;
@@ -39,11 +39,16 @@ public class InputHandlerMenu
         var hit = Physics.Raycast(ray, out var hitInfo, float.MaxValue, _interactionSystem.InteractablesLayer);
 
         // hit con interactableLayer / zoom
-        if(hit && hitInfo.collider)
-        {            
-            //hitInfo.collider.GetComponent<IMenuInteractable>().OnPointerPress();
-            _interactionSystem.Camera.GetComponent<MenuCameraMovement>().StartMoving(hitInfo.transform.position);
-            _interactionSystem.SetState(hitInfo.collider.GetComponent<IMenuInteractable>());
+        if (hit && hitInfo.collider)
+        {
+            // para que no afecte a los interactuables de dentro de cada objeto 
+            if (hitInfo.transform.gameObject.GetComponentInChildren<IMenuInteractable>() != null)
+            {
+                Debug.Log("erntraod");
+                //hitInfo.collider.GetComponent<IMenuInteractable>().OnPointerPress();
+                _interactionSystem.Camera.GetComponent<MenuCameraMovement>().StartMoving(hitInfo.transform.position);
+                _interactionSystem.SetState(hitInfo.collider.GetComponent<IMenuInteractable>());
+            }
 
         }
         // reset camera

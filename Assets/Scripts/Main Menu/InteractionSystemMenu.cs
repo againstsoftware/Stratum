@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class InteractionSystemMenu : MonoBehaviour, IInteractionSystemMenu
-{    
+{
     private InteractablesObjects _currentInteractable = InteractablesObjects.None;
     private IMenuInteractable _interactable;
     public Camera Camera { get; private set; }
@@ -25,15 +25,20 @@ public class InteractionSystemMenu : MonoBehaviour, IInteractionSystemMenu
 
     public void SetState(IMenuInteractable interactable)
     {
-        _currentInteractable = interactable.InteractableObject; //state, quizás lo quito lueog 
-        _interactable = interactable;  //imenuinteractable
-        Debug.Log("_currentInteractable - Interactionsystemmenu: " + _currentInteractable);
+        if (interactable != _interactable)
+        {
 
-        //_interactable.Enable();
+            _currentInteractable = interactable.InteractableObject; //state, quizás lo quito lueog 
+            _interactable = interactable;  //imenuinteractable
+            Debug.Log("_currentInteractable - Interactionsystemmenu: " + _currentInteractable);
+
+            _interactable.EnableInteraction();
+        }
     }
 
     public void ClearState()
     {
+        _interactable.DisableInteraction();
         _currentInteractable = InteractablesObjects.None;
         //_interactable.Disable();
         _interactable = null;

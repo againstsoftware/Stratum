@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+/*
 public class Radio : MonoBehaviour, IMenuInteractable
 {
     private float scaleIncrease = 1.2f;
@@ -26,3 +27,4 @@ public class Radio : MonoBehaviour, IMenuInteractable
         Debug.Log("interacting with RADIO");
     }
 }
+*/
