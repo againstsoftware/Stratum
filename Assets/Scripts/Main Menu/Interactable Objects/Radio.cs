@@ -2,29 +2,11 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-/*
-public class Radio : MonoBehaviour, IMenuInteractable
+
+public class Radio : AInteractableObject
 {
-    private float scaleIncrease = 1.2f;
-    public InteractablesObjects InteractableObject {get; private set; } = InteractablesObjects.Radio;
-    public void OnPointerEnter(PointerEventData eventData)
+    public override void OnPointerClick(PointerEventData eventData)
     {
-        gameObject.transform.localScale *= scaleIncrease;
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        gameObject.transform.localScale /= scaleIncrease;
-    }
-    
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        Debug.Log("OnPointerCLick - MenuObject"); 
-    }
-
-    public void Interact()
-    {
-        Debug.Log("interacting with RADIO");
+        throw new System.NotImplementedException();
     }
 }
-*/

@@ -26,28 +26,28 @@ public class InteractionSystemMenu : MonoBehaviour, IInteractionSystemMenu
         Camera = Camera.main;
 
         // por ahora así
-        gamePrefs = new GamePrefsInitializer();
+        //gamePrefs = new GamePrefsInitializer();
     }
 
     public void SetState(IMenuInteractable interactable)
     {
         if (interactable != _interactable)
         {
-
-            _currentInteractable = interactable.InteractableObject; //state, quizás lo quito lueog 
             _interactable = interactable;  //imenuinteractable
-            Debug.Log("_currentInteractable - Interactionsystemmenu: " + _currentInteractable);
-
             _interactable.EnableInteraction();
         }
     }
 
     public void ClearState()
     {
-        _interactable.DisableInteraction();
-        _currentInteractable = InteractablesObjects.None;
-        //_interactable.Disable();
-        _interactable = null;
+        if (_interactable != null)
+        {
+
+            _interactable.DisableInteraction();
+            _currentInteractable = InteractablesObjects.None;
+            //_interactable.Disable();
+            _interactable = null;
+        }
     }
 
     private void Update()
@@ -68,7 +68,8 @@ public class InteractionSystemMenu : MonoBehaviour, IInteractionSystemMenu
             
         } 
         */
-        _interactable?.Interact();
+
+        //_interactable?.Interact();
     }
 
     private void OnDestroy()

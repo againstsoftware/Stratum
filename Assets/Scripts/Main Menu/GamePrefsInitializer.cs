@@ -8,24 +8,19 @@ public class GamePrefsInitializer : MonoBehaviour
     private void Start()
     {
         // cargar ajustes
-        LoadSavedLanguage();
-        LoadAudioVolume();
+        StartCoroutine(LoadSavedLanguage());
+        
         LoadGraphicsQuality();
-
+        LoadAudioVolume();
     }
     private IEnumerator LoadSavedLanguage()
     {
         yield return LocalizationSettings.InitializationOperation;
 
-        if (PlayerPrefs.HasKey(GamePrefs.LanguagePrefKey))
-        {
-            string savedLocaleCode = PlayerPrefs.GetString(GamePrefs.LanguagePrefKey);
-            var savedLocale = LocalizationSettings.AvailableLocales.GetLocale(savedLocaleCode);
-            LocalizationSettings.SelectedLocale = savedLocale;
-            Debug.Log($"language {savedLocaleCode}");
-
-        }
-        
+        string savedLocaleCode = PlayerPrefs.GetString(GamePrefs.LanguagePrefKey);
+        var savedLocale = LocalizationSettings.AvailableLocales.GetLocale(savedLocaleCode);
+        LocalizationSettings.SelectedLocale = savedLocale;
+        Debug.Log($"language {savedLocaleCode}");
     }
     private void LoadAudioVolume()
     {

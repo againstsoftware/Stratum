@@ -1,30 +1,41 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-/*
-public class Rulebook : MonoBehaviour, IMenuInteractable
+public class Rulebook : AInteractableObject
 {
-    private float scaleIncrease = 1.2f;
-    public InteractablesObjects InteractableObject {get; private set; } = InteractablesObjects.Rulebook;
-    public void OnPointerEnter(PointerEventData eventData)
+    // pruebas
+    Material materialOG;
+
+    public override void OnPointerClick(PointerEventData eventData)
     {
-        gameObject.transform.localScale *= scaleIncrease;
+        Debug.Log("Libro pulsaod");
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    public override void EnableInteraction()
     {
+        if (!_isEnabled)
+        {
+            // abrir y permitir interacción
+            _isEnabled = true;
+
+            Canvas canvas = gameObject.GetComponentInChildren<Canvas>();
+            
+            // para pruebas
+            materialOG = gameObject.GetComponent<Renderer>().material;
+            gameObject.GetComponent<Renderer>().material = null;
+        }
+    }
+
+    public override void DisableInteraction()
+    {
+        // cerrar libro y no permitir interacción 
+        _isEnabled = false;
         gameObject.transform.localScale /= scaleIncrease;
-    }
-    
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        Debug.Log("OnPointerCLick - MenuObject"); 
-    }
 
-    public void Interact()
-    {
-        Debug.Log("interacting with RULEBOOK");
+        // pruebas
+        gameObject.GetComponent<Renderer>().material = materialOG;
+
     }
 }
-*/

@@ -44,7 +44,8 @@ public class InputHandlerMenu
             // para que no afecte a los interactuables de dentro de cada objeto 
             if (hitInfo.transform.gameObject.GetComponentInChildren<IMenuInteractable>() != null)
             {
-                Debug.Log("erntraod");
+                            _interactionSystem.ClearState();
+
                 //hitInfo.collider.GetComponent<IMenuInteractable>().OnPointerPress();
                 _interactionSystem.Camera.GetComponent<MenuCameraMovement>().StartMoving(hitInfo.transform.position);
                 _interactionSystem.SetState(hitInfo.collider.GetComponent<IMenuInteractable>());

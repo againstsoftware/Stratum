@@ -4,61 +4,36 @@ using UnityEngine.Localization.Settings;
 using UnityEngine.EventSystems;
 
 
-public class Gramophone : MonoBehaviour, IMenuInteractable
+public class Gramophone : AInteractableObject
 {
-    private float scaleIncrease = 1.2f;
-    public InteractablesObjects InteractableObject {get; private set; } = InteractablesObjects.Gramophone;
-
-    // variables propias
     [SerializeField] private Collider Language, Handle, Disc;
-
-    private bool _isEnabled = false; 
-
-
+    
     // para pruebas
     private AudioSource audioSource;
-    public AudioClip mp3Clip; 
+    public AudioClip mp3Clip;
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public override void OnPointerClick(PointerEventData eventData)
     {
-        
-        if(!_isEnabled) gameObject.transform.localScale *= scaleIncrease;
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        if(!_isEnabled) gameObject.transform.localScale /= scaleIncrease;
-    }
-    
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        Debug.Log("OnPointerCLick - MenuObject"); 
-
         // language
-        if(_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == Language))
+        if (_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == Language))
         {
             StartCoroutine(ToggleLanguage());
         }
 
         // gráficos
-        if(_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == Handle))
+        if (_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == Handle))
         {
             ToggleGraphicsQuality();
         }
 
         // volumen
-        if(_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == Disc))
+        if (_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == Disc))
         {
             AudioVolume();
         }
     }
 
-    public void Interact()
-    {
-        
-    }
-
-    public void EnableInteraction()
+    public override void EnableInteraction()
     {
         _isEnabled = true;
         audioSource = GetComponent<AudioSource>();
@@ -68,11 +43,6 @@ public class Gramophone : MonoBehaviour, IMenuInteractable
             audioSource.clip = mp3Clip;
             audioSource.Play(); // Reproducir el audio
         }
-    }
-
-    public void DisableInteraction()
-    {
-        _isEnabled = false;
     }
 
     private IEnumerator ToggleLanguage()
@@ -88,7 +58,7 @@ public class Gramophone : MonoBehaviour, IMenuInteractable
         PlayerPrefs.SetString(GamePrefs.LanguagePrefKey, newLocaleCode);
         PlayerPrefs.Save();
 
-        Debug.Log("Language actual: " + GamePrefs.LanguagePrefKey);
+        Debug.Log("Language actual: " + newLocaleCode);
     }
     private void ToggleGraphicsQuality()
     {
@@ -100,7 +70,7 @@ public class Gramophone : MonoBehaviour, IMenuInteractable
         PlayerPrefs.SetInt(GamePrefs.QualityPrefKey, newQuality);
         PlayerPrefs.Save();
     }
-    
+
     private void AudioVolume()
     {
         // así porque falta un soundmanager
@@ -109,5 +79,3 @@ public class Gramophone : MonoBehaviour, IMenuInteractable
         PlayerPrefs.Save();
     }
 }
-
-

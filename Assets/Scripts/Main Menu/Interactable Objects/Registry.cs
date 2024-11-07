@@ -1,52 +1,29 @@
 using System.Collections;
-using Unity.VisualScripting;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Registry : MonoBehaviour, IMenuInteractable
+public class Registry : AInteractableObject
 {
-    private float scaleIncrease = 1.2f;
-    public InteractablesObjects InteractableObject { get; private set; } = InteractablesObjects.Registry;
-    private bool isEnabled = false; //por ahora la dejo pero quizás como tal podría no hacer falta
-    
-    // para pruebas y variables propias de este objeto
-    Material materialOG;
     [SerializeField] Collider Link;
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        gameObject.transform.localScale *= scaleIncrease;
-    }
+    // para pruebas
+    Material materialOG;
 
-    public void OnPointerExit(PointerEventData eventData)
+    public override void OnPointerClick(PointerEventData eventData)
     {
-        gameObject.transform.localScale /= scaleIncrease;
-    }
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        Debug.Log("OnPointerCLick - MenuObject");
-        if(isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == Link))
+        if(_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == Link))
         {
             Application.OpenURL("https://x.com/home");
         }
     }
 
-    public void Interact()
+    public override void EnableInteraction()
     {
-        if (isEnabled)
-        {
-            Debug.Log("interacting with REGISTRY");
-
-        }
-    }
-
-    public void EnableInteraction()
-    {
-        if (!isEnabled)
+        if (!_isEnabled)
         {
             // abrir el registry y permitir interacción
-            isEnabled = true;
+            _isEnabled = true;
 
             Canvas canvas = gameObject.GetComponentInChildren<Canvas>();
             
@@ -57,22 +34,25 @@ public class Registry : MonoBehaviour, IMenuInteractable
             materialOG = gameObject.GetComponent<Renderer>().material;
             gameObject.GetComponent<Renderer>().material = null;
         }
-
     }
 
-    public void DisableInteraction()
+    public override void DisableInteraction()
     {
-        // cerrrar libro y no permitir interacción 
-        isEnabled = false;
+        // cerrar libro y no permitir interacción 
+        _isEnabled = false;
 
         Canvas canvas = gameObject.GetComponentInChildren<Canvas>();
         foreach(Transform child in canvas.transform)
         {
             child.gameObject.SetActive(false);
         }
+        
+        gameObject.transform.localScale /= scaleIncrease;
+
 
         // pruebas
         gameObject.GetComponent<Renderer>().material = materialOG;
+
     }
 
     // ESTO ES PARA LAS PRUEBAS PARA NO DARLE SIN QUERER a las rrss
