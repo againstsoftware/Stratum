@@ -13,6 +13,9 @@ public class InteractionSystemMenu : MonoBehaviour, IInteractionSystemMenu
     [SerializeField] private InputActionAsset _inputActions;
     [field: SerializeField] public LayerMask InteractablesLayer { get; private set; }
 
+    // esto revisarlo en la interfaz
+    private GamePrefsInitializer gamePrefs;
+
     private void Awake()
     {
         Input = new(this, _inputActions);
@@ -21,6 +24,9 @@ public class InteractionSystemMenu : MonoBehaviour, IInteractionSystemMenu
     private void Start()
     {
         Camera = Camera.main;
+
+        // por ahora así
+        gamePrefs = new GamePrefsInitializer();
     }
 
     public void SetState(IMenuInteractable interactable)

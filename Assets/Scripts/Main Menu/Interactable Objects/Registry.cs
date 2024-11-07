@@ -49,6 +49,7 @@ public class Registry : MonoBehaviour, IMenuInteractable
             isEnabled = true;
 
             Canvas canvas = gameObject.GetComponentInChildren<Canvas>();
+            
             // esto es de prueba
             StartCoroutine(EsperarUnSegundo(canvas));
 
