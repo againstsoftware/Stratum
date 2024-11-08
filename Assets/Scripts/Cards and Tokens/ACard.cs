@@ -14,7 +14,6 @@ public abstract class ACard : AActionItem, ICard, IEffectContainer
     
     public abstract ICard.Population PopulationType { get; }
     
-    
     [SerializeField] private LocalizedString _name, _description;
     
 

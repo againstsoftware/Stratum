@@ -9,5 +9,7 @@ public interface ICard
     public Card CardType { get; }
     public Population PopulationType { get; }
     public bool CanHaveInfluenceCardOnTop { get; }
+    
+    
 
 }

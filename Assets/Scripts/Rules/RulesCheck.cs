@@ -51,7 +51,7 @@ public static class RulesCheck
                 {
                     var owner = action.Receivers[0].LocationOwner;
                     if (owner == action.Actor) return true;
-                    Debug.Log("rechazada porque la pila de descarte no es del que jugo la carta de poblacion!");
+                    Debug.Log("rechazada porque la pila de descarte no es del que jugo la carta!");
                     return false;
                 }
 
@@ -722,31 +722,31 @@ public static class RulesCheck
 
     private static bool CheckMold(PlayerAction action)
     {
-        if (action.Receivers.Length != 1)
-        {
-            return false;
-        }
+            if (action.Receivers.Length != 1)
+            {
+                return false;
+            }
 
-        var receiver = action.Receivers[0];
+            var receiver = action.Receivers[0];
 
-        if (receiver.Location != ValidDropLocation.AnySlot)
-        {
-            return false;
-        }
+            if (receiver.Location != ValidDropLocation.AnySlot)
+            {
+                return false;
+            }
 
-        var territory = ServiceLocator.Get<IModel>().GetPlayer(receiver.LocationOwner).Territory;
-        var slot = territory.Slots[receiver.Index];
-        if (slot.PlacedCards.Any())
-        {
-            return false;
-        }
+            var territory = ServiceLocator.Get<IModel>().GetPlayer(receiver.LocationOwner).Territory;
+            var slot = territory.Slots[receiver.Index];
+            if (slot.PlacedCards.Any())
+            {
+                return false;
+            }
 
-        if (!territory.HasConstruction)
-        {
-            return false;
-        }
+            if (!territory.HasConstruction)
+            {
+                return false;
+            }
 
-        return true;
+            return true;
     }
 
     private static bool CheckOmnivore(PlayerAction action)
