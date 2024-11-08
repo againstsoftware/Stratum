@@ -283,6 +283,9 @@ public static class RulesCheck
             case InfluenceCard.Type.Compost:
                 return CheckCompost(action);
             
+            case InfluenceCard.Type.Pesticide:
+                return CheckPesticide(action);
+            
 
             case InfluenceCard.Type.None:
             default:
@@ -827,6 +830,60 @@ public static class RulesCheck
         return true;
 
     }
+
+    
+    private static bool CheckPesticide(PlayerAction action)
+    {
+        if (action.Receivers.Length != 1)
+        {
+            return false;
+        }
+
+        var receiver = action.Receivers[0];
+
+        if (receiver.Location != ValidDropLocation.AnyCard)
+        {
+            return false;
+        }
+
+        if (receiver.Index is < 0 or >= 5)
+        {
+            return false;
+        }
+
+        var cardOwner = ServiceLocator.Get<IModel>().GetPlayer(receiver.LocationOwner);
+        var slotCards = cardOwner.Territory.Slots[receiver.Index].PlacedCards;
+
+        if (receiver.SecondIndex < 0 || receiver.SecondIndex >= slotCards.Count)
+        {
+            return false;
+        }
+
+        var card = slotCards[receiver.SecondIndex];
+
+        if (!card.GetPopulations().Contains(ICard.Population.Plant))
+        {
+            return false;
+        }
+
+        return true;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 
     private static bool ArePlayersOpposites(PlayerCharacter a, PlayerCharacter b)

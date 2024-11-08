@@ -18,7 +18,8 @@ public class InfluenceCard : ACard
         ExplosiveSpores,
         Mold,
         Omnivore,
-        Compost
+        Compost,
+        Pesticide
     }
     [field: SerializeField] public Type InfluenceType { get; private set; }
     [field: SerializeField]public bool IsPersistent { get; private set; }

@@ -252,6 +252,24 @@ public class ViewManager : MonoBehaviour, IView
         }, 0.75f));
     }
 
+    public void KillPopulation(PlayerCharacter actor, CardLocation location, Action callback, bool isEndOfAction = false)
+    {
+        var playerActor = _players[actor];
+        var playerOwner = _players[location.Owner];
+        var slot = playerOwner.Territory.Slots[location.SlotIndex];
+        var card = slot.Cards[location.CardIndex];
+        if (card.Card is not PopulationCard) throw new Exception("Error! La carta a matar no es de poblacion");
+        DestroyCard(card, slot);
+        StartCoroutine(DelayCall(() =>
+        {
+            if(isEndOfAction) playerActor.CallInfluenceCallback();
+            callback?.Invoke();
+        }, .5f)); //de prueba
+    }
+    
+    
+    
+
 
     // private IEnumerator DestroyCard(GameObject card, Action callback = null)
     // {

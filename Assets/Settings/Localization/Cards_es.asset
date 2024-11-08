@@ -188,6 +188,14 @@ MonoBehaviour:
       hongo y una carta de planta encima."
     m_Metadata:
       m_Items: []
+  - m_Id: 13025583309778944
+    m_Localized: Pesticida
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13025632441856000
+    m_Localized: "Muere una carta de planta de tu elecci\xF3n."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

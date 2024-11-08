@@ -35,6 +35,7 @@ public static class EffectCommands
         Effect.MakeOmnivore => _makeOmnivore,
         Effect.GrowPlant => _growPlant,
         Effect.GrowPlantEndOfAction => _growPlantEOA,
+        Effect.KillPlantEndOfAction => _killPlantEOA,
 
         _ => throw new ArgumentOutOfRangeException()
     };
@@ -372,4 +373,22 @@ public static class EffectCommands
         
         ServiceLocator.Get<IView>().GrowPopulation(action.Actor, location, ICard.Population.Plant, callback, true);
     };
+
+
+    private static readonly EffectCommand _killPlantEOA = (action, callback) =>
+    {
+        var slotOwner = action.Receivers[0].LocationOwner;
+        var slotIndex = action.Receivers[0].Index;
+        var cardIndex = action.Receivers[0].SecondIndex;
+        
+        ServiceLocator.Get<IModel>().RemoveCardFromSlot(slotOwner, slotIndex, cardIndex);
+        var location = new IView.CardLocation()
+        {
+            Owner = slotOwner,
+            SlotIndex = slotIndex,
+            CardIndex = cardIndex
+        };
+        ServiceLocator.Get<IView>().KillPopulation(action.Actor, location, callback, true);
+    };
+
 }
