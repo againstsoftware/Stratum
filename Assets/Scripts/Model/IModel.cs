@@ -17,16 +17,16 @@ public interface IModel : IService
 
     public void RemoveCardFromHand(PlayerCharacter player, ICard card);
     public void PlaceCardOnSlot(ICard card, PlayerCharacter slotOwner, int slotIndex, bool atTheBottom = false);
-
     public (TableCard parent, TableCard son) GrowLastPlacedPopulation(ICard.Population population);
     public TableCard KillLastPlacedPopulation(ICard.Population population);
 
-    public TableCard GrowMushroomEcosystem();
-
-    public void PlaceInlfuenceCardOnCard(ICard influenceCard, ICard card, PlayerCharacter slotOwner,
+    public TableCard GrowMushroom();
+    public TableCard GrowMushroom(PlayerCharacter slotOwner, int slotIndex);
+    
+    public void PlaceInlfuenceCardOnCard(ICard influenceCard, PlayerCharacter slotOwner,
         int slotIndex, int cardIndex);
 
-    public void MoveCardBetweenSlots(ICard card, PlayerCharacter slotOwner, int slotIndex, int cardIndex,
+    public void MoveCardBetweenSlots(PlayerCharacter slotOwner, int slotIndex, int cardIndex,
         PlayerCharacter targetSlotOwner, int targetSlotIndex);
 
     public void RemoveCardFromSlot(/*ICard card, */PlayerCharacter slotOwner, int slotIndex, int cardIndex);
@@ -44,8 +44,12 @@ public interface IModel : IService
     
     public void RemoveConstruction(PlayerCharacter territoryOwner);
     
-    public void AdvanceTurn(PlayerCharacter playerOnTurn);
+    public void GiveRabies(PlayerCharacter slotOwner, int slotIndex, int cardIndex);
+    public void MakeOmnivore(PlayerCharacter slotOwner, int slotIndex, int cardIndex);
     
+    
+    public void AdvanceTurn(PlayerCharacter playerOnTurn);
+
 
     public IReadOnlyList<ICard> PlayerDrawCards(PlayerCharacter character/*, int amount*/);
 }

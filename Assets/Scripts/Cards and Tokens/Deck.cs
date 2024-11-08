@@ -62,4 +62,9 @@ public class Deck : ScriptableObject, IDeck
             }
         }
     }
+
+    private void OnValidate()
+    {
+        _initialized = false;
+    }
 }

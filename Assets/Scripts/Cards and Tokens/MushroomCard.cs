@@ -7,5 +7,5 @@ public class MushroomCard : ACard
 {
     public override bool CanHaveInfluenceCardOnTop => false;
     public override ICard.Card CardType => ICard.Card.Mushroom;
-    public override IEnumerable<ICard.Population> GetPopulations() => null;
+    public override ICard.Population PopulationType => ICard.Population.None;
 }

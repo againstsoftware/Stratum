@@ -19,7 +19,7 @@ public class Ecosystem
     {
         if (tableCard.Card.CardType is not ICard.Card.Population) throw new Exception("Peticion invalida tal");
 
-        foreach (var type in tableCard.Card.GetPopulations())
+        foreach (var type in tableCard.GetPopulations())
         {
             switch (type)
             {
@@ -44,7 +44,7 @@ public class Ecosystem
     {
         if (tableCard.Card.CardType is not ICard.Card.Population) throw new Exception("Peticion invalida tal");
 
-        foreach (var type in tableCard.Card.GetPopulations())
+        foreach (var type in tableCard.GetPopulations())
         {
             switch (type)
             {

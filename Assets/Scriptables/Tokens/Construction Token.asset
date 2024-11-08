@@ -33,6 +33,8 @@ MonoBehaviour:
   ValidActions:
   - <DropLocation>k__BackingField: 5
     <Receivers>k__BackingField: 02000000
+  - <DropLocation>k__BackingField: 2
+    <Receivers>k__BackingField: 
   _effects: 080000000b000000
   references:
     version: 2

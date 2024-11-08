@@ -78,9 +78,7 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
         _destroyed = true;
         OnDiscard?.Invoke();
     }
-
-    public abstract void Play(IActionReceiver playLocation, Action onPlayedCallback);
-
+    
 
     public virtual void OnSelect()
     {
@@ -108,7 +106,7 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
     public virtual void OnDrop(IActionReceiver dropLocation, Action actionCompletedCallback)
     {
         //se snappea a la drop location
-        transform.position = dropLocation.SnapTransform.position;
+        transform.position = dropLocation.GetSnapTransform(Owner).position;
         CurrentState = State.Waiting;
         _actionCompletedCallback = actionCompletedCallback;
         OnItemDrop?.Invoke(this);
@@ -150,7 +148,7 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
 
     protected bool IsOnPlayLocation(IActionReceiver playLocation)
     {
-        var distance = playLocation.SnapTransform.position - transform.position;
+        var distance = playLocation.GetSnapTransform(Owner).position - transform.position;
         return distance.magnitude < .01f;
     }
 }

@@ -4,6 +4,9 @@ public class Player
     public readonly IDeck Deck;
     public readonly HandOfCards HandOfCards;
     public readonly Territory Territory;
+    
+    public bool TokenPlayed { get; set; }
+    public bool InfluencePlayed { get; set; }
 
     internal Player(PlayerCharacter character, IDeck deck)
     {
@@ -16,6 +19,9 @@ public class Player
 
     internal void AdvanceTurn()
     {
+        TokenPlayed = false;
+        InfluencePlayed = false;
+        
         Territory.AdvanceTurn();
     }
 

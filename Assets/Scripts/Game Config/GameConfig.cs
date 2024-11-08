@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 
@@ -13,9 +14,16 @@ public class GameConfig : ScriptableObject
     
     [field:SerializeField] public MushroomCard Mushroom { get; private set; }
     [field:SerializeField] public MacrofungiCard Macrofungi { get; private set; }
+    
+    [field:SerializeField] public PopulationCard[] InitialCards { get; private set; }
 
     [SerializeField] private AActionItem[] _actionItems;
 
+    [SerializeField] private PopulationCard[] _populationCards;
+
     public int ActionItemToID(AActionItem actionItem) => Array.IndexOf(_actionItems, actionItem);
     public AActionItem IDToActionItem(int id) => _actionItems[id];
+
+    public PopulationCard GetPopulationCard(ICard.Population p) =>
+        _populationCards.FirstOrDefault(pc => pc.PopulationType == p);
 }
