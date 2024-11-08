@@ -24,6 +24,6 @@ public class GameConfig : ScriptableObject
     public int ActionItemToID(AActionItem actionItem) => Array.IndexOf(_actionItems, actionItem);
     public AActionItem IDToActionItem(int id) => _actionItems[id];
 
-    public PopulationCard GetPopulationCard(ICard.Population p) =>
+    public PopulationCard GetPopulationCard(Population p) =>
         _populationCards.FirstOrDefault(pc => pc.PopulationType == p);
 }

@@ -32,6 +32,6 @@ public abstract class AInfluenceCardRulesComponent : ACardRulesComponent
     protected static bool ExistsFungiOnTerritory(Territory territory)
     {
         return territory.Slots.SelectMany(slot => slot.PlacedCards)
-            .Any(card => card.Card.CardType is ICard.Card.Mushroom or ICard.Card.Macrofungi);
+            .Any(card => card.Card is MushroomCard or MacrofungiCard);
     }
 }

@@ -2,15 +2,17 @@ using UnityEngine;
 
 public abstract class ACardRulesComponent : IRulesComponent
 {
-    protected ICard _card;
-    public void Init(ICard card)
+    protected ACard _card;
+    public ACardRulesComponent Init(ACard card)
     {
         _card = card;
+        return this;
     }
     
     public bool CheckAction(PlayerAction action)
     {
-        if (!ServiceLocator.Get<IModel>().GetPlayer(action.Actor).HandOfCards.Contains(_card))
+        var p = ServiceLocator.Get<IModel>().GetPlayer(action.Actor);
+        if (!p.HandOfCards.Contains(_card))
         {
             Debug.Log($"rechazada porque la carta no esta en la mano del model");
             return false;

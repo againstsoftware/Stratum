@@ -94,7 +94,7 @@ public class ViewManager : MonoBehaviour, IView
         _cameraMovement.ChangeToOverview(callback);
     }
     
-    public void GrowPopulation(PlayerCharacter actor, CardLocation location, ICard.Population population, Action callback, bool isEndOfAction = false)
+    public void GrowPopulation(PlayerCharacter actor, CardLocation location, Population population, Action callback, bool isEndOfAction = false)
     {
         var card = _config.GetPopulationCard(population);
         var playerOwner = _players[location.Owner];
@@ -158,7 +158,7 @@ public class ViewManager : MonoBehaviour, IView
     }
 
 
-    public void PlayAndDiscardInfluenceCard(PlayerCharacter actor, InfluenceCard card, CardLocation location,
+    public void PlayAndDiscardInfluenceCard(PlayerCharacter actor, AInfluenceCard card, CardLocation location,
         Action callback,
         bool isEndOfAction = false)
     {
@@ -193,7 +193,7 @@ public class ViewManager : MonoBehaviour, IView
     }
 
 
-    public void PlaceInfluenceOnPopulation(PlayerCharacter actor, InfluenceCard influenceCard, CardLocation location,
+    public void PlaceInfluenceOnPopulation(PlayerCharacter actor, AInfluenceCard influenceCard, CardLocation location,
         Action callback, bool isEndOfAction = false)
     {
         var playerActor = _players[actor];

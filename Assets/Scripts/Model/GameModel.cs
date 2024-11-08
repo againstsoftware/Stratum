@@ -17,7 +17,7 @@ public class GameModel : IModel
 
     private Slot _lastDeathSlot;
 
-    public GameModel(PlayerCharacter starter, IDeck[] _decks)
+    public GameModel(PlayerCharacter starter, Deck[] _decks)
     {
         PlayerOnTurn = starter;
 
@@ -31,7 +31,7 @@ public class GameModel : IModel
     public Player GetPlayer(PlayerCharacter character) => _players[character];
 
 
-    public void RemoveCardFromHand(PlayerCharacter player, ICard card)
+    public void RemoveCardFromHand(PlayerCharacter player, ACard card)
     {
         var playerHand = _players[player].HandOfCards;
 
@@ -39,21 +39,21 @@ public class GameModel : IModel
             throw new Exception("error!! intentado quitar carta que no existe en la mano!");
     }
 
-    public void PlaceCardOnSlot(ICard card, PlayerCharacter slotOwner, int slotIndex, bool atTheBottom = false)
+    public void PlaceCardOnSlot(ACard card, PlayerCharacter slotOwner, int slotIndex, bool atTheBottom = false)
     {
         var ownerPlayer = _players[slotOwner];
         var tableCard = ownerPlayer.Territory.Slots[slotIndex].PlaceCard(card, atTheBottom);
-        if (card.CardType is ICard.Card.Population) Ecosystem.OnPopulationCardPlace(tableCard);
+        if (card is PopulationCard) Ecosystem.OnPopulationCardPlace(tableCard);
     }
 
-    public (TableCard parent, TableCard son) GrowLastPlacedPopulation(ICard.Population population)
+    public (TableCard parent, TableCard son) GrowLastPlacedPopulation(Population population)
     {
         TableCard growCard = population switch
         {
-            ICard.Population.Plant => Ecosystem.LastPlant,
-            ICard.Population.Herbivore => Ecosystem.LastHerbivore,
-            ICard.Population.Carnivore => Ecosystem.LastCarnivore,
-            ICard.Population.None => throw new ArgumentOutOfRangeException(),
+            Population.Plant => Ecosystem.LastPlant,
+            Population.Herbivore => Ecosystem.LastHerbivore,
+            Population.Carnivore => Ecosystem.LastCarnivore,
+            Population.None => throw new ArgumentOutOfRangeException(),
             _ => throw new ArgumentOutOfRangeException()
         };
 
@@ -64,13 +64,13 @@ public class GameModel : IModel
         return (growCard, newCard);
     }
 
-    public TableCard KillLastPlacedPopulation(ICard.Population population)
+    public TableCard KillLastPlacedPopulation(Population population)
     {
         TableCard killCard = population switch
         {
-            ICard.Population.Plant => Ecosystem.LastPlant,
-            ICard.Population.Herbivore => Ecosystem.LastHerbivore,
-            ICard.Population.Carnivore => Ecosystem.LastCarnivore,
+            Population.Plant => Ecosystem.LastPlant,
+            Population.Herbivore => Ecosystem.LastHerbivore,
+            Population.Carnivore => Ecosystem.LastCarnivore,
             _ => throw new ArgumentOutOfRangeException()
         };
 
@@ -102,7 +102,7 @@ public class GameModel : IModel
     }
 
 
-    public void PlaceInlfuenceCardOnCard(ICard influenceCard, PlayerCharacter slotOwner,
+    public void PlaceInlfuenceCardOnCard(ACard influenceCard, PlayerCharacter slotOwner,
         int slotIndex, int cardIndex)
     {
         var ownerPlayer = _players[slotOwner];
@@ -145,7 +145,7 @@ public class GameModel : IModel
 
         //NO hace falta de momento pero para influs quiza si
         //edit: SI que hace falta wtfffffffffffffff
-        if (tableCard.Card.CardType is ICard.Card.Population)
+        if (tableCard.Card is PopulationCard)
         {
             Ecosystem.OnPopulationCardDie(tableCard);
             OnPopulationDie?.Invoke(tableCard);
@@ -153,7 +153,7 @@ public class GameModel : IModel
         }
     }
 
-    public void RemoveInfluenceCardFromCard(ICard influenceCard, ICard card, PlayerCharacter slotOwner,
+    public void RemoveInfluenceCardFromCard(ACard influenceCard, ACard card, PlayerCharacter slotOwner,
         int slotIndex, int cardIndex)
     {
         var ownerPlayer = _players[slotOwner];
@@ -183,7 +183,7 @@ public class GameModel : IModel
         {
             var tableCard = toBeRemoved.Pop();
             slot.RemoveCard(tableCard);
-            if (tableCard.Card.CardType is ICard.Card.Population)
+            if (tableCard.Card is PopulationCard)
             {
                 Ecosystem.OnPopulationCardDie(tableCard);
                 OnPopulationDie?.Invoke(tableCard);
@@ -210,8 +210,8 @@ public class GameModel : IModel
         {
             foreach (var tableCard in slot.PlacedCards)
             {
-                if (tableCard.Card.CardType is not ICard.Card.Population ||
-                    !tableCard.GetPopulations().Contains(ICard.Population.Plant)) continue;
+                if (tableCard.Card is not PopulationCard ||
+                    !tableCard.GetPopulations().Contains(Population.Plant)) continue;
 
                 plants.Add(tableCard);
             }
@@ -276,9 +276,9 @@ public class GameModel : IModel
         }
     }
 
-    public IReadOnlyList<ICard> PlayerDrawCards(PlayerCharacter character /*, int amount*/)
+    public IReadOnlyList<ACard> PlayerDrawCards(PlayerCharacter character /*, int amount*/)
     {
-        List<ICard> drawnCards = new();
+        List<ACard> drawnCards = new();
         var player = _players[character];
 
         int amount = 5 - player.HandOfCards.Count;

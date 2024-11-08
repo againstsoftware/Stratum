@@ -1,5 +1,7 @@
 
 using System.Linq;
+using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class PesticideRC : AInfluenceCardRulesComponent
 {
@@ -32,7 +34,7 @@ public class PesticideRC : AInfluenceCardRulesComponent
 
         var card = slotCards[receiver.SecondIndex];
 
-        if (!card.GetPopulations().Contains(ICard.Population.Plant))
+        if (!card.GetPopulations().Contains(Population.Plant))
         {
             return false;
         }

@@ -42,7 +42,7 @@ public class RabiesRC : AInfluenceCardRulesComponent
             return false;
         }
 
-        if (!card.GetPopulations().Contains(ICard.Population.Herbivore))
+        if (!card.GetPopulations().Contains(Population.Herbivore))
         {
             return false;
         }

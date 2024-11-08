@@ -8,7 +8,7 @@ public class PlayableToken : APlayableItem, IRulebookEntry
     public override bool OnlyVisibleOnOverview => true;
     public override bool CanInteractWithoutOwnership => true;
 
-    [SerializeField] private Token _token;
+    [SerializeField] private AToken _token;
     [SerializeField] private PlayerCharacter _owner;
     public override AActionItem ActionItem => _token;
 

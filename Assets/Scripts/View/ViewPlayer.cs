@@ -53,7 +53,7 @@ public class ViewPlayer : MonoBehaviour
         playableCard.Play(slot, callback);
     }
 
-    public void PlayAndDiscardInfluenceCard(InfluenceCard card, IActionReceiver receiver, Action callback, bool isEndOfAction = false)
+    public void PlayAndDiscardInfluenceCard(AInfluenceCard card, IActionReceiver receiver, Action callback, bool isEndOfAction = false)
     {
         PlayableCard playableCard = null;
 
@@ -109,7 +109,7 @@ public class ViewPlayer : MonoBehaviour
     }
 
 
-    public void PlaceInfluenceOnPopulation(InfluenceCard influence, PlayableCard population, Action callback,
+    public void PlaceInfluenceOnPopulation(AInfluenceCard influence, PlayableCard population, Action callback,
         bool isEndOfAction = false)
     {
         PlayableCard playableCard = null;

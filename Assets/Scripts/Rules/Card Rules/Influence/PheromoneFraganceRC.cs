@@ -39,13 +39,13 @@ public class PheromoneFraganceRC : AInfluenceCardRulesComponent
 
         var card = cardOwnerPlacedCards[receivers[0].SecondIndex];
 
-        if (card.Card.CardType is not ICard.Card.Population)
+        if (card.Card is not PopulationCard)
         {
             return false;
         }
 
-        if (!card.GetPopulations().Contains(ICard.Population.Carnivore) &&
-            !card.GetPopulations().Contains(ICard.Population.Herbivore))
+        if (!card.GetPopulations().Contains(Population.Carnivore) &&
+            !card.GetPopulations().Contains(Population.Herbivore))
         {
             return false;
         }

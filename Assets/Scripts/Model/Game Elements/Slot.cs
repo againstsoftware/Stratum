@@ -13,7 +13,7 @@ public class Slot
         Territory = territory;
         SlotIndexInTerritory = slotIndexInTerritory;   
     }    
-    internal TableCard PlaceCard(ICard card, bool atTheBottom = false)
+    internal TableCard PlaceCard(ACard card, bool atTheBottom = false)
     {
         var tableCard = new TableCard(card);
 

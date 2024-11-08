@@ -10,7 +10,7 @@ public class GameInitializer : MonoBehaviour
     [SerializeField] private bool _isTestScene;
     private void Awake()
     {
-        var gameModel = new GameModel(_config.TurnOrder[0], _decks.Cast<IDeck>().ToArray());
+        var gameModel = new GameModel(_config.TurnOrder[0], _decks);
         
         ServiceLocator.Register<IModel>(gameModel);
         

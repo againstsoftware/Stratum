@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class TableCard
 {
-    public readonly ICard Card;
+    public readonly ACard Card;
     public int TurnsAlive { get; private set; }
     public TableCard InfluenceCardOnTop { get; private set; }
     public Slot Slot { get; internal set; }
@@ -12,17 +12,21 @@ public class TableCard
 
     public bool IsOmnivore { get; set; }
 
-    public IEnumerable<ICard.Population> GetPopulations()
+    private PopulationCard _populationCard;
+
+    public IEnumerable<Population> GetPopulations()
     {
+        if (_populationCard is null) return new[]{Population.None};
         return IsOmnivore
-            ? new[] { ICard.Population.Carnivore, ICard.Population.Herbivore }
-            : new[] { Card.PopulationType };
+            ? new[] { Population.Carnivore, Population.Herbivore }
+            : new[] { _populationCard.PopulationType };
     }
 
 
-    internal TableCard(ICard card)
+    internal TableCard(ACard card)
     {
         Card = card;
+        if (Card is PopulationCard pc) _populationCard = pc;
     }
 
     internal void AdvanceTurn()
@@ -31,7 +35,7 @@ public class TableCard
         InfluenceCardOnTop?.AdvanceTurn();
     }
 
-    internal void PlaceInlfuenceCard(ICard card)
+    internal void PlaceInlfuenceCard(ACard card)
     {
         InfluenceCardOnTop = new TableCard(card);
     }

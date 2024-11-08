@@ -35,11 +35,11 @@ public class EffectExecutor : IExecutor
 
     private void UpdatePlayedCardsInModel(PlayerAction action)
     {
-        if (action.ActionItem is Token)
+        if (action.ActionItem is AToken)
         {
             ServiceLocator.Get<IModel>().GetPlayer(action.Actor).TokenPlayed = true;
         }
-        else if (action.ActionItem is InfluenceCard)
+        else if (action.ActionItem is AInfluenceCard)
         {
             ServiceLocator.Get<IModel>().GetPlayer(action.Actor).InfluencePlayed = true;
         }

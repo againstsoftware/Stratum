@@ -15,23 +15,23 @@ public interface IModel : IService
     public event Action<TableCard> OnPopulationGrow;
     public event Action<TableCard> OnPopulationDie;
 
-    public void RemoveCardFromHand(PlayerCharacter player, ICard card);
-    public void PlaceCardOnSlot(ICard card, PlayerCharacter slotOwner, int slotIndex, bool atTheBottom = false);
-    public (TableCard parent, TableCard son) GrowLastPlacedPopulation(ICard.Population population);
-    public TableCard KillLastPlacedPopulation(ICard.Population population);
+    public void RemoveCardFromHand(PlayerCharacter player, ACard card);
+    public void PlaceCardOnSlot(ACard card, PlayerCharacter slotOwner, int slotIndex, bool atTheBottom = false);
+    public (TableCard parent, TableCard son) GrowLastPlacedPopulation(Population population);
+    public TableCard KillLastPlacedPopulation(Population population);
 
     public TableCard GrowMushroom();
     public TableCard GrowMushroom(PlayerCharacter slotOwner, int slotIndex);
     
-    public void PlaceInlfuenceCardOnCard(ICard influenceCard, PlayerCharacter slotOwner,
+    public void PlaceInlfuenceCardOnCard(ACard influenceCard, PlayerCharacter slotOwner,
         int slotIndex, int cardIndex);
 
     public void MoveCardBetweenSlots(PlayerCharacter slotOwner, int slotIndex, int cardIndex,
         PlayerCharacter targetSlotOwner, int targetSlotIndex);
 
-    public void RemoveCardFromSlot(/*ICard card, */PlayerCharacter slotOwner, int slotIndex, int cardIndex);
+    public void RemoveCardFromSlot(/*ACard card, */PlayerCharacter slotOwner, int slotIndex, int cardIndex);
 
-    public void RemoveInfluenceCardFromCard(ICard influenceCard, ICard card, PlayerCharacter slotOwner,
+    public void RemoveInfluenceCardFromCard(ACard influenceCard, ACard card, PlayerCharacter slotOwner,
         int slotIndex, int cardIndex);
 
     //el filtro debe dar true para las cartas que se quieran salvar de eliminar
@@ -51,5 +51,5 @@ public interface IModel : IService
     public void AdvanceTurn(PlayerCharacter playerOnTurn);
 
 
-    public IReadOnlyList<ICard> PlayerDrawCards(PlayerCharacter character/*, int amount*/);
+    public IReadOnlyList<ACard> PlayerDrawCards(PlayerCharacter character/*, int amount*/);
 }

@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64f9f456e9a64fe2ad5ef38828970525, type: 3}
+  m_Script: {fileID: 11500000, guid: 3c8485c73f454f7eaeafc91f63535fb9, type: 3}
   m_Name: Mold
   m_EditorClassIdentifier: 
   <ObverseTex>k__BackingField: {fileID: 2800000, guid: c3e41ae38488e884284ab035a95246a8,

@@ -7,10 +7,14 @@ using UnityEngine;
 public class PopulationCard : ACard
 {
     public override bool CanHaveInfluenceCardOnTop => true;
-    public override ICard.Card CardType => ICard.Card.Population;
     
-    [SerializeField] private ICard.Population _populationType;
+    [SerializeField] private Population _populationType;
 
-    public override ICard.Population PopulationType => _populationType;
+    public Population PopulationType => _populationType;
 
+    protected override ACardRulesComponent _cardRC => new PopulationCardRulesComponent().Init(this);
+    
 }
+
+public enum Population { None, Carnivore, Herbivore, Plant}
+

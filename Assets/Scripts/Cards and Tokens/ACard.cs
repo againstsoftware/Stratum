@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Localization;
 using System.Collections.Generic;
 
-public abstract class ACard : AActionItem, ICard, IEffectContainer
+public abstract class ACard : AActionItem, IEffectContainer
 {
     public string Name { get => _name.GetLocalizedString(); }
     public string Description { get => _description.GetLocalizedString(); }
@@ -12,7 +12,6 @@ public abstract class ACard : AActionItem, ICard, IEffectContainer
     
     [field:SerializeField] public Texture ObverseTex { get; private set; }
     
-    public abstract ICard.Population PopulationType { get; }
     
     [SerializeField] private LocalizedString _name, _description;
     
@@ -25,9 +24,6 @@ public abstract class ACard : AActionItem, ICard, IEffectContainer
     }
 
     [SerializeField] private ActionEffect[] _actionEffects;
-    
-    public abstract ICard.Card CardType { get; }
-
 
 
     public IEnumerable<Effect> GetEffects(int index) => _actionEffects[index].Effects;
@@ -44,4 +40,9 @@ public abstract class ACard : AActionItem, ICard, IEffectContainer
         }
         return validActions;
     }
+
+
+    public override IRulesComponent RulesComponent => _cardRC;
+
+    protected abstract ACardRulesComponent _cardRC { get; }
 }

@@ -49,7 +49,7 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
 
         if (isAlreadyPlayed)
         {
-            if (Card is InfluenceCard { IsPersistent: true } && playLocation is PlayableCard pc)
+            if (Card is AInfluenceCard { IsPersistent: true } && playLocation is PlayableCard pc)
             {
                 OnPersistentPlayed(pc);
             }
@@ -68,7 +68,7 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
         //no se ha jugado visualmente a la mesa
         Travel(playLocation.GetSnapTransform(Owner), _playTravelDuration, State.Played, () =>
         {
-            if (Card is InfluenceCard { IsPersistent: true } && playLocation is PlayableCard pc)
+            if (Card is AInfluenceCard { IsPersistent: true } && playLocation is PlayableCard pc)
             {
                 OnPersistentPlayed(pc);
             }
