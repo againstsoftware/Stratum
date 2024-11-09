@@ -206,6 +206,15 @@ MonoBehaviour:
       tiene la carta."
     m_Metadata:
       m_Items: []
+  - m_Id: 13519502816571392
+    m_Localized: "Ra\xEDces Profundas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13519579794632704
+    m_Localized: Coloca esta carta sobre una carta de planta. Si muere, crece otra
+      carta de planta igual y esta carta se descarta.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

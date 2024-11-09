@@ -177,6 +177,14 @@ MonoBehaviour:
     m_Key: seeded_fruit_desc
     m_Metadata:
       m_Items: []
+  - m_Id: 13519502816571392
+    m_Key: deep_roots_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13519579794632704
+    m_Key: deep_roots_desc
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

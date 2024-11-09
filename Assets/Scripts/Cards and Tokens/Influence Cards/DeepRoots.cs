@@ -1,9 +1,7 @@
 
 using System.Linq;
-using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
-public class PesticideRC : AInfluenceCardRulesComponent
+public class DeepRoots : AInfluenceCard
 {
     protected override bool CheckInfluenceCardAction(PlayerAction action)
     {
@@ -25,16 +23,26 @@ public class PesticideRC : AInfluenceCardRulesComponent
         }
 
         var cardOwner = ServiceLocator.Get<IModel>().GetPlayer(receiver.LocationOwner);
-        var slotCards = cardOwner.Territory.Slots[receiver.Index].PlacedCards;
+        var cardOwnerPlacedCards = cardOwner.Territory.Slots[receiver.Index].PlacedCards;
 
-        if (receiver.SecondIndex < 0 || receiver.SecondIndex >= slotCards.Count)
+        if (receiver.SecondIndex < 0 || receiver.SecondIndex >= cardOwnerPlacedCards.Count)
         {
             return false;
         }
 
-        var card = slotCards[receiver.SecondIndex];
+        var card = cardOwnerPlacedCards[receiver.SecondIndex];
+
+        if (card.InfluenceCardOnTop is not null)
+        {
+            return false;
+        }
 
         if (!card.GetPopulations().Contains(Population.Plant))
+        {
+            return false;
+        }
+
+        if (!card.Card.CanHaveInfluenceCardOnTop)
         {
             return false;
         }

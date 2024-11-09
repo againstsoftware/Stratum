@@ -33,7 +33,7 @@ public static class EffectCommands
         Effect.GrowPlantEndOfAction => new GrowPlantEOA(),
         Effect.KillPlantEndOfAction => new KillPlantEOA(),
         Effect.ObserveSeededFruit => new ObserveSeededFruit(),
-        
+        Effect.ObserveDeepRoots => new ObserveDeepRoots(),
         
         _ => throw new ArgumentOutOfRangeException()
     };
@@ -467,6 +467,30 @@ public static class EffectCommands
             ServiceLocator.Get<IExecutor>().PushDelayedCommand(discard);
         }
     }
+    
+    public class ObserveDeepRoots : IEffectCommand
+    {
+        private TableCard _tableCardWherePlaced;
+        public void Execute(PlayerAction action, Action callback)
+        {
+            var slotOwner = action.Receivers[0].LocationOwner;
+            var slotIndex = action.Receivers[0].Index;
+            var cardIndex = action.Receivers[0].SecondIndex;
+            var territory = ServiceLocator.Get<IModel>().GetPlayer(slotOwner).Territory;
+            _tableCardWherePlaced = territory.Slots[slotIndex].PlacedCards[cardIndex];
+
+            _tableCardWherePlaced.OnSlotRemove += OnCardRemoved;
+            callback?.Invoke();
+        }
+
+        private void OnCardRemoved()
+        {
+            _tableCardWherePlaced.OnSlotRemove -= OnCardRemoved;
+            var growPlant = new DelayedGrowPlant(_tableCardWherePlaced.Card, _tableCardWherePlaced.Slot);
+            ServiceLocator.Get<IExecutor>().PushDelayedCommand(growPlant);
+        }
+    }
+
 
     public class DelayedDiscardPlayedInfluence : IEffectCommand
     {

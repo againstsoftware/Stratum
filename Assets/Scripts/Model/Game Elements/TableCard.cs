@@ -11,6 +11,8 @@ public class TableCard
     public bool HasRabids { get; internal set; }
 
     public bool IsOmnivore { get; set; }
+
+    public event Action OnSlotRemove;
     
     private PopulationCard _populationCard;
 
@@ -50,7 +52,7 @@ public class TableCard
     internal void OnRemove()
     {
         InfluenceCardOnTop?.OnRemove();
-        //...
+        OnSlotRemove?.Invoke();
     }
     
 }

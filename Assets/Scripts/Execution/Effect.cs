@@ -25,6 +25,7 @@ public enum Effect
     GrowPlant,
     GrowPlantEndOfAction,
     KillPlantEndOfAction,
-    ObserveSeededFruit
+    ObserveSeededFruit,
+    ObserveDeepRoots,
     
 }

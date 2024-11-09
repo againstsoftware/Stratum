@@ -33,7 +33,7 @@ public static class RulesCheck
             return false;
         }
 
-        return action.ActionItem.RulesComponent.CheckAction(action);
+        return action.ActionItem.CheckAction(action);
     }
 
 

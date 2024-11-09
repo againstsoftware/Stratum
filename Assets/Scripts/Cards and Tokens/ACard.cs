@@ -40,10 +40,29 @@ public abstract class ACard : AActionItem
         }
         return validActions;
     }
+    
+    public override bool CheckAction(PlayerAction action)
+    {
+        var p = ServiceLocator.Get<IModel>().GetPlayer(action.Actor);
+        if (!p.HandOfCards.Contains(this))
+        {
+            Debug.Log($"rechazada porque la carta no esta en la mano del model");
+            return false;
+        }
 
+        //si es accion de descarte
+        if (action.Receivers.Length == 1 && action.Receivers[0].Location is ValidDropLocation.DiscardPile)
+        {
+            var owner = action.Receivers[0].LocationOwner;
+            if (owner == action.Actor) return true;
+            Debug.Log("rechazada porque la pila de descarte no es del que jugo la carta!");
+            return false;
+        }
 
-    public override IRulesComponent RulesComponent => _cardRC;
+        return CheckCardAction(action);
 
-    protected abstract ACardRulesComponent _cardRC { get; }
+    }
+
+    protected virtual bool CheckCardAction(PlayerAction action) => false;
 
 }

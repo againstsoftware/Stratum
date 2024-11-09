@@ -16,7 +16,6 @@ public abstract class AToken : AActionItem
     [SerializeField] private Effect[] _effects;
     public override IEnumerable<ValidAction> GetValidActions() => ValidActions;
 
-    public abstract override IRulesComponent RulesComponent { get; }
     
 
 
