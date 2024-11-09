@@ -27,14 +27,9 @@ public class PlayableToken : APlayableItem, IRulebookEntry
 
     public void Play(IActionReceiver playLocation, Action onPlayedCallback)
     {
-        if (CurrentState is not State.Playable/* && IsOnPlayLocation(playLocation)*/)
+        if (CurrentState is not State.Playable)
         {
-            ReturnToHand(() =>
-            {
-                _actionCompletedCallback?.Invoke();
-                _actionCompletedCallback = null;
-                onPlayedCallback();
-            });
+            ReturnToHand(onPlayedCallback);
             return;
         }
 
@@ -43,12 +38,7 @@ public class PlayableToken : APlayableItem, IRulebookEntry
         {
             StartCoroutine(WaitAndDo(.5f, () =>
             {
-                ReturnToHand(() =>
-                {
-                    _actionCompletedCallback?.Invoke();
-                    _actionCompletedCallback = null;
-                    onPlayedCallback();
-                });
+                ReturnToHand(onPlayedCallback);
             }));
         });
     }

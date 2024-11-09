@@ -202,6 +202,16 @@ MonoBehaviour:
       a
     m_Metadata:
       m_Items: []
+  - m_Id: 13489380948439040
+    m_Localized: Seeded Fruit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13489467409821696
+    m_Localized: Lorem Ipsum is simply dummy text of printing presses and text files.
+      Lorem Ipsum has been the industries' standard dummy text since the 1500s, when
+      a
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

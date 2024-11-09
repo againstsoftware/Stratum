@@ -23,7 +23,6 @@ public class ViewPlayer : MonoBehaviour
 
     private PlayableCard _droppedCard;
 
-    private Action _influenceCardActionCompletedCallback;
     
     public void Initialize(PlayerCharacter character)
     {
@@ -62,7 +61,6 @@ public class ViewPlayer : MonoBehaviour
             playableCard = _droppedCard;
             if (card != playableCard.Card) throw new Exception("carta diferente en el view!!");
 
-            _influenceCardActionCompletedCallback = playableCard.GetActionCompletedCallback();
         }
         else
         {
@@ -82,13 +80,21 @@ public class ViewPlayer : MonoBehaviour
            
         }, false);
     }
-
-    public void DiscardCard(Action callback)
+    
+    public void DiscardCardFromHand(Action callback)
     {
         PlayableCard playableCard = IsLocalPlayer ? _droppedCard : Cards[0];
         playableCard.Play(DiscardPile, () =>
         {
             StartCoroutine(DestroyCard(playableCard.gameObject, callback));
+        });
+    }
+
+    public void DiscardInfluenceFromPopulation(PlayableCard influenceCard, Action callback)
+    {
+        influenceCard.Play(DiscardPile, () =>
+        {
+            StartCoroutine(DestroyCard(influenceCard.gameObject, callback));
         });
     }
 
@@ -101,14 +107,6 @@ public class ViewPlayer : MonoBehaviour
         newPlayableCard.Play(slot, callback);
     }
 
-
-    public void CallInfluenceCallback()
-    {
-        _influenceCardActionCompletedCallback?.Invoke();
-        _influenceCardActionCompletedCallback = null;
-    }
-
-
     public void PlaceInfluenceOnPopulation(AInfluenceCard influence, PlayableCard population, Action callback,
         bool isEndOfAction = false)
     {
@@ -119,7 +117,6 @@ public class ViewPlayer : MonoBehaviour
             playableCard = _droppedCard;
             if (influence != playableCard.Card) throw new Exception("carta diferente en el view!!");
 
-            _influenceCardActionCompletedCallback = playableCard.GetActionCompletedCallback();
         }
         else
         {

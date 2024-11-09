@@ -27,14 +27,8 @@ public class Deck : ScriptableObject
     }
     
     
-    //para cartas que NO esten en el mazo
-    public ACard Mushroom => _mushroom;
-    public ACard Macrofungi => _macrofungi;
-
     [SerializeField] private CardAmount[] Cards;
 
-    [SerializeField] private MushroomCard _mushroom;
-    [SerializeField] private MacrofungiCard _macrofungi;
     
     private int _size;
     private bool _initialized;

@@ -9,17 +9,17 @@ public static class RulesCheck
 
     public static bool CheckAction(PlayerAction action)
     {
-        Debug.Log($@"
-        recibida player action para checkear:
-        ------------------------------------------------
-        {action.Actor}
-        {action.ActionItem.name}
-        Receivers:
-        {string.Join("\n    ", action.Receivers
-            .Select(r => $"{r.Location} - {r.LocationOwner} ->idx: {r.Index} ->idx2: {r.SecondIndex}"))}
-        effects idx: {action.EffectsIndex}
-        ------------------------------------------------
-        ");
+        // Debug.Log($@"
+        // recibida player action para checkear:
+        // ------------------------------------------------
+        // {action.Actor}
+        // {action.ActionItem.name}
+        // Receivers:
+        // {string.Join("\n    ", action.Receivers
+        //     .Select(r => $"{r.Location} - {r.LocationOwner} ->idx: {r.Index} ->idx2: {r.SecondIndex}"))}
+        // effects idx: {action.EffectsIndex}
+        // ------------------------------------------------
+        // ");
 
         if (action.Actor is PlayerCharacter.None)
         {
@@ -34,58 +34,12 @@ public static class RulesCheck
         }
 
         return action.ActionItem.RulesComponent.CheckAction(action);
-
-        // switch (action.ActionItem)
-        // {
-        //     //carta
-        //     case ACard playedCard:
-        //     {
-        //         // tiene en la mano la carta
-        //         if (!ServiceLocator.Get<IModel>().GetPlayer(action.Actor).HandOfCards.Contains(playedCard))
-        //         {
-        //             Debug.Log($"rechazada porque la carta no esta en la mano del model");
-        //             return false;
-        //         }
-        //
-        //         //si es accion de descarte
-        //         if (action.Receivers.Length == 1 && action.Receivers[0].Location is ValidDropLocation.DiscardPile)
-        //         {
-        //             var owner = action.Receivers[0].LocationOwner;
-        //             if (owner == action.Actor) return true;
-        //             Debug.Log("rechazada porque la pila de descarte no es del que jugo la carta!");
-        //             return false;
-        //         }
-        //
-        //         if (playedCard is InfluenceCard) return CheckInfluenceCardAction(action);
-        //         else if (playedCard is PopulationCard) return CheckPopulationCardAction(action);
-        //         else return false;
-        //     }
-        //     case Token:
-        //     {
-        //         if (ServiceLocator.Get<IModel>().GetPlayer(action.Actor).TokenPlayed)
-        //         {
-        //             Debug.Log("rechazada porque ya jugo el token");
-        //             return false;
-        //         }
-        //
-        //         if (action.Actor is PlayerCharacter.Overlord)
-        //             return CheckConstructionAction(action);
-        //         if (action.Actor is PlayerCharacter.Fungaloth)
-        //             return CheckMacrofungiAction(action);
-        //         break;
-        //     }
-        //
-        //     default: return false;
-        // }
-        //
-        // return false;
     }
 
 
     public static IEnumerable<Effect> CheckEcosystem()
     {
-        // new EffectsList
-
+        Debug.Log("check ecosystem");
         IReadOnlyList<TableCard> plants = ServiceLocator.Get<IModel>().Ecosystem.Plants;
         IReadOnlyList<TableCard> herbivores = ServiceLocator.Get<IModel>().Ecosystem.Herbivores;
         IReadOnlyList<TableCard> carnivores = ServiceLocator.Get<IModel>().Ecosystem.Carnivores;

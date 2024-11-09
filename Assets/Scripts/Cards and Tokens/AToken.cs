@@ -4,7 +4,7 @@ using UnityEngine.Localization;
 using System.Collections.Generic;
 
 // [CreateAssetMenu(menuName = "Token")]
-public abstract class AToken : AActionItem, IEffectContainer
+public abstract class AToken : AActionItem
 {
     public string Name { get => _name.GetLocalizedString(); }
     public string Description { get => _description.GetLocalizedString(); }
@@ -17,11 +17,10 @@ public abstract class AToken : AActionItem, IEffectContainer
     public override IEnumerable<ValidAction> GetValidActions() => ValidActions;
 
     public abstract override IRulesComponent RulesComponent { get; }
-
     
 
 
-    public IEnumerable<Effect> GetEffects(int index)
+    public override IEnumerable<Effect> GetEffects(int index)
     {
         if (index != 0) throw new Exception($"token solo tiene 1 secuencia de efectos!!! no {index}!");
         return _effects;

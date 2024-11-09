@@ -81,7 +81,7 @@ public class ViewManager : MonoBehaviour, IView
     public void Discard(PlayerCharacter actor, Action callback)
     {
         var playerActor = _players[actor];
-        playerActor.DiscardCard(callback);
+        playerActor.DiscardCardFromHand(callback);
     }
 
     public void DrawCards(IReadOnlyDictionary<PlayerCharacter, IReadOnlyList<ACard>> cardsDrawn, Action callback)
@@ -94,7 +94,7 @@ public class ViewManager : MonoBehaviour, IView
         _cameraMovement.ChangeToOverview(callback);
     }
     
-    public void GrowPopulation(PlayerCharacter actor, CardLocation location, Population population, Action callback, bool isEndOfAction = false)
+    public void GrowPopulation(CardLocation location, Population population, Action callback, bool isEndOfAction = false)
     {
         var card = _config.GetPopulationCard(population);
         var playerOwner = _players[location.Owner];
@@ -106,11 +106,6 @@ public class ViewManager : MonoBehaviour, IView
         slot.AddCardOnTop(newPlayableCard);
         StartCoroutine(DelayCall(() =>
         {
-            if (isEndOfAction)
-            {
-                _players[actor].CallInfluenceCallback();
-            }
-
             callback?.Invoke();
         }, .5f)); //de prueba
     }
@@ -127,11 +122,6 @@ public class ViewManager : MonoBehaviour, IView
         slot.AddCardAtTheBottom(newPlayableCard);
         StartCoroutine(DelayCall(() =>
         {
-            if (isEndOfAction)
-            {
-                _players[actor].CallInfluenceCallback();
-            }
-
             callback?.Invoke();
         }, .5f)); //de prueba
     }
@@ -185,11 +175,7 @@ public class ViewManager : MonoBehaviour, IView
 
         card.Initialize(card.Card, to.Owner);
 
-        card.Play(targetSlot, () =>
-        {
-            playerActor.CallInfluenceCallback();
-            callback.Invoke();
-        });
+        card.Play(targetSlot, callback.Invoke);
     }
 
 
@@ -208,14 +194,12 @@ public class ViewManager : MonoBehaviour, IView
     public void GiveRabies(PlayerCharacter actor, CardLocation location, Action callback)
     {
         var playerActor = _players[actor];
-        playerActor.CallInfluenceCallback();
         callback?.Invoke();
     }
 
     public void MakeOmnivore(PlayerCharacter actor, CardLocation location, Action callback)
     {
         var playerActor = _players[actor];
-        playerActor.CallInfluenceCallback();
         callback?.Invoke();
     }
 
@@ -247,7 +231,6 @@ public class ViewManager : MonoBehaviour, IView
 
         StartCoroutine(DelayCall(() =>
         {
-            playerActor.CallInfluenceCallback();
             callback?.Invoke();
         }, 0.75f));
     }
@@ -262,9 +245,17 @@ public class ViewManager : MonoBehaviour, IView
         DestroyCard(card, slot);
         StartCoroutine(DelayCall(() =>
         {
-            if(isEndOfAction) playerActor.CallInfluenceCallback();
             callback?.Invoke();
         }, .5f)); //de prueba
+    }
+
+    public void DiscardInfluenceFromPopulation(CardLocation location, Action callback)
+    {
+        var playerOwner = _players[location.Owner];
+        var slot = playerOwner.Territory.Slots[location.SlotIndex];
+        var populationCard = slot.Cards[location.CardIndex];
+        var influenceCard = populationCard.InfluenceCardOnTop;
+        playerOwner.DiscardInfluenceFromPopulation(influenceCard, callback);
     }
     
     

@@ -196,6 +196,16 @@ MonoBehaviour:
     m_Localized: "Muere una carta de planta de tu elecci\xF3n."
     m_Metadata:
       m_Items: []
+  - m_Id: 13489380948439040
+    m_Localized: Fruta con Semillas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13489467409821696
+    m_Localized: "Coloca esta carta sobre una carta de planta. Si una carta de herb\xEDvoro
+      o carn\xEDvoro de ese territorio crece, otra planta crecer\xE1 sobre la que
+      tiene la carta."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

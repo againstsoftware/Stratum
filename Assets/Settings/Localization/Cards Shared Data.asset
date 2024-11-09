@@ -169,6 +169,14 @@ MonoBehaviour:
     m_Key: pesticide_desc
     m_Metadata:
       m_Items: []
+  - m_Id: 13489380948439040
+    m_Key: seeded_fruit_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13489467409821696
+    m_Key: seeded_fruit_desc
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

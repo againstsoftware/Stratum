@@ -10,7 +10,7 @@ public class GameInitializer : MonoBehaviour
     [SerializeField] private bool _isTestScene;
     private void Awake()
     {
-        var gameModel = new GameModel(_config.TurnOrder[0], _decks);
+        var gameModel = new GameModel(_config, _decks);
         
         ServiceLocator.Register<IModel>(gameModel);
         
@@ -27,7 +27,6 @@ public class GameInitializer : MonoBehaviour
         if(_isTestScene)  ServiceLocator.Register<ICommunicationSystem>(FindAnyObjectByType<TestModeCommunications>());
         else ServiceLocator.Register<ICommunicationSystem>(FindAnyObjectByType<GameNetwork>());
 
-        EffectCommands.Config = _config;
     }
 
     private IEnumerator Start()

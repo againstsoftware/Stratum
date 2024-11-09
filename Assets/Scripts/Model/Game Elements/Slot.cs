@@ -8,7 +8,7 @@ public class Slot
     private readonly List<TableCard> _placedCards = new();
 
 
-    public Slot(Territory territory, int slotIndexInTerritory)
+    internal Slot(Territory territory, int slotIndexInTerritory)
     {
         Territory = territory;
         SlotIndexInTerritory = slotIndexInTerritory;   

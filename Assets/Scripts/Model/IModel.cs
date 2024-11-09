@@ -8,34 +8,45 @@ public interface IModel : IService
     
     public Ecosystem Ecosystem { get; }
     
-    
+    public GameConfig Config { get; }
     public Player GetPlayer(PlayerCharacter character);
 
 
-    public event Action<TableCard> OnPopulationGrow;
+    public event Action<TableCard, TableCard> OnPopulationGrow;
     public event Action<TableCard> OnPopulationDie;
 
     public void RemoveCardFromHand(PlayerCharacter player, ACard card);
     public void PlaceCardOnSlot(ACard card, PlayerCharacter slotOwner, int slotIndex, bool atTheBottom = false);
-    public (TableCard parent, TableCard son) GrowLastPlacedPopulation(Population population);
+    public void PlaceCardOnSlot(ACard card, Slot slot, bool atTheBottom = false);
+
+    public void GrowLastPlacedPopulation(Population population, out TableCard parent, out TableCard child);
+    public void GrowPopulation(TableCard parent, out TableCard child);
     public TableCard KillLastPlacedPopulation(Population population);
 
-    public TableCard GrowMushroom();
+    public TableCard GrowMushroomOverLastDeadPopulation();
     public TableCard GrowMushroom(PlayerCharacter slotOwner, int slotIndex);
+    public TableCard GrowMushroom(Slot slot);
     
     public void PlaceInlfuenceCardOnCard(ACard influenceCard, PlayerCharacter slotOwner,
         int slotIndex, int cardIndex);
 
+    public void PlaceInlfuenceCardOnCard(ACard influenceCard, TableCard tableCard);
+
     public void MoveCardBetweenSlots(PlayerCharacter slotOwner, int slotIndex, int cardIndex,
         PlayerCharacter targetSlotOwner, int targetSlotIndex);
 
-    public void RemoveCardFromSlot(/*ACard card, */PlayerCharacter slotOwner, int slotIndex, int cardIndex);
+    public void MoveCardBetweenSlots(TableCard card, Slot target);
 
-    public void RemoveInfluenceCardFromCard(ACard influenceCard, ACard card, PlayerCharacter slotOwner,
-        int slotIndex, int cardIndex);
+    public void RemoveCardFromSlot(/*ACard card, */PlayerCharacter slotOwner, int slotIndex, int cardIndex);
+    public void RemoveCardFromSlot(TableCard card);
+
+    public void RemoveInfluenceCardFromCard(ACard card, PlayerCharacter slotOwner, int slotIndex, int cardIndex);
+    public void RemoveInfluenceCardFromCard(TableCard card);
+
 
     //el filtro debe dar true para las cartas que se quieran salvar de eliminar
     public void RemoveCardsFromSlot(PlayerCharacter slotOwner, int slotIndex, Predicate<TableCard> filter = null);
+    public void RemoveCardsFromSlot(Slot slot, Predicate<TableCard> filter = null);
 
     //el filtro debe dar true para las cartas que se quieran salvar de eliminar
     public void RemoveCardsFromTerritory(PlayerCharacter owner, Predicate<TableCard> filter = null);

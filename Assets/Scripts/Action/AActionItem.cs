@@ -8,5 +8,7 @@ public abstract class AActionItem : ScriptableObject
     public abstract IEnumerable<ValidAction> GetValidActions();
     
     public abstract IRulesComponent RulesComponent { get; }
+    
+    public abstract IEnumerable<Effect> GetEffects(int index);
 
 }

@@ -11,12 +11,13 @@ public class TableCard
     public bool HasRabids { get; internal set; }
 
     public bool IsOmnivore { get; set; }
-
+    
     private PopulationCard _populationCard;
+
 
     public IEnumerable<Population> GetPopulations()
     {
-        if (_populationCard is null) return new[]{Population.None};
+        if (_populationCard is null) return new[] { Population.None };
         return IsOmnivore
             ? new[] { Population.Carnivore, Population.Herbivore }
             : new[] { _populationCard.PopulationType };
@@ -35,7 +36,7 @@ public class TableCard
         InfluenceCardOnTop?.AdvanceTurn();
     }
 
-    internal void PlaceInlfuenceCard(ACard card)
+    internal void PlaceInfluenceCard(ACard card)
     {
         InfluenceCardOnTop = new TableCard(card);
     }
@@ -51,4 +52,5 @@ public class TableCard
         InfluenceCardOnTop?.OnRemove();
         //...
     }
+    
 }

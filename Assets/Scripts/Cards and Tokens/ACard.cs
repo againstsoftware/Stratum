@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Localization;
 using System.Collections.Generic;
 
-public abstract class ACard : AActionItem, IEffectContainer
+public abstract class ACard : AActionItem
 {
     public string Name { get => _name.GetLocalizedString(); }
     public string Description { get => _description.GetLocalizedString(); }
@@ -26,7 +26,7 @@ public abstract class ACard : AActionItem, IEffectContainer
     [SerializeField] private ActionEffect[] _actionEffects;
 
 
-    public IEnumerable<Effect> GetEffects(int index) => _actionEffects[index].Effects;
+    public override IEnumerable<Effect> GetEffects(int index) => _actionEffects[index].Effects;
     
 
     public override IEnumerable<ValidAction> GetValidActions()
@@ -45,4 +45,5 @@ public abstract class ACard : AActionItem, IEffectContainer
     public override IRulesComponent RulesComponent => _cardRC;
 
     protected abstract ACardRulesComponent _cardRC { get; }
+
 }

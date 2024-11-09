@@ -73,7 +73,7 @@ public class RulesManager : MonoBehaviour, IRulesSystem
     //estos metodos se llaman en medio de la ejecucion de efectos del turno del ecosistema
     //o cuando por una carta de inlfuencia, muere o crece una poblacion en cualquier momento
     //comprueban si la carta de poblacion respectiva tiene un efecto al crecer/morir que se deba empujar a la cola
-    private void OnPopulationGrow(TableCard tableCard)
+    private void OnPopulationGrow(TableCard parent, TableCard child)
     {
     }
 

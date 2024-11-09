@@ -24,7 +24,7 @@ public interface IView : IService
     public void DrawCards(IReadOnlyDictionary<PlayerCharacter, IReadOnlyList<ACard>> cardsDrawn, Action callback);
     public void SwitchCamToOverview(Action callback);
 
-    public void GrowPopulation(PlayerCharacter actor, CardLocation location, Population population,
+    public void GrowPopulation(CardLocation location, Population population,
         Action callback, bool isEndOfAction = false);
     public void GrowMushroom(PlayerCharacter actor, CardLocation location, Action callback, bool isEndOfAction = false);
 
@@ -48,4 +48,6 @@ public interface IView : IService
         Predicate<ACard> filter = null);
 
     public void KillPopulation(PlayerCharacter actor, CardLocation location, Action callback, bool isEndOfAction = false);
+
+    public void DiscardInfluenceFromPopulation(CardLocation location, Action callback);
 }
