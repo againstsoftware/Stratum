@@ -222,7 +222,7 @@ El macrohongo no puede ser destruido por cartas de influencia, a menos que la de
 #### Ygdra
 - **Incendio Forestal:** Elige un territorio. Todas las cartas de población, hongo y macrohongo en ese territorio mueren. Si hay una construcción, también se destruye.
 - **Fruta con semillas:** Coloca esta carta sobre una carta de planta. Si una carta de herbívoro o carnívoro de ese territorio crece, otra planta crecerá sobre la que tiene la carta.
-- **Mala hierba nunca muere:** Coloca esta carta sobre una carta de planta. Si muere, crece otra carta de planta igual y esta carta se descarta.
+- **Raíces Profundas:** Coloca esta carta sobre una carta de planta. Si muere, crece otra carta de planta igual y esta carta se descarta.
 - **Fragancia de feromonas:** Elige una carta de herbívoro o carnívoro de otro territorio y muévela a un espacio vacío en tu territorio.
 - **Hiedra Verde:** Coloca esta carta sobre una carta de planta. Si la carta de planta permanece una ronda completa en un territorio con construcción, la construcción se destruye y esta carta se descarta.
 
@@ -230,7 +230,7 @@ El macrohongo no puede ser destruido por cartas de influencia, a menos que la de
 - **Hibernación:** Coloca esta carta sobre una carta de herbívoro. Esta carta no podrá morir ni crecer por las reglas del ecosistema.
 - **Rabia:** Coloca esta carta sobre una carta de herbívoro. Mientras no muera, El Magnate no podrá construir en el territorio donde esté.
 - **Migración:** Elige una carta de carnívoro o herbívoro de tu territorio y muévela a un espacio vacío en otro territorio.
-- **Omnívoro:** Coloca esta carta sobre una carta de carnívoro. A partir de ahora, esta carta contará tanto como carnívoro como herbívoro.
+- **Omnívoro[NO]:** Coloca esta carta sobre una carta de carnívoro. A partir de ahora, esta carta contará tanto como carnívoro como herbívoro.
 - **Depredador de setas:** Coloca esta carta sobre una carta de herbívoro. Mientras no muera, al final de la ronda morirá la carta de hongo más reciente que haya en su territorio.
 
 
