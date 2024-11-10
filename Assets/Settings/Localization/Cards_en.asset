@@ -232,6 +232,16 @@ MonoBehaviour:
       a
     m_Metadata:
       m_Items: []
+  - m_Id: 13873805741780992
+    m_Localized: Mushroom Predator
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13873873236520960
+    m_Localized: Lorem Ipsum is simply dummy text of printing presses and text files.
+      Lorem Ipsum has been the industries' standard dummy text since the 1500s, when
+      a
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -225,6 +225,16 @@ MonoBehaviour:
       y descarta esta carta de la planta."
     m_Metadata:
       m_Items: []
+  - m_Id: 13873805741780992
+    m_Localized: Depredador de Setas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13873873236520960
+    m_Localized: "Coloca esta carta sobre una carta de herb\xEDvoro. Mientras no
+      muera, al final de la ronda morir\xE1 la carta de hongo m\xE1s reciente que
+      haya en su territorio."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

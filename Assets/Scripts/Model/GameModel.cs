@@ -51,6 +51,7 @@ public class GameModel : IModel
     {
         var tableCard = slot.PlaceCard(card, atTheBottom);
         if (card is PopulationCard) Ecosystem.OnPopulationCardPlace(tableCard);
+        else if(card is MushroomCard) Ecosystem.OnMushroomCardPlace(tableCard);
     }
 
     public void GrowLastPlacedPopulation(Population population, out TableCard parent, out TableCard child)
@@ -168,6 +169,7 @@ public class GameModel : IModel
             Ecosystem.OnPopulationCardDie(tableCard);
             OnPopulationDie?.Invoke(tableCard);
         }
+        else if(tableCard.Card is MushroomCard) Ecosystem.OnMushroomCardDie(tableCard);
     }
 
     public void RemoveInfluenceCardFromCard(ACard card, PlayerCharacter slotOwner, int slotIndex, int cardIndex)
@@ -284,6 +286,32 @@ public class GameModel : IModel
         var card = ownerPlayer.Territory.Slots[slotIndex].PlacedCards[cardIndex];
 
         card.IsOmnivore = true;
+    }
+
+    public TableCard GetLastMushroomInTerritory(PlayerCharacter owner)
+    {
+        var mushrooms = new List<TableCard>();
+        var ownerPlayer = _players[owner];
+        
+        foreach (var slot in ownerPlayer.Territory.Slots)
+        {
+            foreach (var tableCard in slot.PlacedCards)
+            {
+                if (tableCard.Card is not MushroomCard) continue;
+
+                mushrooms.Add(tableCard);
+            }
+        }
+
+        if (mushrooms.Count == 0) return null;
+        else if (mushrooms.Count == 1) return mushrooms[0];
+
+        //esto hace que las setas se ordenen de mas vieja a mas nueva jugada
+        var ecosystemMushrooms = new List<TableCard>(Ecosystem.Mushrooms);
+        mushrooms.Sort((x, y) => mushrooms.FindIndex(card => card == x).CompareTo(
+            ecosystemMushrooms.FindIndex(card => card == y)));
+
+        return mushrooms[^1]; //ultimo elemento
     }
 
 

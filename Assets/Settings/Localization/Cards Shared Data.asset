@@ -193,6 +193,14 @@ MonoBehaviour:
     m_Key: green_ivy_desc
     m_Metadata:
       m_Items: []
+  - m_Id: 13873805741780992
+    m_Key: m_predator_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13873873236520960
+    m_Key: m_predator_desc
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

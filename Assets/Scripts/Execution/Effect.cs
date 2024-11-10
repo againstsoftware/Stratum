@@ -11,7 +11,7 @@ public enum Effect
     OverviewSwitch,
     GrowMushroomEcosystem,
     GrowMacrofungi,
-    Construct,
+    PlaceConstruction,
     PlaceInitialCards,
     PlayAndDiscardInfluenceCard,
     MovePopulationToEmptySlot,
@@ -28,5 +28,6 @@ public enum Effect
     ObserveSeededFruit,
     ObserveDeepRoots,
     ObserveGreenIvy,
+    ObserveMushroomPredator,
     
 }

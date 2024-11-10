@@ -57,7 +57,7 @@ public interface IModel : IService
     
     public void GiveRabies(PlayerCharacter slotOwner, int slotIndex, int cardIndex);
     public void MakeOmnivore(PlayerCharacter slotOwner, int slotIndex, int cardIndex);
-    
+    public TableCard GetLastMushroomInTerritory(PlayerCharacter owner);
     
     public void AdvanceTurn(PlayerCharacter playerOnTurn);
 

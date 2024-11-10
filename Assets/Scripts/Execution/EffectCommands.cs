@@ -21,7 +21,7 @@ public static class EffectCommands
         Effect.GrowMushroom => new GrowMushroom(),
         Effect.GrowMushroomEndOfAction => new GrowMushroomEOA(),
         Effect.GrowMacrofungi => new GrowMacrofungi(),
-        Effect.Construct => new Construct(),
+        Effect.PlaceConstruction => new PlaceConstruction(),
         Effect.PlayAndDiscardInfluenceCard => new PlayAndDiscardInfluenceCard(),
         Effect.MovePopulationToEmptySlot => new MovePopulationToEmptySlot(),
         Effect.PlaceInfluenceOnPopulation => new PlaceInfluenceOnPopulation(),
@@ -35,6 +35,7 @@ public static class EffectCommands
         Effect.ObserveSeededFruit => new ObserveSeededFruit(),
         Effect.ObserveDeepRoots => new ObserveDeepRoots(),
         Effect.ObserveGreenIvy => new ObserveGreenIvy(),
+        Effect.ObserveMushroomPredator => new ObserveMushroomPredator(),
         
         _ => throw new ArgumentOutOfRangeException()
     };
@@ -220,7 +221,7 @@ public static class EffectCommands
         }
     }
 
-    public class Construct : IEffectCommand
+    public class PlaceConstruction : IEffectCommand
     {
         public void Execute(PlayerAction action, Action callback)
         {
@@ -436,7 +437,7 @@ public static class EffectCommands
                 SlotIndex = slotIndex,
                 CardIndex = cardIndex
             };
-            ServiceLocator.Get<IView>().KillPopulation(action.Actor, location, callback, true);
+            ServiceLocator.Get<IView>().KillPlacedCard(location, callback/*, true*/);
         }
     }
 
@@ -530,6 +531,43 @@ public static class EffectCommands
             return new IEffectCommand[] { discard, destroyConstruction };
         }
     }
+    
+    public class ObserveMushroomPredator : IEffectCommand, IRoundEndObserver
+    {
+        private TableCard _tableCardWherePlaced;
+        private Territory _territory;
+        public void Execute(PlayerAction action, Action callback)
+        {
+            var slotOwner = action.Receivers[0].LocationOwner;
+            var slotIndex = action.Receivers[0].Index;
+            var cardIndex = action.Receivers[0].SecondIndex;
+            _territory = ServiceLocator.Get<IModel>().GetPlayer(slotOwner).Territory;
+            _tableCardWherePlaced = _territory.Slots[slotIndex].PlacedCards[cardIndex];
+            
+            _tableCardWherePlaced.OnSlotRemove += OnCardRemoved;
+            ServiceLocator.Get<IRulesSystem>().RegisterRoundEndObserver(this);
+            
+            callback?.Invoke();
+        }
+        
+        private void OnCardRemoved()
+        {
+            Debug.Log("depresetas quitado");
+            _tableCardWherePlaced.OnSlotRemove -= OnCardRemoved;
+            ServiceLocator.Get<IRulesSystem>().RemoveRoundEndObserver(this);
+        }
+
+        public IEnumerable<IEffectCommand> GetRoundEndEffects()
+        {
+            var lastMushroom = ServiceLocator.Get<IModel>().GetLastMushroomInTerritory(_territory.Owner);
+            if (lastMushroom is null) return new IEffectCommand[] {};
+            
+            
+            //a lo mejor renta antes un efectillo visual
+            var killMushroom = new DelayedKillMushroom(lastMushroom);
+            return new IEffectCommand[] { killMushroom };
+        }
+    }
 
 
     public class DelayedDiscardPlayedInfluence : IEffectCommand
@@ -587,6 +625,26 @@ public static class EffectCommands
         {
             ServiceLocator.Get<IModel>().RemoveConstruction(_territory.Owner);
             ServiceLocator.Get<IView>().DestroyConstruction(_territory.Owner, callback);
+        }
+    }
+    
+    public class DelayedKillMushroom : IEffectCommand
+    {
+        private TableCard _mushroom;
+        public DelayedKillMushroom(TableCard mushroom)
+        {
+            _mushroom = mushroom;
+        }
+        public void Execute(PlayerAction _, Action callback)
+        {
+            ServiceLocator.Get<IModel>().RemoveCardFromSlot(_mushroom);
+            var location = new IView.CardLocation
+            {
+                Owner = _mushroom.Slot.Territory.Owner,
+                SlotIndex = _mushroom.Slot.SlotIndexInTerritory,
+                CardIndex = _mushroom.IndexInSlot
+            };
+            ServiceLocator.Get<IView>().KillPlacedCard(location, callback);
         }
     }
 }

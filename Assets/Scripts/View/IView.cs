@@ -48,7 +48,7 @@ public interface IView : IService
         Predicate<ACard> filter = null);
 
     public void DestroyConstruction(PlayerCharacter territoryOwner, Action callback);
-    public void KillPopulation(PlayerCharacter actor, CardLocation location, Action callback, bool isEndOfAction = false);
+    public void KillPlacedCard(CardLocation location, Action callback);
 
     public void DiscardInfluenceFromPopulation(CardLocation location, Action callback);
 }
