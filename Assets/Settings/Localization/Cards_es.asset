@@ -215,6 +215,16 @@ MonoBehaviour:
       carta de planta igual y esta carta se descarta.
     m_Metadata:
       m_Items: []
+  - m_Id: 13861355944407040
+    m_Localized: Hiedra Verde
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13861413955825664
+    m_Localized: "Coloca esta carta sobre una carta de planta. Al final de la ronda,
+      si hay una construcci\xF3n en su territorio, se destruye la construcci\xF3n
+      y descarta esta carta de la planta."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -185,6 +185,14 @@ MonoBehaviour:
     m_Key: deep_roots_desc
     m_Metadata:
       m_Items: []
+  - m_Id: 13861355944407040
+    m_Key: green_ivy_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13861413955825664
+    m_Key: green_ivy_desc
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

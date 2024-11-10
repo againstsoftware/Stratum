@@ -182,9 +182,9 @@ public class GameModel : IModel
         RemoveInfluenceCardFromCard(tableCard);
     }
 
-    public void RemoveInfluenceCardFromCard(TableCard card)
+    public void RemoveInfluenceCardFromCard(TableCard cardWherePlaced)
     {
-        card.RemoveInfluenceCard();
+        cardWherePlaced.RemoveInfluenceCard();
     }
 
     //el filtro debe dar true para las cartas que se quieran salvar de eliminar

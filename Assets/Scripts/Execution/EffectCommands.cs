@@ -34,6 +34,7 @@ public static class EffectCommands
         Effect.KillPlantEndOfAction => new KillPlantEOA(),
         Effect.ObserveSeededFruit => new ObserveSeededFruit(),
         Effect.ObserveDeepRoots => new ObserveDeepRoots(),
+        Effect.ObserveGreenIvy => new ObserveGreenIvy(),
         
         _ => throw new ArgumentOutOfRangeException()
     };
@@ -490,14 +491,53 @@ public static class EffectCommands
             ServiceLocator.Get<IExecutor>().PushDelayedCommand(growPlant);
         }
     }
+    
+    
+    public class ObserveGreenIvy : IEffectCommand, IRoundEndObserver
+    {
+        private TableCard _tableCardWherePlaced;
+        private Territory _territory;
+        public void Execute(PlayerAction action, Action callback)
+        {
+            var slotOwner = action.Receivers[0].LocationOwner;
+            var slotIndex = action.Receivers[0].Index;
+            var cardIndex = action.Receivers[0].SecondIndex;
+            _territory = ServiceLocator.Get<IModel>().GetPlayer(slotOwner).Territory;
+            _tableCardWherePlaced = _territory.Slots[slotIndex].PlacedCards[cardIndex];
+            
+            _tableCardWherePlaced.OnSlotRemove += OnCardRemoved;
+            ServiceLocator.Get<IRulesSystem>().RegisterRoundEndObserver(this);
+            
+            callback?.Invoke();
+        }
+
+        private void OnCardRemoved()
+        {
+            Debug.Log("hiedraverde quitado");
+            _tableCardWherePlaced.OnSlotRemove -= OnCardRemoved;
+            ServiceLocator.Get<IRulesSystem>().RemoveRoundEndObserver(this);
+        }
+
+        public IEnumerable<IEffectCommand> GetRoundEndEffects()
+        {
+            if (!_territory.HasConstruction) return new IEffectCommand[] {};
+            
+            _tableCardWherePlaced.OnSlotRemove -= OnCardRemoved;
+            ServiceLocator.Get<IRulesSystem>().RemoveRoundEndObserver(this);
+
+            var discard = new DelayedDiscardPlayedInfluence(_tableCardWherePlaced);
+            var destroyConstruction = new DelayedDestroyConstruction(_territory);
+            return new IEffectCommand[] { discard, destroyConstruction };
+        }
+    }
 
 
     public class DelayedDiscardPlayedInfluence : IEffectCommand
     {
         private TableCard _tableCardWherePlaced;
-        public DelayedDiscardPlayedInfluence(TableCard tableCard)
+        public DelayedDiscardPlayedInfluence(TableCard tableCardWherePlaced)
         {
-            _tableCardWherePlaced = tableCard;
+            _tableCardWherePlaced = tableCardWherePlaced;
         }
         public void Execute(PlayerAction _, Action callback)
         {
@@ -533,6 +573,20 @@ public static class EffectCommands
             };
 
             ServiceLocator.Get<IView>().GrowPopulation(location, Population.Plant, callback);
+        }
+    }
+    
+    public class DelayedDestroyConstruction : IEffectCommand
+    {
+        private Territory _territory;
+        public DelayedDestroyConstruction(Territory territory)
+        {
+            _territory = territory;
+        }
+        public void Execute(PlayerAction _, Action callback)
+        {
+            ServiceLocator.Get<IModel>().RemoveConstruction(_territory.Owner);
+            ServiceLocator.Get<IView>().DestroyConstruction(_territory.Owner, callback);
         }
     }
 }

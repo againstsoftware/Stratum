@@ -41,7 +41,7 @@ public interface IModel : IService
     public void RemoveCardFromSlot(TableCard card);
 
     public void RemoveInfluenceCardFromCard(ACard card, PlayerCharacter slotOwner, int slotIndex, int cardIndex);
-    public void RemoveInfluenceCardFromCard(TableCard card);
+    public void RemoveInfluenceCardFromCard(TableCard cardWherePlaced);
 
 
     //el filtro debe dar true para las cartas que se quieran salvar de eliminar

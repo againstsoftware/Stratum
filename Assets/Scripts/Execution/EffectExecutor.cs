@@ -32,6 +32,14 @@ public class EffectExecutor : IExecutor
         TryExecuteNextCommand();
     }
 
+    public void ExecuteRulesEffects(IEnumerable<IEffectCommand> commands, Action rulesCallback)
+    {
+        _commandDEQueue = new();
+        _rulesCallback = rulesCallback;
+        foreach (var c in commands) EnqueueCommand(c);
+        TryExecuteNextCommand();
+    }
+
     private void UpdatePlayedCardsInModel(PlayerAction action)
     {
         if (action.ActionItem is AToken)

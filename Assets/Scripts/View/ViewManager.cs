@@ -227,8 +227,21 @@ public class ViewManager : MonoBehaviour, IView
 
 
         if (playerOwner.Territory.HasConstruction)
-            playerOwner.Territory.DestroyConstruction();
+        {
+            DestroyConstruction(territoryOwner, callback);
+            return;
+        }
 
+        StartCoroutine(DelayCall(() =>
+        {
+            callback?.Invoke();
+        }, 0.75f));
+    }
+
+    public void DestroyConstruction(PlayerCharacter territoryOwner, Action callback)
+    {
+        var playerOwner = _players[territoryOwner];
+        playerOwner.Territory.DestroyConstruction();
         StartCoroutine(DelayCall(() =>
         {
             callback?.Invoke();

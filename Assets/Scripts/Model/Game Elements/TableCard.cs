@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class TableCard
 {
@@ -35,6 +36,7 @@ public class TableCard
     internal void AdvanceTurn()
     {
         TurnsAlive++;
+        if(Card is PopulationCard p && p.PopulationType is Population.Carnivore) Debug.Log($"turnos: {TurnsAlive}");
         InfluenceCardOnTop?.AdvanceTurn();
     }
 
