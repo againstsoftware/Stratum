@@ -224,7 +224,7 @@ El macrohongo no puede ser destruido por cartas de influencia, a menos que la de
 - **Fruta con semillas:** Coloca esta carta sobre una carta de planta. Si una carta de herbívoro o carnívoro de ese territorio crece, otra planta crecerá sobre la que tiene la carta.
 - **Raíces Profundas:** Coloca esta carta sobre una carta de planta. Si muere, crece otra carta de planta igual y esta carta se descarta.
 - **Fragancia de feromonas:** Elige una carta de herbívoro o carnívoro de otro territorio y muévela a un espacio vacío en tu territorio.
-- **Hiedra Verde:** Hiedra Verde: Coloca esta carta sobre una carta de planta. Al final de la ronda, si hay una construcción en su territorio, se destruye la construcción y descarta esta carta de la planta.
+- **Hiedra Verde:** Coloca esta carta sobre una carta de planta. Al final de la ronda, si hay una construcción en su territorio, se destruye la construcción y descarta esta carta de la planta.
 
 
 #### Sagitario
