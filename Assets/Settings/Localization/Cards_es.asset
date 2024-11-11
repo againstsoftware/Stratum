@@ -196,6 +196,72 @@ MonoBehaviour:
     m_Localized: "Muere una carta de planta de tu elecci\xF3n."
     m_Metadata:
       m_Items: []
+  - m_Id: 13489380948439040
+    m_Localized: Fruta con Semillas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13489467409821696
+    m_Localized: "Coloca esta carta sobre una carta de planta. Si una carta de herb\xEDvoro
+      o carn\xEDvoro de ese territorio crece, otra planta crecer\xE1 sobre la que
+      tiene la carta."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13519502816571392
+    m_Localized: "Ra\xEDces Profundas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13519579794632704
+    m_Localized: Coloca esta carta sobre una carta de planta. Si muere, crece otra
+      carta de planta igual y esta carta se descarta.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13861355944407040
+    m_Localized: Hiedra Verde
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13861413955825664
+    m_Localized: "Coloca esta carta sobre una carta de planta. Al final de la ronda,
+      si hay una construcci\xF3n en su territorio, se destruye la construcci\xF3n
+      y descarta esta carta de la planta."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13873805741780992
+    m_Localized: Depredador de Setas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13873873236520960
+    m_Localized: "Coloca esta carta sobre una carta de herb\xEDvoro. Mientras no
+      muera, al final de la ronda morir\xE1 la carta de hongo m\xE1s reciente que
+      haya en su territorio."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14230410446499840
+    m_Localized: Cazador
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14230454235033600
+    m_Localized: "Muere una carta de herb\xEDvoro o carn\xEDvoro de tu elecci\xF3n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14234738599129088
+    m_Localized: "Muere una carta de planta de tu elecci\xF3n. Crece un hongo en
+      su espacio de territorio."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14234440090513408
+    m_Localized: "Putrefacci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14240044267859968
+    m_Localized: "Par\xE1sito"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14240136920035328
+    m_Localized: "Coloca esta carta sobre una carta de herb\xEDvoro o carn\xEDvoro.
+      Si la carta crece, aparece un hongo en su espacio de territorio y esta carta
+      se descarta."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

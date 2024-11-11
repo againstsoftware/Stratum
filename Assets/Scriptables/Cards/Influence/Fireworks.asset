@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64f9f456e9a64fe2ad5ef38828970525, type: 3}
+  m_Script: {fileID: 11500000, guid: 9af378cbe8694104b4d3300955005e73, type: 3}
   m_Name: Fireworks
   m_EditorClassIdentifier: 
   <ObverseTex>k__BackingField: {fileID: 2800000, guid: c49a4ae38708ef0408a198f45db258e0,

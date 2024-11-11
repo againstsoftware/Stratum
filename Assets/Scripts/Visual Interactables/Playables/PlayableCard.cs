@@ -20,6 +20,7 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
 
     public SlotReceiver SlotWherePlaced { get; private set; }
     public PlayableCard CardWherePlaced { get; private set; }
+    public PlayableCard InfluenceCardOnTop { get; private set; }
 
     public Action<PlayableCard> OnCardPlayed;
 
@@ -44,21 +45,19 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     {
         OnCardPlayed?.Invoke(this);
 
-        bool isAlreadyPlayed = CurrentState is not State.Playable &&
-                               (IsOnPlayLocation(playLocation) /* || Card is InfluenceCard*/);
+        bool isAlreadyPlayed = CurrentState is not State.Playable && IsOnPlayLocation(playLocation);
 
         if (isAlreadyPlayed)
         {
-            if (Card is InfluenceCard { IsPersistent: true } && playLocation is PlayableCard pc)
+            if (Card is AInfluenceCard { IsPersistent: true })
             {
-                OnPersistentPlayed(pc);
+                if(playLocation is PlayableCard pc) OnPersistentPlayed(pc);
+                else if(playLocation is DiscardPileReceiver) OnPersistendDiscarded();
             }
 
             if (isEndOfAction)
             {
                 if (Card is PopulationCard) OnPopulationPlayed(playLocation);
-                _actionCompletedCallback?.Invoke();
-                _actionCompletedCallback = null;
             }
 
             onPlayedCallback();
@@ -68,16 +67,15 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
         //no se ha jugado visualmente a la mesa
         Travel(playLocation.GetSnapTransform(Owner), _playTravelDuration, State.Played, () =>
         {
-            if (Card is InfluenceCard { IsPersistent: true } && playLocation is PlayableCard pc)
+            if (Card is AInfluenceCard { IsPersistent: true })
             {
-                OnPersistentPlayed(pc);
+                if(playLocation is PlayableCard pc) OnPersistentPlayed(pc);
+                else if(playLocation is DiscardPileReceiver) OnPersistendDiscarded();
             }
 
             if (isEndOfAction)
             {
                 if (Card is PopulationCard) OnPopulationPlayed(playLocation);
-                _actionCompletedCallback?.Invoke();
-                _actionCompletedCallback = null;
             }
 
             onPlayedCallback();
@@ -85,7 +83,6 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     }
 
     //PARA CARTAS DE INFLUENCIA QUE SON DESTRUIDAS ANTES DE REPORTART EL CALLBACK DE FIN DE ACCION
-    public Action GetActionCompletedCallback() => _actionCompletedCallback;
 
 
     private void OnPopulationPlayed(IActionReceiver playLocation)
@@ -112,6 +109,14 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
         _canInteractWithoutOwnership = true;
         transform.parent = cardWherePlaced.transform;
         CardWherePlaced = cardWherePlaced;
+        CardWherePlaced.AddInfluenceCardOnTop(this);
+    }
+
+    private void OnPersistendDiscarded()
+    {
+        transform.parent = null;
+        if(CardWherePlaced is not null) CardWherePlaced.RemoveInfluenceCardOnTop();
+        CardWherePlaced = null;
     }
 
 
@@ -152,9 +157,9 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     }
 
 
-    public override void OnDrop(IActionReceiver dropLocation, Action actionCompletedCallback)
+    public override void OnDrop(IActionReceiver dropLocation)
     {
-        base.OnDrop(dropLocation, actionCompletedCallback);
+        base.OnDrop(dropLocation);
         transform.parent = null;
         transform.rotation = dropLocation.GetSnapTransform(Owner).rotation; //?????? hay que cambiarlo
     }
@@ -225,4 +230,16 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
 
         _mesh.GetComponent<Collider>().enabled = true;
     }
+
+    public void AddInfluenceCardOnTop(PlayableCard influenceCard)
+    {
+        if (InfluenceCardOnTop is not null) throw new Exception("carta del view ya tenia influencia encima!");
+        InfluenceCardOnTop = influenceCard;
+    }
+    public void RemoveInfluenceCardOnTop()
+    {
+        if (InfluenceCardOnTop is null) throw new Exception("carta del view no tenia influencia encima!");
+        InfluenceCardOnTop = null;
+    }
+    
 }

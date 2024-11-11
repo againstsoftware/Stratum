@@ -38,7 +38,6 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
     private Quaternion _travelStartRotation, _travelEndRotation;
     private State _travelEndState;
     private Action _onTravelEndCallback;
-    protected Action _actionCompletedCallback;
 
     protected bool _destroyed;
 
@@ -103,12 +102,12 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
         ReturnToHand(null);
     }
 
-    public virtual void OnDrop(IActionReceiver dropLocation, Action actionCompletedCallback)
+    public virtual void OnDrop(IActionReceiver dropLocation)
     {
         //se snappea a la drop location
         transform.position = dropLocation.GetSnapTransform(Owner).position;
         CurrentState = State.Waiting;
-        _actionCompletedCallback = actionCompletedCallback;
+        // _actionCompletedCallback = actionCompletedCallback;
         OnItemDrop?.Invoke(this);
     }
 

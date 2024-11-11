@@ -81,7 +81,7 @@ public class ViewManager : MonoBehaviour, IView
     public void Discard(PlayerCharacter actor, Action callback)
     {
         var playerActor = _players[actor];
-        playerActor.DiscardCard(callback);
+        playerActor.DiscardCardFromHand(callback);
     }
 
     public void DrawCards(IReadOnlyDictionary<PlayerCharacter, IReadOnlyList<ACard>> cardsDrawn, Action callback)
@@ -94,7 +94,7 @@ public class ViewManager : MonoBehaviour, IView
         _cameraMovement.ChangeToOverview(callback);
     }
     
-    public void GrowPopulation(PlayerCharacter actor, CardLocation location, ICard.Population population, Action callback, bool isEndOfAction = false)
+    public void GrowPopulation(CardLocation location, Population population, Action callback, bool isEndOfAction = false)
     {
         var card = _config.GetPopulationCard(population);
         var playerOwner = _players[location.Owner];
@@ -106,16 +106,11 @@ public class ViewManager : MonoBehaviour, IView
         slot.AddCardOnTop(newPlayableCard);
         StartCoroutine(DelayCall(() =>
         {
-            if (isEndOfAction)
-            {
-                _players[actor].CallInfluenceCallback();
-            }
-
             callback?.Invoke();
         }, .5f)); //de prueba
     }
 
-    public void GrowMushroom(PlayerCharacter actor, CardLocation location, Action callback, bool isEndOfAction = false)
+    public void GrowMushroom(CardLocation location, Action callback, bool isEndOfAction = false)
     {
         var card = _config.Mushroom;
         var playerOwner = _players[location.Owner];
@@ -127,11 +122,6 @@ public class ViewManager : MonoBehaviour, IView
         slot.AddCardAtTheBottom(newPlayableCard);
         StartCoroutine(DelayCall(() =>
         {
-            if (isEndOfAction)
-            {
-                _players[actor].CallInfluenceCallback();
-            }
-
             callback?.Invoke();
         }, .5f)); //de prueba
     }
@@ -158,7 +148,7 @@ public class ViewManager : MonoBehaviour, IView
     }
 
 
-    public void PlayAndDiscardInfluenceCard(PlayerCharacter actor, InfluenceCard card, CardLocation location,
+    public void PlayAndDiscardInfluenceCard(PlayerCharacter actor, AInfluenceCard card, CardLocation location,
         Action callback,
         bool isEndOfAction = false)
     {
@@ -185,15 +175,11 @@ public class ViewManager : MonoBehaviour, IView
 
         card.Initialize(card.Card, to.Owner);
 
-        card.Play(targetSlot, () =>
-        {
-            playerActor.CallInfluenceCallback();
-            callback.Invoke();
-        });
+        card.Play(targetSlot, callback.Invoke);
     }
 
 
-    public void PlaceInfluenceOnPopulation(PlayerCharacter actor, InfluenceCard influenceCard, CardLocation location,
+    public void PlaceInfluenceOnPopulation(PlayerCharacter actor, AInfluenceCard influenceCard, CardLocation location,
         Action callback, bool isEndOfAction = false)
     {
         var playerActor = _players[actor];
@@ -208,14 +194,12 @@ public class ViewManager : MonoBehaviour, IView
     public void GiveRabies(PlayerCharacter actor, CardLocation location, Action callback)
     {
         var playerActor = _players[actor];
-        playerActor.CallInfluenceCallback();
         callback?.Invoke();
     }
 
     public void MakeOmnivore(PlayerCharacter actor, CardLocation location, Action callback)
     {
         var playerActor = _players[actor];
-        playerActor.CallInfluenceCallback();
         callback?.Invoke();
     }
 
@@ -243,28 +227,48 @@ public class ViewManager : MonoBehaviour, IView
 
 
         if (playerOwner.Territory.HasConstruction)
-            playerOwner.Territory.DestroyConstruction();
+        {
+            DestroyConstruction(territoryOwner, callback);
+            return;
+        }
 
         StartCoroutine(DelayCall(() =>
         {
-            playerActor.CallInfluenceCallback();
             callback?.Invoke();
         }, 0.75f));
     }
 
-    public void KillPopulation(PlayerCharacter actor, CardLocation location, Action callback, bool isEndOfAction = false)
+    public void DestroyConstruction(PlayerCharacter territoryOwner, Action callback)
     {
-        var playerActor = _players[actor];
+        var playerOwner = _players[territoryOwner];
+        playerOwner.Territory.DestroyConstruction();
+        StartCoroutine(DelayCall(() =>
+        {
+            callback?.Invoke();
+        }, 0.75f));
+    }
+
+    public void KillPlacedCard(CardLocation location, Action callback)
+    {
         var playerOwner = _players[location.Owner];
         var slot = playerOwner.Territory.Slots[location.SlotIndex];
         var card = slot.Cards[location.CardIndex];
-        if (card.Card is not PopulationCard) throw new Exception("Error! La carta a matar no es de poblacion");
+        // if (card.Card is not PopulationCard) throw new Exception("Error! La carta a matar no es de poblacion");
         DestroyCard(card, slot);
         StartCoroutine(DelayCall(() =>
         {
-            if(isEndOfAction) playerActor.CallInfluenceCallback();
             callback?.Invoke();
         }, .5f)); //de prueba
+    }
+    
+
+    public void DiscardInfluenceFromPopulation(CardLocation location, Action callback)
+    {
+        var playerOwner = _players[location.Owner];
+        var slot = playerOwner.Territory.Slots[location.SlotIndex];
+        var populationCard = slot.Cards[location.CardIndex];
+        var influenceCard = populationCard.InfluenceCardOnTop;
+        playerOwner.DiscardInfluenceFromPopulation(influenceCard, callback);
     }
     
     

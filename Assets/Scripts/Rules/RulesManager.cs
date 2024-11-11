@@ -6,6 +6,9 @@ using UnityEngine;
 public class RulesManager : MonoBehaviour, IRulesSystem
 {
     [SerializeField] private GameConfig _config;
+
+    private readonly List<IRoundEndObserver> _roundEndObservers = new();
+
     private void Start()
     {
         ServiceLocator.Get<ITurnSystem>().OnGameStart += OnGameStart;
@@ -31,6 +34,16 @@ public class RulesManager : MonoBehaviour, IRulesSystem
     public void PerformAction(PlayerAction action)
     {
         StartCoroutine(SendToExecute(action));
+    }
+
+    public void RegisterRoundEndObserver(IRoundEndObserver reo)
+    {
+        _roundEndObservers.Add(reo);
+    }
+
+    public void RemoveRoundEndObserver(IRoundEndObserver reo)
+    {
+        _roundEndObservers.Remove(reo);
     }
 
     private IEnumerator SendToExecute(PlayerAction action)
@@ -73,7 +86,7 @@ public class RulesManager : MonoBehaviour, IRulesSystem
     //estos metodos se llaman en medio de la ejecucion de efectos del turno del ecosistema
     //o cuando por una carta de inlfuencia, muere o crece una poblacion en cualquier momento
     //comprueban si la carta de poblacion respectiva tiene un efecto al crecer/morir que se deba empujar a la cola
-    private void OnPopulationGrow(TableCard tableCard)
+    private void OnPopulationGrow(TableCard parent, TableCard child)
     {
     }
 
@@ -84,8 +97,12 @@ public class RulesManager : MonoBehaviour, IRulesSystem
 
     private void EndRound() //comprueba si hay algun efecto de final de ronda que se deba aplicar y lo aplica
     {
-        if (RulesCheck.CheckRoundEnd( out var effects))
-            ServiceLocator.Get<IExecutor>().ExecuteRulesEffects(effects, StartNextRound);
+        //hacemos una copia de la lista de observers para que los efectos observers se puedan quitar de la lista original
+        var observers = _roundEndObservers.ToArray();
+        var _roundEndCommands = observers.SelectMany(reo => reo.GetRoundEndEffects()).ToList();
+
+        if (_roundEndCommands.Any())
+            ServiceLocator.Get<IExecutor>().ExecuteRulesEffects(_roundEndCommands, StartNextRound);
 
         else StartNextRound();
     }

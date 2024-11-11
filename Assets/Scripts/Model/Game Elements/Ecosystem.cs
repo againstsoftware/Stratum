@@ -10,26 +10,27 @@ public class Ecosystem
     public IReadOnlyList<TableCard> Plants => _plants;
     public IReadOnlyList<TableCard> Herbivores => _herbivores;
     public IReadOnlyList<TableCard> Carnivores => _carnivores;
+    public IReadOnlyList<TableCard> Mushrooms => _mushrooms;
 
-    private readonly List<TableCard> _plants = new(), _herbivores = new(), _carnivores = new();
+    private readonly List<TableCard> _plants = new(), _herbivores = new(), _carnivores = new(), _mushrooms = new();
 
     private int _totalPopulationCards;
 
     internal void OnPopulationCardPlace(TableCard tableCard)
     {
-        if (tableCard.Card.CardType is not ICard.Card.Population) throw new Exception("Peticion invalida tal");
+        if (tableCard.Card is not PopulationCard) throw new Exception("Peticion invalida tal");
 
         foreach (var type in tableCard.GetPopulations())
         {
             switch (type)
             {
-                case ICard.Population.Plant:
+                case Population.Plant:
                     _plants.Add(tableCard);
                     break;
-                case ICard.Population.Herbivore:
+                case Population.Herbivore:
                     _herbivores.Add(tableCard);
                     break;
-                case ICard.Population.Carnivore:
+                case Population.Carnivore:
                     _carnivores.Add(tableCard);
                     break;
                 default:
@@ -40,21 +41,26 @@ public class Ecosystem
         _totalPopulationCards++;
     }
 
+    internal void OnMushroomCardPlace(TableCard mushroom)
+    {
+        _mushrooms.Add(mushroom);
+    }
+
     internal void OnPopulationCardDie(TableCard tableCard)
     {
-        if (tableCard.Card.CardType is not ICard.Card.Population) throw new Exception("Peticion invalida tal");
+        if (tableCard.Card is not PopulationCard) throw new Exception("Peticion invalida tal");
 
         foreach (var type in tableCard.GetPopulations())
         {
             switch (type)
             {
-                case ICard.Population.Plant:
+                case Population.Plant:
                     _plants.Remove(tableCard);
                     break;
-                case ICard.Population.Herbivore:
+                case Population.Herbivore:
                     _herbivores.Remove(tableCard);
                     break;
-                case ICard.Population.Carnivore:
+                case Population.Carnivore:
                     _carnivores.Remove(tableCard);
                     break;
                 default:
@@ -63,5 +69,10 @@ public class Ecosystem
         }
 
         _totalPopulationCards--;
+    }
+    
+    internal void OnMushroomCardDie(TableCard mushroom)
+    {
+        _mushrooms.Remove(mushroom);
     }
 }
