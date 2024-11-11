@@ -26,7 +26,7 @@ public interface IView : IService
 
     public void GrowPopulation(CardLocation location, Population population,
         Action callback, bool isEndOfAction = false);
-    public void GrowMushroom(PlayerCharacter actor, CardLocation location, Action callback, bool isEndOfAction = false);
+    public void GrowMushroom(CardLocation location, Action callback, bool isEndOfAction = false);
 
     public void GrowMacrofungi(CardLocation[] locations, Action callback);
 

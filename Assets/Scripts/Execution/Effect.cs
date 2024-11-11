@@ -29,5 +29,6 @@ public enum Effect
     ObserveDeepRoots,
     ObserveGreenIvy,
     ObserveMushroomPredator,
+    ObserveParasite,
     
 }

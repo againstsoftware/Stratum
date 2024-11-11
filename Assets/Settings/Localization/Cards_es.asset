@@ -252,6 +252,16 @@ MonoBehaviour:
     m_Localized: "Putrefacci\xF3n"
     m_Metadata:
       m_Items: []
+  - m_Id: 14240044267859968
+    m_Localized: "Par\xE1sito"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14240136920035328
+    m_Localized: "Coloca esta carta sobre una carta de herb\xEDvoro o carn\xEDvoro.
+      Si la carta crece, aparece un hongo en su espacio de territorio y esta carta
+      se descarta."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

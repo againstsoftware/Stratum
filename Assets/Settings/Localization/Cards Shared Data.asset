@@ -217,6 +217,14 @@ MonoBehaviour:
     m_Key: rot_desc
     m_Metadata:
       m_Items: []
+  - m_Id: 14240044267859968
+    m_Key: parasite_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14240136920035328
+    m_Key: parasite_desc
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

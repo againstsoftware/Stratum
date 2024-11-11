@@ -110,7 +110,7 @@ public class ViewManager : MonoBehaviour, IView
         }, .5f)); //de prueba
     }
 
-    public void GrowMushroom(PlayerCharacter actor, CardLocation location, Action callback, bool isEndOfAction = false)
+    public void GrowMushroom(CardLocation location, Action callback, bool isEndOfAction = false)
     {
         var card = _config.Mushroom;
         var playerOwner = _players[location.Owner];

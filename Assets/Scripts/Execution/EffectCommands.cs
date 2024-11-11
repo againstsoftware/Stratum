@@ -36,6 +36,7 @@ public static class EffectCommands
         Effect.ObserveDeepRoots => new ObserveDeepRoots(),
         Effect.ObserveGreenIvy => new ObserveGreenIvy(),
         Effect.ObserveMushroomPredator => new ObserveMushroomPredator(),
+        Effect.ObserveParasite => new ObserveParasite(),
         
         _ => throw new ArgumentOutOfRangeException()
     };
@@ -138,8 +139,7 @@ public static class EffectCommands
             var mushroom = ServiceLocator.Get<IModel>().GrowMushroomOverLastDeadPopulation();
             var slotOwner = mushroom.Slot.Territory.Owner;
             var slotIndex = mushroom.Slot.SlotIndexInTerritory;
-            ServiceLocator.Get<IView>().GrowMushroom(PlayerCharacter.None,
-                new IView.CardLocation { Owner = slotOwner, SlotIndex = slotIndex }, callback);
+            ServiceLocator.Get<IView>().GrowMushroom(new IView.CardLocation { Owner = slotOwner, SlotIndex = slotIndex }, callback);
         }
     }
 
@@ -150,8 +150,7 @@ public static class EffectCommands
             var slotOwner = action.Receivers[0].LocationOwner;
             var slotIndex = action.Receivers[0].Index;
             ServiceLocator.Get<IModel>().GrowMushroom(slotOwner, slotIndex);
-            ServiceLocator.Get<IView>().GrowMushroom(action.Actor,
-                new IView.CardLocation { Owner = slotOwner, SlotIndex = slotIndex }, callback);
+            ServiceLocator.Get<IView>().GrowMushroom(new IView.CardLocation { Owner = slotOwner, SlotIndex = slotIndex }, callback);
         }
     }
 
@@ -162,8 +161,7 @@ public static class EffectCommands
             var slotOwner = action.Receivers[0].LocationOwner;
             var slotIndex = action.Receivers[0].Index;
             ServiceLocator.Get<IModel>().GrowMushroom(slotOwner, slotIndex);
-            ServiceLocator.Get<IView>().GrowMushroom(action.Actor,
-                new IView.CardLocation { Owner = slotOwner, SlotIndex = slotIndex }, callback, true);
+            ServiceLocator.Get<IView>().GrowMushroom(new IView.CardLocation { Owner = slotOwner, SlotIndex = slotIndex }, callback, true);
         }
     }
 
@@ -453,8 +451,16 @@ public static class EffectCommands
             _territory = ServiceLocator.Get<IModel>().GetPlayer(slotOwner).Territory;
             _tableCardWherePlaced = _territory.Slots[slotIndex].PlacedCards[cardIndex];
 
+            _tableCardWherePlaced.OnSlotRemove += OnCardRemoved;
             ServiceLocator.Get<IModel>().OnPopulationGrow += OnPopulationGrow;
             callback?.Invoke();
+        }
+        
+        private void OnCardRemoved()
+        {
+            Debug.Log("frutasemillas quitado");
+            _tableCardWherePlaced.OnSlotRemove -= OnCardRemoved;
+            ServiceLocator.Get<IModel>().OnPopulationGrow -= OnPopulationGrow;
         }
 
         private void OnPopulationGrow(TableCard parent, TableCard child)
@@ -568,6 +574,42 @@ public static class EffectCommands
             return new IEffectCommand[] { killMushroom };
         }
     }
+    
+    public class ObserveParasite : IEffectCommand
+    {
+        private TableCard _tableCardWherePlaced;
+        public void Execute(PlayerAction action, Action callback)
+        {
+            var slotOwner = action.Receivers[0].LocationOwner;
+            var slotIndex = action.Receivers[0].Index;
+            var cardIndex = action.Receivers[0].SecondIndex;
+            var territory = ServiceLocator.Get<IModel>().GetPlayer(slotOwner).Territory;
+            _tableCardWherePlaced = territory.Slots[slotIndex].PlacedCards[cardIndex];
+
+            _tableCardWherePlaced.OnSlotRemove += OnCardRemoved;
+            ServiceLocator.Get<IModel>().OnPopulationGrow += OnPopulationGrow;
+            callback?.Invoke();
+        }
+        
+        private void OnCardRemoved()
+        {
+            Debug.Log("parasito quitado");
+            _tableCardWherePlaced.OnSlotRemove -= OnCardRemoved;
+            ServiceLocator.Get<IModel>().OnPopulationGrow -= OnPopulationGrow;
+        }
+
+        private void OnPopulationGrow(TableCard parent, TableCard child)
+        {
+            if (parent != _tableCardWherePlaced) return;
+            
+            ServiceLocator.Get<IModel>().OnPopulationGrow -= OnPopulationGrow;
+            
+            var growMushroom = new DelayedGrowMushroom(_tableCardWherePlaced.Slot);
+            var discard = new DelayedDiscardPlayedInfluence(_tableCardWherePlaced);
+            ServiceLocator.Get<IExecutor>().PushDelayedCommand(growMushroom);
+            ServiceLocator.Get<IExecutor>().PushDelayedCommand(discard);
+        }
+    }
 
 
     public class DelayedDiscardPlayedInfluence : IEffectCommand
@@ -611,6 +653,27 @@ public static class EffectCommands
             };
 
             ServiceLocator.Get<IView>().GrowPopulation(location, Population.Plant, callback);
+        }
+    }
+    
+    public class DelayedGrowMushroom : IEffectCommand
+    {
+        private Slot _slot;
+        public DelayedGrowMushroom(Slot slot)
+        {
+            _slot = slot;
+        }
+        public void Execute(PlayerAction _, Action callback)
+        {
+            ServiceLocator.Get<IModel>().GrowMushroom(_slot);
+
+            var location = new IView.CardLocation
+            {
+                Owner = _slot.Territory.Owner,
+                SlotIndex = _slot.SlotIndexInTerritory,
+            };
+
+            ServiceLocator.Get<IView>().GrowMushroom(location, callback);
         }
     }
     
