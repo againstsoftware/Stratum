@@ -26,5 +26,5 @@ MonoBehaviour:
     Amount: 5
   - Card: {fileID: 11400000, guid: e08307037c7f626438d2a5499e9e7d1d, type: 2}
     Amount: 5
-  _mushroom: {fileID: 11400000, guid: bd7b466f40e50dd48b379b235eeaa96d, type: 2}
-  _macrofungi: {fileID: 11400000, guid: 86ab07ff152c2e741b6507f7c67302b1, type: 2}
+  - Card: {fileID: 11400000, guid: 032c36b02a53ddf429b0da9d5d842d43, type: 2}
+    Amount: 15

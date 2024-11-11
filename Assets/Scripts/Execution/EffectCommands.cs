@@ -9,10 +9,10 @@ public static class EffectCommands
     {
         Effect.PlacePopulationCardFromPlayer => new PlacePopulationCardFromPlayer(),
         Effect.PlaceInitialCards => new PlaceInitialCards(),
-        Effect.GrowCarnivoreEcosystem => new GrowCarnivoreCommand(),
-        Effect.GrowHerbivoreEcosystem => new GrowHerbivoreCommand(),
-        Effect.KillCarnivoreEcosystem => new KillCarnivoreCommand(),
-        Effect.KillHerbivoreEcosystem => new KillHerbivoreCommand(),
+        Effect.GrowCarnivoreEcosystem => new GrowCarnivoreEcosystem(),
+        Effect.GrowHerbivoreEcosystem => new GrowHerbivoreEcosystem(),
+        Effect.KillCarnivoreEcosystem => new KillCarnivoreEcosystem(),
+        Effect.KillHerbivoreEcosystem => new KillHerbivoreEcosystem(),
         Effect.GrowMushroomEcosystem => new GrowMushroomEcosystem(),
         Effect.Draw2 => new DrawCards(),
         Effect.Draw5 => new DrawCards(),
@@ -31,7 +31,7 @@ public static class EffectCommands
         Effect.MakeOmnivore => new MakeOmnivore(),
         Effect.GrowPlant => new GrowPlant(),
         Effect.GrowPlantEndOfAction => new GrowPlantEOA(),
-        Effect.KillPlantEndOfAction => new KillPlantEOA(),
+        Effect.KillPlacedCard => new KillPlacedCard(),
         Effect.ObserveSeededFruit => new ObserveSeededFruit(),
         Effect.ObserveDeepRoots => new ObserveDeepRoots(),
         Effect.ObserveGreenIvy => new ObserveGreenIvy(),
@@ -54,7 +54,7 @@ public static class EffectCommands
         }
     }
 
-    public class GrowCarnivoreCommand : IEffectCommand
+    public class GrowCarnivoreEcosystem : IEffectCommand
     {
         public void Execute(PlayerAction action, Action callback)
         {
@@ -65,7 +65,7 @@ public static class EffectCommands
         }
     }
 
-    public class GrowHerbivoreCommand : IEffectCommand
+    public class GrowHerbivoreEcosystem : IEffectCommand
     {
         public void Execute(PlayerAction action, Action callback)
         {
@@ -76,7 +76,7 @@ public static class EffectCommands
         }
     }
 
-    public class KillCarnivoreCommand : IEffectCommand
+    public class KillCarnivoreEcosystem : IEffectCommand
     {
         public void Execute(PlayerAction action, Action callback)
         {
@@ -87,7 +87,7 @@ public static class EffectCommands
         }
     }
 
-    public class KillHerbivoreCommand : IEffectCommand
+    public class KillHerbivoreEcosystem : IEffectCommand
     {
         public void Execute(PlayerAction action, Action callback)
         {
@@ -422,7 +422,7 @@ public static class EffectCommands
         }
     }
 
-    public class KillPlantEOA : IEffectCommand
+    public class KillPlacedCard : IEffectCommand
     {
         public void Execute(PlayerAction action, Action callback)
         {

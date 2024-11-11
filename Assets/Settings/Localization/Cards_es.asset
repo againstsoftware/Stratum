@@ -235,6 +235,23 @@ MonoBehaviour:
       haya en su territorio."
     m_Metadata:
       m_Items: []
+  - m_Id: 14230410446499840
+    m_Localized: Cazador
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14230454235033600
+    m_Localized: "Muere una carta de herb\xEDvoro o carn\xEDvoro de tu elecci\xF3n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14234738599129088
+    m_Localized: "Muere una carta de planta de tu elecci\xF3n. Crece un hongo en
+      su espacio de territorio."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14234440090513408
+    m_Localized: "Putrefacci\xF3n"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

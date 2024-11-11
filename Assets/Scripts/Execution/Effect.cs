@@ -24,7 +24,7 @@ public enum Effect
     MakeOmnivore,
     GrowPlant,
     GrowPlantEndOfAction,
-    KillPlantEndOfAction,
+    KillPlacedCard,
     ObserveSeededFruit,
     ObserveDeepRoots,
     ObserveGreenIvy,
