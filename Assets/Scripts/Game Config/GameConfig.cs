@@ -20,6 +20,11 @@ public class GameConfig : ScriptableObject
     [SerializeField] private AActionItem[] _actionItems;
 
     [SerializeField] private PopulationCard[] _populationCards;
+    
+    [field: SerializeField] public int NaturePlantsToWin { get; private set; } 
+    [field: SerializeField] public int NatureHerbivoresToWin { get; private set; } 
+    [field: SerializeField] public int NatureCarnivoresToWin { get; private set; } 
+    [field: SerializeField] public int MacrofungiToWin { get; private set; } 
 
     public int ActionItemToID(AActionItem actionItem) => Array.IndexOf(_actionItems, actionItem);
     public AActionItem IDToActionItem(int id) => _actionItems[id];

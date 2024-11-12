@@ -11,9 +11,11 @@ public interface IModel : IService
     public GameConfig Config { get; }
     public Player GetPlayer(PlayerCharacter character);
 
+    public int NumberOfConstructions { get; }
 
     public event Action<TableCard, TableCard> OnPopulationGrow;
     public event Action<TableCard> OnPopulationDie;
+    
 
     public void RemoveCardFromHand(PlayerCharacter player, ACard card);
     public void PlaceCardOnSlot(ACard card, PlayerCharacter slotOwner, int slotIndex, bool atTheBottom = false);

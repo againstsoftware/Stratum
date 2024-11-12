@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class RulesManager : MonoBehaviour, IRulesSystem
 {
-    [SerializeField] private GameConfig _config;
-
     private readonly List<IRoundEndObserver> _roundEndObservers = new();
 
     private void Start()
@@ -16,7 +14,7 @@ public class RulesManager : MonoBehaviour, IRulesSystem
         ServiceLocator.Get<IModel>().OnPopulationGrow += OnPopulationGrow;
         ServiceLocator.Get<IModel>().OnPopulationDie += OnPopulationDie;
 
-        RulesCheck.Config = _config;
+        RulesCheck.Config = ServiceLocator.Get<IModel>().Config;
     }
 
     private void OnDisable()
@@ -110,10 +108,11 @@ public class RulesManager : MonoBehaviour, IRulesSystem
     private void StartNextRound() //comprueba condicion de victoria e inicia la siguiente ronda robando 2
     {
         //comprobar si hay condiciones de victoria
-        if (HasSomeoneWon())
+        if (HasSomeoneWon(out PlayerCharacter[] winners))
         {
             //hacer cosas de game over
             Debug.Log("hay un ganador");
+            Debug.Break();
             return;
         }
 
@@ -121,5 +120,32 @@ public class RulesManager : MonoBehaviour, IRulesSystem
         ServiceLocator.Get<IExecutor>().ExecuteRulesEffects(new[] { Effect.Draw2 }, null);
     }
 
-    private bool HasSomeoneWon() => false;
+    private bool HasSomeoneWon(out PlayerCharacter[] winners)
+    {
+        var config = ServiceLocator.Get<IModel>().Config;
+        
+        int plantsNum = ServiceLocator.Get<IModel>().Ecosystem.Plants.Count;
+        int herbivoresNum = ServiceLocator.Get<IModel>().Ecosystem.Herbivores.Count;
+        int carnivoresNum = ServiceLocator.Get<IModel>().Ecosystem.Carnivores.Count;
+        int macrofungiNum = ServiceLocator.Get<IModel>().Ecosystem.Macrofungi.Count;
+
+        bool natureWon = plantsNum >= config.NaturePlantsToWin &&
+                         herbivoresNum >= config.NatureHerbivoresToWin &&
+                         carnivoresNum >= config.NatureCarnivoresToWin;
+
+        bool fungalothWon = macrofungiNum >= config.MacrofungiToWin;
+        bool overlordWon = ServiceLocator.Get<IModel>().NumberOfConstructions == 4;
+
+        var winnersList = new List<PlayerCharacter>();
+        if (natureWon)
+        {
+            winnersList.Add(PlayerCharacter.Ygdra);
+            winnersList.Add(PlayerCharacter.Sagitario);
+        }
+        if(fungalothWon) winnersList.Add(PlayerCharacter.Fungaloth);
+        if(overlordWon) winnersList.Add(PlayerCharacter.Overlord);
+
+        winners = winnersList.ToArray();
+        return winners.Any();
+    }
 }

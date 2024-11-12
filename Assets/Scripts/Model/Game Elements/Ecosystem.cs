@@ -11,8 +11,13 @@ public class Ecosystem
     public IReadOnlyList<TableCard> Herbivores => _herbivores;
     public IReadOnlyList<TableCard> Carnivores => _carnivores;
     public IReadOnlyList<TableCard> Mushrooms => _mushrooms;
+    public IReadOnlyList<TableCard> Macrofungi => _macrofungi;
 
-    private readonly List<TableCard> _plants = new(), _herbivores = new(), _carnivores = new(), _mushrooms = new();
+    private readonly List<TableCard> _plants = new(),
+        _herbivores = new(),
+        _carnivores = new(),
+        _mushrooms = new(),
+        _macrofungi = new();
 
     private int _totalPopulationCards;
 
@@ -45,6 +50,11 @@ public class Ecosystem
     {
         _mushrooms.Add(mushroom);
     }
+    
+    internal void OnMacrofungiCardPlace(TableCard mushroom)
+    {
+        _macrofungi.Add(mushroom);
+    }
 
     internal void OnPopulationCardDie(TableCard tableCard)
     {
@@ -70,9 +80,14 @@ public class Ecosystem
 
         _totalPopulationCards--;
     }
-    
+
     internal void OnMushroomCardDie(TableCard mushroom)
     {
         _mushrooms.Remove(mushroom);
+    }
+    
+    internal void OnMacrofungiCardDie(TableCard mushroom)
+    {
+        _macrofungi.Remove(mushroom);
     }
 }

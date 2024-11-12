@@ -39,7 +39,6 @@ public static class RulesCheck
 
     public static IEnumerable<Effect> CheckEcosystem()
     {
-        Debug.Log("check ecosystem");
         IReadOnlyList<TableCard> plants = ServiceLocator.Get<IModel>().Ecosystem.Plants;
         IReadOnlyList<TableCard> herbivores = ServiceLocator.Get<IModel>().Ecosystem.Herbivores;
         IReadOnlyList<TableCard> carnivores = ServiceLocator.Get<IModel>().Ecosystem.Carnivores;

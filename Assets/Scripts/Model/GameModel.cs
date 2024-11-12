@@ -10,9 +10,13 @@ public class GameModel : IModel
 
     public GameConfig Config { get; private set; }
     public Ecosystem Ecosystem { get; private set; } = new();
+    
+    public int NumberOfConstructions { get; private set; }
 
     public event Action<TableCard, TableCard> OnPopulationGrow;
     public event Action<TableCard> OnPopulationDie;
+    public event Action OnCardPlaced, OnCardRemoved;
+    
 
     private readonly Dictionary<PlayerCharacter, Player> _players = new();
 
@@ -52,6 +56,9 @@ public class GameModel : IModel
         var tableCard = slot.PlaceCard(card, atTheBottom);
         if (card is PopulationCard) Ecosystem.OnPopulationCardPlace(tableCard);
         else if(card is MushroomCard) Ecosystem.OnMushroomCardPlace(tableCard);
+        else if(card is MacrofungiCard) Ecosystem.OnMacrofungiCardPlace(tableCard);
+        
+        OnCardPlaced?.Invoke();
     }
 
     public void GrowLastPlacedPopulation(Population population, out TableCard parent, out TableCard child)
@@ -72,6 +79,7 @@ public class GameModel : IModel
         child = parent.Slot.PlaceCard(parent.Card);
         Ecosystem.OnPopulationCardPlace(child);
         OnPopulationGrow?.Invoke(parent, child);
+        OnCardPlaced?.Invoke();
     }
 
     public TableCard KillLastPlacedPopulation(Population population)
@@ -107,7 +115,9 @@ public class GameModel : IModel
 
     public TableCard GrowMushroom(Slot slot)
     {
-        return slot.PlaceCard(Config.Mushroom, true);
+        var mushroom = slot.PlaceCard(Config.Mushroom, true);
+        OnCardPlaced?.Invoke();
+        return mushroom;
     }
 
 
@@ -170,6 +180,9 @@ public class GameModel : IModel
             OnPopulationDie?.Invoke(tableCard);
         }
         else if(tableCard.Card is MushroomCard) Ecosystem.OnMushroomCardDie(tableCard);
+        else if(tableCard.Card is MacrofungiCard) Ecosystem.OnMacrofungiCardDie(tableCard);
+        
+        OnCardRemoved?.Invoke();
     }
 
     public void RemoveInfluenceCardFromCard(ACard card, PlayerCharacter slotOwner, int slotIndex, int cardIndex)
@@ -228,7 +241,8 @@ public class GameModel : IModel
             throw new Exception("Error! Construyendo en territorio ya construido.");
 
         ownerPlayer.Territory.HasConstruction = true;
-        
+
+        NumberOfConstructions++;
         
         
         var plants = new List<TableCard>();
@@ -271,6 +285,7 @@ public class GameModel : IModel
             throw new Exception("Error! Peticion incorrecta al modelo.");
 
         ownerPlayer.Territory.HasConstruction = false;
+        NumberOfConstructions--;
     }
 
     public void GiveRabies(PlayerCharacter slotOwner, int slotIndex, int cardIndex)
