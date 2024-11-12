@@ -1,8 +1,24 @@
+using System;
+
 public class Territory
 {
     public readonly PlayerCharacter Owner;
     public readonly Slot[] Slots;
-    public bool HasConstruction { get; internal set; }
+    public event Action OnConstructionPlaced, OnConstructionRemoved;
+
+    public bool HasConstruction
+    {
+        get => _hasConstruction;
+        set
+        {
+            bool had = _hasConstruction;
+            _hasConstruction = value;
+            
+            if(!had && _hasConstruction) OnConstructionPlaced?.Invoke();
+            else if(had && !_hasConstruction) OnConstructionRemoved?.Invoke();
+        }
+    }
+    private bool _hasConstruction;
 
     internal Territory(PlayerCharacter owner)
     {

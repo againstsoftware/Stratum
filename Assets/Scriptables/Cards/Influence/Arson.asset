@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64f9f456e9a64fe2ad5ef38828970525, type: 3}
+  m_Script: {fileID: 11500000, guid: 51c07a7cab5842139d640e4e53b10ff3, type: 3}
   m_Name: Arson
   m_EditorClassIdentifier: 
   <ObverseTex>k__BackingField: {fileID: 2800000, guid: 0ed0ea7799c383b4e94d25878ed6343f,

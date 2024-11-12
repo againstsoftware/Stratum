@@ -15,144 +15,36 @@ MonoBehaviour:
   m_TableCollectionName: Cards
   m_TableCollectionNameGuidString: efc3f8396dc33fd4790de92a4a4ce8d4
   m_Entries:
-  - m_Id: 8521510912
-    m_Key: carnivore_name
-    m_Metadata:
-      m_Items: []
-  - m_Id: 4041982341120
-    m_Key: herbivore_name
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7937924526080
-    m_Key: plant_name
-    m_Metadata:
-      m_Items: []
-  - m_Id: 8070644887552
-    m_Key: carnivore_desc
-    m_Metadata:
-      m_Items: []
-  - m_Id: 8372332785664
-    m_Key: herbivore_desc
-    m_Metadata:
-      m_Items: []
-  - m_Id: 8432806260736
-    m_Key: plant_desc
-    m_Metadata:
-      m_Items: []
-  - m_Id: 764140887732224
-    m_Key: c_token_name
-    m_Metadata:
-      m_Items: []
-  - m_Id: 764479498088448
-    m_Key: c_token_desc
-    m_Metadata:
-      m_Items: []
-  - m_Id: 764683429343232
-    m_Key: mf_token_name
-    m_Metadata:
-      m_Items: []
-  - m_Id: 764783111172096
-    m_Key: mf_token_desc
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6595463762145280
-    m_Key: mushroom_name
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6595605105995776
-    m_Key: mushroom_desc
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6605650585710592
-    m_Key: macrofungi_name
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6605703316500480
-    m_Key: macrofungi_desc
-    m_Metadata:
-      m_Items: []
-  - m_Id: 10122221576777728
-    m_Key: migration_name
-    m_Metadata:
-      m_Items: []
-  - m_Id: 10122316158332928
-    m_Key: migration_desc
-    m_Metadata:
-      m_Items: []
-  - m_Id: 10600926103203840
-    m_Key: pheromone_name
-    m_Metadata:
-      m_Items: []
-  - m_Id: 10601212662247424
-    m_Key: pheromone_desc
-    m_Metadata:
-      m_Items: []
-  - m_Id: 10614643192754176
-    m_Key: fireworks_name
-    m_Metadata:
-      m_Items: []
-  - m_Id: 10614700512112640
-    m_Key: fireworks_desc
+  - m_Id: 10622238829834240
+    m_Key: app_mushroom_desc
     m_Metadata:
       m_Items: []
   - m_Id: 10622166725554176
     m_Key: app_mushroom_name
     m_Metadata:
       m_Items: []
-  - m_Id: 10622238829834240
-    m_Key: app_mushroom_desc
-    m_Metadata:
-      m_Items: []
-  - m_Id: 10957877249044480
-    m_Key: rabies_name
-    m_Metadata:
-      m_Items: []
-  - m_Id: 10957914855174144
-    m_Key: rabies_desc
-    m_Metadata:
-      m_Items: []
-  - m_Id: 11272635391143936
-    m_Key: wildfire_name
-    m_Metadata:
-      m_Items: []
-  - m_Id: 11272707960991744
-    m_Key: wildfire_desc
+  - m_Id: 11272787711488000
+    m_Key: arson_desc
     m_Metadata:
       m_Items: []
   - m_Id: 11272742639497216
     m_Key: arson_name
     m_Metadata:
       m_Items: []
-  - m_Id: 11272787711488000
-    m_Key: arson_desc
+  - m_Id: 764479498088448
+    m_Key: c_token_desc
     m_Metadata:
       m_Items: []
-  - m_Id: 11272832192081920
-    m_Key: spores_name
+  - m_Id: 764140887732224
+    m_Key: c_token_name
     m_Metadata:
       m_Items: []
-  - m_Id: 11272888479641600
-    m_Key: spores_desc
+  - m_Id: 8070644887552
+    m_Key: carnivore_desc
     m_Metadata:
       m_Items: []
-  - m_Id: 11319356305436672
-    m_Key: mold_name
-    m_Metadata:
-      m_Items: []
-  - m_Id: 11319399942975488
-    m_Key: mold_desc
-    m_Metadata:
-      m_Items: []
-  - m_Id: 11334756611125248
-    m_Key: omnivore_name
-    m_Metadata:
-      m_Items: []
-  - m_Id: 11334838618157056
-    m_Key: omnivore_desc
-    m_Metadata:
-      m_Items: []
-  - m_Id: 11345899178160128
-    m_Key: compost_name
+  - m_Id: 8521510912
+    m_Key: carnivore_name
     m_Metadata:
       m_Items: []
   - m_Id: 11345953246932992
@@ -161,12 +53,176 @@ MonoBehaviour:
 '
     m_Metadata:
       m_Items: []
-  - m_Id: 13025583309778944
-    m_Key: pesticide_name
+  - m_Id: 11345899178160128
+    m_Key: compost_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13519579794632704
+    m_Key: deep_roots_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13519502816571392
+    m_Key: deep_roots_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10614700512112640
+    m_Key: fireworks_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10614643192754176
+    m_Key: fireworks_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13861413955825664
+    m_Key: green_ivy_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13861355944407040
+    m_Key: green_ivy_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8372332785664
+    m_Key: herbivore_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4041982341120
+    m_Key: herbivore_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14230454235033600
+    m_Key: hunter_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14230410446499840
+    m_Key: hunter_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13873873236520960
+    m_Key: m_predator_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13873805741780992
+    m_Key: m_predator_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6605703316500480
+    m_Key: macrofungi_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6605650585710592
+    m_Key: macrofungi_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 764783111172096
+    m_Key: mf_token_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 764683429343232
+    m_Key: mf_token_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10122316158332928
+    m_Key: migration_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10122221576777728
+    m_Key: migration_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11319399942975488
+    m_Key: mold_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11319356305436672
+    m_Key: mold_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6595605105995776
+    m_Key: mushroom_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6595463762145280
+    m_Key: mushroom_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11334838618157056
+    m_Key: omnivore_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11334756611125248
+    m_Key: omnivore_name
     m_Metadata:
       m_Items: []
   - m_Id: 13025632441856000
     m_Key: pesticide_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13025583309778944
+    m_Key: pesticide_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10601212662247424
+    m_Key: pheromone_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10600926103203840
+    m_Key: pheromone_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8432806260736
+    m_Key: plant_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7937924526080
+    m_Key: plant_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10957914855174144
+    m_Key: rabies_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10957877249044480
+    m_Key: rabies_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13489467409821696
+    m_Key: seeded_fruit_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13489380948439040
+    m_Key: seeded_fruit_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11272888479641600
+    m_Key: spores_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11272832192081920
+    m_Key: spores_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11272707960991744
+    m_Key: wildfire_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11272635391143936
+    m_Key: wildfire_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14234440090513408
+    m_Key: rot_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14234738599129088
+    m_Key: rot_desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14240044267859968
+    m_Key: parasite_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14240136920035328
+    m_Key: parasite_desc
     m_Metadata:
       m_Items: []
   m_Metadata:
