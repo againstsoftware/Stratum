@@ -15,6 +15,8 @@ public interface IModel : IService
 
     public event Action<TableCard, TableCard> OnPopulationGrow;
     public event Action<TableCard> OnPopulationDie;
+    public event Action OnCardPlaced, OnCardRemoved;
+
     
 
     public void RemoveCardFromHand(PlayerCharacter player, ACard card);

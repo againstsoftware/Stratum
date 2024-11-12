@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
@@ -5,6 +6,8 @@ using UnityEngine;
 
 public class RulesManager : MonoBehaviour, IRulesSystem
 {
+    public event Action<PlayerCharacter[]> OnGameOver;
+
     private readonly List<IRoundEndObserver> _roundEndObservers = new();
 
     private void Start()
@@ -111,8 +114,8 @@ public class RulesManager : MonoBehaviour, IRulesSystem
         if (HasSomeoneWon(out PlayerCharacter[] winners))
         {
             //hacer cosas de game over
-            Debug.Log("hay un ganador");
-            Debug.Break();
+            Debug.Log("game over");
+            OnGameOver?.Invoke(winners);
             return;
         }
 

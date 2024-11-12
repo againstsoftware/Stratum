@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 public interface IRulesSystem : IService
 {
+    public event Action<PlayerCharacter[]> OnGameOver;
+    
     // comprobación local
     public bool IsValidAction(PlayerAction action); //esta comprueba en local
     
