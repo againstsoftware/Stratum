@@ -25,6 +25,8 @@ public class LobbyInteraction : MonoBehaviour
 
     public void HostButton()
     {
+                Debug.Log("host button");
+
         _lobbyManager.StartHostAsync(OnHostStartedLocal);
     }
 

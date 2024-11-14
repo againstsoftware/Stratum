@@ -10,6 +10,9 @@ public class InputHandlerMenu
     private Vector2 _pointerPosition;
     private IInteractionSystemMenu _interactionSystem;
 
+    // por ahora así seguramente se podría mejorar
+    private RaycastHit lastHit;
+
 
     public InputHandlerMenu(IInteractionSystemMenu interactionSystem, InputActionAsset inputActions)
     {
@@ -42,9 +45,10 @@ public class InputHandlerMenu
         if (hit && hitInfo.collider)
         {
             // para que no afecte a los interactuables de dentro de cada objeto 
-            if (hitInfo.transform.gameObject.GetComponentInChildren<IMenuInteractable>() != null)
+            if (hitInfo.transform.gameObject.GetComponentInChildren<IMenuInteractable>() != null &&  (lastHit.collider != hitInfo.collider))
             {
-                            _interactionSystem.ClearState();
+                lastHit = hitInfo;
+                _interactionSystem.ClearState();
 
                 //hitInfo.collider.GetComponent<IMenuInteractable>().OnPointerPress();
                 _interactionSystem.Camera.GetComponent<MenuCameraMovement>().StartMoving(hitInfo.transform.position);
