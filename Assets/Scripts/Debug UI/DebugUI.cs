@@ -13,8 +13,9 @@ public class DebugUI : MonoBehaviour
     private void Start()
     {
         var model = ServiceLocator.Get<IModel>();
-        model.OnCardPlaced += UpdateInfo;
-        model.OnCardRemoved += UpdateInfo;
+        // model.OnCardPlaced += UpdateInfo;
+        // model.OnCardRemoved += UpdateInfo;
+        model.Ecosystem.OnEcosystemChange += UpdateInfo;
         ServiceLocator.Get<IRulesSystem>().OnGameOver += OnGameOver;
     }
 

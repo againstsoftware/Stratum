@@ -11,7 +11,8 @@ public class TableCard
     public int IndexInSlot { get; internal set; }
     public bool HasRabids { get; internal set; }
 
-    public bool IsOmnivore { get; set; }
+    public bool IsOmnivore { get; set; } //NO 
+    
 
     public event Action OnSlotRemove;
     
