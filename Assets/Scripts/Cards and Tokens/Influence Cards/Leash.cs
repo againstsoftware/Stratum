@@ -1,6 +1,6 @@
 using System.Linq;
 
-public class Rabies : AInfluenceCard
+public class Leash : AInfluenceCard
 {
     protected override bool CheckInfluenceCardAction(PlayerAction action)
     {
@@ -36,12 +36,13 @@ public class Rabies : AInfluenceCard
             return false;
         }
 
-        if (card.HasRabies)
+        if (card.HasLeash)
         {
             return false;
         }
 
-        if (!card.GetPopulations().Contains(Population.Herbivore))
+        if (!card.GetPopulations().Contains(Population.Herbivore) &&
+            !card.GetPopulations().Contains(Population.Carnivore))
         {
             return false;
         }

@@ -42,6 +42,11 @@ public class PheromoneFragance : AInfluenceCard
         {
             return false;
         }
+        
+        if (card.HasLeash)
+        {
+            return false;
+        }
 
         if (!card.GetPopulations().Contains(Population.Carnivore) &&
             !card.GetPopulations().Contains(Population.Herbivore))

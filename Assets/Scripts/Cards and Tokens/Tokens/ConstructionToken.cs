@@ -27,7 +27,7 @@ public class ConstructionToken : AToken
                 if (placedCard.Card is not PopulationCard) continue;
 
                 if (placedCard.GetPopulations().Contains(Population.Carnivore) ||
-                    placedCard.HasRabids)
+                    placedCard.HasRabies)
                     return false;
 
                 if (placedCard.GetPopulations().Contains(Population.Plant))

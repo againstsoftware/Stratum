@@ -26,6 +26,7 @@ public static class EffectCommands
         Effect.MovePopulationToEmptySlot => new MovePopulationToEmptySlot(),
         Effect.PlaceInfluenceOnPopulation => new PlaceInfluenceOnPopulation(),
         Effect.GiveRabies => new GiveRabies(),
+        Effect.PutLeash => new PutLeash(),
         Effect.DestroyAllInTerritory => new DestroyAllInTerritory(),
         Effect.DestroyNonFungiInTerritory => new DestroyNonFungiInTerritory(),
         Effect.MakeOmnivore => new MakeOmnivore(),
@@ -339,6 +340,27 @@ public static class EffectCommands
             };
 
             ServiceLocator.Get<IView>().GiveRabies(action.Actor, location, callback);
+        }
+    }
+    
+    public class PutLeash : IEffectCommand
+    {
+        public void Execute(PlayerAction action, Action callback)
+        {
+            var slotOwner = action.Receivers[0].LocationOwner;
+            var slotIndex = action.Receivers[0].Index;
+            var cardIndex = action.Receivers[0].SecondIndex;
+
+            ServiceLocator.Get<IModel>().PutLeash(slotOwner, slotIndex, cardIndex);
+
+            var location = new IView.CardLocation
+            {
+                Owner = slotOwner,
+                SlotIndex = slotIndex,
+                CardIndex = cardIndex
+            };
+
+            ServiceLocator.Get<IView>().PutLeash(action.Actor, location, callback);
         }
     }
 

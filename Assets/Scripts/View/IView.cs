@@ -45,6 +45,8 @@ public interface IView : IService
 
     public void MakeOmnivore(PlayerCharacter actor, CardLocation location, Action callback);
 
+    public void PutLeash(PlayerCharacter actor, CardLocation location, Action callback);
+
     public void DestroyInTerritory(PlayerCharacter actor, PlayerCharacter territoryOwner, Action callback,
         Predicate<ACard> filter = null);
 

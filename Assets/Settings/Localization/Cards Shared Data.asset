@@ -233,6 +233,14 @@ MonoBehaviour:
     m_Key: m_nature_desc
     m_Metadata:
       m_Items: []
+  - m_Id: 17096880021041152
+    m_Key: leash_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17096917622976512
+    m_Key: leash_desc
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

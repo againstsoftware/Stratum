@@ -210,6 +210,12 @@ public class ViewManager : MonoBehaviour, IView
         var playerActor = _players[actor];
         callback?.Invoke();
     }
+    
+    public void PutLeash(PlayerCharacter actor, CardLocation location, Action callback)
+    {
+        var playerActor = _players[actor];
+        callback?.Invoke();
+    }
 
     public void DestroyInTerritory(PlayerCharacter actor, PlayerCharacter territoryOwner, Action callback,
         Predicate<ACard> filter = null)

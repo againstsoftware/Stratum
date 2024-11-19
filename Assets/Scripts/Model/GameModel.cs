@@ -300,7 +300,7 @@ public class GameModel : IModel
     {
         var ownerPlayer = _players[slotOwner];
         var card = ownerPlayer.Territory.Slots[slotIndex].PlacedCards[cardIndex];
-        card.HasRabids = true;
+        card.HasRabies = true;
     }
 
     public void MakeOmnivore(PlayerCharacter slotOwner, int slotIndex, int cardIndex)
@@ -309,6 +309,13 @@ public class GameModel : IModel
         var card = ownerPlayer.Territory.Slots[slotIndex].PlacedCards[cardIndex];
 
         card.IsOmnivore = true;
+    }
+    
+    public void PutLeash(PlayerCharacter slotOwner, int slotIndex, int cardIndex)
+    {
+        var ownerPlayer = _players[slotOwner];
+        var card = ownerPlayer.Territory.Slots[slotIndex].PlacedCards[cardIndex];
+        card.HasLeash = true;
     }
 
     public TableCard GetLastMushroomInTerritory(PlayerCharacter owner)
