@@ -8,7 +8,7 @@ public class RulesManager : MonoBehaviour, IRulesSystem
 {
     public event Action<PlayerCharacter[]> OnGameOver;
 
-    private readonly List<IRoundEndObserver> _roundEndObservers = new();
+    private readonly List<IRoundEndObserverEffectCommand> _roundEndObservers = new();
 
     private void Start()
     {
@@ -37,12 +37,12 @@ public class RulesManager : MonoBehaviour, IRulesSystem
         StartCoroutine(SendToExecute(action));
     }
 
-    public void RegisterRoundEndObserver(IRoundEndObserver reo)
+    public void RegisterRoundEndObserver(IRoundEndObserverEffectCommand reo)
     {
         _roundEndObservers.Add(reo);
     }
 
-    public void RemoveRoundEndObserver(IRoundEndObserver reo)
+    public void RemoveRoundEndObserver(IRoundEndObserverEffectCommand reo)
     {
         _roundEndObservers.Remove(reo);
     }
@@ -127,17 +127,22 @@ public class RulesManager : MonoBehaviour, IRulesSystem
     {
         var config = ServiceLocator.Get<IModel>().Config;
         
-        int plantsNum = ServiceLocator.Get<IModel>().Ecosystem.Plants.Count;
-        int herbivoresNum = ServiceLocator.Get<IModel>().Ecosystem.Herbivores.Count;
-        int carnivoresNum = ServiceLocator.Get<IModel>().Ecosystem.Carnivores.Count;
+        // int plantsNum = ServiceLocator.Get<IModel>().Ecosystem.Plants.Count;
+        // int herbivoresNum = ServiceLocator.Get<IModel>().Ecosystem.Herbivores.Count;
+        // int carnivoresNum = ServiceLocator.Get<IModel>().Ecosystem.Carnivores.Count;
+        
+        
+        int growthsNum = ServiceLocator.Get<IModel>().Ecosystem.Growths;
         int macrofungiNum = ServiceLocator.Get<IModel>().Ecosystem.Macrofungi.Count;
 
-        bool natureWon = plantsNum >= config.NaturePlantsToWin &&
-                         herbivoresNum >= config.NatureHerbivoresToWin &&
-                         carnivoresNum >= config.NatureCarnivoresToWin;
+        // bool natureWon = plantsNum >= config.NaturePlantsToWin &&
+        //                  herbivoresNum >= config.NatureHerbivoresToWin &&
+        //                  carnivoresNum >= config.NatureCarnivoresToWin;
+
+        bool natureWon = growthsNum >= config.GrowthsToWin;
 
         bool fungalothWon = macrofungiNum >= config.MacrofungiToWin;
-        bool overlordWon = ServiceLocator.Get<IModel>().NumberOfConstructions == 4;
+        bool overlordWon = ServiceLocator.Get<IModel>().NumberOfConstructions >= config.ConstructionsToWin;
 
         var winnersList = new List<PlayerCharacter>();
         if (natureWon)

@@ -9,6 +9,7 @@ public interface IView : IService
         public int SlotIndex;
         public int CardIndex;
         public bool IsTerritory;
+        public bool IsTableCenter;
     }
 
     public ViewPlayer GetViewPlayer(PlayerCharacter character);

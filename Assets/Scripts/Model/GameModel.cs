@@ -77,7 +77,7 @@ public class GameModel : IModel
     public void GrowPopulation(TableCard parent, out TableCard child)
     {
         child = parent.Slot.PlaceCard(parent.Card);
-        Ecosystem.OnPopulationCardPlace(child);
+        Ecosystem.OnPopulationCardPlace(child, true);
         OnPopulationGrow?.Invoke(parent, child);
         OnCardPlaced?.Invoke();
     }

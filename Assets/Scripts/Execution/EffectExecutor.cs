@@ -46,8 +46,11 @@ public class EffectExecutor : IExecutor
         {
             ServiceLocator.Get<IModel>().GetPlayer(action.Actor).TokenPlayed = true;
         }
-        else if (action.ActionItem is AInfluenceCard && action.Receivers[0].Location is not ValidDropLocation.DiscardPile)
+        else if (action.ActionItem is AInfluenceCard)
         {
+            if (action.Receivers.Length > 0 && action.Receivers[0].Location is ValidDropLocation.DiscardPile)
+                return;
+            
             ServiceLocator.Get<IModel>().GetPlayer(action.Actor).InfluencePlayed = true;
         }
     }
@@ -55,6 +58,7 @@ public class EffectExecutor : IExecutor
     private void Execute(IEffectCommand effectCommand)
     {
         effectCommand.Execute(_currentAction, TryExecuteNextCommand);
+        
     }
 
     private void TryExecuteNextCommand()

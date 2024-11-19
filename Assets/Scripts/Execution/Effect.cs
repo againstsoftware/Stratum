@@ -31,4 +31,6 @@ public enum Effect
     ObserveMushroomPredator,
     ObserveParasite,
     
+    RushEcosystemTurn,
+    
 }

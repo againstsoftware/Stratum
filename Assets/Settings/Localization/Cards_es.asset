@@ -262,6 +262,16 @@ MonoBehaviour:
       se descarta."
     m_Metadata:
       m_Items: []
+  - m_Id: 17078851686100992
+    m_Localized: Madre Naturaleza
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17078907726196736
+    m_Localized: "Busca lo m\xE1s vital, no m\xE1s\r, lo que es necesidad, no m\xE1s\r\nY
+      olv\xEDdate de la preocupaci\xF3n\r\nTan solo lo muy esencial\r, para vivir
+      sin batallar\r\nY la naturaleza te lo da"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

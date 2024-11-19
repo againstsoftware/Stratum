@@ -55,7 +55,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 73f4942f266a15a469148e02341ce42b, type: 2}
   - {fileID: 11400000, guid: d02a1b287d0f44046a658bdc3266c2e7, type: 2}
   - {fileID: 11400000, guid: 925fd89a28ebfd44cabbdd3e279d2a5e, type: 2}
-  <NaturePlantsToWin>k__BackingField: 10000
-  <NatureHerbivoresToWin>k__BackingField: 10000
-  <NatureCarnivoresToWin>k__BackingField: 10000
+  <GrowthsToWin>k__BackingField: 7
   <MacrofungiToWin>k__BackingField: 2
+  <ConstructionsToWin>k__BackingField: 3

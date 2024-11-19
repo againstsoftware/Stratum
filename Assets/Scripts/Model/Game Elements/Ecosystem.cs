@@ -14,6 +14,8 @@ public class Ecosystem
     public IReadOnlyList<TableCard> Mushrooms => _mushrooms;
     public IReadOnlyList<TableCard> Macrofungi => _macrofungi;
 
+    public int Growths { get; private set; } = 0;
+
     public event Action OnEcosystemChange;
 
     private readonly List<TableCard> _plants = new(),
@@ -24,7 +26,7 @@ public class Ecosystem
 
     private int _totalPopulationCards;
 
-    internal void OnPopulationCardPlace(TableCard tableCard)
+    internal void OnPopulationCardPlace(TableCard tableCard, bool grow = false)
     {
         if (tableCard.Card is not PopulationCard) throw new Exception("Peticion invalida tal");
 
@@ -49,6 +51,9 @@ public class Ecosystem
         }
 
         _totalPopulationCards++;
+
+        if (grow) Growths++;
+        
         OnEcosystemChange?.Invoke();
     }
 

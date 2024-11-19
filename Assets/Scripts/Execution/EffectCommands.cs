@@ -37,6 +37,7 @@ public static class EffectCommands
         Effect.ObserveGreenIvy => new ObserveGreenIvy(),
         Effect.ObserveMushroomPredator => new ObserveMushroomPredator(),
         Effect.ObserveParasite => new ObserveParasite(),
+        Effect.RushEcosystemTurn => new RushEcosystemTurn(),
         
         _ => throw new ArgumentOutOfRangeException()
     };
@@ -248,14 +249,22 @@ public static class EffectCommands
         {
             ServiceLocator.Get<IModel>().RemoveCardFromHand(action.Actor, action.ActionItem as ACard);
 
-            bool isTerritory = action.Receivers[0].Location is ValidDropLocation.AnyTerritory;
-            var location = new IView.CardLocation
+            IView.CardLocation location;
+
+            if (action.Receivers.Length > 0)
             {
-                IsTerritory = isTerritory,
-                Owner = action.Receivers[0].LocationOwner,
-                SlotIndex = isTerritory ? -1 : action.Receivers[0].Index,
-                CardIndex = isTerritory ? -1 : action.Receivers[0].SecondIndex,
-            };
+                bool isTerritory = action.Receivers[0].Location is ValidDropLocation.AnyTerritory;
+                location = new()
+                {
+                    IsTerritory = isTerritory,
+                    Owner = action.Receivers[0].LocationOwner,
+                    SlotIndex = isTerritory ? -1 : action.Receivers[0].Index,
+                    CardIndex = isTerritory ? -1 : action.Receivers[0].SecondIndex,
+                };
+            }
+            else location = new() { IsTableCenter = true };
+                
+            
             var influence = action.ActionItem as AInfluenceCard;
             ServiceLocator.Get<IView>().PlayAndDiscardInfluenceCard(action.Actor, influence, location, callback);
         }
@@ -500,7 +509,7 @@ public static class EffectCommands
     }
     
     
-    public class ObserveGreenIvy : IEffectCommand, IRoundEndObserver
+    public class ObserveGreenIvy : IRoundEndObserverEffectCommand
     {
         private TableCard _tableCardWherePlaced;
         private Territory _territory;
@@ -538,7 +547,7 @@ public static class EffectCommands
         }
     }
     
-    public class ObserveMushroomPredator : IEffectCommand, IRoundEndObserver
+    public class ObserveMushroomPredator : IRoundEndObserverEffectCommand
     {
         private TableCard _tableCardWherePlaced;
         private Territory _territory;
@@ -608,6 +617,17 @@ public static class EffectCommands
             var discard = new DelayedDiscardPlayedInfluence(_tableCardWherePlaced);
             ServiceLocator.Get<IExecutor>().PushDelayedCommand(growMushroom);
             ServiceLocator.Get<IExecutor>().PushDelayedCommand(discard);
+        }
+    }
+    
+    public class RushEcosystemTurn : IEffectCommand
+    {
+        public void Execute(PlayerAction action, Action callback)
+        {
+            var ecosystemEffects = RulesCheck.CheckEcosystem();
+            foreach(var effect in ecosystemEffects.Reverse())
+                ServiceLocator.Get<IExecutor>().PushDelayedCommand(Get(effect));
+            callback?.Invoke();
         }
     }
 
