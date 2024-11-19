@@ -151,4 +151,35 @@ public static class RulesCheck
 
         return effects;
     }
+
+    public static IEnumerable<IEffectCommand> CheckConstructions()
+    {
+        List<IEffectCommand> commands = new();
+
+        foreach (var character in Config.TurnOrder)
+        {
+            if(character is PlayerCharacter.None) continue;
+            var territory = ServiceLocator.Get<IModel>().GetPlayer(character).Territory; 
+            if(!territory.HasConstruction) continue;
+            if(!HasAnimals(territory)) 
+                commands.Add(new EffectCommands.DelayedDestroyConstruction(territory));
+        }
+
+        return commands;
+    }
+
+    private static bool HasAnimals(Territory territory)
+    {
+        foreach (var slot in territory.Slots)
+        {
+            foreach (var tableCard in slot.PlacedCards)
+            {
+                if (tableCard.GetPopulations().Contains(Population.Carnivore) ||
+                    tableCard.GetPopulations().Contains(Population.Herbivore))
+                    return true;
+            }
+        }
+
+        return false;
+    }
 }

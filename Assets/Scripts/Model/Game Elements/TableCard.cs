@@ -9,9 +9,12 @@ public class TableCard
     public TableCard InfluenceCardOnTop { get; private set; }
     public Slot Slot { get; internal set; }
     public int IndexInSlot { get; internal set; }
-    public bool HasRabids { get; internal set; }
+    public bool HasRabies { get; internal set; }
 
-    public bool IsOmnivore { get; set; }
+    public bool IsOmnivore { get; set; } //NO 
+    
+    public bool HasLeash { get; set; } 
+    
 
     public event Action OnSlotRemove;
     

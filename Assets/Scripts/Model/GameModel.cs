@@ -77,7 +77,7 @@ public class GameModel : IModel
     public void GrowPopulation(TableCard parent, out TableCard child)
     {
         child = parent.Slot.PlaceCard(parent.Card);
-        Ecosystem.OnPopulationCardPlace(child);
+        Ecosystem.OnPopulationCardPlace(child, true);
         OnPopulationGrow?.Invoke(parent, child);
         OnCardPlaced?.Invoke();
     }
@@ -158,6 +158,9 @@ public class GameModel : IModel
         slot.RemoveCard(card);
         
         target.MoveCard(card);
+
+        if(card.Card is PopulationCard)
+            Ecosystem.OnPopulationMoved(card, slot);
     }
 
     public void RemoveCardFromSlot(PlayerCharacter slotOwner, int slotIndex, int cardIndex)
@@ -239,10 +242,7 @@ public class GameModel : IModel
 
         if (ownerPlayer.Territory.HasConstruction)
             throw new Exception("Error! Construyendo en territorio ya construido.");
-
-        ownerPlayer.Territory.HasConstruction = true;
-
-        NumberOfConstructions++;
+        
         
         
         var plants = new List<TableCard>();
@@ -274,7 +274,13 @@ public class GameModel : IModel
         RemoveCardFromSlot(plant1);
         RemoveCardFromSlot(plant2);
 
-
+        
+        ownerPlayer.Territory.HasConstruction = true;
+        NumberOfConstructions++;
+        
+        
+        //actualizamos el ecosistema
+        Ecosystem.OnConstructionPlaced(ownerPlayer.Territory);
     }
 
     public void RemoveConstruction(PlayerCharacter territoryOwner)
@@ -286,13 +292,15 @@ public class GameModel : IModel
 
         ownerPlayer.Territory.HasConstruction = false;
         NumberOfConstructions--;
+        
+        Ecosystem.OnConstructionRemoved(ownerPlayer.Territory);
     }
 
     public void GiveRabies(PlayerCharacter slotOwner, int slotIndex, int cardIndex)
     {
         var ownerPlayer = _players[slotOwner];
         var card = ownerPlayer.Territory.Slots[slotIndex].PlacedCards[cardIndex];
-        card.HasRabids = true;
+        card.HasRabies = true;
     }
 
     public void MakeOmnivore(PlayerCharacter slotOwner, int slotIndex, int cardIndex)
@@ -301,6 +309,13 @@ public class GameModel : IModel
         var card = ownerPlayer.Territory.Slots[slotIndex].PlacedCards[cardIndex];
 
         card.IsOmnivore = true;
+    }
+    
+    public void PutLeash(PlayerCharacter slotOwner, int slotIndex, int cardIndex)
+    {
+        var ownerPlayer = _players[slotOwner];
+        var card = ownerPlayer.Territory.Slots[slotIndex].PlacedCards[cardIndex];
+        card.HasLeash = true;
     }
 
     public TableCard GetLastMushroomInTerritory(PlayerCharacter owner)

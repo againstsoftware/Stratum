@@ -9,6 +9,7 @@ public interface IView : IService
         public int SlotIndex;
         public int CardIndex;
         public bool IsTerritory;
+        public bool IsTableCenter;
     }
 
     public ViewPlayer GetViewPlayer(PlayerCharacter character);
@@ -43,6 +44,8 @@ public interface IView : IService
     public void GiveRabies(PlayerCharacter actor, CardLocation location, Action callback);
 
     public void MakeOmnivore(PlayerCharacter actor, CardLocation location, Action callback);
+
+    public void PutLeash(PlayerCharacter actor, CardLocation location, Action callback);
 
     public void DestroyInTerritory(PlayerCharacter actor, PlayerCharacter territoryOwner, Action callback,
         Predicate<ACard> filter = null);

@@ -6,15 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class DebugUI : MonoBehaviour
 {
-    private int _herbivores, _carnivores, _plants;
+    private int _herbivores, _carnivores, _plants, _growths;
     private bool _gameOver;
     private string _gameOverText;
 
     private void Start()
     {
         var model = ServiceLocator.Get<IModel>();
-        model.OnCardPlaced += UpdateInfo;
-        model.OnCardRemoved += UpdateInfo;
+        // model.OnCardPlaced += UpdateInfo;
+        // model.OnCardRemoved += UpdateInfo;
+        model.Ecosystem.OnEcosystemChange += UpdateInfo;
         ServiceLocator.Get<IRulesSystem>().OnGameOver += OnGameOver;
     }
 
@@ -31,11 +32,12 @@ public class DebugUI : MonoBehaviour
         }
 
 
-        textStyle.fontSize = 30;
+        textStyle.fontSize = 22;
 
         GUI.Label(new Rect(50, 50, 200, 30), $"Plantas: {_plants}", textStyle);
         GUI.Label(new Rect(50, 100, 200, 30), $"Herviboros: {_herbivores}", textStyle);
         GUI.Label(new Rect(50, 150, 200, 30), $"Carnivoros: {_carnivores}", textStyle);
+        GUI.Label(new Rect(50, 200, 200, 30), $"Crecimientos: {_growths}", textStyle);
     }
 
     private void UpdateInfo()
@@ -43,6 +45,7 @@ public class DebugUI : MonoBehaviour
         _herbivores = ServiceLocator.Get<IModel>().Ecosystem.Herbivores.Count;
         _carnivores = ServiceLocator.Get<IModel>().Ecosystem.Carnivores.Count;
         _plants = ServiceLocator.Get<IModel>().Ecosystem.Plants.Count;
+        _growths = ServiceLocator.Get<IModel>().Ecosystem.Growths;
     }
 
     private void OnGameOver(PlayerCharacter[] winners)

@@ -8,7 +8,7 @@ public class RulesManager : MonoBehaviour, IRulesSystem
 {
     public event Action<PlayerCharacter[]> OnGameOver;
 
-    private readonly List<IRoundEndObserver> _roundEndObservers = new();
+    private readonly List<IRoundEndObserverEffectCommand> _roundEndObservers = new();
 
     private void Start()
     {
@@ -37,12 +37,12 @@ public class RulesManager : MonoBehaviour, IRulesSystem
         StartCoroutine(SendToExecute(action));
     }
 
-    public void RegisterRoundEndObserver(IRoundEndObserver reo)
+    public void RegisterRoundEndObserver(IRoundEndObserverEffectCommand reo)
     {
         _roundEndObservers.Add(reo);
     }
 
-    public void RemoveRoundEndObserver(IRoundEndObserver reo)
+    public void RemoveRoundEndObserver(IRoundEndObserverEffectCommand reo)
     {
         _roundEndObservers.Remove(reo);
     }
@@ -74,7 +74,6 @@ public class RulesManager : MonoBehaviour, IRulesSystem
     {
         if (onTurn is not PlayerCharacter.None) return;
 
-        //ecosistema 
         PlayEcosystemTurn();
     }
 
@@ -87,6 +86,7 @@ public class RulesManager : MonoBehaviour, IRulesSystem
     //estos metodos se llaman en medio de la ejecucion de efectos del turno del ecosistema
     //o cuando por una carta de inlfuencia, muere o crece una poblacion en cualquier momento
     //comprueban si la carta de poblacion respectiva tiene un efecto al crecer/morir que se deba empujar a la cola
+    //lo de arriba es medio bait xd
     private void OnPopulationGrow(TableCard parent, TableCard child)
     {
     }
@@ -98,12 +98,21 @@ public class RulesManager : MonoBehaviour, IRulesSystem
 
     private void EndRound() //comprueba si hay algun efecto de final de ronda que se deba aplicar y lo aplica
     {
+        List<IEffectCommand> roundEndCommands = new();
+        //comprobacion de destruir construccion si no tiene animales
+        var destroyConstructionCommands = RulesCheck.CheckConstructions();
+        
+        roundEndCommands.AddRange(destroyConstructionCommands);
+        
         //hacemos una copia de la lista de observers para que los efectos observers se puedan quitar de la lista original
         var observers = _roundEndObservers.ToArray();
-        var _roundEndCommands = observers.SelectMany(reo => reo.GetRoundEndEffects()).ToList();
+        var observerCommands = 
+            observers.SelectMany(reo => reo.GetRoundEndEffects());
+        
+        roundEndCommands.AddRange(observerCommands);
 
-        if (_roundEndCommands.Any())
-            ServiceLocator.Get<IExecutor>().ExecuteRulesEffects(_roundEndCommands, StartNextRound);
+        if (roundEndCommands.Any())
+            ServiceLocator.Get<IExecutor>().ExecuteRulesEffects(roundEndCommands, StartNextRound);
 
         else StartNextRound();
     }
@@ -126,18 +135,23 @@ public class RulesManager : MonoBehaviour, IRulesSystem
     private bool HasSomeoneWon(out PlayerCharacter[] winners)
     {
         var config = ServiceLocator.Get<IModel>().Config;
-        
-        int plantsNum = ServiceLocator.Get<IModel>().Ecosystem.Plants.Count;
-        int herbivoresNum = ServiceLocator.Get<IModel>().Ecosystem.Herbivores.Count;
-        int carnivoresNum = ServiceLocator.Get<IModel>().Ecosystem.Carnivores.Count;
+
+        // int plantsNum = ServiceLocator.Get<IModel>().Ecosystem.Plants.Count;
+        // int herbivoresNum = ServiceLocator.Get<IModel>().Ecosystem.Herbivores.Count;
+        // int carnivoresNum = ServiceLocator.Get<IModel>().Ecosystem.Carnivores.Count;
+
+
+        int growthsNum = ServiceLocator.Get<IModel>().Ecosystem.Growths;
         int macrofungiNum = ServiceLocator.Get<IModel>().Ecosystem.Macrofungi.Count;
 
-        bool natureWon = plantsNum >= config.NaturePlantsToWin &&
-                         herbivoresNum >= config.NatureHerbivoresToWin &&
-                         carnivoresNum >= config.NatureCarnivoresToWin;
+        // bool natureWon = plantsNum >= config.NaturePlantsToWin &&
+        //                  herbivoresNum >= config.NatureHerbivoresToWin &&
+        //                  carnivoresNum >= config.NatureCarnivoresToWin;
+
+        bool natureWon = growthsNum >= config.GrowthsToWin;
 
         bool fungalothWon = macrofungiNum >= config.MacrofungiToWin;
-        bool overlordWon = ServiceLocator.Get<IModel>().NumberOfConstructions == 4;
+        bool overlordWon = ServiceLocator.Get<IModel>().NumberOfConstructions >= config.ConstructionsToWin;
 
         var winnersList = new List<PlayerCharacter>();
         if (natureWon)
@@ -145,8 +159,9 @@ public class RulesManager : MonoBehaviour, IRulesSystem
             winnersList.Add(PlayerCharacter.Ygdra);
             winnersList.Add(PlayerCharacter.Sagitario);
         }
-        if(fungalothWon) winnersList.Add(PlayerCharacter.Fungaloth);
-        if(overlordWon) winnersList.Add(PlayerCharacter.Overlord);
+
+        if (fungalothWon) winnersList.Add(PlayerCharacter.Fungaloth);
+        if (overlordWon) winnersList.Add(PlayerCharacter.Overlord);
 
         winners = winnersList.ToArray();
         return winners.Any();

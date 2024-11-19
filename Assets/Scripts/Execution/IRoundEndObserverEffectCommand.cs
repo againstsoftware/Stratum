@@ -1,7 +1,7 @@
 
 using System.Collections.Generic;
 
-public interface IRoundEndObserver
+public interface IRoundEndObserverEffectCommand : IEffectCommand
 {
     IEnumerable<IEffectCommand> GetRoundEndEffects();
 }

@@ -60,7 +60,9 @@ public interface IModel : IService
     public void RemoveConstruction(PlayerCharacter territoryOwner);
     
     public void GiveRabies(PlayerCharacter slotOwner, int slotIndex, int cardIndex);
-    public void MakeOmnivore(PlayerCharacter slotOwner, int slotIndex, int cardIndex);
+    public void MakeOmnivore(PlayerCharacter slotOwner, int slotIndex, int cardIndex); //NO
+    public void PutLeash(PlayerCharacter slotOwner, int slotIndex, int cardIndex);
+    
     public TableCard GetLastMushroomInTerritory(PlayerCharacter owner);
     
     public void AdvanceTurn(PlayerCharacter playerOnTurn);

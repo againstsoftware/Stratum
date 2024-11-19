@@ -153,10 +153,18 @@ public class ViewManager : MonoBehaviour, IView
         bool isEndOfAction = false)
     {
         var playerActor = _players[actor];
-        var receiverOwner = _players[location.Owner];
-        IActionReceiver receiver = location.IsTerritory
-            ? receiverOwner.Territory
-            : receiverOwner.Territory.Slots[location.SlotIndex];
+
+        IActionReceiver receiver;
+
+        if (location.IsTableCenter) receiver = _tableCenter;
+        else
+        {
+            var receiverOwner = _players[location.Owner];
+            receiver = location.IsTerritory
+                ? receiverOwner.Territory
+                : receiverOwner.Territory.Slots[location.SlotIndex];
+        
+        }
 
         playerActor.PlayAndDiscardInfluenceCard(card, receiver, callback, isEndOfAction);
     }
@@ -198,6 +206,12 @@ public class ViewManager : MonoBehaviour, IView
     }
 
     public void MakeOmnivore(PlayerCharacter actor, CardLocation location, Action callback)
+    {
+        var playerActor = _players[actor];
+        callback?.Invoke();
+    }
+    
+    public void PutLeash(PlayerCharacter actor, CardLocation location, Action callback)
     {
         var playerActor = _players[actor];
         callback?.Invoke();

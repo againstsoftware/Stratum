@@ -12,6 +12,6 @@ public interface IRulesSystem : IService
     //si no aprueba la jugada, hay discrepancia entre cliente y host, se expulsa al jugador y se cancela la partida por chetos
     public void PerformAction(PlayerAction action);
 
-    public void RegisterRoundEndObserver(IRoundEndObserver reo);
-    public void RemoveRoundEndObserver(IRoundEndObserver reo);
+    public void RegisterRoundEndObserver(IRoundEndObserverEffectCommand reo);
+    public void RemoveRoundEndObserver(IRoundEndObserverEffectCommand reo);
 }
