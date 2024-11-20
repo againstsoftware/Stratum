@@ -41,7 +41,7 @@ public static class ActionAssembler
         return AssemblyState.Failed;
     }
 
-    private static bool CheckIfValid(APlayableItem playableItem, IActionReceiver dropLocation,
+    public static bool CheckIfValid(APlayableItem playableItem, IActionReceiver dropLocation,
         ValidAction validAction) =>
         validAction.DropLocation switch
         {
@@ -52,7 +52,8 @@ public static class ActionAssembler
                                            playableItem.Owner == dropLocation.Owner,
             ValidDropLocation.AnyCard => dropLocation is PlayableCard pc && pc.CurrentState is APlayableItem.State.Played,
             ValidDropLocation.TableCenter => dropLocation is TableCenter,
-            ValidDropLocation.DiscardPile => dropLocation is DiscardPileReceiver && playableItem is PlayableCard,
+            ValidDropLocation.DiscardPile => dropLocation is DiscardPileReceiver && playableItem is PlayableCard &&
+                                             playableItem.Owner == dropLocation.Owner,
             _ => throw new ArgumentOutOfRangeException()
         };
 
