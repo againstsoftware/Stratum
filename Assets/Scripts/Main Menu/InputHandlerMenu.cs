@@ -59,6 +59,7 @@ public class InputHandlerMenu
         // reset camera
         else
         {
+            lastHit = default;
             _interactionSystem.Camera.GetComponent<MenuCameraMovement>().StartReturning();
             _interactionSystem.ClearState();
         }
