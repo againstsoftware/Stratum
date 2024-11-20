@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: m_sagitarioa
-  m_Shader: {fileID: -6465566751694194690, guid: 7c755f03fef01624485b23c0b99a24dc, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 2d29dc3b7cc50c24a8d572ba836b0caa, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
