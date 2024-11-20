@@ -1,11 +1,14 @@
 public class Player
 {
     public readonly PlayerCharacter Character;
-    public readonly IDeck Deck;
+    public readonly Deck Deck;
     public readonly HandOfCards HandOfCards;
     public readonly Territory Territory;
+    
+    public bool TokenPlayed { get; set; }
+    public bool InfluencePlayed { get; set; }
 
-    internal Player(PlayerCharacter character, IDeck deck)
+    internal Player(PlayerCharacter character, Deck deck)
     {
         Character = character;
         Deck = deck;
@@ -16,10 +19,13 @@ public class Player
 
     internal void AdvanceTurn()
     {
+        TokenPlayed = false;
+        InfluencePlayed = false;
+        
         Territory.AdvanceTurn();
     }
 
-    internal ICard DrawCard()
+    internal ACard DrawCard()
     {
         var drewCard = Deck.DrawCard();
         HandOfCards.AddCard(drewCard);
@@ -27,7 +33,3 @@ public class Player
     }
 }
 
-public enum PlayerCharacter
-{
-    Ygdra, Sagitario, Fungaloth, Overlord, None
-}

@@ -1,22 +1,30 @@
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
 public static class RulesCheck
 {
+    public static GameConfig Config { get; set; }
+
     public static bool CheckAction(PlayerAction action)
     {
-        Debug.Log($@"
-        recibida player action para checkear:
-        ------------------------------------------------
-        {action.Actor}
-        {action.ActionItem.name}
-        Receivers:
-        {string.Join("\n    ", action.Receivers
-            .Select(r => $"{r.Location} - {r.LocationOwner} ->idx: {r.Index} ->idx2: {r.SecondIndex}"))}
-        effects idx: {action.EffectsIndex}
-        ------------------------------------------------
-        ");
+        // Debug.Log($@"
+        // recibida player action para checkear:
+        // ------------------------------------------------
+        // {action.Actor}
+        // {action.ActionItem.name}
+        // Receivers:
+        // {string.Join("\n    ", action.Receivers
+        //     .Select(r => $"{r.Location} - {r.LocationOwner} ->idx: {r.Index} ->idx2: {r.SecondIndex}"))}
+        // effects idx: {action.EffectsIndex}
+        // ------------------------------------------------
+        // ");
+
+        if (action.Actor is PlayerCharacter.None)
+        {
+            return false;
+        }
 
         // es el jugador del turno actual
         if (action.Actor != ServiceLocator.Get<IModel>().PlayerOnTurn)
@@ -25,46 +33,12 @@ public static class RulesCheck
             return false;
         }
 
-
-        switch (action.ActionItem)
-        {
-            //carta
-            case ICard playedCard:
-            {
-                // tiene en la mano la carta
-                if (!ServiceLocator.Get<IModel>().GetPlayer(action.Actor).HandOfCards.Contains(playedCard))
-                {
-                    Debug.Log($"rechazada porque la carta no esta en la mano del model");
-                    return false;
-                }
-
-                return playedCard.CardType switch
-                {
-                    // REGLAS SI ES DE POBLACION 
-                    ICard.Card.Population => CheckPopulationCardAction(action),
-                    // REGLAS SI INFLUENCIA
-                    ICard.Card.Influence => CheckInfluenceCardAction(action),
-                    _ => false
-                };
-            }
-
-            // construccion
-            case Token when action.Actor == PlayerCharacter.Overlord:
-                return CheckConstructionAction(action);
-
-            // macrohongo
-            case Token when action.Actor == PlayerCharacter.Fungaloth:
-                return CheckMacrofungiAction(action);
-
-            default: return false;
-        }
+        return action.ActionItem.CheckAction(action);
     }
 
 
     public static IEnumerable<Effect> CheckEcosystem()
     {
-        // new EffectsList
-
         IReadOnlyList<TableCard> plants = ServiceLocator.Get<IModel>().Ecosystem.Plants;
         IReadOnlyList<TableCard> herbivores = ServiceLocator.Get<IModel>().Ecosystem.Herbivores;
         IReadOnlyList<TableCard> carnivores = ServiceLocator.Get<IModel>().Ecosystem.Carnivores;
@@ -157,127 +131,55 @@ public static class RulesCheck
 
         if (herbivoresDeath)
         {
-            effects.Add(Effect.KillHerbivore);
+            effects.Add(Effect.KillHerbivoreEcosystem);
             effects.Add(Effect.GrowMushroomEcosystem);
         }
         else if (herbivoresGrow)
         {
-            effects.Add(Effect.GrowHerbivore);
+            effects.Add(Effect.GrowHerbivoreEcosystem);
         }
 
         if (carnivoresDeath)
         {
-            effects.Add(Effect.KillCarnivore);
+            effects.Add(Effect.KillCarnivoreEcosystem);
             effects.Add(Effect.GrowMushroomEcosystem);
         }
         else if (carnivoresGrow)
         {
-            effects.Add(Effect.GrowCarnivore);
+            effects.Add(Effect.GrowCarnivoreEcosystem);
         }
 
         return effects;
     }
 
-
-    public static bool CheckRoundEnd(out IEnumerable<Effect> effects)
+    public static IEnumerable<IEffectCommand> CheckConstructions()
     {
-        effects = null;
-        return false;
-    }
+        List<IEffectCommand> commands = new();
 
-
-    private static bool CheckPopulationCardAction(PlayerAction action)
-    {
-        switch (action.Receivers[0].Location)
+        foreach (var character in Config.TurnOrder)
         {
-            case ValidDropLocation.OwnerSlot:
-                var slotOwner = action.Receivers[0].LocationOwner;
-                if (slotOwner != action.Actor)
-                {
-                    Debug.Log("rechazada porque el slot no es del que jugo la carta de poblacion!");
-                    return false;
-                }
-
-                if (ServiceLocator.Get<IModel>().GetPlayer(action.Actor).Territory.Slots[action.Receivers[0].Index]
-                        .PlacedCards.Count != 0)
-                {
-                    Debug.Log("rechazada porque el slot donde se jugo la carta de poblacion no esta vacio");
-                    return false;
-                }
-
-                return true;
-
-            case ValidDropLocation.DiscardPile:
-                var owner = action.Receivers[0].LocationOwner;
-                if (owner != action.Actor)
-                {
-                    Debug.Log("rechazada porque la pila de descarte no es del que jugo la carta de poblacion!");
-                    return false;
-                }
-
-                return true;
-
-            default:
-                Debug.Log($"rechazada porque la carta de poblacion se jugo en {action.Receivers[0].Location}");
-                return false;
+            if(character is PlayerCharacter.None) continue;
+            var territory = ServiceLocator.Get<IModel>().GetPlayer(character).Territory; 
+            if(!territory.HasConstruction) continue;
+            if(!HasAnimals(territory)) 
+                commands.Add(new EffectCommands.DelayedDestroyConstruction(territory));
         }
+
+        return commands;
     }
 
-    private static bool CheckInfluenceCardAction(PlayerAction action)
+    private static bool HasAnimals(Territory territory)
     {
-        return true;
-    }
-
-    private static bool CheckConstructionAction(PlayerAction action)
-    {
-        var receivers = action.Receivers;
-
-        if (receivers.Length != 1) return false;
-
-        var owner = ServiceLocator.Get<IModel>().GetPlayer(receivers[0].LocationOwner);
-
-        if (owner is null ||
-            receivers[0].Location != ValidDropLocation.AnyTerritory ||
-            owner.Territory.HasConstruction)
-            return false;
-
-
-        // comprobar si hay algun carnivoro y 2 o mas plantas
-        int plants = 0;
-        foreach (var slot in owner.Territory.Slots)
+        foreach (var slot in territory.Slots)
         {
-            foreach (var placedCard in slot.PlacedCards)
+            foreach (var tableCard in slot.PlacedCards)
             {
-                if (placedCard.Card.CardType is not ICard.Card.Population) continue;
-                
-                if (placedCard.Card.GetPopulations().Contains(ICard.Population.Carnivore))
-                    return false;
-
-                if (placedCard.Card.GetPopulations().Contains(ICard.Population.Plant))
-                    plants++;
+                if (tableCard.GetPopulations().Contains(Population.Carnivore) ||
+                    tableCard.GetPopulations().Contains(Population.Herbivore))
+                    return true;
             }
         }
 
-        // 2 plantas al menos
-        return plants >= 2;
-    }
-
-    private static bool CheckMacrofungiAction(PlayerAction action)
-    {
-        // comprobar receivers 3 elementos
-        if (action.Receivers.Length != 3)
-            return false;
-
-
-        foreach (var receiver in action.Receivers)
-        {
-            Slot slot = ServiceLocator.Get<IModel>().GetPlayer(receiver.LocationOwner).Territory.Slots[receiver.Index];
-
-            var placedCard = slot.PlacedCards[receiver.SecondIndex];
-            if (placedCard.Card.CardType is not ICard.Card.Mushroom)
-                return false;
-        }
-
-        return true;
+        return false;
     }
 }

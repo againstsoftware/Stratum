@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Localization;
 using System.Collections.Generic;
 
-public abstract class ACard : AActionItem, ICard, IEffectContainer
+public abstract class ACard : AActionItem
 {
     public string Name { get => _name.GetLocalizedString(); }
     public string Description { get => _description.GetLocalizedString(); }
@@ -14,7 +14,7 @@ public abstract class ACard : AActionItem, ICard, IEffectContainer
     
     
     [SerializeField] private LocalizedString _name, _description;
-
+    
 
     [Serializable]
     public class ActionEffect
@@ -24,12 +24,9 @@ public abstract class ACard : AActionItem, ICard, IEffectContainer
     }
 
     [SerializeField] private ActionEffect[] _actionEffects;
-    
-    public abstract ICard.Card CardType { get; }
-    public abstract IEnumerable<ICard.Population> GetPopulations();
 
 
-    public IEnumerable<Effect> GetEffects(int index) => _actionEffects[index].Effects;
+    public override IEnumerable<Effect> GetEffects(int index) => _actionEffects[index].Effects;
     
 
     public override IEnumerable<ValidAction> GetValidActions()
@@ -43,4 +40,29 @@ public abstract class ACard : AActionItem, ICard, IEffectContainer
         }
         return validActions;
     }
+    
+    public override bool CheckAction(PlayerAction action)
+    {
+        var p = ServiceLocator.Get<IModel>().GetPlayer(action.Actor);
+        if (!p.HandOfCards.Contains(this))
+        {
+            Debug.Log($"rechazada porque la carta no esta en la mano del model");
+            return false;
+        }
+
+        //si es accion de descarte
+        if (action.Receivers.Length == 1 && action.Receivers[0].Location is ValidDropLocation.DiscardPile)
+        {
+            var owner = action.Receivers[0].LocationOwner;
+            if (owner == action.Actor) return true;
+            Debug.Log("rechazada porque la pila de descarte no es del que jugo la carta!");
+            return false;
+        }
+
+        return CheckCardAction(action);
+
+    }
+
+    protected virtual bool CheckCardAction(PlayerAction action) => false;
+
 }

@@ -7,6 +7,7 @@ public class SlotReceiver : MonoBehaviour, IActionReceiver
     [field:SerializeField] public PlayerCharacter Owner { get; private set; }
     [field:SerializeField] public TerritoryReceiver Territory { get; private set; }
     [field:SerializeField] public Transform SnapTransform { get; private set; }
+    public Transform GetSnapTransform(PlayerCharacter _) => SnapTransform;
     [field:SerializeField] public Transform SnapTransformBottom { get; private set; }
     [SerializeField] private Vector3 _offset;
     public bool IsDropEnabled { get; private set; } = true;
@@ -69,7 +70,14 @@ public class SlotReceiver : MonoBehaviour, IActionReceiver
     private void UpdateCards()
     {
         int i = 0;
-        foreach(var c in _cards) c.IndexOnSlot = i++;
+        foreach (var c in _cards)
+        {
+            c.IndexOnSlot = i;
+            SnapTransform.localPosition = SnapTransformBottom.localPosition + i * _offset;
+            c.transform.position = SnapTransform.position;
+
+            i++;
+        }
         SnapTransform.localPosition = SnapTransformBottom.localPosition + _cards.Count * _offset;
     }
 

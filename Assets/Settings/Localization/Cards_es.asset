@@ -85,6 +85,201 @@ MonoBehaviour:
       las industrias desde el a\xF1o "
     m_Metadata:
       m_Items: []
+  - m_Id: 10122221576777728
+    m_Localized: "Migraci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10122316158332928
+    m_Localized: "Elige una carta de carn\xEDvoro o herb\xEDvoro de tu territorio
+      y mu\xE9vela a un espacio vac\xEDo en otro territorio."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10600926103203840
+    m_Localized: Fragancia de Feromonas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10601212662247424
+    m_Localized: "Elige una carta de herb\xEDvoro o carn\xEDvoro de otro territorio
+      y mu\xE9vela a un espacio vac\xEDo en tu territorio."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10614643192754176
+    m_Localized: Pirotecnia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10614700512112640
+    m_Localized: "Elige una carta de herb\xEDvoro o carn\xEDvoro y mu\xE9vela a un
+      espacio vac\xEDo en el territorio opuesto al que se encuentra."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10622166725554176
+    m_Localized: Seta Apetitosa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10622238829834240
+    m_Localized: "Elige una carta de herb\xEDvoro o carn\xEDvoro y mu\xE9vela a un
+      espacio vac\xEDo en un territorio donde haya al menos una carta de hongo o
+      macrohongo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10957877249044480
+    m_Localized: Rabia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10957914855174144
+    m_Localized: "Coloca esta carta sobre una carta de herb\xEDvoro. Mientras no
+      muera, El Magnate no podr\xE1 construir en el territorio donde est\xE9."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11272635391143936
+    m_Localized: Incendio Forestal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11272707960991744
+    m_Localized: "Elige un territorio. Todas las cartas de poblaci\xF3n, hongo y
+      macrohongo en ese territorio mueren. Si hay una construcci\xF3n, tambi\xE9n
+      se destruye."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11272742639497216
+    m_Localized: Incendio Provocado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11272787711488000
+    m_Localized: "Elige un territorio. Todas las cartas de poblaci\xF3n, hongo y
+      macrohongo en ese territorio mueren. Si hay una construcci\xF3n, tambi\xE9n
+      se destruye."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11272832192081920
+    m_Localized: Esporas Explosivas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11272888479641600
+    m_Localized: "Elige un territorio donde haya al menos una carta de hongo o macrohongo.
+      Todas las cartas de poblaci\xF3n en ese territorio mueren. Si hay una construcci\xF3n
+      tambi\xE9n se destruye. Las cartas de hongo y macrohongo no mueren."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11319356305436672
+    m_Localized: Moho
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11319399942975488
+    m_Localized: "Coloca una carta de hongo sobre un espacio vac\xEDo de un territorio
+      con construcci\xF3n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11334756611125248
+    m_Localized: "Omn\xEDvoro"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11334838618157056
+    m_Localized: "Coloca esta carta sobre una carta de carn\xEDvoro. A partir de
+      ahora, esta carta contar\xE1 tanto como carn\xEDvoro como herb\xEDvoro."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11345899178160128
+    m_Localized: Compost
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11345953246932992
+    m_Localized: "Elige un espacio vac\xEDo de un territorio. Coloca una carta de
+      hongo y una carta de planta encima."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13025583309778944
+    m_Localized: Pesticida
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13025632441856000
+    m_Localized: "Muere una carta de planta de tu elecci\xF3n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13489380948439040
+    m_Localized: Fruta con Semillas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13489467409821696
+    m_Localized: "Coloca esta carta sobre una carta de planta. Si una carta de herb\xEDvoro
+      o carn\xEDvoro de ese territorio crece, otra planta crecer\xE1 sobre la que
+      tiene la carta."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13519502816571392
+    m_Localized: "Ra\xEDces Profundas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13519579794632704
+    m_Localized: Coloca esta carta sobre una carta de planta. Si muere, crece otra
+      carta de planta igual y esta carta se descarta.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13861355944407040
+    m_Localized: Hiedra Verde
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13861413955825664
+    m_Localized: "Coloca esta carta sobre una carta de planta. Al final de la ronda,
+      si hay una construcci\xF3n en su territorio, se destruye la construcci\xF3n
+      y descarta esta carta de la planta."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13873805741780992
+    m_Localized: Depredador de Setas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13873873236520960
+    m_Localized: "Coloca esta carta sobre una carta de herb\xEDvoro. Mientras no
+      muera, al final de la ronda morir\xE1 la carta de hongo m\xE1s reciente que
+      haya en su territorio."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14230410446499840
+    m_Localized: Cazador
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14230454235033600
+    m_Localized: "Muere una carta de herb\xEDvoro o carn\xEDvoro de tu elecci\xF3n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14234738599129088
+    m_Localized: "Muere una carta de planta de tu elecci\xF3n. Crece un hongo en
+      su espacio de territorio."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14234440090513408
+    m_Localized: "Putrefacci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14240044267859968
+    m_Localized: "Par\xE1sito"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14240136920035328
+    m_Localized: "Coloca esta carta sobre una carta de herb\xEDvoro o carn\xEDvoro.
+      Si la carta crece, aparece un hongo en su espacio de territorio y esta carta
+      se descarta."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17078851686100992
+    m_Localized: Madre Naturaleza
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17078907726196736
+    m_Localized: "Busca lo m\xE1s vital, no m\xE1s\r, lo que es necesidad, no m\xE1s\r\nY
+      olv\xEDdate de la preocupaci\xF3n\r\nTan solo lo muy esencial\r, para vivir
+      sin batallar\r\nY la naturaleza te lo da"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17096880021041152
+    m_Localized: Correa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17096917622976512
+    m_Localized: Hola esta es una descripcion
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84038174b9c74591ac593a0f869c285c, type: 3}
+  m_Name: Rot
+  m_EditorClassIdentifier: 
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 168bb580d5a235e469f8bb2aef8d8467,
+    type: 3}
+  _name:
+    m_TableReference:
+      m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
+    m_TableEntryReference:
+      m_KeyId: 14234440090513408
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _description:
+    m_TableReference:
+      m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
+    m_TableEntryReference:
+      m_KeyId: 14234738599129088
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _actionEffects:
+  - ValidAction:
+      <DropLocation>k__BackingField: 6
+      <Receivers>k__BackingField: 
+    Effects: 05000000
+  - ValidAction:
+      <DropLocation>k__BackingField: 4
+      <Receivers>k__BackingField: 
+    Effects: 0d0000001800000014000000
+  - ValidAction:
+      <DropLocation>k__BackingField: 5
+      <Receivers>k__BackingField: 04000000
+    Effects: 0d0000001800000014000000
+  <IsPersistent>k__BackingField: 0
+  references:
+    version: 2
+    RefIds: []

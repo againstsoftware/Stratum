@@ -6,6 +6,7 @@ public class TurnManager : MonoBehaviour, ITurnSystem
 {
     public PlayerCharacter PlayerOnTurn { get; private set; } = PlayerCharacter.None;
     public event Action<PlayerCharacter> OnTurnChanged;
+    public event Action<PlayerCharacter> OnActionEnded;
     public event Action OnGameStart;
 
 
@@ -39,8 +40,9 @@ public class TurnManager : MonoBehaviour, ITurnSystem
         OnGameStart?.Invoke();
     }
 
-    public void OnActionEnded() //lo llama el ejecutor de comandos
+    public void EndAction() //lo llama el ejecutor de comandos
     {
+        OnActionEnded?.Invoke(PlayerOnTurn);
         _actionsLeft--;
         if (_actionsLeft == 0 || PlayerOnTurn is PlayerCharacter.None) NextTurn(); 
     }

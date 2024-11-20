@@ -1,14 +1,39 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
 public class TableCard
 {
-    public readonly ICard Card;
+    public readonly ACard Card;
     public int TurnsAlive { get; private set; }
     public TableCard InfluenceCardOnTop { get; private set; }
     public Slot Slot { get; internal set; }
     public int IndexInSlot { get; internal set; }
+    public bool HasRabies { get; internal set; }
 
-    internal TableCard(ICard card)
+    public bool IsOmnivore { get; set; } //NO 
+    
+    public bool HasLeash { get; set; } 
+    
+
+    public event Action OnSlotRemove;
+    
+    private PopulationCard _populationCard;
+
+
+    public IEnumerable<Population> GetPopulations()
+    {
+        if (_populationCard is null) return new[] { Population.None };
+        return IsOmnivore
+            ? new[] { Population.Carnivore, Population.Herbivore }
+            : new[] { _populationCard.PopulationType };
+    }
+
+
+    internal TableCard(ACard card)
     {
         Card = card;
+        if (Card is PopulationCard pc) _populationCard = pc;
     }
 
     internal void AdvanceTurn()
@@ -17,7 +42,7 @@ public class TableCard
         InfluenceCardOnTop?.AdvanceTurn();
     }
 
-    internal void PlaceInlfuenceCard(ICard card)
+    internal void PlaceInfluenceCard(ACard card)
     {
         InfluenceCardOnTop = new TableCard(card);
     }
@@ -31,6 +56,7 @@ public class TableCard
     internal void OnRemove()
     {
         InfluenceCardOnTop?.OnRemove();
-        //...
+        OnSlotRemove?.Invoke();
     }
+    
 }

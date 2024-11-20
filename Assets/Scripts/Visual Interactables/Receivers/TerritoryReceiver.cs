@@ -6,6 +6,7 @@ public class TerritoryReceiver : MonoBehaviour, IActionReceiver
     [field:SerializeField] public PlayerCharacter Owner { get; private set; }
     [field:SerializeField] public SlotReceiver[] Slots { get; private set; }
     [field:SerializeField] public Transform SnapTransform { get; private set; }
+    public Transform GetSnapTransform(PlayerCharacter _) => SnapTransform;
 
     public bool IsDropEnabled { get; private set; } = true;
     public bool CanInteractWithoutOwnership => true;

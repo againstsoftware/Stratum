@@ -65,6 +65,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     private void Start()
     {
         ServiceLocator.Get<ITurnSystem>().OnTurnChanged += OnTurnChanged;
+        ServiceLocator.Get<ITurnSystem>().OnActionEnded += OnActionEnded;
     }
 
 
@@ -72,7 +73,9 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     {
         Input.PointerPosition -= OnPointerPositionChanged;
         var ts = ServiceLocator.Get<ITurnSystem>();
-        if (ts is not null) ts.OnTurnChanged -= OnTurnChanged;
+        if (ts is null) return;
+        ts.OnTurnChanged -= OnTurnChanged;
+        ts.OnActionEnded -= OnActionEnded;
     }
 
 
@@ -231,13 +234,13 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
                 CurrentState = IInteractionSystem.State.Choosing;
                 _selectedReceivers.Clear();
                 _selectedReceivers.Add(dropLocation);
-                item.OnDrop(dropLocation, TryStartAction);
+                item.OnDrop(dropLocation);
                 break;
 
             case ActionAssembler.AssemblyState.Completed:
                 CurrentState = IInteractionSystem.State.Waiting;
                 Debug.Log("accion ensamblada!!!");
-                item.OnDrop(dropLocation, TryStartAction);
+                item.OnDrop(dropLocation);
                 break;
         }
     }
@@ -330,17 +333,21 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
         SelectedDropLocation.OnDraggingSelect();
     }
 
-
+    private void OnActionEnded(PlayerCharacter onTurn)
+    {
+        if(onTurn == LocalPlayer) TryStartAction();
+    }
     private void TryStartAction()
+
     {
         if (_actionsLeft == 0)
         {
-            Debug.Log("no actions left in IM");
+            // Debug.Log("no actions left in IM");
             CurrentState = IInteractionSystem.State.Waiting;
             return;
         }
 
-        Debug.Log("starting next action");
+        // Debug.Log("starting next action");
 
         _actionsLeft--;
         CurrentState = IInteractionSystem.State.Idle;

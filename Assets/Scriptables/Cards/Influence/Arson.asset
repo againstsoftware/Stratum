@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51c07a7cab5842139d640e4e53b10ff3, type: 3}
+  m_Name: Arson
+  m_EditorClassIdentifier: 
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 0ed0ea7799c383b4e94d25878ed6343f,
+    type: 3}
+  _name:
+    m_TableReference:
+      m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
+    m_TableEntryReference:
+      m_KeyId: 11272742639497216
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _description:
+    m_TableReference:
+      m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
+    m_TableEntryReference:
+      m_KeyId: 11272787711488000
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _actionEffects:
+  - ValidAction:
+      <DropLocation>k__BackingField: 6
+      <Receivers>k__BackingField: 
+    Effects: 05000000
+  - ValidAction:
+      <DropLocation>k__BackingField: 2
+      <Receivers>k__BackingField: 
+    Effects: 0d00000011000000
+  - ValidAction:
+      <DropLocation>k__BackingField: 5
+      <Receivers>k__BackingField: 02000000
+    Effects: 0d00000011000000
+  <InfluenceType>k__BackingField: 7
+  <IsPersistent>k__BackingField: 0
+  references:
+    version: 2
+    RefIds: []
