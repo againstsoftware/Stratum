@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class InteractionManager : MonoBehaviour, IInteractionSystem
 {
@@ -41,13 +43,11 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     private bool _isSelectedRulebookOpener;
     private APlayableItem _draggingItem;
     private float _dropLocationCheckTimer, _dropLocationCheckPeriod;
-    private IActionReceiver _selectedReceiver;
     private readonly HashSet<IActionReceiver> _selectedReceivers = new();
-    private readonly HashSet<IActionReceiver> _validReceivers = new();
+    private IActionReceiver _selectedReceiver;
+
 
     private int _actionsLeft;
-
-    private IActionReceiver[] _allReceivers;
 
 
     #region Callbacks
@@ -66,8 +66,6 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     {
         ServiceLocator.Get<ITurnSystem>().OnTurnChanged += OnTurnChanged;
         ServiceLocator.Get<ITurnSystem>().OnActionEnded += OnActionEnded;
-
-        _allReceivers = FindObjectsOfType<MonoBehaviour>().OfType<IActionReceiver>().ToArray();
     }
 
 
@@ -198,8 +196,6 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
             _isSelectedRulebookOpener = false;
             _rulebook.HideRulebook();
         }
-
-        RegisterValidDropLocations();
     }
 
     public void DropPlayableItem(APlayableItem item)
@@ -295,14 +291,6 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
         _selectedReceiver = null;
     }
 
-    public void SetLocalPlayer(PlayerCharacter character, Camera cam)
-    {
-        LocalPlayer = character;
-        Camera = cam;
-        _cameraMovement = Camera.GetComponent<CameraMovement>();
-        _rulebook = Camera.GetComponentInChildren<Rulebook>();
-    }
-
 
     private void CheckDropLocations()
     {
@@ -336,38 +324,19 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
 
         SelectedDropLocation = newDropLocation;
 
-        if (!SelectedDropLocation.IsDropEnabled ||
-            !_validReceivers.Contains(SelectedDropLocation))
+        if (!SelectedDropLocation.IsDropEnabled)
         {
             SelectedDropLocation = null;
             return;
         }
-        
 
         SelectedDropLocation.OnDraggingSelect();
     }
 
-    private void RegisterValidDropLocations()
-    {
-        _validReceivers.Clear();
-        var validActions = _draggingItem.ActionItem.GetValidActions();
-        foreach (var receiver in _allReceivers)
-        {
-            foreach (var validAction in validActions)
-            {
-                if (ActionAssembler.CheckIfValid(_draggingItem, receiver, validAction))
-                {
-                    _validReceivers.Add(receiver);
-                }
-            }
-        }
-    }
-
     private void OnActionEnded(PlayerCharacter onTurn)
     {
-        if (onTurn == LocalPlayer) TryStartAction();
+        if(onTurn == LocalPlayer) TryStartAction();
     }
-
     private void TryStartAction()
 
     {
@@ -394,5 +363,15 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
 
         _actionsLeft = _config.ActionsPerTurn;
         TryStartAction();
+    }
+
+
+
+    public void SetLocalPlayer(PlayerCharacter character, Camera cam)
+    {
+        LocalPlayer = character;
+        Camera = cam;
+        _cameraMovement = Camera.GetComponent<CameraMovement>();
+        _rulebook = Camera.GetComponentInChildren<Rulebook>();
     }
 }
