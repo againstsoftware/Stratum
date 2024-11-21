@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 
 public class InteractionSystemMenu : MonoBehaviour, IInteractionSystemMenu
 {
-    private InteractablesObjects _currentInteractable = InteractablesObjects.None;
     private IMenuInteractable _interactable;
     public Camera Camera { get; private set; }
     public InputHandlerMenu Input { get; private set; }
@@ -38,7 +37,6 @@ public class InteractionSystemMenu : MonoBehaviour, IInteractionSystemMenu
         {
 
             _interactable.DisableInteraction();
-            _currentInteractable = InteractablesObjects.None;
             _interactable = null;
         }
     }

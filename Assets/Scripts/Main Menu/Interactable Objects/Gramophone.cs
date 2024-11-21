@@ -7,10 +7,6 @@ using UnityEngine.EventSystems;
 public class Gramophone : AInteractableObject
 {
     [SerializeField] private Collider Language, Handle, Disc;
-    
-    // para pruebas
-    private AudioSource audioSource;
-    public AudioClip mp3Clip;
 
     public override void OnPointerClick(PointerEventData eventData)
     {
@@ -30,18 +26,6 @@ public class Gramophone : AInteractableObject
         if (_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == Disc))
         {
             AudioVolume();
-        }
-    }
-
-    public override void EnableInteraction()
-    {
-        _isEnabled = true;
-        audioSource = GetComponent<AudioSource>();
-
-        if (mp3Clip != null)
-        {
-            audioSource.clip = mp3Clip;
-            audioSource.Play(); // Reproducir el audio
         }
     }
 
@@ -73,7 +57,8 @@ public class Gramophone : AInteractableObject
 
     private void AudioVolume()
     {
-        // así porque falta un soundmanager
+        Debug.Log("disco tocado");
+        AudioSource audioSource = MusicManager.Instance.GetComponent<AudioSource>();
         audioSource.volume = (audioSource.volume + 0.2f > 1.0f) ? 0f : audioSource.volume + 0.2f;
         PlayerPrefs.SetFloat(GamePrefs.AudioPrefKey, audioSource.volume);
         PlayerPrefs.Save();

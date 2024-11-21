@@ -5,11 +5,10 @@ using UnityEngine.Localization.Settings;
 
 public class GamePrefsInitializer : MonoBehaviour
 {
-    private void Start()
+    private void Awake()
     {
         // cargar ajustes
         StartCoroutine(LoadSavedLanguage());
-        
         LoadGraphicsQuality();
         LoadAudioVolume();
     }
@@ -24,10 +23,7 @@ public class GamePrefsInitializer : MonoBehaviour
     }
     private void LoadAudioVolume()
     {
-        // por ahora así porque no hay un soundmanager
-        GameObject gramophone = GameObject.Find("Gramophone");
-        gramophone.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat(GamePrefs.AudioPrefKey, 1.0f);
-        Debug.Log($"volumen {gramophone.GetComponent<AudioSource>().volume}");
+        MusicManager.Instance.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat(GamePrefs.AudioPrefKey, 1.0f);
 
     }
 
