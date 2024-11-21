@@ -5,45 +5,90 @@ ModelImporter:
   internalIDToNameTable: []
   externalObjects:
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Silla_Terciopelo
-    second: {fileID: 2800000, guid: b924c67eb71ddb3468ea86e6b7fac255, type: 3}
+      name: Alfombra
+    second: {fileID: 2100000, guid: 9a51a67fd6d742543a9dd1e5549864e2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Back
+    second: {fileID: 2100000, guid: 214363353cf4ac3449e47e8d0d8bb921, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mesa
+    second: {fileID: 2100000, guid: 4abd87f3ea2a5d3428d53ea97fd279f9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pared_Madera
+    second: {fileID: 2100000, guid: 20f074af3286dea409c684237c510838, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pared_Papel1
+    second: {fileID: 2100000, guid: d9c68b2487a94c14b9ab03dbc12e0624, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Patas_Mesa
+    second: {fileID: 2100000, guid: 7519e0f898eecaa4cabc193d547bf9eb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Props
+    second: {fileID: 2100000, guid: 7047922480de07147a65a4ad3475b484, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Suelo
+    second: {fileID: 2100000, guid: a1716b9d62ff5cc4faad918b2f20b140, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Terciopelo
+    second: {fileID: 2100000, guid: 514dfa1e9eecce44198dd3a5219f6c86, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: White_Cards
+    second: {fileID: 2100000, guid: 13265bed5a41975429780e9b3a6b1eba, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: Wood066_1K-PNG_Color
-    second: {fileID: 2800000, guid: 3383b59b55f72e44481d41f5a8a03eb3, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: frente
-    second: {fileID: 2800000, guid: d40fc73cab8372f408b6431d007fcf58, type: 3}
+      name: Wood027_1K-PNG_Color
+    second: {fileID: 2800000, guid: 1d3817d6f8254c0469d091254c5c5984, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: m_alfombra
-    second: {fileID: 2800000, guid: 96bea81a525ab1e428232acbc485d660, type: 3}
+    second: {fileID: 2800000, guid: cab51cc5ba6061e4d8101cc2da189519, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: m_pared_papel
-    second: {fileID: 2800000, guid: 278d95225e4ce7d4da620596477c4150, type: 3}
+    second: {fileID: 2800000, guid: 84f0ddaa8ec9c6843b01691c4865ea2f, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: m_props
-    second: {fileID: 2800000, guid: 75a5fbd5f052a6f46a4b433411d8ee0a, type: 3}
+    second: {fileID: 2800000, guid: f976c122d15dd61499759e71291bf657, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: m_silla_terciopelo
+    second: {fileID: 2800000, guid: 665453d9c0e16ef4490af04af3b9b0de, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: reves
-    second: {fileID: 2800000, guid: 10b3be47a352c0a48bc26e13fdb22e35, type: 3}
+    second: {fileID: 2800000, guid: 65ba9515d289cb54b999f23b077c156c, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: tiles_0051_color_1k
-    second: {fileID: 2800000, guid: faa71b23753a10d49970d0ea23be769b, type: 3}
+    second: {fileID: 2800000, guid: 017bb96ad25ed334a80718334e3b8490, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -75,7 +120,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.16
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -130,7 +175,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.0016
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
