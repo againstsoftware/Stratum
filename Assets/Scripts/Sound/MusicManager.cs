@@ -20,15 +20,11 @@ public class MusicManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("entro else awake musicmanager");
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject.transform.parent);
         }
         
-    }
-
-    private void Start()
-    {
-        OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
     }
 
     private void OnEnable()
@@ -43,7 +39,15 @@ public class MusicManager : MonoBehaviour
 
     public void PlayMusic(string trackName, float fadeDuration = 0.5f)
     {
-        StartCoroutine(AnimateMusicCrossfade(musicLibrary.GetClipFromName(trackName), fadeDuration));
+        if(trackName == "MenuTheme")
+        {
+            musicSource.clip = musicLibrary.GetClipFromName(trackName);
+            musicSource.Play();
+        }
+        else
+        {
+            StartCoroutine(AnimateMusicCrossfade(musicLibrary.GetClipFromName(trackName), fadeDuration));
+        }
     }
  
     IEnumerator AnimateMusicCrossfade(AudioClip nextTrack, float fadeDuration = 0.5f)
@@ -73,12 +77,12 @@ public class MusicManager : MonoBehaviour
     {
         if(scene.name == "MainMenu")
         {
-            PlayMusic("estopa");
+            PlayMusic("MenuTheme");
         }
         
         if(scene.name == "Game")
         {
-            PlayMusic("estopa");
+            PlayMusic("GameTheme");
         }
     }
 

@@ -5,7 +5,7 @@ using UnityEngine.Localization.Settings;
 
 public class GamePrefsInitializer : MonoBehaviour
 {
-    private void Awake()
+    private void Start()
     {
         // cargar ajustes
         StartCoroutine(LoadSavedLanguage());
@@ -24,6 +24,7 @@ public class GamePrefsInitializer : MonoBehaviour
     private void LoadAudioVolume()
     {
         MusicManager.Instance.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat(GamePrefs.AudioPrefKey, 1.0f);
+        MusicManager.Instance.PlayMusic("MenuTheme");
 
     }
 
