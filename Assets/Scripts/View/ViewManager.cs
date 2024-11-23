@@ -14,16 +14,14 @@ public class ViewManager : MonoBehaviour, IView
     private Dictionary<PlayerCharacter, ViewPlayer> _players;
     private bool _playersInitialized;
     private CameraMovement _cameraMovement;
+    private PlayerCharacter _localPlayer;
 
     private void Awake()
     {
         if (!_playersInitialized) InitPlayers();
     }
 
-    private void Start()
-    {
-        _cameraMovement = Camera.main.GetComponent<CameraMovement>();
-    }
+
 
 
     public ViewPlayer GetViewPlayer(PlayerCharacter character)
@@ -284,9 +282,13 @@ public class ViewManager : MonoBehaviour, IView
         var influenceCard = populationCard.InfluenceCardOnTop;
         playerOwner.DiscardInfluenceFromPopulation(influenceCard, callback);
     }
-    
-    
-    
+
+
+    public void SetLocalPlayer(PlayerCharacter localPlayer, Camera cam)
+    {
+        _localPlayer = localPlayer;
+        _cameraMovement = cam.GetComponent<CameraMovement>();
+    }
 
 
     // private IEnumerator DestroyCard(GameObject card, Action callback = null)

@@ -62,13 +62,17 @@ public class TestModeCommunications : MonoBehaviour, ICommunicationSystem
         {
             if (viewPlayer.Character is PlayerCharacter.None) continue;
 
-            var cam = viewPlayer.Camera;
+            var cam = viewPlayer.MainCamera;
+            var uicam = viewPlayer.UICamera;
+
 
             if (viewPlayer.Character != newLocalPlayer)
             {
                 cam.enabled = false;
                 cam.GetComponent<AudioListener>().enabled = false;
                 cam.GetComponent<PhysicsRaycaster>().enabled = false;
+
+                uicam.enabled = false;
 
                 viewPlayer.IsLocalPlayer = false;
             }
@@ -79,8 +83,10 @@ public class TestModeCommunications : MonoBehaviour, ICommunicationSystem
                 cam.enabled = true;
                 cam.GetComponent<AudioListener>().enabled = true;
                 cam.GetComponent<PhysicsRaycaster>().enabled = true;
+                uicam.enabled = true;
                 _playerOnTurn.IsLocalPlayer = true;
                 ServiceLocator.Get<IInteractionSystem>().SetLocalPlayer(_playerOnTurn.Character, cam);
+                ServiceLocator.Get<IView>().SetLocalPlayer(_playerOnTurn.Character, cam);
             }
         }
     }

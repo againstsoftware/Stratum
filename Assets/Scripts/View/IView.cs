@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public interface IView : IService
 {
@@ -54,4 +55,6 @@ public interface IView : IService
     public void KillPlacedCard(CardLocation location, Action callback);
 
     public void DiscardInfluenceFromPopulation(CardLocation location, Action callback);
+
+    public void SetLocalPlayer(PlayerCharacter localPlayer, Camera cam);
 }
