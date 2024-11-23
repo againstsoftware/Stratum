@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Rulebook : AInteractableObject
+public class Rules : AInteractableObject
 {
     // pruebas
     Material materialOG;
