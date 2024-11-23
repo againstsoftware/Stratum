@@ -522,13 +522,39 @@ Cada facción tendrá cartas de influencia únicas que permitirán alterar el ec
   ![ElMagnate](/Readme%20Files/Arte/ElMagnate.png)  
 
   ## Fu'ngaloth
-  Entidad de los hongos.
+  **Facción**: Fungi
+  **Rol**:Deidad antigua de los hongos / Maestro del reino micelial.
+
+  ## Descripción Física
+  - **Edad**: Incalculable. Existe desde antes de que Sylveria fuera un bosque.
+  - **Altura**: 2 m en posición erguida.
+  - **Complexión**: Imponente y esquelética.
+  - **Rasgos físicos**: Fu'ngaloth es una figura retorcida y majestuosa, con cuatro brazos largos y delgados, cada uno cubierto de pequeñas setas y hongos. De su espalda y cuerpo emergen agujeros que dispersan esporas con cada movimiento. Su cabeza está coronada por una seta colosal. Su piel es de un tono gris verdoso, quebrada y áspera como la corteza de un árbol en descomposición.
+  - **Vestimenta**: No lleva ropa tradicional. En su lugar, está cubierto de una armadura natural hecha de hongos. Porta un báculo rústico, hecho de madera marchita, con una terminación en forma retorcida.
+
+  ## Personalidad
+  - **Paciencia infinita**: Fu'ngaloth es eterno y no tiene prisa. Todo lo que hace sigue el ritmo lento y constante de la decadencia y la renovación. Es metódico, sabiendo que todo se descompone tarde o temprano.
+  - **Sabiduría ancestral**: Su mente está llena de los secretos más antiguos de Sylveria. Habla en enigmas y parábolas, con una voz reverberante que parece surgir de lo profundo de la tierra. Tiene un conocimiento abrumador de los ciclos naturales y cómo corromperlos.
+  - **Devoción a la simbiosis**: Para Fu'ngaloth, todo en Sylveria debe rendirse a la simbiosis micelial. Cree que la verdadera forma de vida es la que se integra y conecta en su red fúngica. Lo que no puede ser asimilado, debe perecer.
+  - **Desdén por el crecimiento lineal**: Detesta el avance de la industria y la persistente expansión de la naturaleza si no puede moldearla. La vida que no se corrompe o se renueva en su red le resulta antinatural.
+
+  ## Historia
+  Desde tiempos inmemoriales, Fu'ngaloth ha existido bajo la superficie de Sylveria, mucho antes de que los árboles milenarios extendieran sus ramas hacia el cielo. Cuando la primera semilla germinó, él ya había comenzado a corromper las raíces, estableciendo un imperio micelial que se extiende por todo el bosque. Adorado como un dios por las criaturas fúngicas, Fu'ngaloth vio a Sylveria como el terreno perfecto para extender su influencia.
+  Durante eras, permaneció paciente, permitiendo que su reino creciera en las sombras. Sin embargo, la llegada de la industria ha comenzado a destruir su mundo subterráneo. A su vez, la naturaleza, con sus guardianes protectores, ha tratado de purgar sus hongos en repetidas ocasiones, impidiéndole dominar la superficie. Ahora, el tiempo de esperar ha terminado. Fu'ngaloth ha decidido actuar, usando el antiguo juego de Stratum para garantizar que Sylveria se convierta en un vasto reino micelial, donde todo y todos estén bajo su influencia.
+
+  ## Motivaciones
+  - **Corromper Sylveria**: Fu'ngaloth desea extender su red micelial por todo el bosque, transformando cada planta y criatura en parte de su vasto imperio fúngico. Quiere ver el ciclo de la vida convertido en uno de descomposición y renacimiento bajo su control.
+  - **Erradicar a la Industria**: Ve la expansión industrial como algo que debe ser destruido. No puede permitir que perjudique a la tierra fértil donde sus hongos prosperan.
+  - **Convertir a la Naturaleza**: Para Fu'ngaloth, la naturaleza no debe ser protegida, debe ser transformada. Los árboles deben caer y los animales deben someterse a su red, convirtiéndose en extensiones de su voluntad.
 
   ## Referencias
 
   ![Fu'ngaloth1](/Readme%20Files/Arte/Imagen22.jpg)  
   ![Fu'ngaloth2](/Readme%20Files/Arte/Imagen23.png)  
   ![Fu'ngaloth3](/Readme%20Files/Arte/Imagen24.png)  
+
+  ## Modelo Final
+  ![Fu'ngaloth](/Readme%20Files/Arte/Fu'ngaloth.png)  
 
 ## 4.4. Escenarios y ambientación
 En **Stratum**, el entorno de juego se divide en dos planos principales: la mesa de juego física y el ecosistema en el centro de la mesa.
