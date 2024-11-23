@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Serialization;
+using TMPro;
 
 public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
 {
@@ -28,6 +29,7 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     [SerializeField] private float _drawTravelDuration, _reposInHandTravelDuration;
     [SerializeField] private float _closestCardZ;
     [SerializeField] private MeshRenderer _mesh;
+    [SerializeField] private TextMeshProUGUI _nameText;
 
 
     private float _startZ;
@@ -245,6 +247,8 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
         _mesh.materials[1].mainTexture = card.ObverseTex;
 
         _mesh.GetComponent<Collider>().enabled = true;
+
+        if (_nameText is not null) _nameText.text = Card.Name;
     }
 
     public void AddInfluenceCardOnTop(PlayableCard influenceCard)

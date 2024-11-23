@@ -204,6 +204,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 263638130163133198, guid: 3506e2362774da1448e902f762eec145, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 708153262471990826, guid: 3506e2362774da1448e902f762eec145, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -261,6 +265,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6964346341735768876, guid: 3506e2362774da1448e902f762eec145, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7167434536167280567, guid: 3506e2362774da1448e902f762eec145, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -896,6 +904,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2126101707772982786, guid: 88bcf5cfd8cb8c443bd05ba149fc2383, type: 3}
+      propertyPath: _gameMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2126101707772982786, guid: 88bcf5cfd8cb8c443bd05ba149fc2383, type: 3}
       propertyPath: _isTestScene
       value: 1
