@@ -2,11 +2,13 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.EventSystems;
+using UnityEngine.Rendering;
 
 
 public class Gramophone : AInteractableObject
 {
-    [SerializeField] private Collider Language, Handle, Disc;
+    [SerializeField] private Collider Language, Graphics, Volume;
+    [SerializeField] private RenderPipelineAsset[] qualityLevels;
 
     public override void OnPointerClick(PointerEventData eventData)
     {
@@ -17,13 +19,13 @@ public class Gramophone : AInteractableObject
         }
 
         // gráficos
-        if (_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == Handle))
+        if (_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == Graphics))
         {
             ToggleGraphicsQuality();
         }
 
         // volumen
-        if (_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == Disc))
+        if (_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == Volume))
         {
             AudioVolume();
         }
@@ -51,8 +53,11 @@ public class Gramophone : AInteractableObject
         int newQuality = (currentQuality + 1) % 3;
         QualitySettings.SetQualityLevel(newQuality);
 
+        QualitySettings.renderPipeline = qualityLevels[newQuality];
+
         PlayerPrefs.SetInt(GamePrefs.QualityPrefKey, newQuality);
         PlayerPrefs.Save();
+
     }
 
     private void AudioVolume()
