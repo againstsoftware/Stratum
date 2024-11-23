@@ -7,25 +7,28 @@ using UnityEngine.Rendering;
 
 public class Gramophone : AInteractableObject
 {
-    [SerializeField] private Collider Language, Graphics, Volume;
-    [SerializeField] private RenderPipelineAsset[] qualityLevels;
+    [SerializeField] private Collider _Language, _Graphics, _Volume;
+    [SerializeField] private RenderPipelineAsset[] _qualityLevels;
+    [SerializeField] private GramophoneAnimations _animations;
 
     public override void OnPointerClick(PointerEventData eventData)
     {
-        // language
-        if (_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == Language))
+        // _Language
+        if (_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == _Language))
         {
             StartCoroutine(ToggleLanguage());
+            
+            _animations.VinylAnim();
         }
 
         // gráficos
-        if (_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == Graphics))
+        if (_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == _Graphics))
         {
             ToggleGraphicsQuality();
         }
 
         // volumen
-        if (_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == Volume))
+        if (_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == _Volume))
         {
             AudioVolume();
         }
@@ -44,7 +47,6 @@ public class Gramophone : AInteractableObject
         PlayerPrefs.SetString(GamePrefs.LanguagePrefKey, newLocaleCode);
         PlayerPrefs.Save();
 
-        Debug.Log("Language actual: " + newLocaleCode);
     }
     private void ToggleGraphicsQuality()
     {
@@ -53,10 +55,12 @@ public class Gramophone : AInteractableObject
         int newQuality = (currentQuality + 1) % 3;
         QualitySettings.SetQualityLevel(newQuality);
 
-        QualitySettings.renderPipeline = qualityLevels[newQuality];
+        QualitySettings.renderPipeline = _qualityLevels[newQuality];
 
         PlayerPrefs.SetInt(GamePrefs.QualityPrefKey, newQuality);
         PlayerPrefs.Save();
+
+        _animations.HandleAnim();
 
     }
 
@@ -67,5 +71,7 @@ public class Gramophone : AInteractableObject
         audioSource.volume = (audioSource.volume + 0.2f > 1.0f) ? 0f : audioSource.volume + 0.2f;
         PlayerPrefs.SetFloat(GamePrefs.AudioPrefKey, audioSource.volume);
         PlayerPrefs.Save();
+
+        _animations.VolumeAnim();
     }
 }

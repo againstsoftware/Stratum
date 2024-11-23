@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
+using UnityEngine.Rendering;
 
 public class GamePrefsInitializer : MonoBehaviour
 {
+    [SerializeField] public RenderPipelineAsset[] _qualityLevels;
+
     private void Start()
     {
         // cargar ajustes
@@ -30,9 +33,14 @@ public class GamePrefsInitializer : MonoBehaviour
 
     private void LoadGraphicsQuality()
     {
-        int savedQuality = PlayerPrefs.GetInt(GamePrefs.QualityPrefKey, 1);
+        int savedQuality = PlayerPrefs.GetInt(GamePrefs.QualityPrefKey, 2);
         QualitySettings.SetQualityLevel(savedQuality);
-        Debug.Log($"quality {savedQuality}");
 
+        QualitySettings.renderPipeline = _qualityLevels[savedQuality];
+
+        PlayerPrefs.SetInt(GamePrefs.QualityPrefKey, savedQuality);
+        PlayerPrefs.Save();
+
+        Debug.Log($"quality {savedQuality}");
     }
 }
