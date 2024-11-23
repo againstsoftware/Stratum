@@ -53,11 +53,12 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
                 /*var input = */FindAnyObjectByType<PlayerInput>().camera = cam;
 
                 viewPlayer.IsLocalPlayer = true;
+                                
+                ServiceLocator.Get<IInteractionSystem>().SetLocalPlayer(_localPlayer, cam);
+                ServiceLocator.Get<IView>().SetLocalPlayer(_localPlayer, cam);
             }
         }
 
-        ServiceLocator.Get<IInteractionSystem>().SetLocalPlayer(_localPlayer, ServiceLocator.Get<IView>().GetViewPlayer(_localPlayer).MainCamera);
-        ServiceLocator.Get<IView>().SetLocalPlayer(_localPlayer, ServiceLocator.Get<IView>().GetViewPlayer(_localPlayer).MainCamera);
     }
 
     public void SyncRNGs()

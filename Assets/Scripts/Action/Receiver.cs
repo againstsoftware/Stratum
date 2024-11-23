@@ -1,6 +1,8 @@
+using System;
+using System.Collections.Generic;
 using Unity.Netcode;
 
-public struct Receiver : INetworkSerializable
+public struct Receiver : INetworkSerializable, IEquatable<Receiver>
 {
     public ValidDropLocation Location;
     public PlayerCharacter LocationOwner;
@@ -20,5 +22,25 @@ public struct Receiver : INetworkSerializable
         serializer.SerializeValue(ref LocationOwner);
         serializer.SerializeValue(ref Index);
         serializer.SerializeValue(ref SecondIndex);
+    }
+    
+    // Sobrescribir Equals
+    public override bool Equals(object obj)
+    {
+        return obj is Receiver other && Equals(other);
+    }
+
+    public bool Equals(Receiver other)
+    {
+        return Location.Equals(other.Location)
+               && EqualityComparer<PlayerCharacter>.Default.Equals(LocationOwner, other.LocationOwner)
+               && Index == other.Index
+               && SecondIndex == other.SecondIndex;
+    }
+
+    // Sobrescribir GetHashCode
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(Location, LocationOwner, Index, SecondIndex);
     }
 }

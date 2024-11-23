@@ -48,7 +48,7 @@ public interface IView : IService
 
     public void PutLeash(PlayerCharacter actor, CardLocation location, Action callback);
 
-    public void DestroyInTerritory(PlayerCharacter actor, PlayerCharacter territoryOwner, Action callback,
+    public void DestroyInTerritory(PlayerCharacter territoryOwner, Action callback,
         Predicate<ACard> filter = null);
 
     public void DestroyConstruction(PlayerCharacter territoryOwner, Action callback);
