@@ -342,12 +342,18 @@ public class ViewManager : MonoBehaviour, IView
         int i = 0;
         foreach (var (character, cards) in cardsDrawn)
         {
+            Debug.Log($"va a robar: {character}");
             int index = i++;
             arePlayersFinished[index] = false;
-            GetViewPlayer(character).DrawCards(cards, () => arePlayersFinished[index] = true);
+            GetViewPlayer(character).DrawCards(cards, () =>
+            {
+                Debug.Log($"ha robado {character}");
+                arePlayersFinished[index] = true;
+            });
         }
 
         yield return new WaitUntil(() => arePlayersFinished.All(pf => pf));
+        Debug.Log("cartas robadas");
         callback?.Invoke();
     }
 

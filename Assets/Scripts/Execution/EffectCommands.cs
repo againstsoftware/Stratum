@@ -647,7 +647,8 @@ public static class EffectCommands
         public void Execute(PlayerAction action, Action callback)
         {
             var ecosystemEffects = RulesCheck.CheckEcosystem();
-            foreach(var effect in ecosystemEffects.Reverse())
+            ecosystemEffects.Reverse();
+            foreach(var effect in ecosystemEffects)
                 ServiceLocator.Get<IExecutor>().PushDelayedCommand(Get(effect));
             callback?.Invoke();
         }

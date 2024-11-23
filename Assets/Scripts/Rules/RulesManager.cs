@@ -80,7 +80,16 @@ public class RulesManager : MonoBehaviour, IRulesSystem
     private void PlayEcosystemTurn()
     {
         var effects = RulesCheck.CheckEcosystem();
-        ServiceLocator.Get<IExecutor>().ExecuteRulesEffects(effects, EndRound);
+        if (!effects.Any())
+        {
+            Debug.Log("No habia efectos de ecosistema");
+            EndRound();
+        }
+        else
+        {
+            effects.Insert(0, Effect.OverviewSwitch);
+            ServiceLocator.Get<IExecutor>().ExecuteRulesEffects(effects, EndRound);
+        }
     }
 
     //estos metodos se llaman en medio de la ejecucion de efectos del turno del ecosistema
@@ -98,6 +107,7 @@ public class RulesManager : MonoBehaviour, IRulesSystem
 
     private void EndRound() //comprueba si hay algun efecto de final de ronda que se deba aplicar y lo aplica
     {
+        Debug.Log("fin de ronda.");
         List<IEffectCommand> roundEndCommands = new();
         //comprobacion de destruir construccion si no tiene animales
         var destroyConstructionCommands = RulesCheck.CheckConstructions();
@@ -112,13 +122,17 @@ public class RulesManager : MonoBehaviour, IRulesSystem
         roundEndCommands.AddRange(observerCommands);
 
         if (roundEndCommands.Any())
+        {
+            Debug.Log("no habia efectos de fin de ronda");
             ServiceLocator.Get<IExecutor>().ExecuteRulesEffects(roundEndCommands, StartNextRound);
+        }
 
         else StartNextRound();
     }
 
     private void StartNextRound() //comprueba condicion de victoria e inicia la siguiente ronda robando 2
     {
+        Debug.Log("comenzando ronda");
         //comprobar si hay condiciones de victoria
         if (HasSomeoneWon(out PlayerCharacter[] winners))
         {

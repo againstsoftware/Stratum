@@ -37,7 +37,7 @@ public static class RulesCheck
     }
 
 
-    public static IEnumerable<Effect> CheckEcosystem()
+    public static List<Effect> CheckEcosystem()
     {
         IReadOnlyList<TableCard> plants = ServiceLocator.Get<IModel>().Ecosystem.Plants;
         IReadOnlyList<TableCard> herbivores = ServiceLocator.Get<IModel>().Ecosystem.Herbivores;
@@ -127,7 +127,8 @@ public static class RulesCheck
         }
         else carnivoresGrow = false;
 
-        List<Effect> effects = new() { Effect.OverviewSwitch };
+        // List<Effect> effects = new() { Effect.OverviewSwitch };
+        List<Effect> effects = new();
 
         if (herbivoresDeath)
         {

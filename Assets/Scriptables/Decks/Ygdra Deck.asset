@@ -19,12 +19,12 @@ MonoBehaviour:
   - Card: {fileID: 11400000, guid: d02a1b287d0f44046a658bdc3266c2e7, type: 2}
     Amount: 5
   - Card: {fileID: 11400000, guid: 73f4942f266a15a469148e02341ce42b, type: 2}
-    Amount: 15
+    Amount: 7
   - Card: {fileID: 11400000, guid: c40b0d60ab59d084baacb47ea416f440, type: 2}
     Amount: 5
   - Card: {fileID: 11400000, guid: 2a681ef1846375e4d965075a73c14f3a, type: 2}
     Amount: 5
   - Card: {fileID: 11400000, guid: 108c1228028f50c41a1b4fe3d89d62cf, type: 2}
-    Amount: 5
+    Amount: 3
   - Card: {fileID: 11400000, guid: bfbc5702c3a1a154880b12ab0c9ee0a8, type: 2}
     Amount: 5

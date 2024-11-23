@@ -41,6 +41,9 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
 
     protected bool _destroyed;
 
+    private static int s_id = 0;
+    private int c_id;
+
     protected virtual void Awake()
     {
         _meshTransform = _meshInChild ? transform.GetChild(0) : transform;
@@ -49,12 +52,15 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
 
         _collider = _meshTransform.GetComponent<Collider>();
         _defaultMeshScale = _meshTransform.localScale;
+
+        c_id = s_id++;
     }
 
     protected virtual void Start()
     {
     }
 
+    protected bool _dbWasObv = false;
     private void Update()
     {
         if (CurrentState is not State.Traveling) return;
@@ -62,8 +68,13 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
         transform.position = Vector3.Lerp(_travelStartPosition, _travelEndPosition, _t);
         transform.rotation = Quaternion.Lerp(_travelStartRotation, _travelEndRotation, _t);
         _t += Time.deltaTime / _travelDuration;
+        if (_dbIsOv || _dbWasObv)
+        {
+            Debug.Log($"T de carta {c_id}: {_t}. es ov:{_dbIsOv}");
+        }
         if (_t >= 1f)
         {
+            if(_dbWasObv) Debug.Log("t > 1 en carta de oberlord");
             _collider.enabled = true;
             transform.SetPositionAndRotation(_travelEndPosition, _travelEndRotation);
             CurrentState = _travelEndState;
@@ -74,6 +85,10 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
 
     private void OnDestroy()
     {
+        if (_dbWasObv)
+        {
+            Debug.Log("destroyendo carta de overlord");
+        }
         _destroyed = true;
         OnDiscard?.Invoke();
     }
@@ -92,6 +107,10 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
 
     public virtual void OnDrag()
     {
+        if (_dbWasObv)
+        {
+            Debug.Log("Drageando item de overlord");
+        }
         CurrentState = State.Dragging;
         OnDeselect();
         OnItemDrag?.Invoke(this);
@@ -106,6 +125,10 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
     {
         //se snappea a la drop location
         transform.position = dropLocation.GetSnapTransform(Owner).position;
+        if (_dbWasObv)
+        {
+            Debug.Log("Droppeando item de overlord");
+        }
         CurrentState = State.Waiting;
         // _actionCompletedCallback = actionCompletedCallback;
         OnItemDrop?.Invoke(this);
@@ -130,7 +153,8 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
         _onTravelEndCallback = callback;
     }
 
-    protected void Travel(Transform target, float duration, State endState, Action callback)
+    protected bool _dbIsOv = false;
+    protected void Travel(Transform target, float duration, State endState, Action callback, bool dbIsOv = false)
     {
         //animacion para viajar a la drop location
         CurrentState = State.Traveling;
@@ -142,7 +166,21 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
         _travelStartRotation = transform.rotation;
         _travelEndPosition = target.position;
         _travelEndRotation = target.rotation;
+
+        if (_onTravelEndCallback != null)
+        {
+            Debug.LogWarning("Volviendo a viajar item que no ha ejecutado el callback!!");
+            _onTravelEndCallback.Invoke();
+        }
+        
         _onTravelEndCallback = callback;
+
+        if (_dbIsOv) _dbWasObv = true;
+        _dbIsOv = dbIsOv;
+        if (_dbWasObv)
+        {
+            Debug.Log("viajando carta de overlord");
+        }
     }
 
     protected bool IsOnPlayLocation(IActionReceiver playLocation)
