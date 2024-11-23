@@ -10,6 +10,10 @@ public class RulesManager : MonoBehaviour, IRulesSystem
 
     private readonly List<IRoundEndObserverEffectCommand> _roundEndObservers = new();
 
+    [SerializeField] private Effect[] _initialEffects;
+    
+    private GameConfig _config;
+
     private void Start()
     {
         ServiceLocator.Get<ITurnSystem>().OnGameStart += OnGameStart;
@@ -17,7 +21,8 @@ public class RulesManager : MonoBehaviour, IRulesSystem
         ServiceLocator.Get<IModel>().OnPopulationGrow += OnPopulationGrow;
         ServiceLocator.Get<IModel>().OnPopulationDie += OnPopulationDie;
 
-        RulesCheck.Config = ServiceLocator.Get<IModel>().Config;
+        _config =  ServiceLocator.Get<IModel>().Config;
+        RulesCheck.Config = _config;
     }
 
     private void OnDisable()
@@ -66,8 +71,8 @@ public class RulesManager : MonoBehaviour, IRulesSystem
         while (!comms.IsRNGSynced) yield return null;
         Debug.Log("random sincronizado!");
 
-        ServiceLocator.Get<IExecutor>().ExecuteRulesEffects
-            (new[] { Effect.Draw5, Effect.PlaceInitialCards }, null);
+        // ServiceLocator.Get<IExecutor>().ExecuteRulesEffects (new[] { Effect.Draw5, Effect.PlaceInitialCards }, null);
+        ServiceLocator.Get<IExecutor>().ExecuteRulesEffects (_initialEffects, null);
     }
 
     private void OnTurnChanged(PlayerCharacter onTurn)

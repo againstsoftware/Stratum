@@ -12,6 +12,7 @@ public class TutorialManager : MonoBehaviour, ITurnSystem, ICommunicationSystem
     public event Action<PlayerCharacter> OnActionEnded;
     
     public event Action OnGameStart;
+    
     public void StartGame()
     {
         

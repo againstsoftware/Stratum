@@ -753,4 +753,28 @@ public static class EffectCommands
             ServiceLocator.Get<IView>().KillPlacedCard(location, callback);
         }
     }
+
+
+
+
+    public class PlaceCardOnSlotTutorial : IEffectCommand
+    {
+        private ACard _card;
+        private Slot _slot;
+        private bool _atTheBottom;
+        public PlaceCardOnSlotTutorial(ACard card, Slot slot, bool atTheBottom = false)
+        {
+            _card = card;
+            _slot = slot;
+            _atTheBottom = atTheBottom;
+        }
+        
+        public void Execute(PlayerAction _, Action callback)
+        {
+            ServiceLocator.Get<IModel>().PlaceCardOnSlot(_card, _slot, _atTheBottom);
+            var location = 
+                new IView.CardLocation { Owner = _slot.Territory.Owner, SlotIndex = _slot.SlotIndexInTerritory };
+            ServiceLocator.Get<IView>().PlaceCardOnSlotFromDeck(_card, location, callback);
+        }
+    }
 }
