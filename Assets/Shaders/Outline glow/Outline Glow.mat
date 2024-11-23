@@ -8,8 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Outline Glow
-  m_Shader: {fileID: -6465566751694194690, guid: 1259e65b52f51d9459284f27187a84ee,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: e46d459c8a184804284e538eecc24289, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -24,6 +23,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Main_Texture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Textura_brillo:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -42,11 +45,18 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Frequency: 1
+    - _Fresnel_Power: 1
+    - _Glowing: 0
     - _Intensidad: 1
+    - _Lighting_cutoff: 0.3
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Shadow_Brightness: 0.5
     m_Colors:
+    - _Base_Color: {r: 1, g: 1, b: 1, a: 0}
     - _Color: {r: 0.8113208, g: 0.51125246, b: 0.04209684, a: 1}
+    - _Outline_Color: {r: 0.2863083, g: 0.03858608, b: 0, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &889591221242974986
 MonoBehaviour:

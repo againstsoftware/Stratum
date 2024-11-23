@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7243780136768490066
+--- !u!114 &-1116245044447548053
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mastil
+  m_Name: Sheds
   m_Shader: {fileID: -6465566751694194690, guid: 2d29dc3b7cc50c24a8d572ba836b0caa, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -114,32 +114,30 @@ Material:
     - _Edge_Thickness: 0.6
     - _EnvironmentReflections: 1
     - _Frequency: 2
-    - _GlossMapScale: 1
-    - _Glossiness: 0.59999996
-    - _GlossyReflections: 1
+    - _GlossMapScale: 0
+    - _Glossiness: 0
+    - _GlossyReflections: 0
     - _Highlighted: 0
     - _Lighting_cutoff: 0.3
     - _Metallic: 0
-    - _Mode: 0
     - _OcclusionStrength: 1
-    - _Parallax: 0.02
+    - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Shadow_Brightness: 0.5
-    - _Smoothness: 0.59999996
+    - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _UVSec: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.40784317, g: 0.27058825, b: 0.11764707, a: 1}
-    - _Border_Color: {r: 1, g: 0.1271363, b: 0, a: 1}
-    - _Color: {r: 0.40784314, g: 0.2705882, b: 0.11764703, a: 1}
+    - _BaseColor: {r: 0.16862746, g: 0.23137257, b: 0.24705884, a: 1}
+    - _Border_Color: {r: 0.10957635, g: 0.14696355, b: 0.16981131, a: 1}
+    - _Color: {r: 0.20697756, g: 0.27865052, b: 0.3207547, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
