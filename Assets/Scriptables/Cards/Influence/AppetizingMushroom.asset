@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e434a6f340a4882a38958228a570c4e, type: 3}
+  m_Name: AppetizingMushroom
+  m_EditorClassIdentifier: 
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: ba97506c9c5d9784d933dd3b250ab286,
+    type: 3}
+  _name:
+    m_TableReference:
+      m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
+    m_TableEntryReference:
+      m_KeyId: 10622166725554176
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _description:
+    m_TableReference:
+      m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
+    m_TableEntryReference:
+      m_KeyId: 10622238829834240
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _actionEffects:
+  - ValidAction:
+      <DropLocation>k__BackingField: 6
+      <Receivers>k__BackingField: 
+    Effects: 05000000
+  - ValidAction:
+      <DropLocation>k__BackingField: 4
+      <Receivers>k__BackingField: 01000000
+    Effects: 0d0000000e000000
+  - ValidAction:
+      <DropLocation>k__BackingField: 5
+      <Receivers>k__BackingField: 0400000001000000
+    Effects: 0d0000000e000000
+  <InfluenceType>k__BackingField: 4
+  <IsPersistent>k__BackingField: 0
+  references:
+    version: 2
+    RefIds: []

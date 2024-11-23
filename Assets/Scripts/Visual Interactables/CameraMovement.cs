@@ -55,9 +55,17 @@ public class CameraMovement : MonoBehaviour
 
     public void ChangeToOverview(Action callback = null)
     {
+        if (!_isInDefault)
+        {
+            callback?.Invoke();
+            return;
+        }
+        
         _isInDefault = false;
 
         //if (!_isInDefault && !_isChangingPerspective) return;
+        
+        
         _targetPerspective = _overviewPerspective;
         _startPerspective = _defaultPerspective;
         if (!_isChangingPerspective)
@@ -75,6 +83,14 @@ public class CameraMovement : MonoBehaviour
 
     public void ChangeToDefault(Action callback = null)
     {
+        if(_isInDefault)
+        {
+            callback?.Invoke();
+            return;
+        }
+
+
+        
         _isInDefault = true;
         
        // if (_isInDefault && !_isChangingPerspective) return;

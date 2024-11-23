@@ -23,30 +23,16 @@ public class ViewPlayer : MonoBehaviour
 
     private PlayableCard _droppedCard;
 
+    
     public void Initialize(PlayerCharacter character)
     {
         if (Character is not PlayerCharacter.None) throw new Exception("ya inicializado!!");
         Character = character;
     }
 
-    public void DrawCard(ACard card, Action callback)
+    public void DrawCards(IReadOnlyList<ACard> cards, Action callback)
     {
-        if (Cards.Count == 5) throw new Exception("mano llena de cartas no se puede robar!");
-
-        var newCardGO = Instantiate(_config.CardPrefab, _deckSnap.position, _deckSnap.rotation, _hand);
-        var newPlayableCard = newCardGO.GetComponent<PlayableCard>();
-
-        // if (!IsLocalPlayer) card = null;
-        newPlayableCard.Initialize(card, Character);
-
-        Cards.Add(newPlayableCard);
-        newPlayableCard.OnCardPlayed += OnCardPlayed;
-        newPlayableCard.OnItemDrag += OnCardDragged;
-        newPlayableCard.OnItemDrop += OnCardDropped;
-        // newPlayableCard.IndexInHand = Cards.Count - 1;
-
-        var location = _cardLocations[Cards.Count - 1];
-        newPlayableCard.DrawTravel(location, callback);
+        StartCoroutine(DrawCardsAux(cards, callback));
     }
 
     public void PlayCardOnSlot(ACard card, SlotReceiver slot, Action callback)
@@ -66,13 +52,111 @@ public class ViewPlayer : MonoBehaviour
         playableCard.Play(slot, callback);
     }
 
-    public void DiscardCard(Action callback)
+    public void PlayAndDiscardInfluenceCard(AInfluenceCard card, IActionReceiver receiver, Action callback, bool isEndOfAction = false)
+    {
+        PlayableCard playableCard = null;
+
+        if (IsLocalPlayer)
+        {
+            playableCard = _droppedCard;
+            if (card != playableCard.Card) throw new Exception("carta diferente en el view!!");
+
+        }
+        else
+        {
+            playableCard = Cards[0];
+            playableCard.SetCard(card);
+        }
+        
+        playableCard.Play(receiver, () =>
+        {
+            StartCoroutine(DelayCall(() =>
+            {
+                playableCard.Play(DiscardPile, () =>
+                {
+                    StartCoroutine(DestroyCard(playableCard.gameObject, callback));
+                }, isEndOfAction);
+            }, Time.deltaTime)); //delayeamos 1 frame
+           
+        }, false);
+    }
+    
+    public void DiscardCardFromHand(Action callback)
     {
         PlayableCard playableCard = IsLocalPlayer ? _droppedCard : Cards[0];
         playableCard.Play(DiscardPile, () =>
         {
             StartCoroutine(DestroyCard(playableCard.gameObject, callback));
         });
+    }
+
+    public void DiscardInfluenceFromPopulation(PlayableCard influenceCard, Action callback)
+    {
+        influenceCard.Play(DiscardPile, () =>
+        {
+            StartCoroutine(DestroyCard(influenceCard.gameObject, callback));
+        });
+    }
+
+    public void PlaceCardFromDeck(ACard card, SlotReceiver slot, Action callback)
+    {
+        var newCardGO = Instantiate(_config.CardPrefab, _deckSnap.position, _deckSnap.rotation);
+        var newPlayableCard = newCardGO.GetComponent<PlayableCard>();
+        newPlayableCard.Initialize(card, Character);
+        
+        newPlayableCard.Play(slot, callback);
+    }
+
+    public void PlaceInfluenceOnPopulation(AInfluenceCard influence, PlayableCard population, Action callback,
+        bool isEndOfAction = false)
+    {
+        PlayableCard playableCard = null;
+
+        if (IsLocalPlayer)
+        {
+            playableCard = _droppedCard;
+            if (influence != playableCard.Card) throw new Exception("carta diferente en el view!!");
+
+        }
+        else
+        {
+            playableCard = Cards[0];
+            playableCard.SetCard(influence);
+        }
+        
+        playableCard.Play(population, callback, isEndOfAction);
+    }
+    
+    
+    
+    
+    
+    
+    private IEnumerator DrawCardsAux(IReadOnlyList<ACard> cards, Action callback)
+    {
+        foreach (var card in cards)
+        {
+            var newCardGO = Instantiate(_config.CardPrefab, _deckSnap.position, _deckSnap.rotation, _hand);
+            var newPlayableCard = newCardGO.GetComponent<PlayableCard>();
+
+            // if (!IsLocalPlayer) card = null;
+            newPlayableCard.Initialize(card, Character);
+
+            Cards.Add(newPlayableCard);
+            newPlayableCard.OnCardPlayed += OnCardPlayed;
+            newPlayableCard.OnItemDrag += OnCardDragged;
+            newPlayableCard.OnItemDrop += OnCardDropped;
+            // newPlayableCard.IndexInHand = Cards.Count - 1;
+
+            var location = _cardLocations[Cards.Count - 1];
+
+            bool isDone = false;
+            
+            newPlayableCard.DrawTravel(location, () => isDone = true);
+
+            yield return new WaitUntil(() => isDone);
+        }
+        callback?.Invoke();
     }
 
     private void OnCardPlayed(PlayableCard card)
@@ -123,5 +207,11 @@ public class ViewPlayer : MonoBehaviour
         yield return null;
         Destroy(card);
         callback?.Invoke();
+    }
+    
+    private IEnumerator DelayCall(Action a, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        a?.Invoke();
     }
 }

@@ -187,7 +187,7 @@ MonoBehaviour:
   <Territory>k__BackingField: {fileID: 0}
   <SnapTransform>k__BackingField: {fileID: 2625134960546886588}
   <SnapTransformBottom>k__BackingField: {fileID: 1934123973800191}
-  _offset: {x: 0, y: 0.01, z: -0.35}
+  _offset: {x: 0, y: 0.015, z: -0.35}
 --- !u!114 &4592363287302191494
 MonoBehaviour:
   m_ObjectHideFlags: 0

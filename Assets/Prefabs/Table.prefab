@@ -259,6 +259,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <SnapTransform>k__BackingField: {fileID: 1762683389974072609}
   _tableMesh: {fileID: 7218557270106942840}
+  _sagitarioRotation: 0
+  _fungalothRotation: 90
+  _ygdraRotation: 180
+  _overlordRotation: 270
 --- !u!114 &8541876072037180344
 MonoBehaviour:
   m_ObjectHideFlags: 0

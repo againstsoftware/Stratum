@@ -8,7 +8,7 @@ public class PlayableToken : APlayableItem, IRulebookEntry
     public override bool OnlyVisibleOnOverview => true;
     public override bool CanInteractWithoutOwnership => true;
 
-    [SerializeField] private Token _token;
+    [SerializeField] private AToken _token;
     [SerializeField] private PlayerCharacter _owner;
     public override AActionItem ActionItem => _token;
 
@@ -25,30 +25,20 @@ public class PlayableToken : APlayableItem, IRulebookEntry
         Owner = _owner;
     }
 
-    public override void Play(IActionReceiver playLocation, Action onPlayedCallback)
+    public void Play(IActionReceiver playLocation, Action onPlayedCallback)
     {
-        if (CurrentState is not State.Playable && IsOnPlayLocation(playLocation))
+        if (CurrentState is not State.Playable)
         {
-            ReturnToHand(() =>
-            {
-                _actionCompletedCallback?.Invoke();
-                _actionCompletedCallback = null;
-                onPlayedCallback();
-            });
+            ReturnToHand(onPlayedCallback);
             return;
         }
 
         //no se ha jugado visualmente a la mesa
-        Travel(playLocation.SnapTransform, _playTravelDuration, State.Played, () =>
+        Travel(playLocation.GetSnapTransform(Owner), _playTravelDuration, State.Played, () =>
         {
             StartCoroutine(WaitAndDo(.5f, () =>
             {
-                ReturnToHand(() =>
-                {
-                    _actionCompletedCallback?.Invoke();
-                    _actionCompletedCallback = null;
-                    onPlayedCallback();
-                });
+                ReturnToHand(onPlayedCallback);
             }));
         });
     }
@@ -58,9 +48,5 @@ public class PlayableToken : APlayableItem, IRulebookEntry
         yield return new WaitForSeconds(delay);
         callback?.Invoke();
     }
-
-    public override void OnDrop(IActionReceiver dropLocation, Action actionCompletedCallback)
-    {
-        base.OnDrop(dropLocation, actionCompletedCallback);
-    }
+    
 }
