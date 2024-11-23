@@ -694,6 +694,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rules Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 9104212083999262943, guid: 9976914cf17de824e83b469b81d6759c, type: 3}
+      propertyPath: _initialEffects.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9104212083999262943, guid: 9976914cf17de824e83b469b81d6759c, type: 3}
+      propertyPath: _initialEffects.Array.data[0]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9104212083999262943, guid: 9976914cf17de824e83b469b81d6759c, type: 3}
+      propertyPath: _initialEffects.Array.data[1]
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
