@@ -593,6 +593,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3061305282441270953, guid: 8a110aeb3787a4042b0666e8e358ae0d, type: 3}
+      propertyPath: <InteractablesLayer>k__BackingField.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8059978830271725263, guid: 8a110aeb3787a4042b0666e8e358ae0d, type: 3}
       propertyPath: m_Name
       value: Interaction Manager
