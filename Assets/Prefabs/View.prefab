@@ -242,6 +242,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1705541883056841663, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
+      propertyPath: <Mesh>k__BackingField
+      value: 
+      objectReference: {fileID: 7705754239306280225}
     - target: {fileID: 2080417087806929838, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
       propertyPath: <Owner>k__BackingField
       value: 1
@@ -386,6 +390,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1705541883056841663, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
+      propertyPath: <Mesh>k__BackingField
+      value: 
+      objectReference: {fileID: 3911351901187251482}
     - target: {fileID: 1705541883056841663, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
       propertyPath: <Token>k__BackingField
       value: 
@@ -643,6 +651,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1197d3a817c3152489c57532f7e8e382, type: 3}
+--- !u!1 &3911351901187251482 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1197d3a817c3152489c57532f7e8e382, type: 3}
+  m_PrefabInstance: {fileID: 4217198861415718987}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4398954124387862432 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1197d3a817c3152489c57532f7e8e382, type: 3}
@@ -1210,5 +1223,10 @@ PrefabInstance:
 --- !u!4 &7042369828337743771 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7120328315016cf409caee503a9255fc, type: 3}
+  m_PrefabInstance: {fileID: 7363736643985117296}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7705754239306280225 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7120328315016cf409caee503a9255fc, type: 3}
   m_PrefabInstance: {fileID: 7363736643985117296}
   m_PrefabAsset: {fileID: 0}
