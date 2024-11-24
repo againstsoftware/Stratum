@@ -187,34 +187,6 @@ MonoBehaviour:
     m_Key: sag_9_2
     m_Metadata:
       m_Items: []
-  - m_Id: 252628259565568
-    m_Key: eco_0_0_0
-    m_Metadata:
-      m_Items: []
-  - m_Id: 253326380494848
-    m_Key: sag_10_0
-    m_Metadata:
-      m_Items: []
-  - m_Id: 264144803328000
-    m_Key: sag_10_1
-    m_Metadata:
-      m_Items: []
-  - m_Id: 264400739758080
-    m_Key: sag_11_0
-    m_Metadata:
-      m_Items: []
-  - m_Id: 264644433014784
-    m_Key: sag_12_0
-    m_Metadata:
-      m_Items: []
-  - m_Id: 264943746936832
-    m_Key: sag_12_1
-    m_Metadata:
-      m_Items: []
-  - m_Id: 265020469145600
-    m_Key: sag_13_0
-    m_Metadata:
-      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

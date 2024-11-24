@@ -87,17 +87,6 @@ public class RulesManager : MonoBehaviour, IRulesSystem
         _roundEndObservers.Remove(reo);
     }
 
-    public IEnumerable<IEffectCommand> GetRoundEndObserversEffects()
-    {
-        //hacemos una copia de la lista de observers para que los efectos observers se puedan quitar de la lista original
-        var observers = _roundEndObservers.ToArray();
-        var observerCommands =
-            observers.SelectMany(reo => reo.GetRoundEndEffects());
-
-        return observerCommands;
-    }
-    
-
     private IEnumerator SendToExecute(PlayerAction action)
     {
         yield return null;
@@ -166,8 +155,12 @@ public class RulesManager : MonoBehaviour, IRulesSystem
 
         roundEndCommands.AddRange(destroyConstructionCommands);
 
-        
-        roundEndCommands.AddRange(GetRoundEndObserversEffects());
+        //hacemos una copia de la lista de observers para que los efectos observers se puedan quitar de la lista original
+        var observers = _roundEndObservers.ToArray();
+        var observerCommands =
+            observers.SelectMany(reo => reo.GetRoundEndEffects());
+
+        roundEndCommands.AddRange(observerCommands);
 
         if (roundEndCommands.Any())
         {

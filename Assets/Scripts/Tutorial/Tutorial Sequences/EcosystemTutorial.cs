@@ -1,11 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 // [CreateAssetMenu(menuName = "Tutorials/Ecosystem Tutorial")]
 public class EcosystemTutorial : ATutorialSequence
 {
-    public override PlayerCharacter LocalPlayer { get; protected set; } = PlayerCharacter.Sagitario;
+    [field: SerializeField] public override PlayerCharacter LocalPlayer { get; protected set; }
 
     [SerializeField] private TutorialDialogue[] _initialDialogues;
 
@@ -171,6 +170,15 @@ public class EcosystemTutorial : ATutorialSequence
 
     public override void OnTutorialFinished()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        
+    }
+
+    private TutorialAction EcosystemAct()
+    {
+        return new TutorialAction(false, new IEffectCommand[]
+        {
+            new EffectCommands.OverviewSwitch(),
+            new EffectCommands.RushEcosystemTurn(),
+        });
     }
 }

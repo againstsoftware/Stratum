@@ -90,7 +90,6 @@ public class TutorialManager : MonoBehaviour, ITurnSystem, ICommunicationSystem
 
         if (element is TutorialDialogue dialogue)
         {
-            PlayerOnTurn = PlayerCharacter.None;
             ShowTutorialDialogue(dialogue);
             ServiceLocator.Get<IRulesSystem>().DisableForcedAction();
         }
@@ -105,10 +104,10 @@ public class TutorialManager : MonoBehaviour, ITurnSystem, ICommunicationSystem
             {
                 PlayerOnTurn = PlayerCharacter.None;
                 ServiceLocator.Get<IRulesSystem>().DisableForcedAction();
-                ServiceLocator.Get<IExecutor>().ExecuteRulesEffects(action.GetEffectCommands());
+                ServiceLocator.Get<IExecutor>().ExecuteRulesEffects(action.EffectCommands);
             }
         }
-        // OnActionEnded?.Invoke(PlayerOnTurn);
+        OnActionEnded?.Invoke(PlayerOnTurn);
         OnTurnChanged?.Invoke(PlayerOnTurn);
     }
 
