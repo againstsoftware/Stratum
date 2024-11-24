@@ -204,18 +204,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 263638130163133198, guid: 3506e2362774da1448e902f762eec145, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 708153262471990826, guid: 3506e2362774da1448e902f762eec145, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1618572228213280604, guid: 3506e2362774da1448e902f762eec145, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4214868870773955501, guid: 3506e2362774da1448e902f762eec145, type: 3}
       propertyPath: _tableCenter
       value: 
@@ -262,14 +250,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6867347033489190595, guid: 3506e2362774da1448e902f762eec145, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6964346341735768876, guid: 3506e2362774da1448e902f762eec145, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7167434536167280567, guid: 3506e2362774da1448e902f762eec145, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -800,8 +780,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tutorials:
-  - {fileID: 11400000, guid: 76ed4e77365e2b14db565c426dc8988e, type: 2}
+  - {fileID: 11400000, guid: 2ce20e0ff76f3554d8390f502dd07915, type: 2}
   - {fileID: 11400000, guid: 62ca23373a1fd6c42af761c7737983d3, type: 2}
+  - {fileID: 11400000, guid: 76ed4e77365e2b14db565c426dc8988e, type: 2}
 --- !u!4 &2079141096
 Transform:
   m_ObjectHideFlags: 0

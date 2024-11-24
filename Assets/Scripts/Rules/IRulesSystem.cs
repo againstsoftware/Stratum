@@ -17,4 +17,5 @@ public interface IRulesSystem : IService
 
     public void RegisterRoundEndObserver(IRoundEndObserverEffectCommand reo);
     public void RemoveRoundEndObserver(IRoundEndObserverEffectCommand reo);
+    public IEnumerable<IEffectCommand> GetRoundEndObserversEffects();
 }
