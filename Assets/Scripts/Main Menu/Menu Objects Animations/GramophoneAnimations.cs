@@ -24,7 +24,7 @@ public class GramophoneAnimations : MonoBehaviour
     private Vector3 _initPosVinyl; 
     private Quaternion _initPosNeedle;
     private int _animVinylState = 0;
-
+    public bool vinylEnd;
     void Start()
     {
         CheckHandleInitState();
@@ -76,14 +76,13 @@ public class GramophoneAnimations : MonoBehaviour
                     if((_Vinyl.transform.position.y - _initPosVinyl.y) < 0.01f) 
                     {
                         _isVinylMoving = false;
-                        _animVinylState = 0;
+                        _animVinylState = 0;    
                         _Vinyl.GetComponent<Collider>().enabled = true;
+                        vinylEnd = true;
                     }
                     break;
             }
         }
-
-
     }
 
     private void CheckHandleInitState()
@@ -132,15 +131,12 @@ public class GramophoneAnimations : MonoBehaviour
 
     public void VinylAnim()
     {
-        // rotar la needle
-        // elevar el disco 
-        //      rotar el disco
-        // bajarlo 
         _initPosNeedle = _Needle.transform.localRotation;
         _initPosVinyl = _Vinyl.transform.position;
         _targetPosVinyl = _initPosVinyl + new Vector3(0f, 0.3f, 0f);
         _targetRotationVinyl = _Vinyl.transform.localRotation * Quaternion.Euler(new Vector3(0f, 0f, -180f));
 
+        vinylEnd = false;
         _isVinylMoving = true;
     }
 

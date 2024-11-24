@@ -1334,6 +1334,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e1260c1148f6143b28bae5ace5e9c5d1, type: 2}
   - {fileID: 11400000, guid: 7b7fd9122c28c4d15b667c7040e3b3fd, type: 2}
   _animations: {fileID: 329571066}
+  _interactionSystemMenu: {fileID: 1265809503}
 --- !u!65 &329571065
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1371,6 +1372,7 @@ MonoBehaviour:
   _Handle: {fileID: 329571059}
   _Volume: {fileID: 329571058}
   _Needle: {fileID: 86625982}
+  vinylEnd: 0
 --- !u!1 &460906938
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
+using Unity.VisualScripting;
+using UnityEngine.InputSystem;
 
 
 public class Gramophone : AInteractableObject
@@ -10,6 +12,7 @@ public class Gramophone : AInteractableObject
     [SerializeField] private Collider _Language, _Graphics, _Volume;
     [SerializeField] private RenderPipelineAsset[] _qualityLevels;
     [SerializeField] private GramophoneAnimations _animations;
+    [SerializeField] private InteractionSystemMenu _interactionSystemMenu;
 
     public override void OnPointerClick(PointerEventData eventData)
     {
@@ -17,8 +20,6 @@ public class Gramophone : AInteractableObject
         if (_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == _Language))
         {
             StartCoroutine(ToggleLanguage());
-            
-            _animations.VinylAnim();
         }
 
         // gráficos
@@ -46,6 +47,17 @@ public class Gramophone : AInteractableObject
 
         PlayerPrefs.SetString(GamePrefs.LanguagePrefKey, newLocaleCode);
         PlayerPrefs.Save();
+        
+        _animations.VinylAnim();
+
+        // para no liarla mientras se mueve el disco
+        _interactionSystemMenu.GetComponent<PlayerInput>().enabled = false;
+        while(!_animations.vinylEnd)
+        {
+            yield return null;
+        }
+        _interactionSystemMenu.GetComponent<PlayerInput>().enabled = true;
+
 
     }
     private void ToggleGraphicsQuality()
@@ -66,7 +78,6 @@ public class Gramophone : AInteractableObject
 
     private void AudioVolume()
     {
-        Debug.Log("disco tocado");
         AudioSource audioSource = MusicManager.Instance.GetComponent<AudioSource>();
         audioSource.volume = (audioSource.volume + 0.2f > 1.0f) ? 0f : audioSource.volume + 0.2f;
         PlayerPrefs.SetFloat(GamePrefs.AudioPrefKey, audioSource.volume);
