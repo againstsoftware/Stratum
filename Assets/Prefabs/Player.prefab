@@ -350,6 +350,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _nameText: {fileID: 3119209494757908229}
   _descriptionText: {fileID: 5679800059317483762}
+  _dialogueSpeed: 45
+  _dialogueEndDelay: 3
 --- !u!1 &1894933332895996072
 GameObject:
   m_ObjectHideFlags: 0

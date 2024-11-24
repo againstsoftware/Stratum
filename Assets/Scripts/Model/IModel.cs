@@ -68,5 +68,7 @@ public interface IModel : IService
     public void AdvanceTurn(PlayerCharacter playerOnTurn);
 
 
-    public IReadOnlyList<ACard> PlayerDrawCards(PlayerCharacter character/*, int amount*/);
+    public IReadOnlyList<ACard> PlayerDrawCards(PlayerCharacter character);
+    public IReadOnlyList<ACard> PlayerDrawFixedCards(PlayerCharacter character, IReadOnlyList<ACard> cards);
+
 }
