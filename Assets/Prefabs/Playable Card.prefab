@@ -67,7 +67,7 @@ MonoBehaviour:
   _reposInHandTravelDuration: 0.1
   _closestCardZ: -0.025
   _mesh: {fileID: 9088813877132267383}
-  _nameText: {fileID: 0}
+  _nameText: {fileID: 8874135323090283735}
 --- !u!1 &2967130977452411895
 GameObject:
   m_ObjectHideFlags: 0
