@@ -80,13 +80,10 @@ En esta sección se explicarán todas las mecánicas del juego. Al ser un juego 
 ## 1.2. Facciones
 
 ### Naturaleza
-Compuesta por los personajes **Sagitario** y **Ygdra**, esta facción gana la partida si, al final de una ronda, hay en la mesa al menos las siguientes cartas de población:
-- 4 plantas
-- 3 herbívoros
-- 3 carnívoros
+Compuesta por los personajes **Sagitario** y **Ygdra**, esta facción gana la partida si a lo largo de la partida consigue 7 crecimientos totales de herbívoros y/o carnívoros (poblaciones que pueden crecer).  
 
 ### Industria
-Compuesta por el personaje **El Magnate**, esta facción gana la partida si, al final de una ronda, tiene construcciones en los 4 territorios.
+Compuesta por el personaje **El Magnate**, esta facción gana la partida si, al final de una ronda, tiene construcciones en 2 territorios.
 
 ### Fungi
 Compuesta por el personaje **Fu'ngaloth**, esta facción gana la partida si, al final de una ronda, tiene 2 macrohongos en la mesa.
@@ -94,7 +91,7 @@ Compuesta por el personaje **Fu'ngaloth**, esta facción gana la partida si, al 
 ## 1.3. Inicio de la partida
 Los jugadores se disponen, uno a cada lado de una mesa cuadrada, siguiendo este orden, en el sentido inverso a las agujas del reloj: Sagitario, Fu'ngaloth, Ygdra, El Magnate.
 
-Cada jugador tiene delante su **territorio**. Este está compuesto por 5 espacios de territorio. Cuando sea su turno, el jugador podrá jugar cartas de criatura en estos espacios.
+Cada jugador tiene delante su **territorio**. Este está compuesto por 5 espacios de territorio. Cuando sea su turno, el jugador podrá jugar cartas de población en estos espacios.
 
 Cada jugador empieza con 5 cartas.
 
@@ -220,33 +217,29 @@ El macrohongo no puede ser destruido por cartas de influencia, a menos que la de
 
 ### Cartas de influencia
 #### Ygdra
+- **Madre Naturaleza:** Esta carta provoca un turno de ecosistema, comprueba las condiciones necesarias para aumentar o reducir las diferentes poblaciones y aplica los efectos. Si alguna población crece, este crecimiento contará para el contador de crecimientos para la victoria de Ygdra y Sagitario. 
 - **Incendio Forestal:** Elige un territorio. Todas las cartas de población, hongo y macrohongo en ese territorio mueren. Si hay una construcción, también se destruye.
-- **Fruta con semillas:** Coloca esta carta sobre una carta de planta. Si una carta de herbívoro o carnívoro de ese territorio crece, otra planta crecerá sobre la que tiene la carta.
-- **Raíces Profundas:** Coloca esta carta sobre una carta de planta. Si muere, crece otra carta de planta igual y esta carta se descarta.
 - **Fragancia de feromonas:** Elige una carta de herbívoro o carnívoro de otro territorio y muévela a un espacio vacío en tu territorio.
 - **Hiedra Verde:** Coloca esta carta sobre una carta de planta. Al final de la ronda, si hay una construcción en su territorio, se destruye la construcción y descarta esta carta de la planta.
 
 
 #### Sagitario
-- **Hibernación:** Coloca esta carta sobre una carta de herbívoro. Esta carta no podrá morir ni crecer por las reglas del ecosistema.
+- **Madre Naturaleza:** Esta carta provoca un turno de ecosistema, comprueba las condiciones necesarias para aumentar o reducir las diferentes poblaciones y aplica los efectos. Si alguna población crece, este crecimiento contará para el contador de crecimientos para la victoria de Ygdra y Sagitario. 
 - **Rabia:** Coloca esta carta sobre una carta de herbívoro. Mientras no muera, El Magnate no podrá construir en el territorio donde esté.
 - **Migración:** Elige una carta de carnívoro o herbívoro de tu territorio y muévela a un espacio vacío en otro territorio.
-- **Omnívoro[NO]:** Coloca esta carta sobre una carta de carnívoro. A partir de ahora, esta carta contará tanto como carnívoro como herbívoro.
 - **Depredador de setas:** Coloca esta carta sobre una carta de herbívoro. Mientras no muera, al final de la ronda morirá la carta de hongo más reciente que haya en su territorio.
 
 
 #### El Magnate
 - **Incendio provocado:** Elige un territorio. Todas las cartas de población, hongo y macrohongo en ese territorio mueren. Si hay una construcción, también se destruye.
-- **Pesticida:** Muere una carta de planta de tu elección.
-- **Cazador:** Muere una carta de herbívoro o carnívoro de tu elección.
 - **Fuegos artificiales:** Elige una carta de herbívoro o carnívoro y muévela a un espacio vacío en el territorio opuesto al que se encuentra.
 - **Compost:** Elige un espacio vacío de un territorio. Coloca una carta de hongo y una carta de planta encima.
+- **Correa:** Escoge una carta de herbívoro o carnívoro. Esta carta escogida no podrá ser movida con cartas de influencia. 
 
 
 #### Fu'ngaloth
 - **Esporas explosivas:** Elige un territorio donde haya al menos una carta de hongo o macrohongo. Todas las cartas de población en ese territorio mueren. Si hay una construcción también se destruye. Las cartas de hongo y macrohongo no mueren.
 - **Putrefacción:** Muere una carta de planta de tu elección. Crece un hongo en su espacio de territorio.
-- **Parásito:** Coloca esta carta sobre una carta de herbívoro o carnívoro. Si la carta crece, aparece un hongo en su espacio de territorio y esta carta se descarta.
 - **Seta apetitosa:** Elige una carta de herbívoro o carnívoro y muévela a un espacio vacío en un territorio donde haya al menos una carta de hongo o macrohongo.
 - **Moho:** Coloca una carta de hongo sobre un espacio vacío de un territorio con construcción.
 
@@ -283,7 +276,7 @@ Al pulsar la rueda va girando entre 5 estados de volumen, de menos a más. Al pu
 ### Libro de registro
 ![Libro de registro](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjbXQIXsjSDk2vS0vi9g5FosehG5gd_0V73FQA_tYth6aq8Fm_nBGIXLb8WmYs5X2ZXQFP0v-yQtK5auyxeElZxf6-_ct2ztjjSwOxgVcNwqh7xPrvV5jknyDd_lVV1P2wmNylsW3gqOSmN/w1200-h630-p-k-no-nu/20180913_FLR_HistoricLedgers-56.jpg)
 
-Al pulsarlo, se abre por la mitad y permite cambiar entre 2 páginas, arrastrando.
+Al pulsarlo, se abre por la mitad y aparecen 2 páginas:
  1. **Créditos:** en la primera página aparecen los créditos del juego, escritos "a mano" en el libro.
  2. **Contacto:** en la segunda página hay iconos de las redes sociales del estudio. Al pulsarlos, abren en el navegador del jugador el vínculo elegido.
 
@@ -591,10 +584,6 @@ Varias cartas de influencia tienen efectos visuales únicos que afectan tanto al
 
 -	**Animación del incendio**: cuando un jugador usa una carta de incendio, se muestra una rápida propagación de fuego a partir del territorio seleccionado. El fuego consume todas las cartas de población y construcciones en esa área, con animaciones de llamas naranjas y rojas que devoran el ecosistema.
 
--	**Animación de fruta con semillas**: cuando la carta se coloca sobre una planta, una sutil animación muestra la planta a la que le crece una fruta. 
-
--	**Animación del pesticida**: al jugar esta carta, una nube oscura de pesticida sale de la mano del Magnate y cubre rápidamente el territorio objetivo.
-
 -	**Animación de fuegos artificiales**: al activarse, varios cohetes luminosos se disparan hacia el cielo desde el territorio seleccionado, estallando en luces brillantes de diferentes colores. Las criaturas en ese territorio, ya sean herbívoros o carnívoros, se sobresaltan y son movidas a otro espacio vacío en el tablero.
 
 -	**Animación de esporas explosivas**: cuando se juega esta carta, se ve cómo el territorio objetivo es cubierto por una nube densa de esporas púrpuras que se extiende rápidamente por el área, cubriendo a todas las cartas de población en una neblina tóxica. Las cartas afectadas mueren al instante, y la nube de esporas permanece unos momentos, antes de disiparse lentamente, dejando el territorio vacío y sin vida.
@@ -619,16 +608,11 @@ La tipografía en el juego será simple, mínima y sutil, utilizada únicamente 
 
 
 **Estilo y atmósfera:**  
-  El juego presenta una atmósfera relajante, centrada en la naturaleza. Se utilizan instrumentos y sonidos orgánicos para evocar tranquilidad. El objetivo es crear una sensación de armonía y conexión con el entorno natural.
-
-**Referencias:**  
-  - Hearthstone Soundtrack - Main Title  
-  - Inscryption - "The Trapper & The Trader" by Jonah Senzel  
-  - Faeria Main Theme
+El juego presenta una estética visual art nouveau por lo que la banda sonora busca continuar esta atmósfera. Por ello, se aparecen dos temas diferentes de jazz, uno más calmado para el menú principal y uno más animado para la pantalla de la partida.  
 
 ## 5.2. Música
 **Estilo de la banda sonora:**  
-  La banda sonora es ambiental, utilizando principalmente instrumentos naturales, como flautas, cuerdas suaves y percusión ligera. No se emplearán sonidos electrónicos.
+La banda sonora está inspirada en el jazz de los años 1930s compuesto principalmente para piano.  
 
 **Temas principales:**  
   - **Tema principal:** Se reproducirá durante la partida.  
@@ -646,7 +630,6 @@ Todos los temas están diseñados para repetirse en bucle sin interrupciones per
   - Finalización de turno: Suave campana o susurro de viento.
  
 **Sonidos ambientales:**  
-
   Durante la partida, se escucharán efectos ambientales naturales:
   - Cantos de aves lejanas.
   - Viento meciendo árboles.
