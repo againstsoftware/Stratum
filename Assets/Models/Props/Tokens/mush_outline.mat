@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wood_Outline
+  m_Name: mush_outline
   m_Shader: {fileID: 4800000, guid: ebf9385a41d98b04e97475f76a836885, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -121,7 +121,7 @@ Material:
     - _Lighting_cutoff: 0.3
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _OutlineWidth: 0.01
+    - _OutlineWidth: 0.001
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
