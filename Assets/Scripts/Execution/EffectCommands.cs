@@ -893,4 +893,30 @@ public static class EffectCommands
             ServiceLocator.Get<IView>().DrawCards(cardsDrawn, callback);
         }
     }
+    
+    // public class PlaceConstructionTutorial : IEffectCommand
+    // {
+    //     private Territory _territory;
+    //     
+    //     
+    //     public void Execute(PlayerAction _, Action callback)
+    //     {
+    //         var owner = action.Receivers[0].LocationOwner;
+    //         ServiceLocator.Get<IModel>().PlaceConstruction(owner, out var plant1, out var plant2);
+    //
+    //         var location1 = new IView.CardLocation
+    //         {
+    //             SlotIndex = plant1.Slot.SlotIndexInTerritory, CardIndex = plant1.IndexInSlot,
+    //             Owner = plant1.Slot.Territory.Owner
+    //         };
+    //
+    //         var location2 = new IView.CardLocation
+    //         {
+    //             SlotIndex = plant2.Slot.SlotIndexInTerritory, CardIndex = plant2.IndexInSlot,
+    //             Owner = plant2.Slot.Territory.Owner
+    //         };
+    //
+    //         ServiceLocator.Get<IView>().PlaceConstruction(location1, location2, callback);
+    //     }
+    // }
 }

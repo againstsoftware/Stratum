@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 [CreateAssetMenu(menuName = "Tutorials/Sagitario Tutorial")]
 public class SagitarioTutorial : ATutorialSequence
 {
-    [field: SerializeField] public override PlayerCharacter LocalPlayer { get; protected set; }
+    public override PlayerCharacter LocalPlayer { get; protected set; } = PlayerCharacter.Sagitario;
 
     [SerializeField] private List<ACard> _initialCards;
     [SerializeField] private List<ACard> _rabiesCards;
@@ -358,23 +358,7 @@ public class SagitarioTutorial : ATutorialSequence
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-
-    private TutorialAction DrawFixed(List<ACard> cards)
-    {
-        return new TutorialAction(false, new IEffectCommand[]
-        {
-            new EffectCommands.DrawFixedCardsTutorial(cards)
-        });
-    }
-
-    private TutorialAction EcosystemAct()
-    {
-        return new TutorialAction(false, new IEffectCommand[]
-        {
-            new EffectCommands.OverviewSwitch(),
-            new EffectCommands.RushEcosystemTurn(),
-        });
-    }
+    
 
 
 }

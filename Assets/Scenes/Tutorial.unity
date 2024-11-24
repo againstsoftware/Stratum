@@ -781,8 +781,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tutorials:
   - {fileID: 11400000, guid: 2ce20e0ff76f3554d8390f502dd07915, type: 2}
-  - {fileID: 11400000, guid: 76ed4e77365e2b14db565c426dc8988e, type: 2}
   - {fileID: 11400000, guid: 62ca23373a1fd6c42af761c7737983d3, type: 2}
+  - {fileID: 11400000, guid: 76ed4e77365e2b14db565c426dc8988e, type: 2}
 --- !u!4 &2079141096
 Transform:
   m_ObjectHideFlags: 0

@@ -9,6 +9,23 @@ public abstract class ATutorialSequence : ScriptableObject
     public abstract IEnumerable<ITutorialElement> GetTutorialElements();
 
     public abstract void OnTutorialFinished();
+    
+    protected TutorialAction DrawFixed(List<ACard> cards)
+    {
+        return new TutorialAction(false, new IEffectCommand[]
+        {
+            new EffectCommands.DrawFixedCardsTutorial(cards)
+        });
+    }
+
+    protected TutorialAction EcosystemAct()
+    {
+        return new TutorialAction(false, new IEffectCommand[]
+        {
+            new EffectCommands.OverviewSwitch(),
+            new EffectCommands.RushEcosystemTurn(),
+        });
+    }
 
 }
 
