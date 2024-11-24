@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6292922900739567068}
   - component: {fileID: 5910442750905197607}
   - component: {fileID: 3364258935315834384}
+  - component: {fileID: 9178354552795745348}
   m_Layer: 9
   m_Name: Macrofungi Token
   m_TagString: Untagged
@@ -62,6 +63,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2dbb119b8db469791f51328ba0c9fd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9178354552795745348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705819578628116266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f54404cbf0c33a4e9f4a1b22a6973af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _outlineMaterial: {fileID: 2100000, guid: 4d27bcebd88c2cf40ad9e514a03cddc8, type: 2}
 --- !u!1 &5624158560371537065
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,7 +548,7 @@ PrefabInstance:
     - target: {fileID: -5655693109090862112, guid: 3bdf461f04f29084cb0ae9e56c640277, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 01d4a7b7554983e4ea6c775fbb40a96b, type: 2}
+      objectReference: {fileID: 2100000, guid: 3b69a3fe404f39f43bb25bf0bca297e3, type: 2}
     - target: {fileID: -3133498875991405556, guid: 3bdf461f04f29084cb0ae9e56c640277, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -542,7 +556,7 @@ PrefabInstance:
     - target: {fileID: -2859109400176981367, guid: 3bdf461f04f29084cb0ae9e56c640277, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 01d4a7b7554983e4ea6c775fbb40a96b, type: 2}
+      objectReference: {fileID: 2100000, guid: 3b69a3fe404f39f43bb25bf0bca297e3, type: 2}
     - target: {fileID: 919132149155446097, guid: 3bdf461f04f29084cb0ae9e56c640277, type: 3}
       propertyPath: m_Name
       value: seta
@@ -849,7 +863,7 @@ PrefabInstance:
     - target: {fileID: -5349363973108650587, guid: d1c81f8852217ee44acf92186ed8bd00, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 01d4a7b7554983e4ea6c775fbb40a96b, type: 2}
+      objectReference: {fileID: 2100000, guid: 3b69a3fe404f39f43bb25bf0bca297e3, type: 2}
     - target: {fileID: 919132149155446097, guid: d1c81f8852217ee44acf92186ed8bd00, type: 3}
       propertyPath: m_Name
       value: martillo
@@ -865,7 +879,7 @@ PrefabInstance:
     - target: {fileID: 6070584820921555116, guid: d1c81f8852217ee44acf92186ed8bd00, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 01d4a7b7554983e4ea6c775fbb40a96b, type: 2}
+      objectReference: {fileID: 2100000, guid: 3b69a3fe404f39f43bb25bf0bca297e3, type: 2}
     - target: {fileID: 8351053838077304830, guid: d1c81f8852217ee44acf92186ed8bd00, type: 3}
       propertyPath: m_Layer
       value: 9
