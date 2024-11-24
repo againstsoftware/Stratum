@@ -1,69 +1,89 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Registry : AInteractableObject
 {
-    [SerializeField] Collider Link;
+    //[SerializeField] Collider Link;
 
     // para pruebas
-    Material materialOG;
+    //Material materialOG;
+
+    private Animator _animator;
+    [SerializeField] private Canvas _canvas;
+    [SerializeField] private TMP_Text _leftText, _rightText;
+    [SerializeField] private Collider _Link;
+    private float waitTime = 0.5f;
+
+    private void Start()
+    {
+        _animator = GetComponent<Animator>();
+    }
 
     public override void OnPointerClick(PointerEventData eventData)
     {
-        if(_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == Link))
+        if(_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == _Link))
         {
-            Application.OpenURL("https://x.com/home");
+            Application.OpenURL("https://linktr.ee/againstsoftware");
         }
     }
 
     public override void EnableInteraction()
     {
-        if (!_isEnabled)
+        _isEnabled = true;
+        _animator.SetBool("_isEnabled", _isEnabled);
+        if(_animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
-            // abrir el registry y permitir interacción
-            _isEnabled = true;
-
-            Canvas canvas = gameObject.GetComponentInChildren<Canvas>();
-            
-            // esto es de prueba
-            StartCoroutine(EsperarUnSegundo(canvas));
-
-            // para pruebas
-            materialOG = gameObject.GetComponent<Renderer>().material;
-            gameObject.GetComponent<Renderer>().material = null;
+            StartCoroutine(WaitForOneSecond());
         }
+
     }
 
     public override void DisableInteraction()
     {
-        // cerrar libro y no permitir interacción 
         _isEnabled = false;
-
-        Canvas canvas = gameObject.GetComponentInChildren<Canvas>();
-        foreach(Transform child in canvas.transform)
+        _animator.SetBool("_isEnabled", _isEnabled);
+        if(_animator.GetCurrentAnimatorStateInfo(0).IsName("Open"))
         {
-            child.gameObject.SetActive(false);
+            HideText();
         }
-        
+
         gameObject.transform.localScale /= scaleIncrease;
-
-
-        // pruebas
-        gameObject.GetComponent<Renderer>().material = materialOG;
-
     }
 
-    // ESTO ES PARA LAS PRUEBAS PARA NO DARLE SIN QUERER a las rrss
-      private IEnumerator EsperarUnSegundo(Canvas canvas)
+    private void ShowText()
     {
-        yield return new WaitForSeconds(0.5f);
-
-        
-        foreach(Transform child in canvas.transform)
+        foreach (Transform child in _canvas.transform)
         {
-            child.gameObject.SetActive(true);
+            child.gameObject.SetActive(true);   
         }
+
+        string language = PlayerPrefs.GetString(GamePrefs.LanguagePrefKey, "en");
+        if(language == "en")
+        {
+            _leftText.text = "CREDITS";
+            _rightText.text = "Press to visit our social medias!";
+        }
+        if(language == "es")
+        {
+            _leftText.text = "CRÉDITOS";
+            _rightText.text = "¡Pulsa para visitar nuestras redes sociales!";
+        }
+    }
+
+    private void HideText()
+    {
+        foreach (Transform child in _canvas.transform)
+        {
+            child.gameObject.SetActive(false);   
+        }
+    }
+
+    IEnumerator WaitForOneSecond()
+    {
+        yield return new WaitForSeconds(waitTime);
+        ShowText();
     }
 }

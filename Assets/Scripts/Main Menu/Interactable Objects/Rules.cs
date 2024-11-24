@@ -5,8 +5,14 @@ using UnityEngine.EventSystems;
 
 public class Rules : AInteractableObject
 {
-    // pruebas
-    Material materialOG;
+    [SerializeField] private Canvas _canvas;
+    private Animator _animator;
+    private float waitTime = 0.3f;
+
+    private void Start()
+    {
+        _animator = GetComponent<Animator>();
+    }
 
     public override void OnPointerClick(PointerEventData eventData)
     {
@@ -15,27 +21,46 @@ public class Rules : AInteractableObject
 
     public override void EnableInteraction()
     {
-        if (!_isEnabled)
+        _isEnabled = true;
+        _animator.SetBool("_isEnabled", _isEnabled);
+        if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
-            // abrir y permitir interacción
-            _isEnabled = true;
-
-            Canvas canvas = gameObject.GetComponentInChildren<Canvas>();
-            
-            // para pruebas
-            materialOG = gameObject.GetComponent<Renderer>().material;
-            gameObject.GetComponent<Renderer>().material = null;
+            StartCoroutine(WaitForOneSecond());
         }
+
     }
 
     public override void DisableInteraction()
     {
-        // cerrar libro y no permitir interacción 
         _isEnabled = false;
+        _animator.SetBool("_isEnabled", _isEnabled);
+        if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Open"))
+        {
+            HideText();
+        }
+
         gameObject.transform.localScale /= scaleIncrease;
+    }
 
-        // pruebas
-        gameObject.GetComponent<Renderer>().material = materialOG;
+    private void ShowText()
+    {
+        foreach (Transform child in _canvas.transform)
+        {
+            child.gameObject.SetActive(true);
+        }
+    }
 
+    private void HideText()
+    {
+        foreach (Transform child in _canvas.transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+    }
+
+    IEnumerator WaitForOneSecond()
+    {
+        yield return new WaitForSeconds(waitTime);
+        ShowText();
     }
 }
