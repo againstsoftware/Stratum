@@ -11,8 +11,12 @@ public class RulesManager : MonoBehaviour, IRulesSystem
     private readonly List<IRoundEndObserverEffectCommand> _roundEndObservers = new();
 
     [SerializeField] private Effect[] _initialEffects;
+    [SerializeField] private bool _playEcosystem = true;
     
     private GameConfig _config;
+    
+    private IReadOnlyList<PlayerAction> _forcedActions;
+
 
     private void Start()
     {
@@ -21,7 +25,7 @@ public class RulesManager : MonoBehaviour, IRulesSystem
         ServiceLocator.Get<IModel>().OnPopulationGrow += OnPopulationGrow;
         ServiceLocator.Get<IModel>().OnPopulationDie += OnPopulationDie;
 
-        _config =  ServiceLocator.Get<IModel>().Config;
+        _config = ServiceLocator.Get<IModel>().Config;
         RulesCheck.Config = _config;
     }
 
@@ -34,7 +38,27 @@ public class RulesManager : MonoBehaviour, IRulesSystem
     }
 
 
-    public bool IsValidAction(PlayerAction action) => RulesCheck.CheckAction(action);
+    public bool IsValidAction(PlayerAction action)
+    {
+        if (_forcedActions is not null && _forcedActions.Count > 0)
+        {
+            if (_forcedActions.Any(forcedAction => forcedAction.Equals(action)))
+            {
+                return RulesCheck.CheckAction(action);
+            }
+
+            Debug.Log("accion del jugador incorrecta");
+            return false;
+        }
+        else return RulesCheck.CheckAction(action);   
+        
+    }
+
+    public void SetForcedAction(IReadOnlyList<PlayerAction> forcedActions) => _forcedActions = forcedActions;
+
+
+    public void DisableForcedAction() => _forcedActions = null;
+
 
 
     public void PerformAction(PlayerAction action)
@@ -72,12 +96,13 @@ public class RulesManager : MonoBehaviour, IRulesSystem
         Debug.Log("random sincronizado!");
 
         // ServiceLocator.Get<IExecutor>().ExecuteRulesEffects (new[] { Effect.Draw5, Effect.PlaceInitialCards }, null);
-        ServiceLocator.Get<IExecutor>().ExecuteRulesEffects (_initialEffects, null);
+        //if (_initialEffects.Any())
+        ServiceLocator.Get<IExecutor>().ExecuteRulesEffects(_initialEffects, null);
     }
 
     private void OnTurnChanged(PlayerCharacter onTurn)
     {
-        if (onTurn is not PlayerCharacter.None) return;
+        if (onTurn is not PlayerCharacter.None || !_playEcosystem) return;
 
         PlayEcosystemTurn();
     }
@@ -116,14 +141,14 @@ public class RulesManager : MonoBehaviour, IRulesSystem
         List<IEffectCommand> roundEndCommands = new();
         //comprobacion de destruir construccion si no tiene animales
         var destroyConstructionCommands = RulesCheck.CheckConstructions();
-        
+
         roundEndCommands.AddRange(destroyConstructionCommands);
-        
+
         //hacemos una copia de la lista de observers para que los efectos observers se puedan quitar de la lista original
         var observers = _roundEndObservers.ToArray();
-        var observerCommands = 
+        var observerCommands =
             observers.SelectMany(reo => reo.GetRoundEndEffects());
-        
+
         roundEndCommands.AddRange(observerCommands);
 
         if (roundEndCommands.Any())

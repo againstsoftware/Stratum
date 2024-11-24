@@ -215,10 +215,9 @@ public class ViewManager : MonoBehaviour, IView
         callback?.Invoke();
     }
 
-    public void DestroyInTerritory(PlayerCharacter actor, PlayerCharacter territoryOwner, Action callback,
+    public void DestroyInTerritory(PlayerCharacter territoryOwner, Action callback,
         Predicate<ACard> filter = null)
     {
-        var playerActor = _players[actor];
         var playerOwner = _players[territoryOwner];
         Stack<PlayableCard> toBeRemoved = new();
         foreach (var slot in playerOwner.Territory.Slots)

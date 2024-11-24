@@ -356,7 +356,7 @@ public class GameModel : IModel
         }
     }
 
-    public IReadOnlyList<ACard> PlayerDrawCards(PlayerCharacter character /*, int amount*/)
+    public IReadOnlyList<ACard> PlayerDrawCards(PlayerCharacter character)
     {
         List<ACard> drawnCards = new();
         var player = _players[character];
@@ -366,6 +366,22 @@ public class GameModel : IModel
         for (int i = 0; i < amount; i++)
         {
             var card = player.DrawCard();
+            drawnCards.Add(card);
+        }
+
+        return drawnCards;
+    }
+    
+    public IReadOnlyList<ACard> PlayerDrawFixedCards(PlayerCharacter character, IReadOnlyList<ACard> cards)
+    {
+        List<ACard> drawnCards = new();
+        var player = _players[character];
+
+        int amount = 5 - player.HandOfCards.Count;
+
+        for (int i = 0; i < amount; i++)
+        {
+            var card = player.DrawFixedCard(cards[i]);
             drawnCards.Add(card);
         }
 

@@ -1,0 +1,227 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Tutorial_es
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: es
+  m_SharedData: {fileID: 11400000, guid: ee2562db878f4184f9dddbfe9db29f72, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 6978007040
+    m_Localized: "Saludos. Me presento: soy el Manual de Reglas. Si quieres jugar
+      una partida de Stratum, antes tendr\xE1s que conocer todas las reglas, de lo
+      contrario te ser\xE1 imposible enterarte de lo que sucede en el juego."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 182916476928
+    m_Localized: "Stratum es un juego de cartas diferente. Ancestral. Su caracter\xEDstica
+      m\xE1s importante es el Ecosistema."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 487838183424
+    m_Localized: "En Stratum las cartas son poblaciones de un ecosistema vivo y en
+      constante cambio. Seg\xFAn las cartas de Poblaci\xF3n que haya en la mesa,
+      estar\xE1 equilibrado o desequilibrado."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 640498266112
+    m_Localized: "Si el ecosistema est\xE1 desequilibrado, se regular\xE1 \xE9l s\xF3lo
+      con las leyes de la Naturaleza. Es muy importante que las conozcas bien, pues
+      tendr\xE1s que usarlas a tu favor."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4927727071232
+    m_Localized: "Hay cartas de Poblaci\xF3n de Planta, Herb\xEDvoro y Carn\xEDvoro."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6048008892416
+    m_Localized: "Observemos un ecosistema con plantas y herb\xEDvoros."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6279064711168
+    m_Localized: "Si introducimos demasiados herb\xEDvoros al ecosistema (2 m\xE1s
+      que plantas)..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6502197489664
+    m_Localized: "...morir\xE1n por falta de alimento."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6564461932544
+    m_Localized: "Cuando muere una poblaci\xF3n por las Reglas del Ecosistema, se
+      descarta la carta de dicha poblaci\xF3n jugada m\xE1s recientemente. Esta est\xE1
+      marcada con una ficha."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6803264630784
+    m_Localized: "Te habr\xE1s fijado que ha aparecido una seta. Las setas aparecen
+      cuando una carta de Poblaci\xF3n muere debido a las Reglas del Ecosistema."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7325598085120
+    m_Localized: "Ahora hemos introducido m\xE1s plantas al ecosistema, y quitado
+      herb\xEDvoros. Como hay 2 plantas m\xE1s que herb\xEDvoros, estos crecer\xE1n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7677730877440
+    m_Localized: "Cuando una poblaci\xF3n crece, se le a\xF1ade una carta encima
+      a la carta de dicha poblaci\xF3n jugada m\xE1s recientemente (como cuando muere),
+      es decir, la marcada con una ficha."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8672590426112
+    m_Localized: "Veamos ahora las interacciones entre herb\xEDvoros y carn\xEDvoros."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8931303485440
+    m_Localized: "Es necesario poner suficientes plantas en el ecosistema, porque
+      sino los herb\xEDvoros mueren, s\xED o s\xED, de inanici\xF3n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9178318630912
+    m_Localized: "Sin embargo, en este ecosistema hay demasiados carn\xEDvoros (2
+      m\xE1s que herb\xEDvoros)."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9554451230720
+    m_Localized: "Los herb\xEDvoros mueren, porque tienen demasiados depredadores.
+      Su poblaci\xF3n disminuye."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9754032992256
+    m_Localized: "Pero esto tambi\xE9n ha afectado a los carn\xEDvoros, que no tienen
+      suficiente comida para todos, as\xED que tambi\xE9n mueren de inanici\xF3n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10019213668352
+    m_Localized: "Pero, \xBFqu\xE9 pasa si hay 2 plantas m\xE1s que herb\xEDvoros,
+      pero tambi\xE9n 2 carn\xEDvoros m\xE1s que herb\xEDvoros?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10861614460928
+    m_Localized: "Los herb\xEDvoros no pueden morir y crecer a la vez, as\xED que
+      si se cumple la condici\xF3n de muerte, da igual que tambi\xE9n se cumpla la
+      de crecimiento: los herb\xEDvoros disminuyen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11127403311104
+    m_Localized: "Por \xFAltimo, vamos a ver una situaci\xF3n en la que crece la
+      poblaci\xF3n de carn\xEDvoros."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11283653718016
+    m_Localized: "Como te puedes imaginar, si hay 2 herb\xEDvoros m\xE1s que carn\xEDvoros,
+      los carn\xEDvoros crecen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11502122430464
+    m_Localized: "Los herb\xEDvoros tambi\xE9n crecieron, al tener muy pocos depredadores."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11765344366592
+    m_Localized: "Es importante saber que se comprueba primero la muerte de los herb\xEDvoros,
+      luego su crecimiento, luego la muerte de los carn\xEDvoros, y luego su crecimiento."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11930067267584
+    m_Localized: "En resumen: los herb\xEDvoros mueren si hay al menos 2 plantas
+      menos o no hay plantas, o si hay al menos 2 carn\xEDvoros m\xE1s.\nCrecen si
+      hay al menos 2 plantas m\xE1s, o al menos 2 carn\xEDvoros menos. \n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12217410646016
+    m_Localized: "Y, los carn\xEDvoros mueren si hay 2 herb\xEDvoros menos o no hay
+      herb\xEDvoros, y crecen si hay al menos 2 herb\xEDvoros m\xE1s."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12719225565184
+    m_Localized: "Un poco complicado, lo s\xE9. Pero si entiendes el ecosistema,
+      dominar\xE1s cada partida de Stratum."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52737843392512
+    m_Localized: "Muy bien. Ahora te explicar\xE9 el funcionamiento del juego.\nEn
+      Stratum hay 4 jugadores. Sagitario, a quien controlar\xE1s inicialmente; Fungaloth;
+      Ygdra; y el Magnate. Cada personaje tiene un objetivo distinto para ganar."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53136054808576
+    m_Localized: Sagitario es un centauro protector del bosque de Sylveria. Junto
+      con Ygdra, busca equilibrar el ecosistema para que crezcan animales. Ygdra
+      y Sagitario ganan una partida de Stratum si consiguen hacer crecer a 7 poblaciones.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53576989405184
+    m_Localized: "La ronda empieza siempre con el turno de Sagitario. En cada turno
+      puedes jugar 2 cartas. De momento s\xF3lo tienes cartas de Poblaci\xF3n, as\xED
+      que juegalas donde quieras."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54019345870848
+    m_Localized: "S\xF3lo puedes jugar cartas de poblaci\xF3n de tu mano en uno de
+      los 5 espacios de tu territorio, y adem\xE1s, tiene que estar vac\xEDo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 232137037705216
+    m_Localized: "Ahora es el turno de Fungaloth. Yo jugar\xE9 por \xE9l, de momento.
+      Al igual que t\xFA, puede jugar 2 cartas en su turno."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 232379296509952
+    m_Localized: "Ahora le toca a Ygdra. Tambi\xE9n jugar\xE9 por ella."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 232610587209728
+    m_Localized: Ahora el Magnate.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 232845749252096
+    m_Localized: "Cuando el Magnate termina su turno, le toca al Ecosistema. \xBFTe
+      acuerdas de las reglas del Ecosistema que te acabo de explicar? Pues es al
+      final de cada ronda cuando se aplican a las cartas de la mesa."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 233213824593920
+    m_Localized: "Despu\xE9s del turno del Ecosistema, se reparten cartas a todos
+      los jugadores para que comiencen la ronda con 5 cartas. Adem\xE1s, voy a cmabiar
+      las cartas que hay en la mesa, para ense\xF1arte a usar tus cartas de Influencia..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 233707850690560
+    m_Localized: 'Como puedes ver, tienes en tu mano una carta de Influencia: Rabia.
+      Cada personaje tiene sus propias cartas de Influencia, y usarlas bien es crucial
+      para ganar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 234413039022080
+    m_Localized: "la carta de Rabia funciona as\xED: Coloca esta carta sobre una
+      carta de herb\xEDvoro. Mientras no muera, El Magnate no podr\xE1 construir
+      en el territorio donde est\xE9."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 234684620206080
+    m_Localized: "No te lo he explicado, pero el objetivo del Magnate es construir
+      sobre los territorios del Ecosistema. la carta de Rabia sirve para imped\xEDrselo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 234938811805696
+    m_Localized: "En tu turno, puedes jugar 2 cartas de Poblaci\xF3n, o una carta
+      de Influencia y otra de Poblaci\xF3n, en cualquier orden. Empieza tu turno
+      jugando la carta de Rabia sobre cualquiera de los 2 herb\xEDvoros que hay en
+      el Ecosistema. Luego, juega la carta de poblaci\xF3n que quieras."
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
