@@ -149,7 +149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f55663dc82a96134da8356d9fbe82aba, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.11
+      value: -2.485
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f55663dc82a96134da8356d9fbe82aba, type: 3}
       propertyPath: m_LocalPosition.z
@@ -401,7 +401,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 550241529}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3de193416e3b402696303d128ae89831, type: 3}
+  m_Script: {fileID: 11500000, guid: cc137a80909905541bbd3d5d4210d53b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _delayBetweenElements: 1
@@ -776,13 +776,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2079141094}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fa22fb1e40740fc90622d6fb7a606e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 4dd11572079343d439e741f54ef1eff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _tutorials:
-  - {fileID: 11400000, guid: 2ce20e0ff76f3554d8390f502dd07915, type: 2}
-  - {fileID: 11400000, guid: 62ca23373a1fd6c42af761c7737983d3, type: 2}
-  - {fileID: 11400000, guid: 76ed4e77365e2b14db565c426dc8988e, type: 2}
+  - {fileID: 11400000, guid: 110c43edf7c4e8043bfd2e9f8ee92e04, type: 2}
 --- !u!4 &2079141096
 Transform:
   m_ObjectHideFlags: 0
