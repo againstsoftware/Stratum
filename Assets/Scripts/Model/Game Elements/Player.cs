@@ -31,5 +31,11 @@ public class Player
         HandOfCards.AddCard(drewCard);
         return drewCard;
     }
+
+    internal ACard DrawFixedCard(ACard card)
+    {
+        HandOfCards.AddCard(card);
+        return card;
+    }
 }
 

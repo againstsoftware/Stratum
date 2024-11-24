@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc6054d42ec4c3d8865156747ae638e, type: 3}
   m_Name: Mushroom Predator
   m_EditorClassIdentifier: 
-  <ObverseTex>k__BackingField: {fileID: 2800000, guid: cc347f775ab4e474eb537df0f2b475a1,
-    type: 3}
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 28d3406a1f0d6734484b487dc5d67996, type: 3}
   _name:
     m_TableReference:
       m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4

@@ -14,16 +14,14 @@ public class ViewManager : MonoBehaviour, IView
     private Dictionary<PlayerCharacter, ViewPlayer> _players;
     private bool _playersInitialized;
     private CameraMovement _cameraMovement;
+    private PlayerCharacter _localPlayer;
 
     private void Awake()
     {
         if (!_playersInitialized) InitPlayers();
     }
 
-    private void Start()
-    {
-        _cameraMovement = Camera.main.GetComponent<CameraMovement>();
-    }
+
 
 
     public ViewPlayer GetViewPlayer(PlayerCharacter character)
@@ -217,10 +215,9 @@ public class ViewManager : MonoBehaviour, IView
         callback?.Invoke();
     }
 
-    public void DestroyInTerritory(PlayerCharacter actor, PlayerCharacter territoryOwner, Action callback,
+    public void DestroyInTerritory(PlayerCharacter territoryOwner, Action callback,
         Predicate<ACard> filter = null)
     {
-        var playerActor = _players[actor];
         var playerOwner = _players[territoryOwner];
         Stack<PlayableCard> toBeRemoved = new();
         foreach (var slot in playerOwner.Territory.Slots)
@@ -284,9 +281,13 @@ public class ViewManager : MonoBehaviour, IView
         var influenceCard = populationCard.InfluenceCardOnTop;
         playerOwner.DiscardInfluenceFromPopulation(influenceCard, callback);
     }
-    
-    
-    
+
+
+    public void SetLocalPlayer(PlayerCharacter localPlayer, Camera cam)
+    {
+        _localPlayer = localPlayer;
+        _cameraMovement = cam.GetComponent<CameraMovement>();
+    }
 
 
     // private IEnumerator DestroyCard(GameObject card, Action callback = null)
@@ -342,12 +343,18 @@ public class ViewManager : MonoBehaviour, IView
         int i = 0;
         foreach (var (character, cards) in cardsDrawn)
         {
+            Debug.Log($"va a robar: {character}");
             int index = i++;
             arePlayersFinished[index] = false;
-            GetViewPlayer(character).DrawCards(cards, () => arePlayersFinished[index] = true);
+            GetViewPlayer(character).DrawCards(cards, () =>
+            {
+                Debug.Log($"ha robado {character}");
+                arePlayersFinished[index] = true;
+            });
         }
 
         yield return new WaitUntil(() => arePlayersFinished.All(pf => pf));
+        Debug.Log("cartas robadas");
         callback?.Invoke();
     }
 

@@ -4,6 +4,7 @@ using System.Linq;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.TextCore.Text;
 using Random = UnityEngine.Random;
 
 public class GameNetwork : NetworkBehaviour, ICommunicationSystem
@@ -36,11 +37,12 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
             if (character is PlayerCharacter.None) continue;
 
             var viewPlayer = ServiceLocator.Get<IView>().GetViewPlayer(character);
-            var cam = viewPlayer.Camera;
+            var cam = viewPlayer.MainCamera;
             
             if (character != _localPlayer)
             {
                 Destroy(cam.gameObject);
+                Destroy(viewPlayer.UICamera.gameObject);
             }
             else
             {
@@ -51,11 +53,12 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
                 /*var input = */FindAnyObjectByType<PlayerInput>().camera = cam;
 
                 viewPlayer.IsLocalPlayer = true;
+                                
+                ServiceLocator.Get<IInteractionSystem>().SetLocalPlayer(_localPlayer, cam);
+                ServiceLocator.Get<IView>().SetLocalPlayer(_localPlayer, cam);
             }
-        
         }
 
-        ServiceLocator.Get<IInteractionSystem>().SetLocalPlayer(_localPlayer, Camera.main);
     }
 
     public void SyncRNGs()

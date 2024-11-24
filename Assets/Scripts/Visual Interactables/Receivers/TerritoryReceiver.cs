@@ -29,7 +29,7 @@ public class TerritoryReceiver : MonoBehaviour, IActionReceiver
     {
         _construction = Instantiate(prefab, transform);
         // _construction.transform.localPosition = prefab.transform.position;
-        _construction.transform.localPosition = Vector3.zero;
+        //_construction.transform.localPosition = Vector3.zero;
         _construction.transform.localRotation = prefab.transform.rotation;
         HasConstruction = true;
     }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public interface IView : IService
 {
@@ -47,11 +48,13 @@ public interface IView : IService
 
     public void PutLeash(PlayerCharacter actor, CardLocation location, Action callback);
 
-    public void DestroyInTerritory(PlayerCharacter actor, PlayerCharacter territoryOwner, Action callback,
+    public void DestroyInTerritory(PlayerCharacter territoryOwner, Action callback,
         Predicate<ACard> filter = null);
 
     public void DestroyConstruction(PlayerCharacter territoryOwner, Action callback);
     public void KillPlacedCard(CardLocation location, Action callback);
 
     public void DiscardInfluenceFromPopulation(CardLocation location, Action callback);
+
+    public void SetLocalPlayer(PlayerCharacter localPlayer, Camera cam);
 }

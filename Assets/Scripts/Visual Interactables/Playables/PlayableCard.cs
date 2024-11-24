@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Serialization;
+using TMPro;
 
 public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
 {
@@ -28,6 +29,7 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     [SerializeField] private float _drawTravelDuration, _reposInHandTravelDuration;
     [SerializeField] private float _closestCardZ;
     [SerializeField] private MeshRenderer _mesh;
+    [SerializeField] private TextMeshProUGUI _nameText;
 
 
     private float _startZ;
@@ -87,6 +89,10 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
 
     private void OnPopulationPlayed(IActionReceiver playLocation)
     {
+        if (_dbWasObv)
+        {
+            Debug.Log("poblacion de overlord jugada");
+        }
         CurrentState = State.Played;
         IsDropEnabled = true;
         _canInteractWithoutOwnership = true;
@@ -104,6 +110,10 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
 
     private void OnPersistentPlayed(PlayableCard cardWherePlaced)
     {
+        if (_dbWasObv)
+        {
+            Debug.Log("influencia persistente de overlord jugada");
+        }
         CurrentState = State.Played;
         IsDropEnabled = false;
         _canInteractWithoutOwnership = true;
@@ -181,11 +191,11 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     }
 
 
-    public void DrawTravel(Transform target, Action callback)
+    public void DrawTravel(Transform target, Action callback, bool dbIsOv)
     {
         InHandPosition = target.position;
         InHandRotation = target.rotation;
-        Travel(target, _drawTravelDuration, State.Playable, callback);
+        Travel(target, _drawTravelDuration, State.Playable, callback, dbIsOv);
     }
 
     public void ReposInHand(Transform target, Action callback)
@@ -203,6 +213,10 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
 
         SetCard(card);
         Owner = owner;
+        if (_dbWasObv)
+        {
+            Debug.Log("carta de overlord inicializada");
+        }
         CurrentState = initialState;
     }
 
@@ -216,6 +230,10 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
 
         SetCard(card);
         Owner = slotOwner;
+        if (_dbWasObv)
+        {
+            Debug.Log("carta de overlord inicializada en slot");
+        }
         CurrentState = State.Played;
         IsDropEnabled = true;
         _canInteractWithoutOwnership = true;
@@ -229,6 +247,8 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
         _mesh.materials[1].mainTexture = card.ObverseTex;
 
         _mesh.GetComponent<Collider>().enabled = true;
+
+        if (_nameText is not null) _nameText.text = Card.Name;
     }
 
     public void AddInfluenceCardOnTop(PlayableCard influenceCard)

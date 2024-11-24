@@ -9,7 +9,9 @@ Shader "Hidden/Pixelize"
     {
         Tags
         {
-            "RenderType"="Opaque" "RenderPipeline" = "UniversalPipeline"
+            "RenderType"="Opaque"
+            "Queue"="Geometry"
+            "RenderPipeline" = "UniversalPipeline"
         }
 
         HLSLINCLUDE

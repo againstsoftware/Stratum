@@ -14,14 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ActionsPerTurn>k__BackingField: 2
   <TurnOrder>k__BackingField: 0100000002000000000000000300000004000000
-  <CardPrefab>k__BackingField: {fileID: 2141958488974887041, guid: a7cfe0d9aa4629d4d88d94ac908f43b2,
-    type: 3}
-  <ConstructionPrefab>k__BackingField: {fileID: 3886167357060944760, guid: b5976037a697ae546aed73aedfe85ccb,
-    type: 3}
-  <Mushroom>k__BackingField: {fileID: 11400000, guid: bd7b466f40e50dd48b379b235eeaa96d,
-    type: 2}
-  <Macrofungi>k__BackingField: {fileID: 11400000, guid: 86ab07ff152c2e741b6507f7c67302b1,
-    type: 2}
+  <CardPrefab>k__BackingField: {fileID: 2141958488974887041, guid: a7cfe0d9aa4629d4d88d94ac908f43b2, type: 3}
+  <ConstructionPrefab>k__BackingField: {fileID: 3886167357060944760, guid: b5976037a697ae546aed73aedfe85ccb, type: 3}
+  <Mushroom>k__BackingField: {fileID: 11400000, guid: bd7b466f40e50dd48b379b235eeaa96d, type: 2}
+  <Macrofungi>k__BackingField: {fileID: 11400000, guid: 86ab07ff152c2e741b6507f7c67302b1, type: 2}
   <InitialCards>k__BackingField:
   - {fileID: 11400000, guid: 73f4942f266a15a469148e02341ce42b, type: 2}
   - {fileID: 11400000, guid: 73f4942f266a15a469148e02341ce42b, type: 2}
@@ -51,6 +47,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 032c36b02a53ddf429b0da9d5d842d43, type: 2}
   - {fileID: 11400000, guid: c24934a4cd779e947813f48b17fe34c2, type: 2}
   - {fileID: 11400000, guid: 2a681ef1846375e4d965075a73c14f3a, type: 2}
+  - {fileID: 11400000, guid: 5a8b343089124d041a048f0050118604, type: 2}
+  - {fileID: 11400000, guid: bfbc5702c3a1a154880b12ab0c9ee0a8, type: 2}
+  - {fileID: 11400000, guid: 4396c85db1e881740a2a6709bc93ac34, type: 2}
   _populationCards:
   - {fileID: 11400000, guid: 73f4942f266a15a469148e02341ce42b, type: 2}
   - {fileID: 11400000, guid: d02a1b287d0f44046a658bdc3266c2e7, type: 2}

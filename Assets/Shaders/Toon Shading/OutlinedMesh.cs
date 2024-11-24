@@ -14,7 +14,7 @@ public class OutlinedMesh : MonoBehaviour
         _outlineGO.transform.SetPositionAndRotation(transform.position, transform.rotation);
         _outlineGO.transform.SetParent(transform);
 
-        foreach(var meshRenderer in GetComponentsInChildren<MeshRenderer>())
+        foreach(var meshRenderer in GetComponentsInChildren<Renderer>())
         {
             var newMeshRenderer = Instantiate(meshRenderer, _outlineGO.transform);
 

@@ -9,7 +9,8 @@ public class ViewPlayer : MonoBehaviour
     [field: SerializeField] public TerritoryReceiver Territory { get; private set; }
     [field: SerializeField] public DiscardPileReceiver DiscardPile { get; private set; }
     [field: SerializeField] public PlayableToken Token { get; private set; }
-    [field: SerializeField] public Camera Camera { get; private set; }
+    [field: SerializeField] public Camera MainCamera { get; private set; }
+    [field: SerializeField] public Camera UICamera { get; private set; }
 
     public readonly List<PlayableCard> Cards = new(5);
     public bool IsLocalPlayer { get; set; }
@@ -134,6 +135,7 @@ public class ViewPlayer : MonoBehaviour
     
     private IEnumerator DrawCardsAux(IReadOnlyList<ACard> cards, Action callback)
     {
+        Debug.Log($"empezando a robar: {Character}, {cards.Count} cartas.");
         foreach (var card in cards)
         {
             var newCardGO = Instantiate(_config.CardPrefab, _deckSnap.position, _deckSnap.rotation, _hand);
@@ -152,9 +154,16 @@ public class ViewPlayer : MonoBehaviour
 
             bool isDone = false;
             
-            newPlayableCard.DrawTravel(location, () => isDone = true);
-
+            Debug.Log($"robando: {Character}");
+            
+            newPlayableCard.DrawTravel(location, () =>
+            {
+                if(Character is PlayerCharacter.Overlord) Debug.Log("carta en su sitio!");
+                isDone = true;
+            }, false /*Character is PlayerCharacter.Overlord*/);
+            
             yield return new WaitUntil(() => isDone);
+            yield return null;
         }
         callback?.Invoke();
     }
@@ -187,6 +196,11 @@ public class ViewPlayer : MonoBehaviour
 
     private IEnumerator ReposCardsInHand(PlayableCard[] exclude = null)
     {
+        if (Character is PlayerCharacter.Overlord)
+        {
+            Debug.Log("repos");
+        }
+        
         for (int i = 0; i < Cards.Count; i++)
         {
             bool cardReposed = false;
