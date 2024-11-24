@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c252d865c6b48f6937431bc606023e0, type: 3}
   m_Name: Green Ivy
   m_EditorClassIdentifier: 
-  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 3565d7bed2f14904e82239c7019b1083, type: 3}
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 2cee591a14cc18c4eb2a5c17fd2955b1, type: 3}
   _name:
     m_TableReference:
       m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4

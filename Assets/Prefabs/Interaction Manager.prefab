@@ -53,6 +53,7 @@ MonoBehaviour:
   _inputActions: {fileID: -944628639613478452, guid: b3d6fffacd930a345b1b102379b26661, type: 3}
   _itemCamOffsetOnDrag: 1.55
   _dropLocationCheckFrequency: 10
+  _itemVerticalMinHeight: 0.557
   _config: {fileID: 11400000, guid: 00c45f89111b6ac4f9b8c6ebeb9d9e38, type: 2}
 --- !u!114 &1994111580498935405
 MonoBehaviour:

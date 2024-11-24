@@ -29,7 +29,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aae5589223e26df4e86a38b36af43b32, type: 2}
   - {fileID: 11400000, guid: 925fd89a28ebfd44cabbdd3e279d2a5e, type: 2}
   _motherNatureCards:
-  - {fileID: 11400000, guid: bfbc5702c3a1a154880b12ab0c9ee0a8, type: 2}
+  - {fileID: 11400000, guid: 782b76cffe65c624db0963685b9a485d, type: 2}
   - {fileID: 11400000, guid: d02a1b287d0f44046a658bdc3266c2e7, type: 2}
   _initialDialogues:
   - _text:
@@ -194,9 +194,64 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
-  _playMushroomPredator: []
-  _playMotherNature: []
-  _outroDialogue: []
+  _playMushroomPredator:
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+      m_TableEntryReference:
+        m_KeyId: 253326380494848
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+      m_TableEntryReference:
+        m_KeyId: 264144803328000
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  _mushroomPredatorEffectDialogue:
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+      m_TableEntryReference:
+        m_KeyId: 264400739758080
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  _playMotherNature:
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+      m_TableEntryReference:
+        m_KeyId: 264644433014784
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+      m_TableEntryReference:
+        m_KeyId: 264943746936832
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  _outroDialogue:
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+      m_TableEntryReference:
+        m_KeyId: 265020469145600
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
   references:
     version: 2
     RefIds: []

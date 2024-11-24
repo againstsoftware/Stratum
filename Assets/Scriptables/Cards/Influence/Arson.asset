@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51c07a7cab5842139d640e4e53b10ff3, type: 3}
   m_Name: Arson
   m_EditorClassIdentifier: 
-  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 93d6d0d17beb61a4ba85154bb2c825cb, type: 3}
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 1c9a061716219d1479ab03263a07e319, type: 3}
   _name:
     m_TableReference:
       m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
