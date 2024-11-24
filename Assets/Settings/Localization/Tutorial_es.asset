@@ -173,6 +173,55 @@ MonoBehaviour:
       los 5 espacios de tu territorio, y adem\xE1s, tiene que estar vac\xEDo."
     m_Metadata:
       m_Items: []
+  - m_Id: 232137037705216
+    m_Localized: "Ahora es el turno de Fungaloth. Yo jugar\xE9 por \xE9l, de momento.
+      Al igual que t\xFA, puede jugar 2 cartas en su turno."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 232379296509952
+    m_Localized: "Ahora le toca a Ygdra. Tambi\xE9n jugar\xE9 por ella."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 232610587209728
+    m_Localized: Ahora el Magnate.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 232845749252096
+    m_Localized: "Cuando el Magnate termina su turno, le toca al Ecosistema. \xBFTe
+      acuerdas de las reglas del Ecosistema que te acabo de explicar? Pues es al
+      final de cada ronda cuando se aplican a las cartas de la mesa."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 233213824593920
+    m_Localized: "Despu\xE9s del turno del Ecosistema, se reparten cartas a todos
+      los jugadores para que comiencen la ronda con 5 cartas. Adem\xE1s, voy a cmabiar
+      las cartas que hay en la mesa, para ense\xF1arte a usar tus cartas de Influencia..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 233707850690560
+    m_Localized: 'Como puedes ver, tienes en tu mano una carta de Influencia: Rabia.
+      Cada personaje tiene sus propias cartas de Influencia, y usarlas bien es crucial
+      para ganar.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 234413039022080
+    m_Localized: "la carta de Rabia funciona as\xED: Coloca esta carta sobre una
+      carta de herb\xEDvoro. Mientras no muera, El Magnate no podr\xE1 construir
+      en el territorio donde est\xE9."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 234684620206080
+    m_Localized: "No te lo he explicado, pero el objetivo del Magnate es construir
+      sobre los territorios del Ecosistema. la carta de Rabia sirve para imped\xEDrselo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 234938811805696
+    m_Localized: "En tu turno, puedes jugar 2 cartas de Poblaci\xF3n, o una carta
+      de Influencia y otra de Poblaci\xF3n, en cualquier orden. Empieza tu turno
+      jugando la carta de Rabia sobre cualquiera de los 2 herb\xEDvoros que hay en
+      el Ecosistema. Luego, juega la carta de poblaci\xF3n que quieras."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
