@@ -69,14 +69,131 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
-  _fungalothTurnDialogues: []
-  _ygdraTurnDialogues: []
-  _overlordTurnDialogues: []
-  _ecosystemTurnDialogues: []
-  _roundEndDialogues: []
-  _playRabies: []
-  _overlordRabiesTurnDialogue: []
-  _playMigration: []
+  _fungalothTurnDialogues:
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+      m_TableEntryReference:
+        m_KeyId: 232137037705216
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  _ygdraTurnDialogues:
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+      m_TableEntryReference:
+        m_KeyId: 232379296509952
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  _overlordTurnDialogues:
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+      m_TableEntryReference:
+        m_KeyId: 232610587209728
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  _ecosystemTurnDialogues:
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+      m_TableEntryReference:
+        m_KeyId: 232845749252096
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  _roundEndDialogues:
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+      m_TableEntryReference:
+        m_KeyId: 233213824593920
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  _playRabies:
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+      m_TableEntryReference:
+        m_KeyId: 233707850690560
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+      m_TableEntryReference:
+        m_KeyId: 234413039022080
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+      m_TableEntryReference:
+        m_KeyId: 234684620206080
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+      m_TableEntryReference:
+        m_KeyId: 234938811805696
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  _overlordRabiesTurnDialogue:
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+      m_TableEntryReference:
+        m_KeyId: 235503033774080
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  _playMigration:
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+      m_TableEntryReference:
+        m_KeyId: 236297082630144
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+      m_TableEntryReference:
+        m_KeyId: 236807974023168
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+      m_TableEntryReference:
+        m_KeyId: 237168797413376
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
   _playMushroomPredator: []
   _playMotherNature: []
   _outroDialogue: []
