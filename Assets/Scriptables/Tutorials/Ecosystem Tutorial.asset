@@ -9,14 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31f323a8a7d74cdaafb24048c0acbf6f, type: 3}
+  m_Script: {fileID: 11500000, guid: 387971cd8248fbd49bd232d665bb6361, type: 3}
   m_Name: Ecosystem Tutorial
   m_EditorClassIdentifier: 
-  <LocalPlayer>k__BackingField: 1
   _initialDialogues:
   - _text:
       m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
       m_TableEntryReference:
         m_KeyId: 252628259565568
         m_Key: 
@@ -25,7 +24,7 @@ MonoBehaviour:
       m_LocalVariables: []
   - _text:
       m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
       m_TableEntryReference:
         m_KeyId: 6978007040
         m_Key: 
@@ -34,7 +33,7 @@ MonoBehaviour:
       m_LocalVariables: []
   - _text:
       m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
       m_TableEntryReference:
         m_KeyId: 182916476928
         m_Key: 
@@ -43,7 +42,7 @@ MonoBehaviour:
       m_LocalVariables: []
   - _text:
       m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
       m_TableEntryReference:
         m_KeyId: 487838183424
         m_Key: 
@@ -52,7 +51,7 @@ MonoBehaviour:
       m_LocalVariables: []
   - _text:
       m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
       m_TableEntryReference:
         m_KeyId: 640498266112
         m_Key: 
@@ -61,7 +60,7 @@ MonoBehaviour:
       m_LocalVariables: []
   - _text:
       m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
       m_TableEntryReference:
         m_KeyId: 4927727071232
         m_Key: 
@@ -71,7 +70,7 @@ MonoBehaviour:
   _dialoguesHerbivoresPlantsDie:
   - _text:
       m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
       m_TableEntryReference:
         m_KeyId: 6048008892416
         m_Key: 
@@ -80,7 +79,7 @@ MonoBehaviour:
       m_LocalVariables: []
   - _text:
       m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
       m_TableEntryReference:
         m_KeyId: 6279064711168
         m_Key: 
@@ -90,7 +89,7 @@ MonoBehaviour:
   _dialoguesMushroom:
   - _text:
       m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
       m_TableEntryReference:
         m_KeyId: 6502197489664
         m_Key: 
@@ -99,7 +98,7 @@ MonoBehaviour:
       m_LocalVariables: []
   - _text:
       m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
       m_TableEntryReference:
         m_KeyId: 6564461932544
         m_Key: 
@@ -108,7 +107,7 @@ MonoBehaviour:
       m_LocalVariables: []
   - _text:
       m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
       m_TableEntryReference:
         m_KeyId: 6803264630784
         m_Key: 
@@ -118,7 +117,7 @@ MonoBehaviour:
   _dialoguesHerbivoresPlantsGrow:
   - _text:
       m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
       m_TableEntryReference:
         m_KeyId: 7325598085120
         m_Key: 
@@ -128,7 +127,7 @@ MonoBehaviour:
   _dialoguesHerbivoresPlantsAfter:
   - _text:
       m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
       m_TableEntryReference:
         m_KeyId: 7677730877440
         m_Key: 
@@ -137,7 +136,7 @@ MonoBehaviour:
       m_LocalVariables: []
   - _text:
       m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
       m_TableEntryReference:
         m_KeyId: 8672590426112
         m_Key: 
@@ -147,7 +146,7 @@ MonoBehaviour:
   _dialoguesCarnivoresHerbivoresDie:
   - _text:
       m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
       m_TableEntryReference:
         m_KeyId: 8931303485440
         m_Key: 
@@ -156,7 +155,7 @@ MonoBehaviour:
       m_LocalVariables: []
   - _text:
       m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
       m_TableEntryReference:
         m_KeyId: 9178318630912
         m_Key: 
@@ -166,7 +165,7 @@ MonoBehaviour:
   _dialoguesCarnHerbDieAfter:
   - _text:
       m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
       m_TableEntryReference:
         m_KeyId: 9554451230720
         m_Key: 
@@ -175,7 +174,7 @@ MonoBehaviour:
       m_LocalVariables: []
   - _text:
       m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
       m_TableEntryReference:
         m_KeyId: 9754032992256
         m_Key: 
@@ -185,7 +184,7 @@ MonoBehaviour:
   _plantsCarnsHerbsDie:
   - _text:
       m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
       m_TableEntryReference:
         m_KeyId: 10019213668352
         m_Key: 
@@ -195,7 +194,7 @@ MonoBehaviour:
   _plantsCarnsHerbsDieAfter:
   - _text:
       m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
       m_TableEntryReference:
         m_KeyId: 10861614460928
         m_Key: 
@@ -204,7 +203,7 @@ MonoBehaviour:
       m_LocalVariables: []
   - _text:
       m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
       m_TableEntryReference:
         m_KeyId: 11127403311104
         m_Key: 
@@ -214,7 +213,7 @@ MonoBehaviour:
   _dialoguesCarnHerbGrow:
   - _text:
       m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
       m_TableEntryReference:
         m_KeyId: 11283653718016
         m_Key: 
@@ -224,7 +223,7 @@ MonoBehaviour:
   _dialoguesCarnHerbGrowAfter:
   - _text:
       m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
       m_TableEntryReference:
         m_KeyId: 11502122430464
         m_Key: 
@@ -233,7 +232,7 @@ MonoBehaviour:
       m_LocalVariables: []
   - _text:
       m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
       m_TableEntryReference:
         m_KeyId: 11765344366592
         m_Key: 
@@ -242,7 +241,7 @@ MonoBehaviour:
       m_LocalVariables: []
   - _text:
       m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
       m_TableEntryReference:
         m_KeyId: 11930067267584
         m_Key: 
@@ -251,7 +250,7 @@ MonoBehaviour:
       m_LocalVariables: []
   - _text:
       m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
       m_TableEntryReference:
         m_KeyId: 12217410646016
         m_Key: 
@@ -260,7 +259,7 @@ MonoBehaviour:
       m_LocalVariables: []
   - _text:
       m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
       m_TableEntryReference:
         m_KeyId: 12719225565184
         m_Key: 

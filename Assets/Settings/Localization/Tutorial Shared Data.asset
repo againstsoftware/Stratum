@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tutorial Shared Data
   m_EditorClassIdentifier: 
   m_TableCollectionName: Tutorial
-  m_TableCollectionNameGuidString: ee2562db878f4184f9dddbfe9db29f72
+  m_TableCollectionNameGuidString: f7e545ea7ea560b428f88e457a437b5a
   m_Entries:
   - m_Id: 6978007040
     m_Key: eco_0_0
@@ -218,11 +218,11 @@ MonoBehaviour:
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
-    rid: 6827185989941198866
+    rid: 6827186013973512212
   references:
     version: 2
     RefIds:
-    - rid: 6827185989941198866
+    - rid: 6827186013973512212
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
       data:
-        m_CustomEpoch: 1732388287813
+        m_CustomEpoch: 1732464644141

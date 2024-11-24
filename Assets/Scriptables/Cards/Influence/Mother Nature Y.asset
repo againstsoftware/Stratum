@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06b9820290544fa98a9853d11201d178, type: 3}
   m_Name: Mother Nature Y
   m_EditorClassIdentifier: 
-  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 6acc88f787c954d439a04fe6d7461b15, type: 3}
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 7d386300387e8d547a9491967eac577a, type: 3}
   _name:
     m_TableReference:
       m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4

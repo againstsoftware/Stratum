@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a84ddc1a1006470e81738b3f088931ec, type: 3}
   m_Name: Wildfire
   m_EditorClassIdentifier: 
-  <ObverseTex>k__BackingField: {fileID: 2800000, guid: bb661a324bd9cf34389cbdee76f6821a, type: 3}
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 25128a15f51a7654597fd23f47073773, type: 3}
   _name:
     m_TableReference:
       m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
