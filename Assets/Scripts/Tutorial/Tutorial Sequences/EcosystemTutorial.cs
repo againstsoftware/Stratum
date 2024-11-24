@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // [CreateAssetMenu(menuName = "Tutorials/Ecosystem Tutorial")]
 public class EcosystemTutorial : ATutorialSequence
@@ -170,7 +171,7 @@ public class EcosystemTutorial : ATutorialSequence
 
     public override void OnTutorialFinished()
     {
-        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private TutorialAction EcosystemAct()

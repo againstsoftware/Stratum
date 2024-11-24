@@ -205,7 +205,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 234413039022080
-    m_Localized: "la carta de Rabia funciona as\xED: Coloca esta carta sobre una
+    m_Localized: "La carta de Rabia funciona as\xED: Coloca esta carta sobre una
       carta de herb\xEDvoro. Mientras no muera, El Magnate no podr\xE1 construir
       en el territorio donde est\xE9."
     m_Metadata:
@@ -243,6 +243,45 @@ MonoBehaviour:
     m_Localized: "Juega tu carta de Migraci\xF3n sobre una de tus 2 Poblaciones,
       porque se puede jugar en carn\xEDvoros o herb\xEDvoros. Luego, juega la carta
       de poblaci\xF3n que quieras."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 252628259565568
+    m_Localized: "[Usa la rueda del rat\xF3n, o desliza el dedo verticalmente, para
+      cambiar de vista. Haz click o manten presionado con el dedo para avanzar en
+      el tutorial.]"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 253326380494848
+    m_Localized: "Ahora tienes la carta de Influencia Depredador de Setas. Esta funciona
+      as\xED: Coloca esta carta sobre una carta de herb\xEDvoro. Mientras no muera,
+      al final de la ronda morir\xE1 la carta de hongo m\xE1s reciente que haya en
+      su territorio."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 264144803328000
+    m_Localized: "Juega la carta sobre el herb\xEDvoro del territorio de Fungaloth,
+      y luego juega la Poblaci\xF3n que quieras."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 264400739758080
+    m_Localized: "Despu\xE9s del turno del ecosistema, se aplican los efectos de
+      Final de Ronda, como el de Depredador  de Setas, en este caso. Como el herb\xEDvoro
+      que tiene la carta tiene setas en su territorio, se comer\xE1 una de ellas."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 264644433014784
+    m_Localized: "La \xFAltima carta de Influencia que tiene Sagitario es Madre Naturaleza.
+      Esta la juegas arrastr\xE1ndola al centro de la mesa. Lo que hace es jugar
+      un turno del ecosistema."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 264943746936832
+    m_Localized: "Juega la carta de Madre Naturaleza, y luego una poblaci\xF3n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 265020469145600
+    m_Localized: "\xA1Felicidades! Con esto ya sabes jugar con Sagitario. Ahora,
+      vamos a aprender a jugar con el resto de personajes."
     m_Metadata:
       m_Items: []
   references:

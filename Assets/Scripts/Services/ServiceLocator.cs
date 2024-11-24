@@ -9,7 +9,8 @@ public static class ServiceLocator
     {
         string key = typeof(T).Name;
         if (!_services.TryAdd(key, service))
-            throw new Exception($"servicio {key} ya registrado");
+            //throw new Exception($"servicio {key} ya registrado");
+            _services[key] = service;
     }
         
     public static T Get<T>() where T : IService

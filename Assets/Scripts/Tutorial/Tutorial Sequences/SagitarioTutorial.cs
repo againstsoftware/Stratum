@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [CreateAssetMenu(menuName = "Tutorials/Sagitario Tutorial")]
 public class SagitarioTutorial : ATutorialSequence
@@ -43,8 +46,11 @@ public class SagitarioTutorial : ATutorialSequence
 
     //ronda full y colocar cartas pa jugar depredador de setas
     [SerializeField] private TutorialDialogue[] _playMushroomPredator;
+    
+    //ronda full yecosistema, pero antes de que se coma el hongo este
+    [SerializeField] private TutorialDialogue[] _mushroomPredatorEffectDialogue;
 
-    //ronda full y colocar caartas pa jugar madre naturaleza
+    //se come el hongo, reparten cartas y colocar caartas pa jugar madre naturaleza
     [SerializeField] private TutorialDialogue[] _playMotherNature;
 
     //se aplica el efecto y ya despedida
@@ -60,6 +66,7 @@ public class SagitarioTutorial : ATutorialSequence
         var plant = config.GetPopulationCard(Population.Plant);
         var herbivore = config.GetPopulationCard(Population.Herbivore);
         var carnivore = config.GetPopulationCard(Population.Carnivore);
+        var mushroom = config.Mushroom;
         var sagitarioTerritory = ServiceLocator.Get<IModel>().GetPlayer(PlayerCharacter.Sagitario).Territory;
         var fungalothTerritory = ServiceLocator.Get<IModel>().GetPlayer(PlayerCharacter.Fungaloth).Territory;
         var ygdraTerritory = ServiceLocator.Get<IModel>().GetPlayer(PlayerCharacter.Ygdra).Territory;
@@ -209,12 +216,147 @@ public class SagitarioTutorial : ATutorialSequence
 
         elements.Add(playMigration);
         elements.Add(new TutorialAction(true));
+
+        
+        var fungalothTurn3 = new TutorialAction(false, new IEffectCommand[]
+        {
+            new EffectCommands.OverviewSwitch(),
+            new EffectCommands.PlaceCardOnFreeSlotTutorial(plant, fungalothTerritory),
+            new EffectCommands.PlaceCardOnFreeSlotTutorial(carnivore, fungalothTerritory),
+        });
+
+        elements.Add(fungalothTurn3);
+
+        var ygdraTurn3 = new TutorialAction(false, new IEffectCommand[]
+        {
+            new EffectCommands.OverviewSwitch(),
+            new EffectCommands.PlaceCardOnFreeSlotTutorial(herbivore, ygdraTerritory),
+            new EffectCommands.PlaceCardOnFreeSlotTutorial(plant, ygdraTerritory),
+        });
+
+        elements.Add(ygdraTurn3);
+        
+        var overlordTurn3 = new TutorialAction(false, new IEffectCommand[]
+        {
+            new EffectCommands.OverviewSwitch(),
+            new EffectCommands.PlaceCardOnFreeSlotTutorial(plant, overlordTerritory),
+            new EffectCommands.PlaceCardOnFreeSlotTutorial(plant, overlordTerritory),
+        });
+
+        elements.Add(overlordTurn3);
+
+        elements.Add(EcosystemAct());
+
+        elements.Add(DrawFixed(_mushroomPredCards));
+        
+        
+        
+        var wipeSagForMushPred = new TutorialAction(false, new IEffectCommand[]
+        {
+            new EffectCommands.RemoveCardsFromTerritoryTutorial(sagitarioTerritory),
+            new EffectCommands.RemoveCardsFromTerritoryTutorial(fungalothTerritory),
+            new EffectCommands.RemoveCardsFromTerritoryTutorial(ygdraTerritory),
+            new EffectCommands.RemoveCardsFromTerritoryTutorial(overlordTerritory),
+            new EffectCommands.PlaceCardOnSlotTutorial(carnivore, sagitarioTerritory.Slots[0]),
+            new EffectCommands.PlaceCardOnSlotTutorial(plant, overlordTerritory.Slots[3]),
+            new EffectCommands.PlaceCardOnSlotTutorial(herbivore, fungalothTerritory.Slots[1]),
+            new EffectCommands.PlaceCardOnSlotTutorial(mushroom, fungalothTerritory.Slots[2]),
+            new EffectCommands.PlaceCardOnSlotTutorial(mushroom, fungalothTerritory.Slots[3]),
+        });
+
+        elements.Add(wipeSagForMushPred);
+        
+        elements.AddRange(_playMushroomPredator);
+        
+        
+        var forcedMushPredAction = new List<PlayerAction>()
+        {
+            new PlayerAction(PlayerCharacter.Sagitario, _mushroomPredCards[0], null, 1)
+        };
+        var playMushPred = 
+            new TutorialAction(true, null, forcedMushPredAction, true);
+
+        elements.Add(playMushPred);
+        elements.Add(new TutorialAction(true));
+        
+        
+        var fungalothTurn4 = new TutorialAction(false, new IEffectCommand[]
+        {
+            new EffectCommands.OverviewSwitch(),
+            new EffectCommands.PlaceCardOnFreeSlotTutorial(plant, fungalothTerritory),
+            new EffectCommands.PlaceCardOnFreeSlotTutorial(carnivore, fungalothTerritory),
+        });
+
+        elements.Add(fungalothTurn4);
+
+        var ygdraTurn4 = new TutorialAction(false, new IEffectCommand[]
+        {
+            new EffectCommands.OverviewSwitch(),
+            new EffectCommands.PlaceCardOnFreeSlotTutorial(plant, ygdraTerritory),
+            new EffectCommands.PlaceCardOnFreeSlotTutorial(plant, ygdraTerritory),
+        });
+
+        elements.Add(ygdraTurn4);
+
+
+        var overlordTurn4 = new TutorialAction(false, new IEffectCommand[]
+        {
+            new EffectCommands.OverviewSwitch(),
+            new EffectCommands.PlaceCardOnFreeSlotTutorial(carnivore, overlordTerritory),
+            new EffectCommands.PlaceCardOnFreeSlotTutorial(herbivore, overlordTerritory),
+        });
+
+        elements.Add(overlordTurn4);
+
+        elements.Add(EcosystemAct());
+        
+        elements.AddRange(_mushroomPredatorEffectDialogue);
+
+        var mushPredEffect =
+            new TutorialAction(false, ServiceLocator.Get<IRulesSystem>().GetRoundEndObserversEffects);
+        elements.Add(mushPredEffect);
+
+        elements.Add(DrawFixed(_motherNatureCards));
+        
+        
+        var wipeSagForMushPredMotherN = new TutorialAction(false, new IEffectCommand[]
+        {
+            new EffectCommands.RemoveCardsFromTerritoryTutorial(sagitarioTerritory),
+            new EffectCommands.RemoveCardsFromTerritoryTutorial(fungalothTerritory),
+            new EffectCommands.RemoveCardsFromTerritoryTutorial(ygdraTerritory),
+            new EffectCommands.RemoveCardsFromTerritoryTutorial(overlordTerritory),
+            new EffectCommands.PlaceCardOnSlotTutorial(plant, sagitarioTerritory.Slots[0]),
+            new EffectCommands.PlaceCardOnSlotTutorial(herbivore, sagitarioTerritory.Slots[1]),
+            new EffectCommands.PlaceCardOnSlotTutorial(herbivore, sagitarioTerritory.Slots[2]),
+            new EffectCommands.PlaceCardOnSlotTutorial(herbivore, fungalothTerritory.Slots[0]),
+            new EffectCommands.PlaceCardOnSlotTutorial(carnivore, fungalothTerritory.Slots[2]),
+            new EffectCommands.PlaceCardOnSlotTutorial(plant, ygdraTerritory.Slots[3]),
+            new EffectCommands.PlaceCardOnSlotTutorial(plant, overlordTerritory.Slots[3]),
+        });
+
+        elements.Add(wipeSagForMushPredMotherN);
+        
+        elements.AddRange(_playMotherNature);
+        
+        var forcedMotherNAction = new List<PlayerAction>()
+        {
+            new PlayerAction(PlayerCharacter.Sagitario, _motherNatureCards[0], null, 1)
+        };
+        var playMotherN = 
+            new TutorialAction(true, null, forcedMotherNAction, true);
+
+        elements.Add(playMotherN);
+        elements.Add(new TutorialAction(true));
+        
+        elements.AddRange(_outroDialogue);
+
         
         return elements;
     }
 
     public override void OnTutorialFinished()
     {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private TutorialAction DrawFixed(List<ACard> cards)
@@ -233,4 +375,6 @@ public class SagitarioTutorial : ATutorialSequence
             new EffectCommands.RushEcosystemTurn(),
         });
     }
+
+
 }

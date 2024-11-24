@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7b7faea92e84fb1b4776735b2a8da81, type: 3}
+  m_Name: Test Tutorial
+  m_EditorClassIdentifier: 
+  _test:
+    _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
+      m_TableEntryReference:
+        m_KeyId: 52737843392512
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
