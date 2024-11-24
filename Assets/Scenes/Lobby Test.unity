@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -602,8 +602,7 @@ MonoBehaviour:
   NetworkConfig:
     ProtocolVersion: 0
     NetworkTransport: {fileID: 239060590}
-    PlayerPrefab: {fileID: 5287715714390582027, guid: e3fe5b476776e764182240f72f698ff1,
-      type: 3}
+    PlayerPrefab: {fileID: 5287715714390582027, guid: e3fe5b476776e764182240f72f698ff1, type: 3}
     Prefabs:
       NetworkPrefabsLists:
       - {fileID: 11400000, guid: a42fec63a4b3acc4f930f9ec0a902c79, type: 2}
@@ -1863,8 +1862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: b3d6fffacd930a345b1b102379b26661,
-    type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: b3d6fffacd930a345b1b102379b26661, type: 3}
   m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 1549109232}
   m_DeviceLostEvent:
@@ -1916,19 +1914,15 @@ MonoBehaviour:
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
-  m_ActionsAsset: {fileID: -944628639613478452, guid: b3d6fffacd930a345b1b102379b26661,
-    type: 3}
-  m_PointAction: {fileID: -4348196922145942482, guid: b3d6fffacd930a345b1b102379b26661,
-    type: 3}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: b3d6fffacd930a345b1b102379b26661, type: 3}
+  m_PointAction: {fileID: -4348196922145942482, guid: b3d6fffacd930a345b1b102379b26661, type: 3}
   m_MoveAction: {fileID: 0}
   m_SubmitAction: {fileID: 0}
   m_CancelAction: {fileID: 0}
-  m_LeftClickAction: {fileID: -7233548662856304152, guid: b3d6fffacd930a345b1b102379b26661,
-    type: 3}
+  m_LeftClickAction: {fileID: -7233548662856304152, guid: b3d6fffacd930a345b1b102379b26661, type: 3}
   m_MiddleClickAction: {fileID: 0}
   m_RightClickAction: {fileID: 0}
-  m_ScrollWheelAction: {fileID: -226573604108301984, guid: b3d6fffacd930a345b1b102379b26661,
-    type: 3}
+  m_ScrollWheelAction: {fileID: -226573604108301984, guid: b3d6fffacd930a345b1b102379b26661, type: 3}
   m_TrackedDevicePositionAction: {fileID: 0}
   m_TrackedDeviceOrientationAction: {fileID: 0}
   m_DeselectOnBackgroundClick: 1
@@ -2229,7 +2223,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1910793091}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2e788201bbcecb45830aa66b7d3a8e4, type: 3}
   m_Name: 
