@@ -141,7 +141,6 @@ GameObject:
   - component: {fileID: 3418994473326647584}
   - component: {fileID: 6300288291310846379}
   - component: {fileID: 3633787597434820414}
-  - component: {fileID: 7025572277809386200}
   m_Layer: 9
   m_Name: Construction Token
   m_TagString: Untagged
@@ -193,19 +192,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2dbb119b8db469791f51328ba0c9fd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7025572277809386200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8351975351307065541}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f54404cbf0c33a4e9f4a1b22a6973af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _outlineMaterial: {fileID: 2100000, guid: 4d27bcebd88c2cf40ad9e514a03cddc8, type: 2}
 --- !u!1001 &1865764202250974118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -891,6 +877,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d1c81f8852217ee44acf92186ed8bd00, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6272920501627793073}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d1c81f8852217ee44acf92186ed8bd00, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6567875036684922592}
   m_SourcePrefab: {fileID: 100100000, guid: d1c81f8852217ee44acf92186ed8bd00, type: 3}
 --- !u!4 &5774834123490273394 stripped
 Transform:
@@ -925,6 +914,19 @@ CapsuleCollider:
   m_Height: 0.35
   m_Direction: 1
   m_Center: {x: 0, y: 0.1, z: 0}
+--- !u!114 &6567875036684922592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6588631725423817416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f54404cbf0c33a4e9f4a1b22a6973af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _outlineMaterial: {fileID: 2100000, guid: 4d27bcebd88c2cf40ad9e514a03cddc8, type: 2}
 --- !u!1001 &6822919033761413830
 PrefabInstance:
   m_ObjectHideFlags: 0
