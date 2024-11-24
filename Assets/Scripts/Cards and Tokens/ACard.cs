@@ -5,7 +5,20 @@ using System.Collections.Generic;
 
 public abstract class ACard : AActionItem
 {
-    public string Name { get => _name.GetLocalizedString(); }
+    public string Name
+    {
+        get
+        {
+            if (_name is null)
+            {
+                Debug.LogWarning($"CARTA {name} CON NOMBRE NULL");
+                return "UNNAMED";
+            }
+            var loc = _name.GetLocalizedString();
+            return loc is null ? "UNNAMED" : loc;
+        }
+    }
+
     public string Description { get => _description.GetLocalizedString(); }
     
     public abstract bool CanHaveInfluenceCardOnTop { get; }

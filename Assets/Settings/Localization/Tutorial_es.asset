@@ -284,6 +284,99 @@ MonoBehaviour:
       vamos a aprender a jugar con el resto de personajes."
     m_Metadata:
       m_Items: []
+  - m_Id: 62952940761088
+    m_Localized: "Ahora aprender\xE1s c\xF3mo jugar con Ygdra. Ygdra es una ninfa
+      protectora del bosque, que junto con Sagitario, busca hacer crecer el ecosistema,
+      para ganar la partida. Como te dije antes, si hacen crecer a 7 poblaciones,
+      ganan la partida."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63509701062656
+    m_Localized: "Ygdra comparte con Sagitario la carta de Influencia Madre Naturaleza.
+      \xDAsala, y luego juega una carta de poblaci\xF3n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 64332145356800
+    m_Localized: "Has robado la carta de Hiedra Verde. Esta funciona as\xED: Coloca
+      esta carta sobre una carta de planta. Al final de la ronda, si hay una construcci\xF3n
+      en su territorio, se destruye la construcci\xF3n y descarta esta carta de la
+      planta."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 64749700902912
+    m_Localized: "Como puedes ver, el Magnate ha construido en su territorio. Juega
+      la Hiedra Verde ah\xED, luego juega una Poblaci\xF3n, y espera al final de
+      la ronda para ver su construcci\xF3n destruida. "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 64991527694336
+    m_Localized: "Como pudiste ver, se destruy\xF3 la construcci\xF3n por tu carta
+      de Hiedra Verde. Ahora vamos a jugar otra de tus cartas de Influencia: Incendio
+      Forestal. "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65365118545920
+    m_Localized: "Incendio Forestal hace lo sieguiente: Elige un territorio. Todas
+      las cartas de poblaci\xF3n y hongo en ese territorio mueren. Si hay una construcci\xF3n,
+      tambi\xE9n se destruye.\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65845626400768
+    m_Localized: "Usa el Incendio Forestal donde quieras. Luego, juega una poblaci\xF3n.
+      Esta vez no jugar\xE9 por los dem\xE1s, para ir m\xE1s r\xE1pido con el tutorial."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65996650704896
+    m_Localized: "Ahora juega la carta de Fragancia de Feromonas. Funciona as\xED:
+      Elige una carta de herb\xEDvoro o carn\xEDvoro de otro territorio y mu\xE9vela
+      a un espacio vac\xEDo en tu territorio. Luego, juega una poblaci\xF3n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66235218522112
+    m_Localized: ya has usado todas las cartas de Ygdra. Pasemos al siguiente personaje...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89107383185408
+    m_Localized: "Ahora aprender\xE1s a jugar con Fungaloth. Es un esp\xEDritu de
+      lla naturaleza como Ygdra y Sagitario, pero busca esparcir el caos por Sylveria
+      poblando el ecosistema de Hongos."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89339407888384
+    m_Localized: Para ganar, Fungaloth debe tener al final de una ronda, 2 Macrohongos.
+      Para crearlos, tiene una ficha de Macrohongo que puede usar en su turno en
+      vez de jugar una carta. Es decir, puede jugar 2 cartas o jugar 1 carta y la
+      ficha.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89412770459648
+    m_Localized: "La ficha de Macrohongo se juega as\xED: Debes ponerlo sobre el
+      centro de la mesa, y luego escoger 3 cartas de hongo. Las 3 cartas desaparecer\xE1n,
+      y sobre la tercera crecer\xE1 una carta de Macrohongo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89990900740096
+    m_Localized: "En este turno, juega primero tu carta de Influencia Putrefacci\xF3n,
+      la cual debes poner sobre una planta. La planta muere, y en su espacio de territorio
+      crece una seta."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 90148346523648
+    m_Localized: "Despu\xE9s, habr\xE1 3 setas en la mesa, as\xED que juega la ficha
+      de Macrohongo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 90243662082048
+    m_Localized: "Ahora, juega la carta de moho, la cual tienes que poner en un espacio
+      de territorio vacio, en un territorio construido. Crecer\xE1 un hongo en ese
+      espacio.\nLuego, vuelve a jugar la ficha de Macrohongo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 90475569344512
+    m_Localized: "Fungaloth tiene 2 cartas de Influencia m\xE1s, pero te animo a
+      descubrirlas jugando..."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

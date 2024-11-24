@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9af378cbe8694104b4d3300955005e73, type: 3}
   m_Name: Fireworks
   m_EditorClassIdentifier: 
-  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 972e50a5658962e47ae5a09b0a0fbb8b, type: 3}
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 690d735fe2e46c24ead049a145457bd4, type: 3}
   _name:
     m_TableReference:
       m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4

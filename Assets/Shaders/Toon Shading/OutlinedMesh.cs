@@ -6,6 +6,8 @@ public class OutlinedMesh : MonoBehaviour
 {
     [SerializeField] private Material _outlineMaterial;
 
+    [SerializeField] private bool _isMeshOnThsObject = false;
+    
     private GameObject _outlineGO;
     private Material[] _materials;
     public void Awake()
@@ -26,7 +28,7 @@ public class OutlinedMesh : MonoBehaviour
             _materials = newMaterials.ToArray();
 
             newMeshRenderer.materials = _materials;
-            while(newMeshRenderer.TryGetComponent<Collider>(out var collider))
+            if(newMeshRenderer.TryGetComponent<Collider>(out var collider))
             {
                 Destroy(collider);
             }

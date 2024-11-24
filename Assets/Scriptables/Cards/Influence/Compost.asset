@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9fd99fa6bf54555be1a743029b7468a, type: 3}
   m_Name: Compost
   m_EditorClassIdentifier: 
-  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 7b987287de0070a4cb7a67b0d24bbc9e,
-    type: 3}
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 2781de06f0f71524d9ae503c7b42cb0e, type: 3}
   _name:
     m_TableReference:
       m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
@@ -45,7 +44,6 @@ MonoBehaviour:
       <DropLocation>k__BackingField: 5
       <Receivers>k__BackingField: 01000000
     Effects: 0d0000001300000017000000
-  <InfluenceType>k__BackingField: 11
   <IsPersistent>k__BackingField: 0
   references:
     version: 2

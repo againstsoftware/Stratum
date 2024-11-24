@@ -93,7 +93,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: -1}
   m_LocalPosition: {x: -0.6000003, y: 0, z: 0}
-  m_LocalScale: {x: 0.57, y: 0.045599997, z: 1.026}
+  m_LocalScale: {x: 0.68, y: 0.054399997, z: 1.224}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2625134960546886588}
@@ -166,7 +166,8 @@ MonoBehaviour:
   <Territory>k__BackingField: {fileID: 0}
   <SnapTransform>k__BackingField: {fileID: 2625134960546886588}
   <SnapTransformBottom>k__BackingField: {fileID: 1934123973800191}
-  _offset: {x: 0, y: 0.015, z: -0.35}
+  _offset: {x: 0, y: 0.015, z: -0.2}
+  _highlightedMaterial: {fileID: 2100000, guid: 135c47568d75b4545909a6620e9ae12f, type: 2}
 --- !u!114 &4592363287302191494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,5 +199,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.40000007, y: 0.042468384, z: 0.40000007}
-  m_Center: {x: -0.00000035762787, y: 0.021231081, z: 0}
+  m_Size: {x: 0.40000007, y: 0.5, z: 0.40000007}
+  m_Center: {x: -0.00000035061555, y: 0.042465292, z: 0}

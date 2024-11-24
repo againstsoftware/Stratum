@@ -1,4 +1,4 @@
-Shader "Hidden/Pixelize"
+Shader "Custom/Pixelize"
 {
     Properties
     {
@@ -36,7 +36,7 @@ Shader "Hidden/Pixelize"
         float4 _MainTex_TexelSize;
         float4 _MainTex_ST;
 
-        // Esta es la pasada crÌtica. Usando este nombre, Unity comprende autom·ticamente como samplear la textura y hacer que se vea bien.
+        // Esta es la pasada cr√≠tica. Usando este nombre, Unity comprende autom√°ticamente como samplear la textura y hacer que se vea bien.
         SamplerState sampler_point_clamp;
         
         // Vectores creados en el script PixelizePass
@@ -55,9 +55,9 @@ Shader "Hidden/Pixelize"
 
         ENDHLSL
 
-        // AquÌ es donde se crea el efecto del shader.
-        // Se define una funciÛn de fragmentos separada de la de vÈrtices de modo que si se quieren aÒadir m·s efectos,
-        // se puede compartir la funciÛn de vÈrtices y sÛlo definir funciones de fragmentos para cada pasada.
+        // Aqu√≠ es donde se crea el efecto del shader.
+        // Se define una funci√≥n de fragmentos separada de la de v√©rtices de modo que si se quieren a√±adir m√°s efectos,
+        // se puede compartir la funci√≥n de v√©rtices y s√≥lo definir funciones de fragmentos para cada pasada.
         Pass
         {
             Name "Pixelation"
@@ -65,7 +65,7 @@ Shader "Hidden/Pixelize"
             HLSLPROGRAM
             half4 frag(Varyings IN) : SV_TARGET
             {
-                // Calcula la posiciÛn de los bloques y del centro de cada bloque para que se muestren con los pÌxeles downscaled.
+                // Calcula la posici√≥n de los bloques y del centro de cada bloque para que se muestren con los p√≠xeles downscaled.
                 float2 blockPos = floor(IN.uv * _BlockCount);
                 float2 blockCenter = blockPos * _BlockSize + _HalfBlockSize;
 

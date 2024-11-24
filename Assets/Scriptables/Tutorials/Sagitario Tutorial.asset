@@ -12,25 +12,245 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0f3eae2b9b8240459331b532f934c2d, type: 3}
   m_Name: Sagitario Tutorial
   m_EditorClassIdentifier: 
-  _initialCards: []
-  _rabiesCards: []
-  _migrationCards: []
-  _mushroomPredCards: []
-  _motherNatureCards: []
-  _initialDialogues: []
-  _cardTutorialDialogues: []
-  _fungalothTurnDialogues: []
-  _ygdraTurnDialogues: []
-  _overlordTurnDialogues: []
-  _ecosystemTurnDialogues: []
-  _roundEndDialogues: []
-  _playRabies: []
-  _overlordRabiesTurnDialogue: []
-  _playMigration: []
-  _playMushroomPredator: []
-  _mushroomPredatorEffectDialogue: []
-  _playMotherNature: []
-  _outroDialogue: []
+  _initialCards:
+  - {fileID: 11400000, guid: 73f4942f266a15a469148e02341ce42b, type: 2}
+  - {fileID: 11400000, guid: 73f4942f266a15a469148e02341ce42b, type: 2}
+  - {fileID: 11400000, guid: d02a1b287d0f44046a658bdc3266c2e7, type: 2}
+  - {fileID: 11400000, guid: d02a1b287d0f44046a658bdc3266c2e7, type: 2}
+  - {fileID: 11400000, guid: 925fd89a28ebfd44cabbdd3e279d2a5e, type: 2}
+  _rabiesCards:
+  - {fileID: 11400000, guid: dd24ef04bd763f94e8457a6994e76117, type: 2}
+  - {fileID: 11400000, guid: 73f4942f266a15a469148e02341ce42b, type: 2}
+  _migrationCards:
+  - {fileID: 11400000, guid: c7bfc641c1641e14db323d2a8a3281ca, type: 2}
+  - {fileID: 11400000, guid: d02a1b287d0f44046a658bdc3266c2e7, type: 2}
+  _mushroomPredCards:
+  - {fileID: 11400000, guid: aae5589223e26df4e86a38b36af43b32, type: 2}
+  - {fileID: 11400000, guid: 925fd89a28ebfd44cabbdd3e279d2a5e, type: 2}
+  _motherNatureCards:
+  - {fileID: 11400000, guid: 4307c756b1dbe414d91b6b5b12ba41c9, type: 2}
+  - {fileID: 11400000, guid: 73f4942f266a15a469148e02341ce42b, type: 2}
+  _initialDialogues:
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
+      m_TableEntryReference:
+        m_KeyId: 52737843392512
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
+      m_TableEntryReference:
+        m_KeyId: 53136054808576
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  _cardTutorialDialogues:
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
+      m_TableEntryReference:
+        m_KeyId: 53576989405184
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
+      m_TableEntryReference:
+        m_KeyId: 54019345870848
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  _fungalothTurnDialogues:
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
+      m_TableEntryReference:
+        m_KeyId: 232137037705216
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  _ygdraTurnDialogues:
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
+      m_TableEntryReference:
+        m_KeyId: 232379296509952
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  _overlordTurnDialogues:
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
+      m_TableEntryReference:
+        m_KeyId: 232610587209728
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  _ecosystemTurnDialogues:
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
+      m_TableEntryReference:
+        m_KeyId: 232845749252096
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  _roundEndDialogues:
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
+      m_TableEntryReference:
+        m_KeyId: 233213824593920
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  _playRabies:
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
+      m_TableEntryReference:
+        m_KeyId: 233707850690560
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
+      m_TableEntryReference:
+        m_KeyId: 234413039022080
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
+      m_TableEntryReference:
+        m_KeyId: 234684620206080
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
+      m_TableEntryReference:
+        m_KeyId: 234938811805696
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  _overlordRabiesTurnDialogue:
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
+      m_TableEntryReference:
+        m_KeyId: 235503033774080
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  _playMigration:
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
+      m_TableEntryReference:
+        m_KeyId: 236297082630144
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
+      m_TableEntryReference:
+        m_KeyId: 236807974023168
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
+      m_TableEntryReference:
+        m_KeyId: 237168797413376
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  _playMushroomPredator:
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
+      m_TableEntryReference:
+        m_KeyId: 253326380494848
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
+      m_TableEntryReference:
+        m_KeyId: 264144803328000
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  _mushroomPredatorEffectDialogue:
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
+      m_TableEntryReference:
+        m_KeyId: 264400739758080
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  _playMotherNature:
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
+      m_TableEntryReference:
+        m_KeyId: 264644433014784
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
+      m_TableEntryReference:
+        m_KeyId: 264943746936832
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  _outroDialogue:
+  - _text:
+      m_TableReference:
+        m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
+      m_TableEntryReference:
+        m_KeyId: 265020469145600
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
   references:
     version: 2
     RefIds: []

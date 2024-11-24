@@ -236,8 +236,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: CARD NAME
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4a21acf8eb4e02345a9343f7e4ce416e, type: 2}
-  m_sharedMaterial: {fileID: 5416262015474853922, guid: 4a21acf8eb4e02345a9343f7e4ce416e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9e94cbd5b4ac28a459264149dc9a45ba, type: 2}
+  m_sharedMaterial: {fileID: 5416262015474853922, guid: 9e94cbd5b4ac28a459264149dc9a45ba, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -261,8 +261,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.015
-  m_fontSizeBase: 0.015
+  m_fontSize: 0.02
+  m_fontSizeBase: 0.02
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -279,7 +279,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 1
+  m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -328,7 +328,7 @@ Transform:
   m_GameObject: {fileID: 9054284254070201901}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.075, z: -0.0002}
+  m_LocalPosition: {x: -0, y: -0.021, z: -0.0002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
