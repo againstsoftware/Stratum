@@ -29,12 +29,14 @@ public class TutorialAction : ITutorialElement
     public readonly bool IsPlayerAction;
     public readonly IEnumerable<IEffectCommand> EffectCommands;
     public readonly IReadOnlyList<PlayerAction> ForcedActions;
+    public readonly bool ForceOnlyActionItem;
 
     public TutorialAction(bool isPlayerAction, IEnumerable<IEffectCommand> effectCommands = null, 
-        IReadOnlyList<PlayerAction> forcedActions = null)
+        IReadOnlyList<PlayerAction> forcedActions = null, bool forceOnlyActionItem = false)
     {
         IsPlayerAction = isPlayerAction;
         EffectCommands = effectCommands;
         ForcedActions = forcedActions;
+        ForceOnlyActionItem = forceOnlyActionItem;
     }
 }

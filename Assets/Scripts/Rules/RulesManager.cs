@@ -16,7 +16,7 @@ public class RulesManager : MonoBehaviour, IRulesSystem
     private GameConfig _config;
     
     private IReadOnlyList<PlayerAction> _forcedActions;
-
+    private bool _checkOnlyActionItem;
 
     private void Start()
     {
@@ -42,7 +42,7 @@ public class RulesManager : MonoBehaviour, IRulesSystem
     {
         if (_forcedActions is not null && _forcedActions.Count > 0)
         {
-            if (_forcedActions.Any(forcedAction => forcedAction.Equals(action)))
+            if (IsValidForcedAction(action))
             {
                 return RulesCheck.CheckAction(action);
             }
@@ -54,7 +54,18 @@ public class RulesManager : MonoBehaviour, IRulesSystem
         
     }
 
-    public void SetForcedAction(IReadOnlyList<PlayerAction> forcedActions) => _forcedActions = forcedActions;
+    private bool IsValidForcedAction(PlayerAction action)
+    {
+        return !_checkOnlyActionItem ? 
+            _forcedActions.Any(forcedAction => forcedAction.Equals(action)) : 
+            _forcedActions.Any(forcedAction => forcedAction.ActionItem.Equals(action.ActionItem));
+    }
+
+    public void SetForcedAction(IReadOnlyList<PlayerAction> forcedActions, bool checkOnlyActionItem = false)
+    {
+        _forcedActions = forcedActions;
+        _checkOnlyActionItem = checkOnlyActionItem;
+    }
 
 
     public void DisableForcedAction() => _forcedActions = null;

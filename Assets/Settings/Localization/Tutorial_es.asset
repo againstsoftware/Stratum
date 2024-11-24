@@ -194,7 +194,7 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 233213824593920
     m_Localized: "Despu\xE9s del turno del Ecosistema, se reparten cartas a todos
-      los jugadores para que comiencen la ronda con 5 cartas. Adem\xE1s, voy a cmabiar
+      los jugadores para que comiencen la ronda con 5 cartas. Adem\xE1s, voy a cambiar
       las cartas que hay en la mesa, para ense\xF1arte a usar tus cartas de Influencia..."
     m_Metadata:
       m_Items: []
@@ -220,6 +220,29 @@ MonoBehaviour:
       de Influencia y otra de Poblaci\xF3n, en cualquier orden. Empieza tu turno
       jugando la carta de Rabia sobre cualquiera de los 2 herb\xEDvoros que hay en
       el Ecosistema. Luego, juega la carta de poblaci\xF3n que quieras."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 235503033774080
+    m_Localized: "Ahora es el turno del Magnate. Como has puesto una carta de Rabia
+      sobre un herb\xEDvoro, no podr\xE1, por el momento, construir sobre ese territorio."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 236297082630144
+    m_Localized: "Ahora tienes una nueva carta de Influencia: Migraci\xF3n. Funciona
+      as\xED: Elige una carta de carn\xEDvoro o herb\xEDvoro de tu territorio y mu\xE9vela
+      a un espacio vac\xEDo en otro territorio."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 236807974023168
+    m_Localized: "Para jugar una carta, la puedes arrastrar sobre el receptor, es
+      decir, el espacio de territorio, territorio o carta donde la quieras poner;
+      o tambi\xE9n, puedes  arrastrarla al centro de la mesa, y luego elegir el receptor."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 237168797413376
+    m_Localized: "Juega tu carta de Migraci\xF3n sobre una de tus 2 Poblaciones,
+      porque se puede jugar en carn\xEDvoros o herb\xEDvoros. Luego, juega la carta
+      de poblaci\xF3n que quieras."
     m_Metadata:
       m_Items: []
   references:

@@ -98,7 +98,7 @@ public class TutorialManager : MonoBehaviour, ITurnSystem, ICommunicationSystem
             if (action.IsPlayerAction)
             {
                 PlayerOnTurn = _tutorialSequence.LocalPlayer;
-                ServiceLocator.Get<IRulesSystem>().SetForcedAction(action.ForcedActions);
+                ServiceLocator.Get<IRulesSystem>().SetForcedAction(action.ForcedActions, action.ForceOnlyActionItem);
             }
             else
             {

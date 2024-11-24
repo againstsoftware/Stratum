@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class Rulebook : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _nameText, _descriptionText;
+    [SerializeField] private TextMeshProUGUI _nameText, _descriptionText, _dialogueText;
     [SerializeField] private float _dialogueSpeed;
     [SerializeField] private float _dialogueEndDelay;
     
@@ -32,6 +32,8 @@ public class Rulebook : MonoBehaviour
         if (_isOnDialogue) return;
         if (_currentEntry == entry) return;
 
+        _dialogueText.text = "";
+        
         if (entry is null)
         {
             HideRulebook();
@@ -94,11 +96,12 @@ public class Rulebook : MonoBehaviour
     {
         _isOnDialogue = true;
         _nameText.text = "";
-        _descriptionText.text = dialogue.Text;
-        _descriptionText.ForceMeshUpdate();
+        _descriptionText.text = "";
+        _dialogueText.text = dialogue.Text;
+        _dialogueText.ForceMeshUpdate();
 
-        _descriptionText.alpha = 0; // Inicialmente, el texto completo es transparente
-        TMP_TextInfo textInfo = _descriptionText.textInfo;
+        _dialogueText.alpha = 0; // Inicialmente, el texto completo es transparente
+        TMP_TextInfo textInfo = _dialogueText.textInfo;
         Color32[] newVertexColors;
         int totalVisibleCharacters = textInfo.characterCount;
 
@@ -122,9 +125,9 @@ public class Rulebook : MonoBehaviour
             }
 
             // Actualiza la malla
-            _descriptionText.UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
+            _dialogueText.UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
 
-            var currentChar = _descriptionText.text[i];
+            var currentChar = _dialogueText.text[i];
             
             var delay = slowedChars.Contains(currentChar) ? dialogueDelay * 4f : dialogueDelay;
             

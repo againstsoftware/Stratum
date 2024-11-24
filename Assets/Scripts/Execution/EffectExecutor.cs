@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EffectExecutor : IExecutor
 {
+    public bool IsOnTutorial { get; set; }
+
     private List<IEffectCommand> _commandDEQueue;
     private PlayerAction _currentAction;
     private Action _rulesCallback;
@@ -19,7 +21,7 @@ public class EffectExecutor : IExecutor
 
         foreach (var e in effects) EnqueueCommand(EffectCommands.Get(e));
 
-        UpdatePlayedCardsInModel(action);
+        if(!IsOnTutorial) UpdatePlayedCardsInModel(action);
 
         TryExecuteNextCommand();
     }
