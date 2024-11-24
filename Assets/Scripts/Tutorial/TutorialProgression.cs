@@ -10,10 +10,12 @@ public class TutorialProgression : MonoBehaviour
     private int _currentTutorialIndex = 0;
     private void Awake()
     {
-        if(Instance is not null) Destroy(gameObject);
-
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
+        if(Instance is not null && Instance != this) Destroy(gameObject);
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);   
+        }
     }
 
     public ATutorialSequence GetTutorial() => _tutorials[_currentTutorialIndex++];

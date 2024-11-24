@@ -18,6 +18,7 @@ public class Rulebook : MonoBehaviour
     private bool _isOnDialogue;
 
     private Action _dialogueCallback;
+    private bool _hasClickedOnDialogue;
     
     private void Awake()
     {
@@ -61,6 +62,10 @@ public class Rulebook : MonoBehaviour
     public void DisplayDialogue(TutorialDialogue dialogue, Action callback)
     {
         if (_isOnDialogue) return;
+
+        ServiceLocator.Get<IInteractionSystem>().Input.Press += OnPress;
+        _hasClickedOnDialogue = false;
+
         
         Debug.Log("comenzando dialogo");
         if (_dialogueCallback is not null)
@@ -128,17 +133,30 @@ public class Rulebook : MonoBehaviour
             _dialogueText.UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
 
             var currentChar = _dialogueText.text[i];
-            
-            var delay = slowedChars.Contains(currentChar) ? dialogueDelay * 4f : dialogueDelay;
-            
-            yield return new WaitForSeconds(delay);
+
+            if (_hasClickedOnDialogue) yield return null;
+            else
+            {
+                var delay = slowedChars.Contains(currentChar) ? dialogueDelay * 4f : dialogueDelay;
+                yield return new WaitForSeconds(delay);
+            }
         }
 
-        yield return new WaitForSeconds(_dialogueEndDelay);
+        _hasClickedOnDialogue = false;
+        yield return new WaitUntil(() => _hasClickedOnDialogue);
         _isOnDialogue = false;
+        ServiceLocator.Get<IInteractionSystem>().Input.Press -= OnPress;
         _dialogueCallback.Invoke();
         _dialogueCallback = null;
+        _dialogueText.text = "";
+        HideRulebook();
     }
-    
+
+    private void OnPress()
+    {
+        if (!_isOnDialogue) return;
+
+        _hasClickedOnDialogue = true;
+    }
     
 }
