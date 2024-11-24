@@ -554,7 +554,7 @@ Transform:
   m_GameObject: {fileID: 4079024975673807824}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.856, z: -2}
+  m_LocalPosition: {x: 0, y: 0.856, z: -2.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1748,7 +1748,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5c9cf872dcee2a1489618bb27cbe12f7, type: 3}
       propertyPath: m_Name
-      value: Territory
+      value: Mesh
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
