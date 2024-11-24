@@ -19,7 +19,7 @@ public class PixelizePass : ScriptableRenderPass
     {
         _settings = settings;
         renderPassEvent = settings.RenderPassEvent;                                                     // Se asigna aquí pero el valor se ajusta en el inspector
-        if(_material == null) _material = CoreUtils.CreateEngineMaterial("Hidden/Pixelize");            // Si no tiene material se crea y asigna el del shader
+        if(_material == null) _material = CoreUtils.CreateEngineMaterial("Custom/Pixelize");            // Si no tiene material se crea y asigna el del shader
     }
 
     public override void OnCameraSetup(CommandBuffer cmd, ref RenderingData renderingData)
