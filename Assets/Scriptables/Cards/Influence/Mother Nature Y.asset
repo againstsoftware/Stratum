@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06b9820290544fa98a9853d11201d178, type: 3}
-  m_Name: Mother Nature
+  m_Name: Mother Nature Y
   m_EditorClassIdentifier: 
-  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 01b7cf61371f7b947854952df50b053d,
-    type: 3}
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 186c6af13e498b342ad32a1c7c6bdf18, type: 3}
   _name:
     m_TableReference:
       m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4

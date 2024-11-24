@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3e78f34a01405240afc16a07ae3e997, type: 3}
   m_Name: Herbivore
   m_EditorClassIdentifier: 
-  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 5a2acfda067709243a996969fd6898c7,
-    type: 3}
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: b63e52e62aecafe40a0bff8024f747ba, type: 3}
   _name:
     m_TableReference:
       m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
