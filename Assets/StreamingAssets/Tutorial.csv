@@ -1,0 +1,67 @@
+Key;Id;Spanish(es);English(en)
+eco_0_0;6978007040;Saludos. Me presento: soy el Manual de Reglas. Si quieres jugar una partida de Stratum, antes tendrás que conocer todas las reglas, de lo contrario te será imposible enterarte de lo que sucede en el juego.;Hola gola
+eco_0_1;1.82916E+11;Stratum es un juego de cartas diferente. Ancestral. Su característica más importante es el Ecosistema.;a
+eco_0_2;4.87838E+11;En Stratum las cartas son poblaciones de un ecosistema vivo y en constante cambio. Según las cartas de Población que haya en la mesa, estará equilibrado o desequilibrado.;a
+eco_0_3;6.40498E+11;Si el ecosistema está desequilibrado, se regulará él sólo con las leyes de la Naturaleza. Es muy importante que las conozcas bien, pues tendrás que usarlas a tu favor.;salen setas setas salen
+eco_0_4;4.92773E+12;Hay cartas de Población de Planta, Herbívoro y Carnívoro.;a
+eco_1_0;6.04801E+12;Observemos un ecosistema con plantas y herbívoros.;a
+eco_1_1;6.27906E+12;Si introducimos demasiados herbívoros al ecosistema (2 más que plantas)...;a
+eco_2_0;6.5022E+12;...morirán por falta de alimento.;a
+eco_2_1;6.56446E+12;Cuando muere una población por las Reglas del Ecosistema, se descarta la carta de dicha población jugada más recientemente. Esta está marcada con una ficha.;a
+eco_2_2;6.80326E+12;Te habrás fijado que ha aparecido una seta. Las setas aparecen cuando una carta de Población muere debido a las Reglas del Ecosistema.;a
+eco_2_3;7.3256E+12;Ahora hemos introducido más plantas al ecosistema, y quitado herbívoros. Como hay 2 plantas más que herbívoros, estos crecerán.;a
+eco_3_0;7.67773E+12;Cuando una población crece, se le añade una carta encima a la carta de dicha población jugada más recientemente (como cuando muere), es decir, la marcada con una ficha.;a
+eco_3_1;8.67259E+12;Veamos ahora las interacciones entre herbívoros y carnívoros.;a
+eco_4_0;8.9313E+12;Es necesario poner suficientes plantas en el ecosistema, porque sino los herbívoros mueren, sí o sí, de inanición.;a
+eco_4_1;9.17832E+12;Sin embargo, en este ecosistema hay demasiados carnívoros (2 más que herbívoros).;a
+eco_5_0;9.55445E+12;Los herbívoros mueren, porque tienen demasiados depredadores. Su población disminuye.;a
+eco_5_1;9.75403E+12;Pero esto también ha afectado a los carnívoros, que no tienen suficiente comida para todos, así que también mueren de inanición.;a
+eco_6_0;1.00192E+13;Pero, ¿qué pasa si hay 2 plantas más que herbívoros, pero también 2 carnívoros más que herbívoros?;a
+eco_7_0;1.08616E+13;Los herbívoros no pueden morir y crecer a la vez, así que si se cumple la condición de muerte, da igual que también se cumpla la de crecimiento: los herbívoros disminuyen.;a
+eco_7_1;1.11274E+13;Por último, vamos a ver una situación en la que crece la población de carnívoros.;a
+eco_8_0;1.12837E+13;Como te puedes imaginar, si hay 2 herbívoros más que carnívoros, los carnívoros crecen.;a
+eco_9_0;1.15021E+13;Los herbívoros también crecieron, al tener muy pocos depredadores.;a
+eco_9_1;1.17653E+13;Es importante saber que se comprueba primero la muerte de los herbívoros, luego su crecimiento, luego la muerte de los carnívoros, y luego su crecimiento.;a
+eco_9_2;1.19301E+13;En resumen: los herbívoros mueren si hay al menos 2 plantas menos o no hay plantas, o si hay al menos 2 carnívoros más. Crecen si hay al menos 2 plantas más, o al menos 2 carnívoros menos.;a
+eco_9_3;1.22174E+13;Y, los carnívoros mueren si hay 2 herbívoros menos o no hay herbívoros, y crecen si hay al menos 2 herbívoros más.;a
+eco_9_4;1.27192E+13;Un poco complicado, lo sé. Pero si entiendes el ecosistema, dominarás cada partida de Stratum.;a
+sag_0_0;5.27378E+13;"Muy bien. Ahora te explicaré el funcionamiento del juego. En Stratum hay 4 jugadores. Sagitario, a quien controlarás inicialmente; Fungaloth; Ygdra; y el Magnate. Cada personaje tiene un objetivo distinto para ganar.";a
+sag_0_1;5.31361E+13;Sagitario es un centauro protector del bosque de Sylveria. Junto con Ygdra, busca equilibrar el ecosistema para que crezcan animales. Ygdra y Sagitario ganan una partida de Stratum si consiguen hacer crecer a 7 poblaciones.;a
+sag_1_0;5.3577E+13;La ronda empieza siempre con el turno de Sagitario. En cada turno puedes jugar 2 cartas. De momento sólo tienes cartas de Población, así que juegalas donde quieras.;a
+sag_1_1;5.40193E+13;Sólo puedes jugar cartas de población de tu mano en uno de los 5 espacios de tu territorio, y además, tiene que estar vacío.;a
+sag_2_0;2.32137E+14;Ahora es el turno de Fungaloth. Yo jugaré por él, de momento. Al igual que tú, puede jugar 2 cartas en su turno.;a
+sag_3_0;2.32379E+14;Ahora le toca a Ygdra. También jugaré por ella.;a
+sag_4_0;2.32611E+14;Ahora el Magnate.;a
+sag_5_0;2.32846E+14;Cuando el Magnate termina su turno, le toca al Ecosistema. ¿Te acuerdas de las reglas del Ecosistema que te acabo de explicar? Pues es al final de cada ronda cuando se aplican a las cartas de la mesa.;a
+sag_6_0;2.33214E+14;Después del turno del Ecosistema, se reparten cartas a todos los jugadores para que comiencen la ronda con 5 cartas. Además, voy a cambiar las cartas que hay en la mesa, para enseñarte a usar tus cartas de Influencia...;a
+sag_7_0;2.33708E+14;Como puedes ver, tienes en tu mano una carta de Influencia: Rabia. Cada personaje tiene sus propias cartas de Influencia, y usarlas bien es crucial para ganar.;a
+sag_7_1;2.34413E+14;La carta de Rabia funciona así: Coloca esta carta sobre una carta de herbívoro. Mientras no muera, El Magnate no podrá construir en el territorio donde esté.;a
+sag_7_2;2.34685E+14;No te lo he explicado, pero el objetivo del Magnate es construir sobre los territorios del Ecosistema. la carta de Rabia sirve para impedírselo.;a
+sag_7_3;2.34939E+14;En tu turno, puedes jugar 2 cartas de Población, o una carta de Influencia y otra de Población, en cualquier orden. Empieza tu turno jugando la carta de Rabia sobre cualquiera de los 2 herbívoros que hay en el Ecosistema. Luego, juega la carta de población que quieras.;a
+sag_8_0;2.35503E+14;Ahora es el turno del Magnate. Como has puesto una carta de Rabia sobre un herbívoro, no podrá, por el momento, construir sobre ese territorio.;a
+sag_9_0;2.36297E+14;Ahora tienes una nueva carta de Influencia: Migración. Funciona así: Elige una carta de carnívoro o herbívoro de tu territorio y muévela a un espacio vacío en otro territorio.;a
+sag_9_1;2.36808E+14;"Para jugar una carta, la puedes arrastrar sobre el receptor, es decir, el espacio de territorio, territorio o carta donde la quieras poner; o también, puedes  arrastrarla al centro de la mesa, y luego elegir el receptor.";a
+sag_9_2;2.37169E+14;Juega tu carta de Migración sobre una de tus 2 Poblaciones, porque se puede jugar en carnívoros o herbívoros. Luego, juega la carta de población que quieras.;a
+eco_0_0_0;2.52628E+14;[Usa la rueda del ratón, o desliza el dedo verticalmente, para cambiar de vista. Haz click o manten presionado con el dedo para avanzar en el tutorial.];a
+sag_10_0;2.53326E+14;Ahora tienes la carta de Influencia Depredador de Setas. Esta funciona así: Coloca esta carta sobre una carta de herbívoro. Mientras no muera, al final de la ronda morirá la carta de hongo más reciente que haya en su territorio.;a
+sag_10_1;2.64145E+14;Juega la carta sobre el herbívoro del territorio de Fungaloth, y luego juega la Población que quieras.;a
+sag_11_0;2.64401E+14;Después del turno del ecosistema, se aplican los efectos de Final de Ronda, como el de Depredador  de Setas, en este caso. Como el herbívoro que tiene la carta tiene setas en su territorio, se comerá una de ellas.;a
+sag_12_0;2.64644E+14;La última carta de Influencia que tiene Sagitario es Madre Naturaleza. Esta la juegas arrastrándola al centro de la mesa. Lo que hace es jugar un turno del ecosistema.;a
+sag_12_1;2.64944E+14;Juega la carta de Madre Naturaleza, y luego una población.;a
+sag_13_0;2.6502E+14;¡Felicidades! Con esto ya sabes jugar con Sagitario. Ahora, vamos a aprender a jugar con el resto de personajes.;a
+yg_0_0;6.29529E+13;Ahora aprenderás cómo jugar con Ygdra. Ygdra es una ninfa protectora del bosque, que junto con Sagitario, busca hacer crecer el ecosistema, para ganar la partida. Como te dije antes, si hacen crecer a 7 poblaciones, ganan la partida.;a
+yg_1_0;6.35097E+13;Ygdra comparte con Sagitario la carta de Influencia Madre Naturaleza. Úsala, y luego juega una carta de población.;a
+yg_2_0;6.43321E+13;Has robado la carta de Hiedra Verde. Esta funciona así: Coloca esta carta sobre una carta de planta. Al final de la ronda, si hay una construcción en su territorio, se destruye la construcción y descarta esta carta de la planta.;a
+yg_2_1;6.47497E+13;Como puedes ver, el Magnate ha construido en su territorio. Juega la Hiedra Verde ahí, luego juega una Población, y espera al final de la ronda para ver su construcción destruida. ;aa
+yg_3_0;6.49915E+13;Como pudiste ver, se destruyó la construcción por tu carta de Hiedra Verde. Ahora vamos a jugar otra de tus cartas de Influencia: Incendio Forestal. ;a
+yg_3_1;6.53651E+13;Incendio Forestal hace lo sieguiente: Elige un territorio. Todas las cartas de población y hongo en ese territorio mueren. Si hay una construcción, también se destruye.;a
+yg_3_2;6.58456E+13;Usa el Incendio Forestal donde quieras. Luego, juega una población. Esta vez no jugaré por los demás, para ir más rápido con el tutorial.;a
+yg_4_0;6.59967E+13;Ahora juega la carta de Fragancia de Feromonas. Funciona así: Elige una carta de herbívoro o carnívoro de otro territorio y muévela a un espacio vacío en tu territorio. Luego, juega una población.;a
+yg_5_0;6.62352E+13;Ya has usado todas las cartas de Ygdra. Pasemos al siguiente personaje...;a
+fun_0_0;8.91074E+13;Ahora aprenderás a jugar con Fungaloth. Es un espíritu de lla naturaleza como Ygdra y Sagitario, pero busca esparcir el caos por Sylveria poblando el ecosistema de Hongos.;a
+fun_0_1;8.93394E+13;Para ganar, Fungaloth debe tener al final de una ronda, 2 Macrohongos. Para crearlos, tiene una ficha de Macrohongo que puede usar en su turno en vez de jugar una carta. Es decir, puede jugar 2 cartas o jugar 1 carta y la ficha.;a
+fun_0_2;8.94128E+13;La ficha de Macrohongo se juega así: Debes ponerlo sobre el centro de la mesa, y luego escoger 3 cartas de hongo. Las 3 cartas desaparecerán, y sobre la tercera crecerá una carta de Macrohongo.;a
+fun_1_0;8.99909E+13;En este turno, juega primero tu carta de Influencia Putrefacción, la cual debes poner sobre una planta. La planta muere, y en su espacio de territorio crece una seta.;a
+fun_1_1;9.01483E+13;Después, habrá 3 setas en la mesa, así que juega la ficha de Macrohongo.;a
+fun_2_0;9.02437E+13;Ahora, juega la carta de moho, la cual tienes que poner en un espacio de territorio vacio, en un territorio construido. Crecerá un hongo en ese espacio. Luego, vuelve a jugar la ficha de Macrohongo.;a
+fun_3_0;9.04756E+13;Fungaloth tiene 2 cartas de Influencia más, pero te animo a descubrirlas jugando...;a

@@ -6,6 +6,7 @@ using System;
 public abstract class ATutorialSequence : ScriptableObject
 {
     public abstract PlayerCharacter LocalPlayer { get; protected set; }
+    
     public abstract IEnumerable<ITutorialElement> GetTutorialElements();
 
     public abstract void OnTutorialFinished();
@@ -36,9 +37,12 @@ public interface ITutorialElement
 [Serializable]
 public class TutorialDialogue : ITutorialElement
 {
-    public string Text => _text.GetLocalizedString();
+    // public string Text => _text.GetLocalizedString();
+    // public string Text => LocalizationGod.GetLocalized(_text.TableReference.TableCollectionName, _text.TableEntryReference.Key);
 
     [SerializeField] private LocalizedString _text;
+
+    [SerializeField] private string _newText;
 }
 
 public class TutorialAction : ITutorialElement

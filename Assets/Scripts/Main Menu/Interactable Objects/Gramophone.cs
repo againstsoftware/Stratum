@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
@@ -13,6 +14,15 @@ public class Gramophone : AInteractableObject
     [SerializeField] private RenderPipelineAsset[] _qualityLevels;
     [SerializeField] private GramophoneAnimations _animations;
     [SerializeField] private InteractionSystemMenu _interactionSystemMenu;
+
+
+    private bool _localesInit;
+    private IEnumerator Start()
+    {
+        _localesInit = false;
+        yield return LocalizationSettings.InitializationOperation;
+        _localesInit = true;
+    }
 
     public override void OnPointerClick(PointerEventData eventData)
     {
@@ -34,16 +44,16 @@ public class Gramophone : AInteractableObject
             AudioVolume();
         }
     }
+    
 
     private IEnumerator ToggleLanguage()
     {
         
-        
-        yield return LocalizationSettings.InitializationOperation;
+        yield return new WaitUntil(() => _localesInit);
 
         var currentLocale = LocalizationSettings.SelectedLocale;
-        // string newLocaleCode = currentLocale.Identifier.Code == "en" ? "es" : "en";
-        string newLocaleCode = "es";
+        string newLocaleCode = currentLocale.Identifier.Code == "en" ? "es" : "en";
+        
 
         var newLocale = LocalizationSettings.AvailableLocales.GetLocale(newLocaleCode);
         LocalizationSettings.SelectedLocale = newLocale;

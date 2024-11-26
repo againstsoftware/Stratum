@@ -22,12 +22,14 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-es
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 192fa0b9c7b326d47bcaebca06537c27
     m_Address: Tutorial_es
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-es
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: b5add013efc0c684d9a6282898f48e80, type: 2}
