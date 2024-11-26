@@ -331,9 +331,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 231610124}
-        m_TargetAssemblyTypeName: ButtonTutorial, Assembly-CSharp
-        m_MethodName: GoTutorial
+      - m_Target: {fileID: 932672741}
+        m_TargetAssemblyTypeName: Rules, Assembly-CSharp
+        m_MethodName: TutorialButtonPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1402,7 +1402,6 @@ GameObject:
   m_Component:
   - component: {fileID: 861042758}
   - component: {fileID: 861042759}
-  - component: {fileID: 861042760}
   m_Layer: 0
   m_Name: Initializer
   m_TagString: Untagged
@@ -1441,19 +1440,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d0e2fc18fe036412f8223b3b3d9ad574, type: 2}
   - {fileID: 11400000, guid: e1260c1148f6143b28bae5ace5e9c5d1, type: 2}
   - {fileID: 11400000, guid: 7b7fd9122c28c4d15b667c7040e3b3fd, type: 2}
---- !u!114 &861042760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 861042757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db2391064ef54daaad1ff49b35aab116, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _config: {fileID: 11400000, guid: 5a6bfe075f9b1a748a971aee3b375202, type: 2}
 --- !u!1 &868363028
 GameObject:
   m_ObjectHideFlags: 0

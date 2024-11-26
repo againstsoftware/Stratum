@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.Localization;
 using System.Collections.Generic;
 using UnityEngine.Serialization;
 
@@ -21,7 +20,6 @@ public abstract class ACard : AActionItem
     [field:SerializeField] public Texture ObverseTex { get; private set; }
     
     
-    [SerializeField] private LocalizedString _name, _description;
     [FormerlySerializedAs("_newName")] [SerializeField] private string _cardName;
     [FormerlySerializedAs("_newDescription")] [SerializeField] private string _cardDescription;
 

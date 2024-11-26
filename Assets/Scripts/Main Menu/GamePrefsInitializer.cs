@@ -13,6 +13,8 @@ public class GamePrefsInitializer : MonoBehaviour
         LoadSavedLanguage();
         LoadGraphicsQuality();
         LoadAudioVolume();
+        
+        LocalizationGod.Init();
     }
     private void LoadSavedLanguage()
     {

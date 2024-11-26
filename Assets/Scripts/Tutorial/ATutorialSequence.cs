@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Localization;
 using System;
 using UnityEngine.Serialization;
 
@@ -41,7 +40,6 @@ public class TutorialDialogue : ITutorialElement
     // public string Text => _text.GetLocalizedString();
     public string Text => LocalizationGod.GetLocalized("Tutorial", _dialogueText);
 
-    [SerializeField] private LocalizedString _text;
 
     [FormerlySerializedAs("_newText")] [SerializeField] private string _dialogueText;
 }

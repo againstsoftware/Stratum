@@ -13,6 +13,8 @@ public class GameInitializer : MonoBehaviour
     [SerializeField] private GameMode _gameMode;
     private void Awake()
     {
+        LocalizationGod.Init();
+        
         var gameModel = new GameModel(_config, _decks);
         
         ServiceLocator.Register<IModel>(gameModel);

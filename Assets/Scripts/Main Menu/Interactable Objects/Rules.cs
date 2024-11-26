@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class Rules : AInteractableObject
 {
@@ -41,6 +42,8 @@ public class Rules : AInteractableObject
 
         gameObject.transform.localScale /= scaleIncrease;
     }
+
+    public void TutorialButtonPress() => SceneManager.LoadScene("Tutorial");
 
     private void ShowText()
     {
