@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Localization.Settings;
 using UnityEngine.Rendering;
 
 public class GamePrefsInitializer : MonoBehaviour
@@ -11,18 +10,17 @@ public class GamePrefsInitializer : MonoBehaviour
     private void Start()
     {
         // cargar ajustes
-        StartCoroutine(LoadSavedLanguage());
+        LoadSavedLanguage();
         LoadGraphicsQuality();
         LoadAudioVolume();
     }
-    private IEnumerator LoadSavedLanguage()
+    private void LoadSavedLanguage()
     {
-        yield return LocalizationSettings.InitializationOperation;
+        string savedLocaleCode = PlayerPrefs.GetString(GamePrefs.LanguagePrefKey, "es");
 
-        string savedLocaleCode = PlayerPrefs.GetString(GamePrefs.LanguagePrefKey);
-        var savedLocale = LocalizationSettings.AvailableLocales.GetLocale(savedLocaleCode);
-        LocalizationSettings.SelectedLocale = savedLocale;
-        Debug.Log($"language {savedLocaleCode}");
+        bool spanish = savedLocaleCode == "es";
+        
+        if(spanish != LocalizationGod.Spanish) LocalizationGod.ToggleLanguage();
     }
     private void LoadAudioVolume()
     {

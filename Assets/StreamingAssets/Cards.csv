@@ -7,8 +7,7 @@ c_token_desc;7.64E+14;Lorem Ipsum es simplemente el texto de relleno de las impr
 c_token_name;7.64E+14;Ficha de Construcción;Construction Token;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 carnivore_desc;8.07E+12;Juégala sobre un espacio de territorio vacío para hacer aparecer un carnívoro.;Play it on an empty territory space to make a carnivore appear.;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 carnivore_name;8521510912;Carnívoro;Carnivore;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-"compost_desc
-";1.13E+16;Elige un espacio vacío de un territorio. Coloca una carta de hongo y una carta de planta encima.;Lorem Ipsum is simply dummy text of printing presses and text files. Lorem Ipsum has been the industries' standard dummy text since the 1500s, when a;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+compost_desc;1.13E+16;Elige un espacio vacío de un territorio. Coloca una carta de hongo y una carta de planta encima.;Lorem Ipsum is simply dummy text of printing presses and text files. Lorem Ipsum has been the industries' standard dummy text since the 1500s, when a;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 compost_name;1.13E+16;Compost;Compost;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 deep_roots_desc;1.35E+16;Coloca esta carta sobre una carta de planta. Si muere, crece otra carta de planta igual y esta carta se descarta.;Lorem Ipsum is simply dummy text of printing presses and text files. Lorem Ipsum has been the industries' standard dummy text since the 1500s, when a;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 deep_roots_name;1.35E+16;Raíces Profundas;Deep Roots;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

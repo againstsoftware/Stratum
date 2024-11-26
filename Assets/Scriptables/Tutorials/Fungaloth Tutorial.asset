@@ -31,6 +31,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: fun_0_0
   - _text:
       m_TableReference:
         m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
@@ -40,6 +41,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: fun_0_1
   - _text:
       m_TableReference:
         m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
@@ -49,6 +51,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: fun_0_2
   _rotAndThenMacrofungiDialogues:
   - _text:
       m_TableReference:
@@ -59,6 +62,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: fun_1_0
   - _text:
       m_TableReference:
         m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
@@ -68,6 +72,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: fun_1_1
   _moldAndThenMacrofungiDialogues:
   - _text:
       m_TableReference:
@@ -78,6 +83,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: fun_2_0
   _outroDialogue:
   - _text:
       m_TableReference:
@@ -88,6 +94,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: fun_3_0
   references:
     version: 2
     RefIds: []

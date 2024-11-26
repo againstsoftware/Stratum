@@ -10,7 +10,7 @@ public class TestLocGod : MonoBehaviour
     {
         while (true)
         {
-            GetComponent<TextMeshProUGUI>().text = LocalizationGod.GetLocalized("Tutorial", "eco_0_0_0");
+            GetComponent<TextMeshProUGUI>().text = LocalizationGod.GetLocalized("Cards", "deep_roots_desc");
 
             yield return new WaitForSeconds(1f);
         }

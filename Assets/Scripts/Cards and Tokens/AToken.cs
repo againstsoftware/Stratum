@@ -2,14 +2,17 @@ using System;
 using UnityEngine;
 using UnityEngine.Localization;
 using System.Collections.Generic;
+using UnityEngine.Serialization;
 
 // [CreateAssetMenu(menuName = "Token")]
 public abstract class AToken : AActionItem
 {
-    public string Name { get => _name.GetLocalizedString(); }
-    public string Description { get => _description.GetLocalizedString(); }
+    public string Name { get => LocalizationGod.GetLocalized("Cards", _tokenName); }
+    public string Description { get => LocalizationGod.GetLocalized("Cards", _tokenDescription); }
     
     [SerializeField] private LocalizedString _name, _description;
+    [FormerlySerializedAs("_newName")] [SerializeField] private string _tokenName;
+    [FormerlySerializedAs("_newDescription")] [SerializeField] private string _tokenDescription;
 
     [SerializeField] public ValidAction[] ValidActions;
     

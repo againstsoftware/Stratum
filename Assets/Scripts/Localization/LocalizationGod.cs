@@ -82,31 +82,33 @@ public static class LocalizationGod
     }
 
 
-    private static LocalizationGodConfig _config;
+    public static bool Spanish { get; private set; } = true;
+    
     private static Dictionary<string, Table> _tables = new();
     
-    public static void Init(LocalizationGodConfig config)
-    {
-        if (_config is not null) return;
-        _config = config;
-    }
 
     public static string GetLocalized(string tableName, string tablekey)
     {
         if (!_tables.TryGetValue(tableName, out var table))
         {
-            if (!_config.TableNames.Contains(tableName))
-                throw new Exception($"Tabla {tableName} no registrada en config.");
             table = LoadTable(tableName);
         }
 
         return GetFromTable(table, tablekey);
     }
 
+    public static void ToggleLanguage()
+    {
+        Spanish = !Spanish;
+        
+        if(Spanish) Debug.Log("Lenguaje español");
+        else Debug.Log("English language");
+    }
+
 
     private static string GetFromTable(Table table, string key)
     {
-        var dict = _config.Spanish ? table.Spanish : table.English;
+        var dict = Spanish ? table.Spanish : table.English;
 
         if (dict.TryGetValue(key, out var value)) return value;
         throw new Exception($"Key {key} no encontrada en la tabla {table.Name}:");

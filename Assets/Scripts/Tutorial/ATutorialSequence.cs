@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Localization;
 using System;
+using UnityEngine.Serialization;
 
 public abstract class ATutorialSequence : ScriptableObject
 {
@@ -38,11 +39,11 @@ public interface ITutorialElement
 public class TutorialDialogue : ITutorialElement
 {
     // public string Text => _text.GetLocalizedString();
-    // public string Text => LocalizationGod.GetLocalized(_text.TableReference.TableCollectionName, _text.TableEntryReference.Key);
+    public string Text => LocalizationGod.GetLocalized("Tutorial", _dialogueText);
 
     [SerializeField] private LocalizedString _text;
 
-    [SerializeField] private string _newText;
+    [FormerlySerializedAs("_newText")] [SerializeField] private string _dialogueText;
 }
 
 public class TutorialAction : ITutorialElement

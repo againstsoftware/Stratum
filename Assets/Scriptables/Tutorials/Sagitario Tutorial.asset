@@ -40,6 +40,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: sag_0_0
   - _text:
       m_TableReference:
         m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
@@ -49,6 +50,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: sag_0_1
   _cardTutorialDialogues:
   - _text:
       m_TableReference:
@@ -59,6 +61,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: sag_1_0
   - _text:
       m_TableReference:
         m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
@@ -68,6 +71,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: sag_1_1
   _fungalothTurnDialogues:
   - _text:
       m_TableReference:
@@ -78,6 +82,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: sag_2_0
   _ygdraTurnDialogues:
   - _text:
       m_TableReference:
@@ -88,6 +93,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: sag_3_0
   _overlordTurnDialogues:
   - _text:
       m_TableReference:
@@ -98,6 +104,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: sag_4_0
   _ecosystemTurnDialogues:
   - _text:
       m_TableReference:
@@ -108,6 +115,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: sag_5_0
   _roundEndDialogues:
   - _text:
       m_TableReference:
@@ -118,6 +126,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: sag_6_0
   _playRabies:
   - _text:
       m_TableReference:
@@ -128,6 +137,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: sag_7_0
   - _text:
       m_TableReference:
         m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
@@ -137,6 +147,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: sag_7_1
   - _text:
       m_TableReference:
         m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
@@ -146,6 +157,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: sag_7_2
   - _text:
       m_TableReference:
         m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
@@ -155,6 +167,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: sag_7_3
   _overlordRabiesTurnDialogue:
   - _text:
       m_TableReference:
@@ -165,6 +178,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: sag_8_0
   _playMigration:
   - _text:
       m_TableReference:
@@ -175,6 +189,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: sag_9_0
   - _text:
       m_TableReference:
         m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
@@ -184,6 +199,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: sag_9_1
   - _text:
       m_TableReference:
         m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
@@ -193,6 +209,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: sag_9_2
   _playMushroomPredator:
   - _text:
       m_TableReference:
@@ -203,6 +220,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: sag_10_0
   - _text:
       m_TableReference:
         m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
@@ -212,6 +230,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: sag_10_1
   _mushroomPredatorEffectDialogue:
   - _text:
       m_TableReference:
@@ -222,6 +241,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: sag_11_0
   _playMotherNature:
   - _text:
       m_TableReference:
@@ -232,6 +252,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: sag_12_0
   - _text:
       m_TableReference:
         m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
@@ -241,6 +262,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: sag_12_1
   _outroDialogue:
   - _text:
       m_TableReference:
@@ -251,6 +273,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: sag_13_0
   references:
     version: 2
     RefIds: []

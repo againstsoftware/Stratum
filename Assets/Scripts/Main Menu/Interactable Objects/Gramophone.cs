@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Localization.Settings;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 using Unity.VisualScripting;
@@ -15,14 +14,6 @@ public class Gramophone : AInteractableObject
     [SerializeField] private GramophoneAnimations _animations;
     [SerializeField] private InteractionSystemMenu _interactionSystemMenu;
 
-
-    private bool _localesInit;
-    private IEnumerator Start()
-    {
-        _localesInit = false;
-        yield return LocalizationSettings.InitializationOperation;
-        _localesInit = true;
-    }
 
     public override void OnPointerClick(PointerEventData eventData)
     {
@@ -46,19 +37,40 @@ public class Gramophone : AInteractableObject
     }
     
 
+    // private IEnumerator ToggleLanguage()
+    // {
+    //     
+    //     yield return new WaitUntil(() => _localesInit);
+    //
+    //     var currentLocale = LocalizationSettings.SelectedLocale;
+    //     string newLocaleCode = currentLocale.Identifier.Code == "en" ? "es" : "en";
+    //     
+    //
+    //     var newLocale = LocalizationSettings.AvailableLocales.GetLocale(newLocaleCode);
+    //     LocalizationSettings.SelectedLocale = newLocale;
+    //
+    //     PlayerPrefs.SetString(GamePrefs.LanguagePrefKey, newLocaleCode);
+    //     PlayerPrefs.Save();
+    //     
+    //     _animations.VinylAnim();
+    //
+    //     // para no liarla mientras se mueve el disco
+    //     _interactionSystemMenu.GetComponent<PlayerInput>().enabled = false;
+    //     while(!_animations.vinylEnd)
+    //     {
+    //         yield return null;
+    //     }
+    //     _interactionSystemMenu.GetComponent<PlayerInput>().enabled = true;
+    //
+    //
+    // }
+    
+    
     private IEnumerator ToggleLanguage()
     {
-        
-        yield return new WaitUntil(() => _localesInit);
+        LocalizationGod.ToggleLanguage();
 
-        var currentLocale = LocalizationSettings.SelectedLocale;
-        string newLocaleCode = currentLocale.Identifier.Code == "en" ? "es" : "en";
-        
-
-        var newLocale = LocalizationSettings.AvailableLocales.GetLocale(newLocaleCode);
-        LocalizationSettings.SelectedLocale = newLocale;
-
-        PlayerPrefs.SetString(GamePrefs.LanguagePrefKey, newLocaleCode);
+        PlayerPrefs.SetString(GamePrefs.LanguagePrefKey, LocalizationGod.Spanish ? "es" : "en");
         PlayerPrefs.Save();
         
         _animations.VinylAnim();

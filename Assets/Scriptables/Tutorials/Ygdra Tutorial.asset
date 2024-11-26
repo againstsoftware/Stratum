@@ -37,6 +37,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: yg_0_0
   _motherNatureDialogues:
   - _text:
       m_TableReference:
@@ -47,6 +48,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: yg_1_0
   _ivyDialogues:
   - _text:
       m_TableReference:
@@ -57,6 +59,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: yg_2_0
   - _text:
       m_TableReference:
         m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
@@ -66,6 +69,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: yg_2_1
   _wildfireDialogues:
   - _text:
       m_TableReference:
@@ -76,6 +80,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: yg_3_0
   - _text:
       m_TableReference:
         m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
@@ -85,6 +90,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: yg_3_1
   - _text:
       m_TableReference:
         m_TableCollectionName: GUID:f7e545ea7ea560b428f88e457a437b5a
@@ -94,6 +100,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: yg_3_2
   _fragranceDialogues:
   - _text:
       m_TableReference:
@@ -104,6 +111,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: yg_4_0
   _outroDialogue:
   - _text:
       m_TableReference:
@@ -114,6 +122,7 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    _newText: yg_5_0
   references:
     version: 2
     RefIds: []

@@ -31,6 +31,8 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  _newName: m_nature_name
+  _newDescription: m_nature_desc
   _actionEffects:
   - ValidAction:
       <DropLocation>k__BackingField: 6
