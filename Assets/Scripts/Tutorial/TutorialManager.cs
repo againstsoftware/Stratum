@@ -72,7 +72,7 @@ public class TutorialManager : MonoBehaviour, ITurnSystem, ICommunicationSystem
                 
                 ServiceLocator.Get<IInteractionSystem>().SetLocalPlayer(localPlayer, cam);
                 ServiceLocator.Get<IView>().SetLocalPlayer(localPlayer, cam);
-                _tutorialRulebook.LocalPlayer = localPlayer;
+                _tutorialRulebook.SetLocalPlayer(localPlayer, cam);
             }
         }
         

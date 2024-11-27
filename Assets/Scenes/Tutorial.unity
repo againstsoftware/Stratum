@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc137a80909905541bbd3d5d4210d53b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutorialRulebook: {fileID: 1391527651}
+  _tutorialRulebook: {fileID: 1229529182}
   _delayBetweenElements: 1
 --- !u!4 &550241531
 Transform:
@@ -435,6 +435,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c32eef16fc4a4ea3918c6a7b78b83540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1229529181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1229529183}
+  - component: {fileID: 1229529182}
+  m_Layer: 0
+  m_Name: Tutorial Rulebook Guy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1229529182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229529181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28768e407b124fab807614e5ba13d8a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _minSpeed: 0.75
+  _maxSpeed: 1.25
+--- !u!4 &1229529183
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229529181}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.67, z: 1.216}
+  m_LocalScale: {x: 0.54, y: 0.54, z: 0.54}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 1391527650}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1391527648 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 008aa455781c2ca479c85ca976b4e444, type: 3}
@@ -461,6 +508,11 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!4 &1391527650 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 008aa455781c2ca479c85ca976b4e444, type: 3}
+  m_PrefabInstance: {fileID: 1648506986}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1391527651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -470,23 +522,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1391527648}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28768e407b124fab807614e5ba13d8a8, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ad2a8780aff4bb5b07eb6b09ba70fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LocalPlayer: 0
-  _minSpeed: 0.75
-  _maxSpeed: 1.25
 --- !u!1001 &1648506986
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1229529183}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 008aa455781c2ca479c85ca976b4e444, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.42
+      value: 0.41999987
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 008aa455781c2ca479c85ca976b4e444, type: 3}
       propertyPath: m_LocalScale.y
@@ -494,35 +543,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 008aa455781c2ca479c85ca976b4e444, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.42
+      value: 0.4199999
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 008aa455781c2ca479c85ca976b4e444, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.104
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 008aa455781c2ca479c85ca976b4e444, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.821
+      value: -0.4189405
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 008aa455781c2ca479c85ca976b4e444, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.919
+      value: 1.0776559
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 008aa455781c2ca479c85ca976b4e444, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9846363
+      value: 0.7050458
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 008aa455781c2ca479c85ca976b4e444, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.014138043
+      value: 0.053948365
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 008aa455781c2ca479c85ca976b4e444, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.14530192
+      value: -0.7050458
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 008aa455781c2ca479c85ca976b4e444, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.09580625
+      value: -0.053948365
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 008aa455781c2ca479c85ca976b4e444, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -530,11 +579,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 008aa455781c2ca479c85ca976b4e444, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 16.789
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 008aa455781c2ca479c85ca976b4e444, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -11.115
+      value: -8.751
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 008aa455781c2ca479c85ca976b4e444, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -542,7 +591,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 008aa455781c2ca479c85ca976b4e444, type: 3}
       propertyPath: m_Name
-      value: Tutorial Rulebook Guy
+      value: Mesh
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -970,5 +1019,5 @@ SceneRoots:
   - {fileID: 700695790}
   - {fileID: 550241531}
   - {fileID: 2079141096}
-  - {fileID: 1648506986}
+  - {fileID: 1229529183}
   - {fileID: 2060105717}
