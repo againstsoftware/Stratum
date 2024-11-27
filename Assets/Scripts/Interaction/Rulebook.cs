@@ -17,7 +17,7 @@ public class Rulebook : MonoBehaviour
     private IRulebookEntry _currentEntry;
     private bool _isOnDialogue;
 
-    private Action _dialogueCallback;
+    private Action _nextDialogueCallback, _dialogueEndCallback;
     private bool _hasClickedOnDialogue;
     
     private void Awake()
@@ -59,7 +59,7 @@ public class Rulebook : MonoBehaviour
         StartCoroutine(HideDelayAux());
     }
 
-    public void DisplayDialogue(TutorialDialogue dialogue, Action callback)
+    public void DisplayDialogue(TutorialDialogue dialogue, Action endCallback, Action nextCallback)
     {
         if (_isOnDialogue) return;
 
@@ -68,10 +68,11 @@ public class Rulebook : MonoBehaviour
 
         
         Debug.Log("comenzando dialogo");
-        if (_dialogueCallback is not null)
+        if (_nextDialogueCallback is not null)
             Debug.LogWarning("dialogue callback no era null, se ha perdido el anterior callback");
         
-        _dialogueCallback = callback;
+        _dialogueEndCallback = endCallback;
+        _nextDialogueCallback = nextCallback;
         
         if (!_isUp)
         {
@@ -141,13 +142,15 @@ public class Rulebook : MonoBehaviour
                 yield return new WaitForSeconds(delay);
             }
         }
-
+        
+        _dialogueEndCallback?.Invoke();
+        _dialogueEndCallback = null;
         _hasClickedOnDialogue = false;
         yield return new WaitUntil(() => _hasClickedOnDialogue);
         _isOnDialogue = false;
         ServiceLocator.Get<IInteractionSystem>().Input.Press -= OnPress;
-        _dialogueCallback.Invoke();
-        _dialogueCallback = null;
+        _nextDialogueCallback.Invoke();
+        _nextDialogueCallback = null;
         _dialogueText.text = "";
         HideRulebook();
     }
