@@ -16,7 +16,7 @@ public class RulesManager : MonoBehaviour, IRulesSystem
     private GameConfig _config;
     
     private IReadOnlyList<PlayerAction> _forcedActions;
-    private bool _checkOnlyActionItem;
+
 
     private void Start()
     {
@@ -42,7 +42,7 @@ public class RulesManager : MonoBehaviour, IRulesSystem
     {
         if (_forcedActions is not null && _forcedActions.Count > 0)
         {
-            if (IsValidForcedAction(action))
+            if (_forcedActions.Any(forcedAction => forcedAction.Equals(action)))
             {
                 return RulesCheck.CheckAction(action);
             }
@@ -54,18 +54,7 @@ public class RulesManager : MonoBehaviour, IRulesSystem
         
     }
 
-    private bool IsValidForcedAction(PlayerAction action)
-    {
-        return !_checkOnlyActionItem ? 
-            _forcedActions.Any(forcedAction => forcedAction.Equals(action)) : 
-            _forcedActions.Any(forcedAction => forcedAction.ActionItem.Equals(action.ActionItem));
-    }
-
-    public void SetForcedAction(IReadOnlyList<PlayerAction> forcedActions, bool checkOnlyActionItem = false)
-    {
-        _forcedActions = forcedActions;
-        _checkOnlyActionItem = checkOnlyActionItem;
-    }
+    public void SetForcedAction(IReadOnlyList<PlayerAction> forcedActions) => _forcedActions = forcedActions;
 
 
     public void DisableForcedAction() => _forcedActions = null;
@@ -86,17 +75,6 @@ public class RulesManager : MonoBehaviour, IRulesSystem
     {
         _roundEndObservers.Remove(reo);
     }
-
-    public IEnumerable<IEffectCommand> GetRoundEndObserversEffects()
-    {
-        //hacemos una copia de la lista de observers para que los efectos observers se puedan quitar de la lista original
-        var observers = _roundEndObservers.ToArray();
-        var observerCommands =
-            observers.SelectMany(reo => reo.GetRoundEndEffects());
-
-        return observerCommands;
-    }
-    
 
     private IEnumerator SendToExecute(PlayerAction action)
     {
@@ -166,8 +144,12 @@ public class RulesManager : MonoBehaviour, IRulesSystem
 
         roundEndCommands.AddRange(destroyConstructionCommands);
 
-        
-        roundEndCommands.AddRange(GetRoundEndObserversEffects());
+        //hacemos una copia de la lista de observers para que los efectos observers se puedan quitar de la lista original
+        var observers = _roundEndObservers.ToArray();
+        var observerCommands =
+            observers.SelectMany(reo => reo.GetRoundEndEffects());
+
+        roundEndCommands.AddRange(observerCommands);
 
         if (roundEndCommands.Any())
         {

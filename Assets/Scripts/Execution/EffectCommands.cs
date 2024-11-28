@@ -793,39 +793,6 @@ public static class EffectCommands
             ServiceLocator.Get<IView>().PlaceCardOnSlotFromDeck(_card, location, callback);
         }
     }
-    
-    public class PlaceCardOnFreeSlotTutorial : IEffectCommand
-    {
-        private ACard _card;
-        private Territory _territory;
-        private bool _atTheBottom;
-
-        public PlaceCardOnFreeSlotTutorial(ACard card, Territory territory, bool atTheBottom = false)
-        {
-            _card = card;
-            _territory = territory;
-            _atTheBottom = atTheBottom;
-        }
-
-        public void Execute(PlayerAction _, Action callback)
-        {
-            var slot = GetFreeSlot(_territory);
-            ServiceLocator.Get<IModel>().PlaceCardOnSlot(_card, slot, _atTheBottom);
-            var location =
-                new IView.CardLocation { Owner = slot.Territory.Owner, SlotIndex = slot.SlotIndexInTerritory };
-            ServiceLocator.Get<IView>().PlaceCardOnSlotFromDeck(_card, location, callback);
-        }
-        
-        private Slot GetFreeSlot(Territory territory)
-        {
-            foreach (var slot in territory.Slots)
-            {
-                if (!slot.PlacedCards.Any()) return slot;
-            }
-
-            return null;
-        }
-    }
 
     public class RemoveCardsFromTerritoryTutorial : IEffectCommand
     {
@@ -891,35 +858,6 @@ public static class EffectCommands
             }
 
             ServiceLocator.Get<IView>().DrawCards(cardsDrawn, callback);
-        }
-    }
-    
-    public class PlaceConstructionTutorial : IEffectCommand
-    {
-        private Territory _territory;
-
-        public PlaceConstructionTutorial(Territory territory)
-        {
-            _territory = territory;
-        }
-        
-        public void Execute(PlayerAction _, Action callback)
-        {
-            ServiceLocator.Get<IModel>().PlaceConstruction(_territory.Owner, out var plant1, out var plant2);
-    
-            var location1 = new IView.CardLocation
-            {
-                SlotIndex = plant1.Slot.SlotIndexInTerritory, CardIndex = plant1.IndexInSlot,
-                Owner = plant1.Slot.Territory.Owner
-            };
-    
-            var location2 = new IView.CardLocation
-            {
-                SlotIndex = plant2.Slot.SlotIndexInTerritory, CardIndex = plant2.IndexInSlot,
-                Owner = plant2.Slot.Territory.Owner
-            };
-    
-            ServiceLocator.Get<IView>().PlaceConstruction(location1, location2, callback);
         }
     }
 }

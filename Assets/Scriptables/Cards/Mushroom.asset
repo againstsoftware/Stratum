@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d44c84ff79a84e7b8be431930f104dfb, type: 3}
   m_Name: Mushroom
   m_EditorClassIdentifier: 
-  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 1d096064a5e5c134c993116d34f5123c, type: 3}
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 6ea4cea5da7eda342a96b8dfd962ebce,
+    type: 3}
   _name:
     m_TableReference:
       m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
@@ -31,8 +32,6 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  _newName: mushroom_name
-  _newDescription: mushroom_desc
   _actionEffects: []
   references:
     version: 2

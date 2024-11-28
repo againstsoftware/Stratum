@@ -406,7 +406,7 @@ public class ViewManager : MonoBehaviour, IView
         yield return new WaitForSeconds(.25f);
 
 
-        territory.BuildConstruction();
+        territory.BuildConstruction(_config.ConstructionPrefab);
 
         yield return new WaitForSeconds(.5f);
         callback?.Invoke();

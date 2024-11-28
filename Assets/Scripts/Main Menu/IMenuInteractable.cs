@@ -1,11 +1,5 @@
 
-using UnityEngine;
-using UnityEngine.EventSystems;
-
-public interface IMenuInteractable : IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public interface IMenuInteractable
 {
-    void EnableInteraction();
-    void DisableInteraction();
+    public void OnPointerPress();
 }
-
-public enum InteractablesObjects { None, Radio, Gramophone, Registry, Rulebook}

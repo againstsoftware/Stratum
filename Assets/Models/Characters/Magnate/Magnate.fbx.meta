@@ -5,76 +5,6 @@ ModelImporter:
   internalIDToNameTable: []
   externalObjects:
   - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Bigote_Dcha
-    second: {fileID: 2100000, guid: 36a1269063c696d49bab166b29bf8a6a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Boton_Manga_Dcha
-    second: {fileID: 2100000, guid: abc57206fe54c614a9b36a8cc8e7445c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Camisa
-    second: {fileID: 2100000, guid: d44c1e933c585e9409b7a6c86430d547, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Ceja_Izda
-    second: {fileID: 2100000, guid: 8a7484cb1ceacf84290bc79e7435766a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Cristal
-    second: {fileID: 2100000, guid: b05215efbd6757f4597413e1e6e25ce7, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Cuerpo
-    second: {fileID: 2100000, guid: c7186d7c45ad2e94d85a7c5076d01e57, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Nariz
-    second: {fileID: 2100000, guid: 5cbdfc015b664ef4a8a2824d384215b5, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Ojo
-    second: {fileID: 2100000, guid: 70412238d26dbf9498d1660c7bdca8ae, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Oreja_Dcha
-    second: {fileID: 2100000, guid: c4eb7f0fe3645ab4fbce78252075cedc, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Oro
-    second: {fileID: 2100000, guid: 9580fe141ebeca34a8aea2b9f52d1cd4, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Piel
-    second: {fileID: 2100000, guid: de0bc8dbbe3de8c4c946673ddc114b6a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Puro
-    second: {fileID: 2100000, guid: 3e3d174e7bfac3b4d942d627de937627, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Sombrero
-    second: {fileID: 2100000, guid: f66d3d6996bd7c24b86a41d052621b83, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Zapatos
-    second: {fileID: 2100000, guid: bbb9d50a53d1dcf4080c598a89e4cb62, type: 2}
-  - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Magnate_Bigote_Dcha_BaseColor
@@ -210,7 +140,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.16
+    globalScale: 0.6
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -265,7 +195,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.16
+    globalScale: 0.6
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

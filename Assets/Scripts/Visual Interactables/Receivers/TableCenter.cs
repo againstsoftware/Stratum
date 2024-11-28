@@ -15,8 +15,7 @@ public class TableCenter : MonoBehaviour, IActionReceiver
 
 
     [SerializeField] private float _sagitarioRotation, _fungalothRotation, _ygdraRotation, _overlordRotation;
-    [SerializeField] private Material _highlightedMaterial;
-
+    
     
     private Material _material;
     private Vector3 _defaultEulers;
@@ -29,7 +28,7 @@ public class TableCenter : MonoBehaviour, IActionReceiver
 
     public void OnDraggingSelect()
     {
-        _tableMesh.material = _highlightedMaterial;
+        _tableMesh.material = null;
     }
 
     public void OnDraggingDeselect()

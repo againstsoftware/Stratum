@@ -7,7 +7,7 @@ public class PixelizePass : ScriptableRenderPass
     // Almacenar ajustes
     private PixelizeFeature.CustomPassSettings _settings;
 
-    // Textura de color de la cÃ¡mara y bÃºfer de pÃ­xeles
+    // Textura de color de la cámara y búfer de píxeles
     private RenderTargetIdentifier _colorBuffer, _pixelBuffer;
     // ID para la escritura de la textura en cada frame
     private int _pixelBufferID = Shader.PropertyToID("_PixelBuffer");
@@ -18,20 +18,20 @@ public class PixelizePass : ScriptableRenderPass
     public PixelizePass(PixelizeFeature.CustomPassSettings settings)
     {
         _settings = settings;
-        renderPassEvent = settings.RenderPassEvent;                                                     // Se asigna aquÃ­ pero el valor se ajusta en el inspector
-        if(_material == null) _material = CoreUtils.CreateEngineMaterial("Custom/Pixelize");            // Si no tiene material se crea y asigna el del shader
+        renderPassEvent = settings.RenderPassEvent;                                                     // Se asigna aquí pero el valor se ajusta en el inspector
+        if(_material == null) _material = CoreUtils.CreateEngineMaterial("Hidden/Pixelize");            // Si no tiene material se crea y asigna el del shader
     }
 
     public override void OnCameraSetup(CommandBuffer cmd, ref RenderingData renderingData)
     {
-        // Se asigna el color del target de la cÃ¡mara al bÃºfer de color y se almacena el descriptor.
+        // Se asigna el color del target de la cámara al búfer de color y se almacena el descriptor.
         _colorBuffer = renderingData.cameraData.renderer.cameraColorTarget;
         RenderTextureDescriptor descriptor = renderingData.cameraData.cameraTargetDescriptor;
 
         //cmd.GetTemporaryRT(pointBufferID, descriptor.width, descriptor.height, 0, FilterMode.Point);
         //pointBuffer = new RenderTargetIdentifier(pointBufferID);
 
-        // Valores de resoluciÃ³n de pantalla usando aspect ratio
+        // Valores de resolución de pantalla usando aspect ratio
         _pixelScreenHeight = _settings.ScreenHeight;
         _pixelScreenWidth = (int) ( _pixelScreenHeight * renderingData.cameraData.camera.aspect + 0.5f );
 
@@ -59,7 +59,7 @@ public class PixelizePass : ScriptableRenderPass
             //Blit(cmd, pointBuffer, pixelBuffer);
             //Blit(cmd, pixelBuffer, colorBuffer);
 
-            // Copiar el target de la cÃ¡mara al bÃºfer. DespuÃ©s se copia al revÃ©s para renderizar en pantalla.
+            // Copiar el target de la cámara al búfer. Después se copia al revés para renderizar en pantalla.
             Blit(cmd, _colorBuffer, _pixelBuffer, _material);
             Blit(cmd, _pixelBuffer, _colorBuffer);
         }

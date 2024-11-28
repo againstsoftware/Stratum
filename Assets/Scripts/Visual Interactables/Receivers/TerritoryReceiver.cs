@@ -12,11 +12,9 @@ public class TerritoryReceiver : MonoBehaviour, IActionReceiver
     public bool CanInteractWithoutOwnership => true;
 
     public bool HasConstruction { get; private set; }
-    [SerializeField] private Material _highlightedMaterial;
-
-    [SerializeField] private GameObject _construction;
     
     private Material _material;
+    private GameObject _construction;
     private void Awake()
     {
         _material = transform.Find("Mesh").GetComponent<MeshRenderer>().material;
@@ -27,25 +25,25 @@ public class TerritoryReceiver : MonoBehaviour, IActionReceiver
         }
     }
 
-    public void BuildConstruction()
+    public void BuildConstruction(GameObject prefab)
     {
-        _construction.SetActive(true);
+        _construction = Instantiate(prefab, transform);
         // _construction.transform.localPosition = prefab.transform.position;
         //_construction.transform.localPosition = Vector3.zero;
-        // _construction.transform.localRotation = prefab.transform.rotation;
+        _construction.transform.localRotation = prefab.transform.rotation;
         HasConstruction = true;
-        OnChoosingDeselect();
     }
 
     public void DestroyConstruction()
     {
-        _construction.SetActive(false);
+        Destroy(_construction);
+        _construction = null;
         HasConstruction = false;
     }
 
     public void OnDraggingSelect()
     {
-        transform.Find("Mesh").GetComponent<MeshRenderer>().material = _highlightedMaterial;
+        transform.Find("Mesh").GetComponent<MeshRenderer>().material = null;
     }
 
     public void OnDraggingDeselect()

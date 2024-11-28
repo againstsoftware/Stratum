@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class Rulebook : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _nameText, _descriptionText, _dialogueText;
+    [SerializeField] private TextMeshProUGUI _nameText, _descriptionText;
     [SerializeField] private float _dialogueSpeed;
     [SerializeField] private float _dialogueEndDelay;
     
@@ -17,8 +17,7 @@ public class Rulebook : MonoBehaviour
     private IRulebookEntry _currentEntry;
     private bool _isOnDialogue;
 
-    private Action _nextDialogueCallback, _dialogueEndCallback;
-    private bool _hasClickedOnDialogue;
+    private Action _dialogueCallback;
     
     private void Awake()
     {
@@ -33,8 +32,6 @@ public class Rulebook : MonoBehaviour
         if (_isOnDialogue) return;
         if (_currentEntry == entry) return;
 
-        _dialogueText.text = "";
-        
         if (entry is null)
         {
             HideRulebook();
@@ -59,20 +56,15 @@ public class Rulebook : MonoBehaviour
         StartCoroutine(HideDelayAux());
     }
 
-    public void DisplayDialogue(TutorialDialogue dialogue, Action endCallback, Action nextCallback)
+    public void DisplayDialogue(TutorialDialogue dialogue, Action callback)
     {
         if (_isOnDialogue) return;
-
-        ServiceLocator.Get<IInteractionSystem>().Input.Press += OnPress;
-        _hasClickedOnDialogue = false;
-
         
         Debug.Log("comenzando dialogo");
-        if (_nextDialogueCallback is not null)
+        if (_dialogueCallback is not null)
             Debug.LogWarning("dialogue callback no era null, se ha perdido el anterior callback");
         
-        _dialogueEndCallback = endCallback;
-        _nextDialogueCallback = nextCallback;
+        _dialogueCallback = callback;
         
         if (!_isUp)
         {
@@ -102,12 +94,11 @@ public class Rulebook : MonoBehaviour
     {
         _isOnDialogue = true;
         _nameText.text = "";
-        _descriptionText.text = "";
-        _dialogueText.text = dialogue.Text;
-        _dialogueText.ForceMeshUpdate();
+        _descriptionText.text = dialogue.Text;
+        _descriptionText.ForceMeshUpdate();
 
-        _dialogueText.alpha = 0; // Inicialmente, el texto completo es transparente
-        TMP_TextInfo textInfo = _dialogueText.textInfo;
+        _descriptionText.alpha = 0; // Inicialmente, el texto completo es transparente
+        TMP_TextInfo textInfo = _descriptionText.textInfo;
         Color32[] newVertexColors;
         int totalVisibleCharacters = textInfo.characterCount;
 
@@ -131,34 +122,20 @@ public class Rulebook : MonoBehaviour
             }
 
             // Actualiza la malla
-            _dialogueText.UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
+            _descriptionText.UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
 
-            var currentChar = _dialogueText.text[i];
-
-            if (!_hasClickedOnDialogue)
-            {
-                var delay = slowedChars.Contains(currentChar) ? dialogueDelay * 4f : dialogueDelay;
-                yield return new WaitForSeconds(delay);
-            }
+            var currentChar = _descriptionText.text[i];
+            
+            var delay = slowedChars.Contains(currentChar) ? dialogueDelay * 4f : dialogueDelay;
+            
+            yield return new WaitForSeconds(delay);
         }
-        
-        _dialogueEndCallback?.Invoke();
-        _dialogueEndCallback = null;
-        _hasClickedOnDialogue = false;
-        yield return new WaitUntil(() => _hasClickedOnDialogue);
+
+        yield return new WaitForSeconds(_dialogueEndDelay);
         _isOnDialogue = false;
-        ServiceLocator.Get<IInteractionSystem>().Input.Press -= OnPress;
-        _nextDialogueCallback.Invoke();
-        _nextDialogueCallback = null;
-        _dialogueText.text = "";
-        HideRulebook();
+        _dialogueCallback.Invoke();
+        _dialogueCallback = null;
     }
-
-    private void OnPress()
-    {
-        if (!_isOnDialogue) return;
-
-        _hasClickedOnDialogue = true;
-    }
+    
     
 }
