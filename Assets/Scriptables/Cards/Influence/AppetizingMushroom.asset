@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e434a6f340a4882a38958228a570c4e, type: 3}
   m_Name: AppetizingMushroom
   m_EditorClassIdentifier: 
-  <ObverseTex>k__BackingField: {fileID: 2800000, guid: ba97506c9c5d9784d933dd3b250ab286,
-    type: 3}
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 573f76f6337392b4eb5e073e97c20d35, type: 3}
   _name:
     m_TableReference:
       m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
@@ -32,6 +31,8 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  _newName: app_mushroom_name
+  _newDescription: app_mushroom_desc
   _actionEffects:
   - ValidAction:
       <DropLocation>k__BackingField: 6
@@ -45,7 +46,6 @@ MonoBehaviour:
       <DropLocation>k__BackingField: 5
       <Receivers>k__BackingField: 0400000001000000
     Effects: 0d0000000e000000
-  <InfluenceType>k__BackingField: 4
   <IsPersistent>k__BackingField: 0
   references:
     version: 2

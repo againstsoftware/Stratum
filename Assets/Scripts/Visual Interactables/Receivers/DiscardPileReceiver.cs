@@ -10,6 +10,8 @@ public class DiscardPileReceiver : MonoBehaviour, IActionReceiver
     public bool IsDropEnabled { get; private set; } = true;
     public bool CanInteractWithoutOwnership => false;
 
+    [SerializeField] private Material _highlightedMaterial;
+
 
     private Material _material;
     private void Awake()
@@ -19,7 +21,7 @@ public class DiscardPileReceiver : MonoBehaviour, IActionReceiver
 
     public void OnDraggingSelect()
     {
-        GetComponent<MeshRenderer>().material = null;
+        GetComponent<MeshRenderer>().material = _highlightedMaterial;
     }
 
     public void OnDraggingDeselect()

@@ -136,9 +136,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 11272707960991744
-    m_Localized: "Elige un territorio. Todas las cartas de poblaci\xF3n, hongo y
-      macrohongo en ese territorio mueren. Si hay una construcci\xF3n, tambi\xE9n
-      se destruye."
+    m_Localized: "Elige un territorio. Todas las cartas de poblaci\xF3n y hongo en
+      ese territorio mueren. Si hay una construcci\xF3n, tambi\xE9n se destruye."
     m_Metadata:
       m_Items: []
   - m_Id: 11272742639497216
@@ -146,9 +145,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 11272787711488000
-    m_Localized: "Elige un territorio. Todas las cartas de poblaci\xF3n, hongo y
-      macrohongo en ese territorio mueren. Si hay una construcci\xF3n, tambi\xE9n
-      se destruye."
+    m_Localized: "Elige un territorio. Todas las cartas de poblaci\xF3n y hongo en
+      ese territorio mueren. Si hay una construcci\xF3n, tambi\xE9n se destruye."
     m_Metadata:
       m_Items: []
   - m_Id: 11272832192081920

@@ -10,6 +10,7 @@ public class SlotReceiver : MonoBehaviour, IActionReceiver
     public Transform GetSnapTransform(PlayerCharacter _) => SnapTransform;
     [field:SerializeField] public Transform SnapTransformBottom { get; private set; }
     [SerializeField] private Vector3 _offset;
+    [SerializeField] private Material _highlightedMaterial;
     public bool IsDropEnabled { get; private set; } = true;
     public bool CanInteractWithoutOwnership => true;
     public int IndexOnTerritory { get; set; }
@@ -26,7 +27,7 @@ public class SlotReceiver : MonoBehaviour, IActionReceiver
 
     public void OnDraggingSelect()
     {
-        GetComponent<MeshRenderer>().material = null;
+        GetComponent<MeshRenderer>().material = _highlightedMaterial;
     }
 
     public void OnDraggingDeselect()

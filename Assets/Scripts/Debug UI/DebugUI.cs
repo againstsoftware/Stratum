@@ -58,5 +58,5 @@ public class DebugUI : MonoBehaviour
         Invoke(nameof(Restart), 2f);
     }
 
-    private void Restart() => SceneManager.LoadScene(0);
+    private void Restart() => SceneTransition.Instance.TransitionToScene(0);
 }

@@ -73,7 +73,8 @@ public class LobbyNetwork : NetworkBehaviour
         }
 
 
-        NetworkManager.SceneManager.LoadScene("Game", LoadSceneMode.Single);
+        // NetworkManager.SceneManager.LoadScene("Game", LoadSceneMode.Single);
+        SceneTransition.Instance.TransitionToScene("Game", true);
 
 
     }

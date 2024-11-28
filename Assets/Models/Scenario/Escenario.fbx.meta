@@ -17,8 +17,38 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: BigCandelabra
+    second: {fileID: 2100000, guid: c635b16b9f896f0409c824eac8ec603c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bookshelf
+    second: {fileID: 2100000, guid: ce41142e01e30b749a9fc7534225bc9a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gold
+    second: {fileID: 2100000, guid: 558eb3597adc0c8469451dca0656b028, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lamp1
+    second: {fileID: 2100000, guid: 0f80daa000bfbcb4ca2fb82043b6e1ab, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lamp2
+    second: {fileID: 2100000, guid: f8c28416c73ea3141a683f35cd32b3de, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Mesa
     second: {fileID: 2100000, guid: 4abd87f3ea2a5d3428d53ea97fd279f9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MidleCandelabra
+    second: {fileID: 2100000, guid: a0562f4799d4c294b8cf077719bc739f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -42,6 +72,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Shelf
+    second: {fileID: 2100000, guid: 4ecf013851b60124e8f81f609f759c2c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SmallCandelabra
+    second: {fileID: 2100000, guid: 64f98632c1a74e948ba7da79b0b7f1a3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Suelo
     second: {fileID: 2100000, guid: a1716b9d62ff5cc4faad918b2f20b140, type: 2}
   - first:
@@ -54,6 +94,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: White_Cards
     second: {fileID: 2100000, guid: 13265bed5a41975429780e9b3a6b1eba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Window
+    second: {fileID: 2100000, guid: a799d7a280454e044897de245006ccad, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule

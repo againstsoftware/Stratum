@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b4950190fe94ade9003c08694d69d84, type: 3}
   m_Name: Explosive Spores
   m_EditorClassIdentifier: 
-  <ObverseTex>k__BackingField: {fileID: 2800000, guid: f82c123516865c349bc72a4396dd5bb8,
-    type: 3}
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 240566c9d05582f409655839c17ebea2, type: 3}
   _name:
     m_TableReference:
       m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
@@ -32,6 +31,8 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  _newName: spores_name
+  _newDescription: spores_desc
   _actionEffects:
   - ValidAction:
       <DropLocation>k__BackingField: 6
@@ -45,7 +46,6 @@ MonoBehaviour:
       <DropLocation>k__BackingField: 5
       <Receivers>k__BackingField: 02000000
     Effects: 0d00000012000000
-  <InfluenceType>k__BackingField: 8
   <IsPersistent>k__BackingField: 0
   references:
     version: 2

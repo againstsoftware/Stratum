@@ -73,9 +73,9 @@ GameObject:
   - component: {fileID: 9100032195552185213}
   - component: {fileID: 7435586179407536389}
   - component: {fileID: 2818914672720117361}
-  - component: {fileID: 5449485798779307447}
   - component: {fileID: 4767828846979920040}
   - component: {fileID: 4592363287302191494}
+  - component: {fileID: 3727048534828067230}
   m_Layer: 9
   m_Name: Slot
   m_TagString: Untagged
@@ -93,8 +93,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: -1}
   m_LocalPosition: {x: -0.6000003, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.02, z: 0.45}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.68, y: 0.054399997, z: 1.224}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2625134960546886588}
   - {fileID: 1934123973800191}
@@ -107,7 +107,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7681975894129981863}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -7467571496927732906, guid: 62b5f59d9c291dc4b9ca807826391083, type: 3}
 --- !u!23 &2818914672720117361
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -128,7 +128,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 725b5da930a111b45b8ab3fc4f5c1044, type: 2}
+  - {fileID: 2100000, guid: 8b77f73855d432d4691452944561ae37, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -150,7 +150,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5449485798779307447
+--- !u!114 &4767828846979920040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7681975894129981863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9932ffa7540a45f69990d4743a0364dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Owner>k__BackingField: 0
+  <Territory>k__BackingField: {fileID: 0}
+  <SnapTransform>k__BackingField: {fileID: 2625134960546886588}
+  <SnapTransformBottom>k__BackingField: {fileID: 1934123973800191}
+  _offset: {x: 0, y: 0.015, z: -0.2}
+  _highlightedMaterial: {fileID: 2100000, guid: 135c47568d75b4545909a6620e9ae12f, type: 2}
+--- !u!114 &4592363287302191494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7681975894129981863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2dbb119b8db469791f51328ba0c9fd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &3727048534828067230
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,34 +199,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4767828846979920040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7681975894129981863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9932ffa7540a45f69990d4743a0364dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Owner>k__BackingField: 0
-  <Territory>k__BackingField: {fileID: 0}
-  <SnapTransform>k__BackingField: {fileID: 2625134960546886588}
-  <SnapTransformBottom>k__BackingField: {fileID: 1934123973800191}
-  _offset: {x: 0, y: 0.015, z: -0.35}
---- !u!114 &4592363287302191494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7681975894129981863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2dbb119b8db469791f51328ba0c9fd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Size: {x: 0.40000007, y: 0.5, z: 0.40000007}
+  m_Center: {x: -0.00000035061555, y: 0.042465292, z: 0}

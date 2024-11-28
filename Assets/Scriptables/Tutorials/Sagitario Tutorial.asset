@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6578d7f423a4eda95b7afadd28b6d2f, type: 3}
+  m_Script: {fileID: 11500000, guid: c0f3eae2b9b8240459331b532f934c2d, type: 3}
   m_Name: Sagitario Tutorial
   m_EditorClassIdentifier: 
-  <LocalPlayer>k__BackingField: 1
   _initialCards:
   - {fileID: 11400000, guid: 73f4942f266a15a469148e02341ce42b, type: 2}
   - {fileID: 11400000, guid: 73f4942f266a15a469148e02341ce42b, type: 2}
@@ -24,62 +23,47 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 73f4942f266a15a469148e02341ce42b, type: 2}
   _migrationCards:
   - {fileID: 11400000, guid: c7bfc641c1641e14db323d2a8a3281ca, type: 2}
-  - {fileID: 11400000, guid: 73f4942f266a15a469148e02341ce42b, type: 2}
+  - {fileID: 11400000, guid: d02a1b287d0f44046a658bdc3266c2e7, type: 2}
   _mushroomPredCards:
   - {fileID: 11400000, guid: aae5589223e26df4e86a38b36af43b32, type: 2}
   - {fileID: 11400000, guid: 925fd89a28ebfd44cabbdd3e279d2a5e, type: 2}
   _motherNatureCards:
-  - {fileID: 11400000, guid: bfbc5702c3a1a154880b12ab0c9ee0a8, type: 2}
-  - {fileID: 11400000, guid: d02a1b287d0f44046a658bdc3266c2e7, type: 2}
+  - {fileID: 11400000, guid: 5a8b343089124d041a048f0050118604, type: 2}
+  - {fileID: 11400000, guid: 73f4942f266a15a469148e02341ce42b, type: 2}
   _initialDialogues:
-  - _text:
-      m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
-      m_TableEntryReference:
-        m_KeyId: 52737843392512
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-  - _text:
-      m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
-      m_TableEntryReference:
-        m_KeyId: 53136054808576
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
+  - _dialogueText: sag_0_0
+  - _dialogueText: sag_0_1
   _cardTutorialDialogues:
-  - _text:
-      m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
-      m_TableEntryReference:
-        m_KeyId: 53576989405184
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-  - _text:
-      m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
-      m_TableEntryReference:
-        m_KeyId: 54019345870848
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-  _fungalothTurnDialogues: []
-  _ygdraTurnDialogues: []
-  _overlordTurnDialogues: []
-  _ecosystemTurnDialogues: []
-  _roundEndDialogues: []
-  _playRabies: []
-  _overlordRabiesTurnDialogue: []
-  _playMigration: []
-  _playMushroomPredator: []
-  _playMotherNature: []
-  _outroDialogue: []
-  references:
-    version: 2
-    RefIds: []
+  - _dialogueText: sag_1_0
+  - _dialogueText: sag_1_1
+  _fungalothTurnDialogues:
+  - _dialogueText: sag_2_0
+  _ygdraTurnDialogues:
+  - _dialogueText: sag_3_0
+  _overlordTurnDialogues:
+  - _dialogueText: sag_4_0
+  _ecosystemTurnDialogues:
+  - _dialogueText: sag_5_0
+  _roundEndDialogues:
+  - _dialogueText: sag_6_0
+  _playRabies:
+  - _dialogueText: sag_7_0
+  - _dialogueText: sag_7_1
+  - _dialogueText: sag_7_2
+  - _dialogueText: sag_7_3
+  _overlordRabiesTurnDialogue:
+  - _dialogueText: sag_8_0
+  _playMigration:
+  - _dialogueText: sag_9_0
+  - _dialogueText: sag_9_1
+  - _dialogueText: sag_9_2
+  _playMushroomPredator:
+  - _dialogueText: sag_10_0
+  - _dialogueText: sag_10_1
+  _mushroomPredatorEffectDialogue:
+  - _dialogueText: sag_11_0
+  _playMotherNature:
+  - _dialogueText: sag_12_0
+  - _dialogueText: sag_12_1
+  _outroDialogue:
+  - _dialogueText: sag_13_0
