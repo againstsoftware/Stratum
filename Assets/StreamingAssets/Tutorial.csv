@@ -1,5 +1,5 @@
 Key;Id;Spanish(es);English(en)
-eco_0_0;6978007040;Saludos. Me presento: soy el Manual de Reglas. Si quieres jugar una partida de Stratum, antes tendrás que conocer todas las reglas, de lo contrario te será imposible enterarte de lo que sucede en el juego.;Hola gola
+eco_0_0;6978007040;Saludos. Me presento: soy el Manuel de Reglas. Si quieres jugar una partida de Stratum, antes tendrás que conocer todas las reglas, de lo contrario te será imposible enterarte de lo que sucede en el juego.;Hola gola
 eco_0_1;1.82916E+11;Stratum es un juego de cartas diferente. Ancestral. Su característica más importante es el Ecosistema.;a
 eco_0_2;4.87838E+11;En Stratum las cartas son poblaciones de un ecosistema vivo y en constante cambio. Según las cartas de Población que haya en la mesa, estará equilibrado o desequilibrado.;a
 eco_0_3;6.40498E+11;Si el ecosistema está desequilibrado, se regulará él sólo con las leyes de la Naturaleza. Es muy importante que las conozcas bien, pues tendrás que usarlas a tu favor.;salen setas setas salen
@@ -58,7 +58,7 @@ yg_3_1;6.53651E+13;Incendio Forestal hace lo sieguiente: Elige un territorio. To
 yg_3_2;6.58456E+13;Usa el Incendio Forestal donde quieras. Luego, juega una población. Esta vez no jugaré por los demás, para ir más rápido con el tutorial.;a
 yg_4_0;6.59967E+13;Ahora juega la carta de Fragancia de Feromonas. Funciona así: Elige una carta de herbívoro o carnívoro de otro territorio y muévela a un espacio vacío en tu territorio. Luego, juega una población.;a
 yg_5_0;6.62352E+13;Ya has usado todas las cartas de Ygdra. Pasemos al siguiente personaje...;a
-fun_0_0;8.91074E+13;Ahora aprenderás a jugar con Fungaloth. Es un espíritu de lla naturaleza como Ygdra y Sagitario, pero busca esparcir el caos por Sylveria poblando el ecosistema de Hongos.;a
+fun_0_0;8.91074E+13;Ahora aprenderás a jugar con Fungaloth. Es un espíritu de la naturaleza como Ygdra y Sagitario, pero busca esparcir el caos por Sylveria poblando el ecosistema de Hongos.;a
 fun_0_1;8.93394E+13;Para ganar, Fungaloth debe tener al final de una ronda, 2 Macrohongos. Para crearlos, tiene una ficha de Macrohongo que puede usar en su turno en vez de jugar una carta. Es decir, puede jugar 2 cartas o jugar 1 carta y la ficha.;a
 fun_0_2;8.94128E+13;La ficha de Macrohongo se juega así: Debes ponerlo sobre el centro de la mesa, y luego escoger 3 cartas de hongo. Las 3 cartas desaparecerán, y sobre la tercera crecerá una carta de Macrohongo.;a
 fun_1_0;8.99909E+13;En este turno, juega primero tu carta de Influencia Putrefacción, la cual debes poner sobre una planta. La planta muere, y en su espacio de territorio crece una seta.;a

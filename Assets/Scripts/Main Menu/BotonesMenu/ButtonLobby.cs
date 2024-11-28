@@ -8,6 +8,6 @@ public class ButtonLobby : MonoBehaviour
 {
     public void OnClickGoLobby()
     {
-        SceneManager.LoadScene("Lobby Test", LoadSceneMode.Single);
+        SceneTransition.Instance.TransitionToScene("Lobby Test");
     }
 }

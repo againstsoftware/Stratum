@@ -7,6 +7,6 @@ public class ButtonTutorial : MonoBehaviour
 {
     public void GoTutorial()
     {
-        SceneManager.LoadScene("Tutorial", LoadSceneMode.Single);
+        SceneTransition.Instance.TransitionToScene("Tutorial");
     }
 }

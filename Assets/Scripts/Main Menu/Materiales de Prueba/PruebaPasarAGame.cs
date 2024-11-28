@@ -7,6 +7,6 @@ public class PruebaPasarAGame : MonoBehaviour
 {
     public void PasarAGame()
     {
-        SceneManager.LoadScene("Test Mode", LoadSceneMode.Single);
+        SceneTransition.Instance.TransitionToScene("Test Mode");
     }
 }

@@ -356,7 +356,7 @@ public class SagitarioTutorial : ATutorialSequence
 
     public override void OnTutorialFinished()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneTransition.Instance.TransitionToCurrentScene();
     }
     
 

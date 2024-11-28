@@ -42,9 +42,7 @@ public class Rules : AInteractableObject
 
         gameObject.transform.localScale /= scaleIncrease;
     }
-
-    public void TutorialButtonPress() => SceneManager.LoadScene("Tutorial");
-
+    
     private void ShowText()
     {
         foreach (Transform child in _canvas.transform)

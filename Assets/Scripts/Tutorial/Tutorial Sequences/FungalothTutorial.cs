@@ -112,6 +112,6 @@ public class FungalothTutorial : ATutorialSequence
 
     public override void OnTutorialFinished()
     {
-        SceneManager.LoadScene(0);
+        SceneTransition.Instance.TransitionToScene(0);
     }
 }

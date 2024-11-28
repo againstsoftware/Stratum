@@ -135,8 +135,7 @@ public class Rulebook : MonoBehaviour
 
             var currentChar = _dialogueText.text[i];
 
-            if (_hasClickedOnDialogue) yield return null;
-            else
+            if (!_hasClickedOnDialogue)
             {
                 var delay = slowedChars.Contains(currentChar) ? dialogueDelay * 4f : dialogueDelay;
                 yield return new WaitForSeconds(delay);

@@ -18,10 +18,10 @@ public class TutorialManager : MonoBehaviour, ITurnSystem, ICommunicationSystem
 
     [SerializeField] private TutorialRulebook _tutorialRulebook;
     [SerializeField] private float _delayBetweenElements;
-    
 
     private Queue<ITutorialElement> _tutorialElements;
     private ATutorialSequence _tutorialSequence;
+    private bool _isCurrentPlayerAction;
 
     private void Start()
     {
@@ -48,7 +48,15 @@ public class TutorialManager : MonoBehaviour, ITurnSystem, ICommunicationSystem
 
     public void EndAction()
     {
-        Invoke(nameof(ExecuteNextTutorialElement), _delayBetweenElements);
+        if (_isCurrentPlayerAction)
+        {
+            _isCurrentPlayerAction = false;
+            Invoke(nameof(ExecuteNextTutorialElement), .01f);
+        }
+        else
+        {
+            Invoke(nameof(ExecuteNextTutorialElement), _delayBetweenElements);
+        }
     }
 
     private void SetLocalPlayer()
@@ -99,6 +107,7 @@ public class TutorialManager : MonoBehaviour, ITurnSystem, ICommunicationSystem
         {
             if (action.IsPlayerAction)
             {
+                _isCurrentPlayerAction = true;
                 PlayerOnTurn = _tutorialSequence.LocalPlayer;
                 ServiceLocator.Get<IModel>().AdvanceTurn(PlayerOnTurn);
                 ServiceLocator.Get<IRulesSystem>().SetForcedAction(action.ForcedActions, action.ForceOnlyActionItem);
