@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51c07a7cab5842139d640e4e53b10ff3, type: 3}
   m_Name: Arson
   m_EditorClassIdentifier: 
-  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 0ed0ea7799c383b4e94d25878ed6343f,
-    type: 3}
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 93d6d0d17beb61a4ba85154bb2c825cb, type: 3}
   _name:
     m_TableReference:
       m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
@@ -32,6 +31,8 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  _newName: arson_name
+  _newDescription: arson_desc
   _actionEffects:
   - ValidAction:
       <DropLocation>k__BackingField: 6
@@ -45,7 +46,6 @@ MonoBehaviour:
       <DropLocation>k__BackingField: 5
       <Receivers>k__BackingField: 02000000
     Effects: 0d00000011000000
-  <InfluenceType>k__BackingField: 7
   <IsPersistent>k__BackingField: 0
   references:
     version: 2

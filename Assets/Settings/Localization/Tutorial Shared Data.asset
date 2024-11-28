@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tutorial Shared Data
   m_EditorClassIdentifier: 
   m_TableCollectionName: Tutorial
-  m_TableCollectionNameGuidString: ee2562db878f4184f9dddbfe9db29f72
+  m_TableCollectionNameGuidString: f7e545ea7ea560b428f88e457a437b5a
   m_Entries:
   - m_Id: 6978007040
     m_Key: eco_0_0
@@ -175,14 +175,118 @@ MonoBehaviour:
     m_Key: sag_8_0
     m_Metadata:
       m_Items: []
+  - m_Id: 236297082630144
+    m_Key: sag_9_0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 236807974023168
+    m_Key: sag_9_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 237168797413376
+    m_Key: sag_9_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 252628259565568
+    m_Key: eco_0_0_0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 253326380494848
+    m_Key: sag_10_0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 264144803328000
+    m_Key: sag_10_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 264400739758080
+    m_Key: sag_11_0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 264644433014784
+    m_Key: sag_12_0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 264943746936832
+    m_Key: sag_12_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 265020469145600
+    m_Key: sag_13_0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 62952940761088
+    m_Key: yg_0_0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63509701062656
+    m_Key: yg_1_0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 64332145356800
+    m_Key: yg_2_0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 64749700902912
+    m_Key: yg_2_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 64991527694336
+    m_Key: yg_3_0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65365118545920
+    m_Key: yg_3_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65845626400768
+    m_Key: yg_3_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 65996650704896
+    m_Key: yg_4_0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66235218522112
+    m_Key: yg_5_0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89107383185408
+    m_Key: fun_0_0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89339407888384
+    m_Key: fun_0_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89412770459648
+    m_Key: fun_0_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89990900740096
+    m_Key: fun_1_0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 90148346523648
+    m_Key: fun_1_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 90243662082048
+    m_Key: fun_2_0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 90475569344512
+    m_Key: fun_3_0
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
-    rid: 6827185989941198866
+    rid: 6827186013973512212
   references:
     version: 2
     RefIds:
-    - rid: 6827185989941198866
+    - rid: 6827186013973512212
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
       data:
-        m_CustomEpoch: 1732388287813
+        m_CustomEpoch: 1732464644141

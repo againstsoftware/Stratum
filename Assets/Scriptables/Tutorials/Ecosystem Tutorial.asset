@@ -9,255 +9,44 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31f323a8a7d74cdaafb24048c0acbf6f, type: 3}
+  m_Script: {fileID: 11500000, guid: 387971cd8248fbd49bd232d665bb6361, type: 3}
   m_Name: Ecosystem Tutorial
   m_EditorClassIdentifier: 
-  <LocalPlayer>k__BackingField: 1
   _initialDialogues:
-  - _text:
-      m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
-      m_TableEntryReference:
-        m_KeyId: 6978007040
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-  - _text:
-      m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
-      m_TableEntryReference:
-        m_KeyId: 182916476928
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-  - _text:
-      m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
-      m_TableEntryReference:
-        m_KeyId: 487838183424
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-  - _text:
-      m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
-      m_TableEntryReference:
-        m_KeyId: 640498266112
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-  - _text:
-      m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
-      m_TableEntryReference:
-        m_KeyId: 4927727071232
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
+  - _dialogueText: eco_0_0_0
+  - _dialogueText: eco_0_0
+  - _dialogueText: eco_0_1
+  - _dialogueText: eco_0_2
+  - _dialogueText: eco_0_3
+  - _dialogueText: eco_0_4
   _dialoguesHerbivoresPlantsDie:
-  - _text:
-      m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
-      m_TableEntryReference:
-        m_KeyId: 6048008892416
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-  - _text:
-      m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
-      m_TableEntryReference:
-        m_KeyId: 6279064711168
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
+  - _dialogueText: eco_1_0
+  - _dialogueText: eco_1_1
   _dialoguesMushroom:
-  - _text:
-      m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
-      m_TableEntryReference:
-        m_KeyId: 6502197489664
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-  - _text:
-      m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
-      m_TableEntryReference:
-        m_KeyId: 6564461932544
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-  - _text:
-      m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
-      m_TableEntryReference:
-        m_KeyId: 6803264630784
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
+  - _dialogueText: eco_2_0
+  - _dialogueText: eco_2_1
+  - _dialogueText: eco_2_2
   _dialoguesHerbivoresPlantsGrow:
-  - _text:
-      m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
-      m_TableEntryReference:
-        m_KeyId: 7325598085120
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
+  - _dialogueText: eco_2_3
   _dialoguesHerbivoresPlantsAfter:
-  - _text:
-      m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
-      m_TableEntryReference:
-        m_KeyId: 7677730877440
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-  - _text:
-      m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
-      m_TableEntryReference:
-        m_KeyId: 8672590426112
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
+  - _dialogueText: eco_3_0
+  - _dialogueText: eco_3_1
   _dialoguesCarnivoresHerbivoresDie:
-  - _text:
-      m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
-      m_TableEntryReference:
-        m_KeyId: 8931303485440
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-  - _text:
-      m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
-      m_TableEntryReference:
-        m_KeyId: 9178318630912
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
+  - _dialogueText: eco_4_0
+  - _dialogueText: eco_4_1
   _dialoguesCarnHerbDieAfter:
-  - _text:
-      m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
-      m_TableEntryReference:
-        m_KeyId: 9554451230720
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-  - _text:
-      m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
-      m_TableEntryReference:
-        m_KeyId: 9754032992256
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
+  - _dialogueText: eco_5_0
+  - _dialogueText: eco_5_1
   _plantsCarnsHerbsDie:
-  - _text:
-      m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
-      m_TableEntryReference:
-        m_KeyId: 10019213668352
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
+  - _dialogueText: eco_6_0
   _plantsCarnsHerbsDieAfter:
-  - _text:
-      m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
-      m_TableEntryReference:
-        m_KeyId: 10861614460928
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-  - _text:
-      m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
-      m_TableEntryReference:
-        m_KeyId: 11127403311104
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
+  - _dialogueText: eco_7_0
+  - _dialogueText: eco_7_1
   _dialoguesCarnHerbGrow:
-  - _text:
-      m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
-      m_TableEntryReference:
-        m_KeyId: 11283653718016
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
+  - _dialogueText: eco_8_0
   _dialoguesCarnHerbGrowAfter:
-  - _text:
-      m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
-      m_TableEntryReference:
-        m_KeyId: 11502122430464
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-  - _text:
-      m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
-      m_TableEntryReference:
-        m_KeyId: 11765344366592
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-  - _text:
-      m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
-      m_TableEntryReference:
-        m_KeyId: 11930067267584
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-  - _text:
-      m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
-      m_TableEntryReference:
-        m_KeyId: 12217410646016
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-  - _text:
-      m_TableReference:
-        m_TableCollectionName: GUID:ee2562db878f4184f9dddbfe9db29f72
-      m_TableEntryReference:
-        m_KeyId: 12719225565184
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-  references:
-    version: 2
-    RefIds: []
+  - _dialogueText: eco_9_0
+  - _dialogueText: eco_9_1
+  - _dialogueText: eco_9_2
+  - _dialogueText: eco_9_3
+  - _dialogueText: eco_9_4

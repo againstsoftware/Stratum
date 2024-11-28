@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: OutlineMarron
-  m_Shader: {fileID: 4800000, guid: 68884cb980946f44e941195062849e8f, type: 3}
+  m_Shader: {fileID: 4800000, guid: ebf9385a41d98b04e97475f76a836885, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []

@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 5688344e56c84e94e9c8aacbf680308a
   m_currentHash:
     serializedVersion: 2
-    Hash: 49e864a9e8de24494161d561dfd5ee76
+    Hash: ae8d7bf8cd24cde3f7aed59b9ede7efa
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -38,7 +38,7 @@ MonoBehaviour:
     m_Id: 
   m_RemoteCatalogLoadPath:
     m_Id: 
-  m_ContentStateBuildPathProfileVariableName: 
+  m_ContentStateBuildPathProfileVariableName: <default settings path>
   m_CustomContentStateBuildPath: 
   m_ContentStateBuildPath: 
   m_BuildAddressablesWithPlayerBuild: 0
@@ -94,6 +94,7 @@ MonoBehaviour:
     - Locale
     - Locale-en
     - Locale-es
+    - Preload
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 5982e576f39995349acd81135a32edbe, type: 2}

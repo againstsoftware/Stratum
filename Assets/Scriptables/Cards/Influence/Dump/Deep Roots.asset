@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 626f34ac4820471d9b07a85f8143ce47, type: 3}
   m_Name: Deep Roots
   m_EditorClassIdentifier: 
-  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 3064e0a94aa10034fa4f27b17f3c137c,
-    type: 3}
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 3064e0a94aa10034fa4f27b17f3c137c, type: 3}
   _name:
     m_TableReference:
       m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
@@ -32,6 +31,8 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  _newName: deep_roots_name
+  _newDescription: deep_roots_desc
   _actionEffects:
   - ValidAction:
       <DropLocation>k__BackingField: 6

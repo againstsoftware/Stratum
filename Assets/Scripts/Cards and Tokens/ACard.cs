@@ -1,20 +1,28 @@
 using System;
 using UnityEngine;
-using UnityEngine.Localization;
 using System.Collections.Generic;
+using UnityEngine.Serialization;
 
 public abstract class ACard : AActionItem
 {
-    public string Name { get => _name.GetLocalizedString(); }
-    public string Description { get => _description.GetLocalizedString(); }
+    public string Name
+    {
+        get => LocalizationGod.GetLocalized("Cards", _cardName);
+    }
+
+    public string Description
+    {
+        get => LocalizationGod.GetLocalized("Cards", _cardDescription);
+    }
     
     public abstract bool CanHaveInfluenceCardOnTop { get; }
     
     [field:SerializeField] public Texture ObverseTex { get; private set; }
     
     
-    [SerializeField] private LocalizedString _name, _description;
-    
+    [FormerlySerializedAs("_newName")] [SerializeField] private string _cardName;
+    [FormerlySerializedAs("_newDescription")] [SerializeField] private string _cardDescription;
+
 
     [Serializable]
     public class ActionEffect

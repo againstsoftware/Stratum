@@ -13,6 +13,8 @@ public class GameInitializer : MonoBehaviour
     [SerializeField] private GameMode _gameMode;
     private void Awake()
     {
+        LocalizationGod.Init();
+        
         var gameModel = new GameModel(_config, _decks);
         
         ServiceLocator.Register<IModel>(gameModel);
@@ -20,8 +22,6 @@ public class GameInitializer : MonoBehaviour
         ServiceLocator.Register<IInteractionSystem>(FindAnyObjectByType<InteractionManager>());
         
         ServiceLocator.Register<IRulesSystem>(FindAnyObjectByType<RulesManager>()); 
-        
-        ServiceLocator.Register<IExecutor>(new EffectExecutor());
         
         ServiceLocator.Register<IView>(FindAnyObjectByType<ViewManager>());
 
@@ -46,6 +46,11 @@ public class GameInitializer : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException();
         }
+
+        var executor = new EffectExecutor();
+        ServiceLocator.Register<IExecutor>(executor);
+        executor.IsOnTutorial = _gameMode is GameMode.Tutorial;
+
 
     }
 

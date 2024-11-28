@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f0581ecb3634a2da250285f139a8063, type: 3}
   m_Name: Parasite
   m_EditorClassIdentifier: 
-  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 5d1c674d44f11ad40b8093025494e56d,
-    type: 3}
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 5d1c674d44f11ad40b8093025494e56d, type: 3}
   _name:
     m_TableReference:
       m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
@@ -32,6 +31,8 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  _newName: parasite_name
+  _newDescription: parasite_desc
   _actionEffects:
   - ValidAction:
       <DropLocation>k__BackingField: 6

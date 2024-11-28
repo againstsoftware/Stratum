@@ -16,11 +16,12 @@ public class TutorialManager : MonoBehaviour, ITurnSystem, ICommunicationSystem
     
     public event Action OnGameStart;
 
+    [SerializeField] private TutorialRulebook _tutorialRulebook;
     [SerializeField] private float _delayBetweenElements;
 
     private Queue<ITutorialElement> _tutorialElements;
-    private Rulebook _rulebook;
     private ATutorialSequence _tutorialSequence;
+    private bool _isCurrentPlayerAction;
 
     private void Start()
     {
@@ -31,7 +32,7 @@ public class TutorialManager : MonoBehaviour, ITurnSystem, ICommunicationSystem
 
         PlayerOnTurn = PlayerCharacter.None;
     }
-
+    
     public void StartGame()
     {
 
@@ -47,7 +48,15 @@ public class TutorialManager : MonoBehaviour, ITurnSystem, ICommunicationSystem
 
     public void EndAction()
     {
-        Invoke(nameof(ExecuteNextTutorialElement), _delayBetweenElements);
+        if (_isCurrentPlayerAction)
+        {
+            _isCurrentPlayerAction = false;
+            Invoke(nameof(ExecuteNextTutorialElement), .01f);
+        }
+        else
+        {
+            Invoke(nameof(ExecuteNextTutorialElement), _delayBetweenElements);
+        }
     }
 
     private void SetLocalPlayer()
@@ -71,9 +80,10 @@ public class TutorialManager : MonoBehaviour, ITurnSystem, ICommunicationSystem
                 
                 ServiceLocator.Get<IInteractionSystem>().SetLocalPlayer(localPlayer, cam);
                 ServiceLocator.Get<IView>().SetLocalPlayer(localPlayer, cam);
+                _tutorialRulebook.SetLocalPlayer(localPlayer, cam);
             }
         }
-
+        
         
     }
 
@@ -81,7 +91,6 @@ public class TutorialManager : MonoBehaviour, ITurnSystem, ICommunicationSystem
     {
         if (!_tutorialElements.Any())
         {
-            Debug.Log("Tutorial terminade");
             _tutorialSequence.OnTutorialFinished();
             return;
         }
@@ -90,6 +99,7 @@ public class TutorialManager : MonoBehaviour, ITurnSystem, ICommunicationSystem
 
         if (element is TutorialDialogue dialogue)
         {
+            PlayerOnTurn = PlayerCharacter.None;
             ShowTutorialDialogue(dialogue);
             ServiceLocator.Get<IRulesSystem>().DisableForcedAction();
         }
@@ -97,27 +107,24 @@ public class TutorialManager : MonoBehaviour, ITurnSystem, ICommunicationSystem
         {
             if (action.IsPlayerAction)
             {
+                _isCurrentPlayerAction = true;
                 PlayerOnTurn = _tutorialSequence.LocalPlayer;
-                ServiceLocator.Get<IRulesSystem>().SetForcedAction(action.ForcedActions);
+                ServiceLocator.Get<IModel>().AdvanceTurn(PlayerOnTurn);
+                ServiceLocator.Get<IRulesSystem>().SetForcedAction(action.ForcedActions, action.ForceOnlyActionItem);
             }
             else
             {
                 PlayerOnTurn = PlayerCharacter.None;
                 ServiceLocator.Get<IRulesSystem>().DisableForcedAction();
-                ServiceLocator.Get<IExecutor>().ExecuteRulesEffects(action.EffectCommands);
+                ServiceLocator.Get<IExecutor>().ExecuteRulesEffects(action.GetEffectCommands());
             }
         }
-        OnActionEnded?.Invoke(PlayerOnTurn);
         OnTurnChanged?.Invoke(PlayerOnTurn);
     }
 
     private void ShowTutorialDialogue(TutorialDialogue dialogue)
     {
-        if (_rulebook is null)
-            _rulebook = ServiceLocator.Get<IView>().GetViewPlayer(_tutorialSequence.LocalPlayer)
-                .GetComponentInChildren<Rulebook>();
-        
-        _rulebook.DisplayDialogue(dialogue, EndAction);
+        _tutorialRulebook.DisplayTutorialDialogue(dialogue, EndAction);
     }
 
     

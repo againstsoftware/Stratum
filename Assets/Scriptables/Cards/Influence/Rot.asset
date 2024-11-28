@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84038174b9c74591ac593a0f869c285c, type: 3}
   m_Name: Rot
   m_EditorClassIdentifier: 
-  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 168bb580d5a235e469f8bb2aef8d8467,
-    type: 3}
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: bcc4380d16ba7db4880a4db2ecba495f, type: 3}
   _name:
     m_TableReference:
       m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
@@ -32,6 +31,8 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  _newName: rot_name
+  _newDescription: rot_desc
   _actionEffects:
   - ValidAction:
       <DropLocation>k__BackingField: 6
