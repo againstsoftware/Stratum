@@ -56,10 +56,6 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
                 if(playLocation is PlayableCard pc) OnPersistentPlayed(pc);
                 else if(playLocation is DiscardPileReceiver) OnPersistendDiscarded();
             }
-            else if (Card is MushroomCard or MacrofungiCard)
-            {
-                OnMushroomOrMacrofungiPlayed(playLocation);
-            }
 
             if (isEndOfAction)
             {
@@ -78,16 +74,11 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
                 if(playLocation is PlayableCard pc) OnPersistentPlayed(pc);
                 else if(playLocation is DiscardPileReceiver) OnPersistendDiscarded();
             }
-            else if (Card is MushroomCard or MacrofungiCard)
-            {
-                OnMushroomOrMacrofungiPlayed(playLocation);
-            }
 
             if (isEndOfAction)
             {
                 if (Card is PopulationCard) OnPopulationPlayed(playLocation);
             }
-            
 
             onPlayedCallback();
         });
@@ -116,17 +107,6 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
             //se puede destruir aqui tal vez? en vez de en el viewplayer
         }
     }
-
-    private void OnMushroomOrMacrofungiPlayed(IActionReceiver playLocation)
-    {
-        CurrentState = State.Played;
-        IsDropEnabled = true;
-        _canInteractWithoutOwnership = true;
-
-        SlotWherePlaced = playLocation as SlotReceiver;
-        if (SlotWherePlaced is not null) SlotWherePlaced.AddCardOnTop(this);
-    }
-    
 
     private void OnPersistentPlayed(PlayableCard cardWherePlaced)
     {

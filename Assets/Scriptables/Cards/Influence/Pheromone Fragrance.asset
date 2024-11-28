@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28106fabd1f046c9b6f633458ac3e787, type: 3}
   m_Name: Pheromone Fragrance
   m_EditorClassIdentifier: 
-  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 5821708fce246a84faa01f7c779a73b4, type: 3}
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 2197746910d29cd40992a67774cf4c23,
+    type: 3}
   _name:
     m_TableReference:
       m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
@@ -31,8 +32,6 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  _newName: pheromone_name
-  _newDescription: pheromone_desc
   _actionEffects:
   - ValidAction:
       <DropLocation>k__BackingField: 6
@@ -46,6 +45,7 @@ MonoBehaviour:
       <DropLocation>k__BackingField: 5
       <Receivers>k__BackingField: 0400000000000000
     Effects: 0d0000000e000000
+  <InfluenceType>k__BackingField: 2
   <IsPersistent>k__BackingField: 0
   references:
     version: 2

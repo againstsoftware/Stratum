@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e88e724243f4bfca3969266de6f72a4, type: 3}
   m_Name: Pesticide
   m_EditorClassIdentifier: 
-  <ObverseTex>k__BackingField: {fileID: 2800000, guid: a7b500c4dc8e7434690b863b41d64fed, type: 3}
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: a7b500c4dc8e7434690b863b41d64fed,
+    type: 3}
   _name:
     m_TableReference:
       m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
@@ -31,8 +32,6 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  _newName: pesticide_name
-  _newDescription: pesticide_desc
   _actionEffects:
   - ValidAction:
       <DropLocation>k__BackingField: 6
@@ -46,6 +45,7 @@ MonoBehaviour:
       <DropLocation>k__BackingField: 5
       <Receivers>k__BackingField: 04000000
     Effects: 0d00000018000000
+  <InfluenceType>k__BackingField: 12
   <IsPersistent>k__BackingField: 0
   references:
     version: 2

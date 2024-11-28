@@ -11,25 +11,9 @@ public class ViewPlayer : MonoBehaviour
     [field: SerializeField] public PlayableToken Token { get; private set; }
     [field: SerializeField] public Camera MainCamera { get; private set; }
     [field: SerializeField] public Camera UICamera { get; private set; }
-    [field: SerializeField] public GameObject Mesh { get; private set; }
 
     public readonly List<PlayableCard> Cards = new(5);
-
-    public bool IsLocalPlayer
-    {
-        get => _isLocalPlayer;
-        set
-        {
-            _isLocalPlayer = value;
-            if (_isLocalPlayer)
-            {
-                Destroy(Mesh);
-                Mesh = null;
-            }
-        }
-    }
-
-    private bool _isLocalPlayer;
+    public bool IsLocalPlayer { get; set; }
 
     public PlayerCharacter Character { get; private set; } = PlayerCharacter.None;
 

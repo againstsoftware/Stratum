@@ -50,4 +50,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 928e65c653ac4204b9cf4e9e09fc2013, type: 2}
   - {fileID: 11400000, guid: 72b91bd479dc79b49b3d3e93a30fb80e, type: 2}
   - {fileID: 11400000, guid: 1bd4ec571d6cdab4a865d944a4e1ef0a, type: 2}
-  _gameMode: 0
+  _isTestScene: 0

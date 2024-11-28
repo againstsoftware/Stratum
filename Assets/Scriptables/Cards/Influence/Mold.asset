@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c8485c73f454f7eaeafc91f63535fb9, type: 3}
   m_Name: Mold
   m_EditorClassIdentifier: 
-  <ObverseTex>k__BackingField: {fileID: 2800000, guid: cf0ccc6009860514c941d1e8edc52f00, type: 3}
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: c3e41ae38488e884284ab035a95246a8,
+    type: 3}
   _name:
     m_TableReference:
       m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
@@ -31,8 +32,6 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  _newName: mold_name
-  _newDescription: mold_desc
   _actionEffects:
   - ValidAction:
       <DropLocation>k__BackingField: 6
@@ -46,6 +45,7 @@ MonoBehaviour:
       <DropLocation>k__BackingField: 5
       <Receivers>k__BackingField: 01000000
     Effects: 0d00000014000000
+  <InfluenceType>k__BackingField: 9
   <IsPersistent>k__BackingField: 0
   references:
     version: 2
